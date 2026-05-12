@@ -1,0 +1,418 @@
+{
+  "menu": {
+    "home": "Trang chủ",
+    "about": "Giới thiệu",
+    "products": "Sản phẩm",
+    "news": "Tin tức",
+    "careers": "Tuyển dụng",
+    "contact": "Liên hệ",
+    "viewAll": "Xem tất cả sản phẩm",
+    "viewTechnical": "Xem tài liệu kỹ thuật"
+  },
+
+ "footer": {
+    "description": "Công ty con của Diamond Electric Holdings Co., Ltd. (Nhật Bản). Sản xuất biến áp chính xác tại Việt Nam, phục vụ khách hàng toàn cầu với hơn 90 năm kinh nghiệm.",
+    "products": "Sản phẩm",
+    "company": "Công ty",
+    "contact": "Liên hệ",
+    "about": "Giới thiệu",
+    "careers": "Tuyển dụng",
+    "news": "Tin tức",
+    "hanoi_office": "Văn phòng Hà Nội",
+    "copyright": "© 2026 CÔNG TY TNHH VIETNAM DIAMOND & ZEBRA ELECTRIC. BẢO LƯU MỌI QUYỀN."
+  },
+
+
+  "hero": {
+  "badge": "Thành viên của Diamond Electric Holdings Co., Ltd.",
+  "line1": "Sản xuất",
+  "line2": "Máy biến áp",
+  "line3": "Chính xác cao",
+  "line4": "cho thị trường toàn cầu",
+  "description": "Công ty con của Diamond Electric Holdings Co., Ltd.(Nhật Bản) - hơn 90 năm kinh nghiệm sản xuất biến áp cao tần và linh kiện điện tử",
+  "cta": "Xem sản phẩm",
+  "scroll": "Cuộn"
+  },
+
+  "stats": {
+  "years":   "Năm kinh nghiệm",
+  "units":   "Sản phẩm mỗi năm",
+  "certs":   "Chứng nhận ISO / IATF",
+  "support": "Hỗ trợ tùy chỉnh"
+},
+
+"about_preview": {
+  "label":       "Giới thiệu",
+  "heading":     "90 Năm Sản Xuất Biến Áp",
+  "description": "VIETNAM DIAMOND & ZEBRA ELECTRIC là công ty con của Diamond Electric Holdings Co., Ltd. (Nhật Bản), chuyên sản xuất biến áp chất lượng cao cho thị trường toàn cầu.",
+  "years":       "Năm kinh nghiệm",
+  "cta":         "Tìm hiểu thêm",
+  "f1_title":    "Thiết kế hoàn toàn tùy chỉnh",
+  "f1_desc":     "Mỗi sản phẩm được thiết kế và tối ưu hóa theo thông số kỹ thuật riêng của từng khách hàng.",
+  "f2_title":    "Tiêu chuẩn kỹ thuật Nhật Bản",
+  "f2_desc":     "Áp dụng hàng thập kỷ kinh nghiệm sản xuất Nhật Bản kết hợp với sự xuất sắc vận hành của Việt Nam.",
+  "f3_title":    "Phục vụ nhà sản xuất toàn cầu",
+  "f3_desc":     "Thiết bị gia dụng, AV, tự động hóa văn phòng và ngành xe điện xEV."
+},
+
+
+
+  "automotiveSection": {
+    "eyebrow": "Ứng dụng ô tô",
+    "titleLine1": "Thúc đẩy tương lai",
+    "titleLine2": "xe điện",
+    "description": "ZVE cung cấp các dòng biến áp và linh kiện điện tử được thiết kế chính xác cho ngành ô tô — hỗ trợ nền tảng xEV, hybrid và xe thế hệ mới với tiêu chuẩn chất lượng chuẩn Nhật Bản.",
+    "features": {
+      "ev": "Linh kiện cho xEV & xe điện",
+      "certified": "Quy trình đạt chứng nhận IATF 16949",
+      "custom": "Tùy chỉnh hoàn toàn theo tiêu chuẩn OEM"
+    }
+  },
+
+  
+  "certificationsSection": {
+    "badge": "Cam kết chất lượng",
+    "title": "Chứng nhận của chúng tôi",
+    "description": "Sản phẩm được sản xuất theo tiêu chuẩn chất lượng Nhật Bản, đảm bảo độ tin cậy cao và hiệu suất chính xác.",
+    "alt": "Chứng nhận"
+  },
+
+
+
+  "contactPreview": {
+    "badge": "Liên hệ",
+    "titleLine1": "Hãy cùng",
+    "titleLine2": "xây dựng tương lai",
+    "description": "Dù bạn cần linh kiện ô tô tùy chỉnh, muốn trao đổi về hợp tác, hay có câu hỏi về năng lực của chúng tôi, đội ngũ luôn sẵn sàng hỗ trợ. Hãy liên hệ để trải nghiệm chất lượng Zve.",
+    "button": "Liên hệ ngay",
+    "items": {
+      "visit": {
+        "label": "Địa chỉ",
+        "value": "Lô I-3, KCN Đại Đồng – Hoàn Sơn",
+        "subValue": "Tiên Du, Bắc Ninh"
+      },
+      "call": {
+        "label": "Điện thoại",
+        "value": "+84-222-3847-435",
+        "subValue": "Thứ 2 - Thứ 6, 8:00 - 18:00"
+      },
+      "email": {
+        "label": "Email",
+        "value": "zve_sales_4@dia-zbr.com.vn",
+        "subValue": "Phản hồi trong 24 giờ"
+      },
+      "hours": {
+        "label": "Giờ làm việc",
+        "value": "Thứ 2 - Thứ 6",
+        "subValue": "8:00 - 18:00 ICT"
+      }
+    }
+  },
+
+
+
+"partnersSection": {
+    "badge": "Được tin tưởng bởi các tập đoàn hàng đầu",
+    "title": "Đối tác toàn cầu",
+    "stats": {
+      "countries": "Quốc gia",
+      "oem": "Đối tác OEM",
+      "support": "Hỗ trợ"
+    }
+  },
+
+
+  
+  "contact": {
+  "heading":                "Liên hệ để được hỗ trợ ngay hôm nay",
+  "subheading":             "Dù bạn cần thiết kế biến áp tùy chỉnh, báo giá sản xuất hàng loạt hay tư vấn kỹ thuật — đội ngũ kỹ sư của chúng tôi luôn sẵn sàng hỗ trợ.",
+  "loc1_tag":               "Nhà máy", "loc1_name": "Vietnam Diamond & Zebra company limited",
+  "loc1_address":           "Lô I3, Khu công nghiệp Đại Đồng - Hoàn Sơn, Xã Hoàn Sơn, Huyện Tiên Du, Tỉnh Bắc Ninh, Việt Nam",
+  "loc2_tag":               "Chi nhánh", "loc2_name": "Chi nhánh Diamond & Zebra Electric Vietnam Co., Ltd tại Hà Nội.",
+  "loc2_address":           "Tầng M, Tòa nhà TTC Tower, số 19 Duy Tân, Phường Dịch Vọng Hậu, Quận Cầu Giấy, Hà Nội.",
+  "loc3_tag":               "Toàn cầu", "loc3_name": "Diamond Electric Holdings",
+  "loc3_address":            "1-15-27, Tsukamoto, Yodogawa-ku, Osaka 532-0026, Japan",
+  "form_title":             "Gửi yêu cầu cho chúng tôi",
+  "field_name":             "Họ tên",     "placeholder_name":         "Họ và tên của bạn",
+  "field_company":          "Công ty",    "placeholder_company":      "Tên công ty",
+  "field_email":            "Email",
+  "field_phone":            "Điện thoại",
+  "field_subject":         "Yêu cầu", "placeholder_subject": "VD: Nhập yêu cầu",
+  "field_product":          "Sản phẩm quan tâm",
+  "field_requirements":     "Nội dung",
+  "placeholder_requirements": "Vui lòng mô tả chi tiết yêu cầu của bạn.",
+  "product_placeholder":    "Chọn sản phẩm",
+
+  "submit":                 "Gửi yêu cầu"
+},
+
+
+"about": {
+  "hero": {
+    "badge": "Tổng quan công ty",
+    "title_1": "Kỹ thuật",
+    "title_highlight_1": "Chính xác.",
+    "title_2": "Tin cậy",
+    "title_highlight_2": "Toàn cầu.",
+    "description": "VIETNAM DIAMOND & ZEBRA ELECTRIC (ZVE) – Thành viên tập đoàn Diamond Electric Holdings (Nhật Bản). Chúng tôi tiên phong trong lĩnh vực sản xuất máy biến áp chất lượng cao, cung ứng giải pháp năng lượng bền vững cho thị trường thế giới.",
+    "stat_employees": "Nhân viên",
+    "stat_projects": "Dự án hoàn thành",
+    "stat_years": "Năm tại Việt Nam",
+    "stat_countries": "Quốc gia xuất khẩu"
+  },
+  "overview": {
+    "label": "Tổng quan doanh nghiệp",
+    "title": "ZVE Việt Nam – Nhà sản xuất máy biến áp tiêu chuẩn quốc tế",
+    "desc_1": "Tọa lạc tại Khu công nghiệp Hoàn Sơn, tỉnh Bắc Ninh, ZVE Việt Nam vận hành hệ thống nhà máy hiện đại cùng đội ngũ nòng cốt hơn 500 kỹ sư và kỹ thuật viên trình độ cao. Chúng tôi chuyên sâu trong lĩnh vực thiết kế và chế tạo các dòng máy biến áp điện lực, máy biến áp phân phối, thiết bị đo lường và các giải pháp tùy chỉnh tối ưu. Sản phẩm của ZVE hiện đang cung ứng rộng rãi cho các đơn vị điện lực quốc gia, phân khúc khách hàng công nghiệp và các đối tác OEM chiến lược trên toàn khu vực Châu Á.",
+    "desc_2": "Là thành viên với 100% vốn đầu tư từ tập đoàn Diamond Electric Holdings Co., Ltd. (Nhật Bản), ZVE Việt Nam là sự giao thoa hoàn hảo giữa kỷ luật kỹ thuật khắt khe của Nhật Bản và năng lực sản xuất linh hoạt tại Việt Nam. Chúng tôi cam kết mang đến những sản phẩm chất lượng cao cấp, đáp ứng các tiêu chuẩn kỹ thuật nghiêm ngặt nhất với tiến độ bàn giao tối ưu và giá thành cạnh tranh.",
+    "factory_area": "Diện tích nhà máy",
+    "annual_capacity": "Công suất hàng năm",
+    "engineering_staff": "Nhân sự kỹ thuật",
+    "quality_rate": "Tỷ lệ chất lượng"
+  },
+  "timeline": {
+    "label": "Lịch sử phát triển",
+    "title": "Hành trình kiến tạo giá trị",
+    "items": [
+      { "year": "1938", "title": "Diamond Electric thành lập", "desc": "Diamond Electric Co., Ltd. được thành lập tại Nhật Bản, mở đầu di sản kỹ thuật điện chính xác." },
+      { "year": "1995", "title": "Mở rộng toàn cầu", "desc": "Diamond Electric Holdings mở rộng sang thị trường Đông Nam Á, mang chất lượng Nhật Bản đến khu vực." },
+      { "year": "2010", "title": "Thành lập nhà máy Việt Nam", "desc": "Nhà máy ZVE Việt Nam ra đời tại KCN Hoàn Sơn, Bắc Ninh — phục vụ thị trường trong nước và xuất khẩu." },
+      { "year": "2016", "title": "Đạt chứng nhận ISO 9001", "desc": "Đạt chứng nhận quản lý chất lượng quốc tế, khẳng định cam kết với tiêu chuẩn đẳng cấp thế giới." },
+      { "year": "2020", "title": "Khai trương Trung tâm R&D", "desc": "Trung tâm nghiên cứu và phát triển chuyên dụng được khánh thành để đẩy nhanh đổi mới công nghệ máy biến áp." },
+      { "year": "2024", "title": "Hơn 1.000 dự án hoàn thành", "desc": "Cột mốc hơn 1.000 dự án máy biến áp được bàn giao tại Việt Nam, Nhật Bản và các đối tác toàn cầu." }
+    ]
+  },
+  "vision": {
+    
+    "title": "Tầm nhìn & Triết lý kinh doanh"
+  },
+  "values": {
+    "label": "Giá trị cốt lõi",
+    "title": "Những nguyên tắc định hình thương hiệu",
+    "items": [
+      { "title": "Tinh thần Kaizen", "desc": "Bắt nguồn từ triết lý Kaizen — cải tiến liên tục, không có lỗi và trách nhiệm tuyệt đối trong mọi sản phẩm." },
+      { "title": "Cam kết với khách hàng", "desc": "Chúng tôi xử lý mọi yêu cầu của khách hàng như một thách thức kỹ thuật chính xác — giao đúng hạn, đúng thông số." },
+      { "title": "Đổi mới & R&D", "desc": "Liên tục đầu tư vào công nghệ mới và sản xuất thông minh để mở rộng ranh giới thiết kế máy biến áp." },
+      { "title": "Đội ngũ & Đối tác", "desc": "Văn hóa hợp tác — kỹ sư, đối tác và khách hàng của chúng tôi làm việc như một đội hướng tới thành công chung." },
+      { "title": "Trách nhiệm môi trường", "desc": "Thiết kế máy biến áp tiết kiệm năng lượng giúp giảm tổn thất và góp phần vào tương lai bền vững, ít carbon." },
+      { "title": "Kỹ thuật chính xác", "desc": "Mỗi cuộn dây, mỗi lõi, mỗi bài kiểm tra — đều được thực hiện với dung sai chính xác theo tiêu chuẩn ZVE." }
+    ]
+  },
+  "hanoi": {
+    "label": "Văn phòng Hà Nội",
+    "title_1": "Phục vụ khách hàng với",
+    "title_highlight": "chuyên môn địa phương",
+    "title_2": "& Tiêu chuẩn Nhật Bản",
+    "desc": "Văn phòng Hà Nội của chúng tôi là cầu nối giữa nhà máy Bắc Ninh và khách hàng trên khắp Việt Nam — cung cấp tư vấn kỹ thuật, hỗ trợ dự án và phản hồi tại chỗ nhanh chóng.",
+    "feature_1_title": "Văn phòng Kỹ thuật",
+    "feature_1_desc": "Đầu mối liên hệ trực tiếp cho báo giá, thông số kỹ thuật và điều phối dự án.",
+    "feature_2_title": "Hỗ trợ sau bán hàng",
+    "feature_2_desc": "Đội ngũ kỹ thuật chuyên trách cho hướng dẫn lắp đặt và dịch vụ bảo hành.",
+    "years": "Năm kinh nghiệm",
+    "cta": "Xem thêm"
+  },
+  "group": {
+    "label": "Tập đoàn",
+    "title": "Thành viên của Diamond Electric Holdings",
+    "desc": "ZVE Việt Nam là công ty con thuộc sở hữu hoàn toàn của Diamond Electric Holdings Co., Ltd. (DEHD), tập đoàn toàn cầu có trụ sở tại Tokyo với hơn 80 năm lịch sử và hoạt động tại 15+ quốc gia.",
+    "parent": "Công ty mẹ",
+    "headquarters": "Trụ sở chính",
+    "headquarters_val": "Osaka, Nhật Bản",
+    "listed": "Niêm yết",
+    "listed_val": "Sàn chứng khoán Tokyo",
+    "founded": "Thành lập",
+    "founded_val": "1938"
+  },
+  "cta": {
+    "title": "Sẵn sàng hợp tác với ZVE?",
+    "desc": "Gửi cho chúng tôi yêu cầu kỹ thuật của bạn và nhận phản hồi trong vòng 24 giờ.",
+    "button": "Liên hệ đội ngũ kỹ sư →"
+  }
+},
+
+"careers": {
+  "hero": {
+    "title": "Cùng chúng tôi\nxây dựng tương lai",
+    "desc": "Chúng tôi tìm kiếm những cá nhân đam mê, không ngại thử thách và muốn tạo ra sản phẩm có tác động thực sự."
+  },
+  "fields": {
+    "title": "Lĩnh vực tuyển dụng",
+    "search": "Tìm kiếm ...",
+    "all_locations": "Tất cả địa điểm",
+    "loading": "Đang tải...",
+    "no_results": "Không tìm thấy vị trí phù hợp."
+  },
+  "why": {
+    "title": "Phát triển cùng chúng tôi"
+  },
+  "process": {
+    "title": "Quy trình tuyển dụng"
+  },
+  "benefits": {
+    "stable":        { "title": "Môi trường làm việc ổn định",       "desc": "Chúng tôi cung cấp môi trường làm việc ổn định, có cấu trúc rõ ràng và định hướng lâu dài." },
+    "career":        { "title": "Phát triển sự nghiệp lâu dài",      "desc": "Nhân viên được hỗ trợ phát triển kỹ năng và xây dựng lộ trình sự nghiệp bền vững trong công ty." },
+    "training":      { "title": "Đào tạo và hướng dẫn",              "desc": "Các buổi đào tạo thường xuyên và hướng dẫn từ những thành viên giàu kinh nghiệm." },
+    "respect":       { "title": "Môi trường tôn trọng lẫn nhau",     "desc": "Chúng tôi đề cao sự tôn trọng, trách nhiệm và tính chuyên nghiệp trong công việc hàng ngày." },
+    "performance":   { "title": "Ghi nhận xứng đáng",                "desc": "Những nỗ lực và đóng góp trong công việc được nhìn nhận một cách rõ ràng và phù hợp." },
+    "activities":    { "title": "Hoạt động nội bộ",                  "desc": "Các sự kiện thường niên và hoạt động nội bộ được tổ chức để tăng cường gắn kết nhóm." },
+    "international": { "title": "Hợp tác quốc tế",                   "desc": "Cơ hội làm việc với khách hàng Nhật Bản và tuân theo các tiêu chuẩn quốc tế." },
+    "process":       { "title": "Làm việc theo quy trình",           "desc": "Công việc được thực hiện theo quy trình định sẵn để đảm bảo chất lượng và hiệu quả." }
+  },
+  "steps": {
+    "application": { "title": "Nộp hồ sơ",               "desc": "Điền form trực tuyến hoặc gửi CV qua email. Phản hồi trong vòng 3 ngày làm việc." },
+    "hr":          { "title": "Phỏng vấn HR",             "desc": "Cuộc gọi 30 phút để hiểu về bạn, kỳ vọng và sự phù hợp với văn hóa công ty." },
+    "test":        { "title": "Bài kiểm tra kỹ thuật",   "desc": "Bài kiểm tra trực tuyến hoặc bài tập về nhà phù hợp với vị trí ứng tuyển." },
+    "interview":   { "title": "Phỏng vấn kỹ thuật",      "desc": "Gặp gỡ trưởng nhóm kỹ thuật. Thảo luận chuyên sâu về kinh nghiệm và giải pháp của bạn." },
+    "offer":       { "title": "Offer & Onboarding",       "desc": "Nhận thư mời trong vòng 1 tuần. Chào mừng bạn gia nhập đội ngũ!" }
+  }
+},
+
+"products": {
+  "category": "Danh mục",
+  "applications": "Ứng dụng",
+  "results": "sản phẩm",
+  "results_for": "kết quả cho",
+  "catalog_label": "Danh sách sản phẩm",
+  "catalog_title": "Dòng sản phẩm của chúng tôi",
+  "search_placeholder": "Tìm theo tên, ứng dụng...",
+  "view_product": "Xem sản phẩm",
+  "in_production": "Đang sản xuất",
+  "details": "Chi tiết",
+  "no_results": "Không tìm thấy sản phẩm",
+  "try_keyword": "Thử từ khóa hoặc bộ lọc khác"
+},
+
+"news": {
+  "hero": {
+    "title": "Tin tức & Thông báo",
+    "desc": "Cập nhật sản phẩm, chứng nhận và tin tức doanh nghiệp mới nhất từ ZVE."
+  },
+  "search_placeholder": "Tìm kiếm bài viết...",
+  "results_for": "Kết quả cho",
+  "all_articles": "Tất cả bài viết",
+  "articles": "Bài viết",
+  "not_found": "Không tìm thấy",
+  "categories": {
+    "all": "Tất cả", "products": "Sản phẩm", "engineering": "Kỹ thuật",
+    "company": "Công ty", "awards": "Giải thưởng"
+  },
+  "sidebar": {
+    "archive": "Lưu trữ", "clear_filter": "Bỏ lọc",
+    "categories": "Danh mục",
+    "japan_title": "Tin tức tại Nhật Bản",
+    "japan_desc": "Đọc tin tức mới nhất từ trụ sở chính của chúng tôi tại Nhật Bản.",
+    "japan_btn": "Trang Nhật Bản"
+  }
+},
+
+"products_preview": {
+  "label": "Sản phẩm của chúng tôi",
+  "title": "Giải pháp máy biến áp",
+  "desc": "Từ linh kiện động cơ đến hệ thống an toàn, chúng tôi cung cấp các sản phẩm chất lượng đáp ứng tiêu chuẩn cao nhất.",
+  "cta": "Xem tất cả sản phẩm",
+  "items": {
+    "hft":  { "title": "Máy biến áp tần số cao",                 "desc": "Linh kiện cốt lõi cho nguồn điện chuyển mạch và bộ chuyển đổi DC-DC. Cuộn dây và lõi tùy chỉnh." },
+    "hftc": { "title": "Cuộn chặn máy biến áp tần số cao",       "desc": "Triệt tiêu nhiễu và lưu trữ năng lượng cho lọc EMI và điều hòa nguồn điện." },
+    "hsrf": { "title": "Tần số cộng hưởng tự cao",               "desc": "Tối ưu hóa cho thiết bị truyền thông và mạch xử lý tín hiệu tần số cao." },
+    "ct":   { "title": "Máy biến dòng",                          "desc": "Cảm biến dòng điện độ chính xác cao cho đo lường, bảo vệ và giám sát hệ thống điện." }
+  }
+},
+
+
+"news_preview": {
+  "label": "Tin tức",
+  "title": "Đổi mới & Cải tiến",
+  "cta": "Xem tất cả tin tức",
+  "read_more": "Đọc thêm"
+},
+
+"activities": {
+  "label": "Con người & văn hóa",
+  "title": "Trải nghiệm tại",
+  "view_all": "Xem tất cả",
+  "view_all_card": "Xem tất cả hoạt động",
+  "events_count": "sự kiện & đang cập nhật"
+},
+
+
+"office": {
+  "overview": {
+    "label": "TỔNG QUAN",
+    "title_1": "Nơi Ý Tưởng Hóa Thành",
+    "title_2": "Công Nghệ",
+    "desc": "Chi nhánh Hà Nội của Diamond & Zebra Electric, tọa lạc tại 19 Duy Tân, là không gian làm việc cộng tác cho điều phối kỹ thuật, quản lý dự án và hỗ trợ khách hàng tại Việt Nam.",
+    "items": ["R&D Linh kiện điện tử", "Thiết bị di động", "Giải pháp năng lượng", "Hệ thống điều khiển điện tử"]
+  },
+  "capabilities": {
+    "label": "NĂNG LỰC CỐT LÕI", "title": "Lĩnh Vực Hoạt Động",
+    "automotive":    { "title": "Điện tử ô tô",               "items": ["Cuộn đánh lửa", "Module ECU", "Cảm biến & mạch điều khiển", "Linh kiện Hybrid/EV"] },
+    "energy":        { "title": "Giải pháp năng lượng",       "items": ["Hệ thống sạc", "Chuyển đổi điện năng", "Giải pháp V2X/V2G", "Hệ thống sạc thông minh"] },
+    "manufacturing": { "title": "Kỹ thuật sản xuất",          "items": ["Tối ưu dây chuyền sản xuất", "Kiểm soát chất lượng", "Quy trình tự động hóa", "Giám sát quy trình"] },
+    "global":        { "title": "Hỗ trợ kỹ thuật toàn cầu",  "items": ["Hỗ trợ khách hàng OEM", "Điều phối chuỗi cung ứng", "Hợp tác R&D"] },
+    "electronic":    { "title": "Hệ thống điều khiển điện tử","items": ["Bộ điều khiển nhúng", "Xử lý tín hiệu", "Phát triển firmware", "Tích hợp hệ thống"] },
+    "mobility":      { "title": "Thiết bị di động",           "items": ["R&D di động thế hệ mới", "Kiểm thử linh kiện", "Xác nhận an toàn", "Phát triển nguyên mẫu"] }
+  },
+  "equipment": {
+    "label": "CƠ SỞ VẬT CHẤT", "title": "Môi Trường Làm Việc Chuyên Nghiệp",
+    "desc": "Văn phòng được trang bị máy trạm kỹ thuật hiệu suất cao, phòng thí nghiệm tín hiệu điện tử và khu R&D dành riêng cho việc tạo mẫu linh kiện ô tô thế hệ tiếp theo.",
+    "workstations":  { "label": "Máy trạm hiệu suất cao",     "desc": "Máy trạm kỹ thuật tối ưu CAD/EDA" },
+    "lab":           { "label": "Phòng thí nghiệm điện tử",   "desc": "Kiểm thử module với thiết bị chính xác" },
+    "oscilloscopes": { "label": "Máy hiện sóng & phân tích",  "desc": "Phân tích dạng sóng và tín hiệu nâng cao" },
+    "server":        { "label": "Hạ tầng máy chủ nội bộ",    "desc": "Quản lý dữ liệu tại chỗ bảo mật" },
+    "meeting":       { "label": "Phòng họp hybrid",           "desc": "Cộng tác liền mạch giữa các văn phòng toàn cầu" },
+    "dashboard":     { "label": "Màn hình dashboard sản xuất","desc": "Giám sát sản xuất theo thời gian thực" },
+    "qa":            { "label": "Thiết bị QA linh kiện",      "desc": "Hệ thống kiểm tra chất lượng toàn diện" },
+    "rd":            { "label": "Khu R&D nguyên mẫu",         "desc": "Không gian chuyên dụng cho đổi mới thế hệ tiếp theo" }
+  },
+  "gallery": {
+    "label": "THƯ VIỆN ẢNH", "title": "Không Gian Làm Việc",
+    "items": ["Không gian mở", "Phòng họp khách hàng", "Phòng thí nghiệm", "Khu nguyên mẫu", "Thảo luận kỹ thuật"]
+  },
+  "cta": {
+    "title": "Sẵn sàng hợp tác?",
+    "desc": "Kết nối với đội ngũ kỹ thuật của chúng tôi cho các yêu cầu kỹ thuật, cơ hội hợp tác hoặc thông tin sản phẩm.",
+    "button": "LIÊN HỆ NGAY"
+  }
+},
+
+"tabs": {
+  "established": "Được thiết lập vào",
+  "by_president": "bởi YuuRi Ono, Chủ tịch kiêm CEO",
+  "mission": {
+    "title": "Sứ mệnh", "date": "1 tháng 10, 2021",
+    "content": "Chúng tôi là những Viên Kim Cương Đa Dạng Rực Rỡ.\nChúng tôi Tìm kiếm Hạnh phúc cho những Người Đồng Chí*,\nBằng cách Hỗ trợ Khách hàng trước tiên,\nBằng cách Đóng góp cho Xã hội,\nVới Cam kết Xứng đáng với Niềm tin của họ.",
+    "footnote": "* Tôi cố tình gọi nhân viên là Đồng Chí vì họ hơn nhiều so với đồng nghiệp hay thành viên nhóm: chúng tôi đã vượt qua những cuộc đấu tranh khốc liệt trong quá khứ và giờ đây chiến đấu cho một tương lai tươi sáng, được thúc đẩy bởi Ngọn lửa Đoàn kết, biểu tượng của niềm đam mê cháy bỏng gắn kết chúng tôi thành một."
+  },
+  "vision": {
+    "title": "Tầm nhìn", "date": "Tháng 8, 2023",
+    "content": "Đóng góp vào việc Cải thiện Môi trường Toàn cầu bằng cách Kết nối Xe hơi và Ngôi nhà với Sản xuất"
+  },
+  "policies": {
+    "title": "Chính sách của Chủ tịch Tập đoàn", "date": "4 tháng 7, 2016",
+    "content": "1. Yêu cầu chất lượng của khách hàng là trên hết.\n2. Tập trung tiết kiệm chi phí.\n3. Tập trung cải tạo môi trường."
+  },
+  "quality": {
+    "title": "Phương châm cơ bản về chất lượng", "date": "31 tháng 10, 2017",
+    "content": "Chúng tôi sẽ tiếp tục mang đến sự an toàn, an tâm và phấn khích cho thế giới thông qua các khách hàng trong ngành sản xuất hàng đầu bằng cách đặt chất lượng theo yêu cầu của khách hàng là trên hết."
+  },
+  "slogan": {
+    "title": "Khẩu hiệu", "date": "7 tháng 1, 2021",
+    "content": "Re-Ignite the world",
+    "subtitle": "Đánh lửa lại thế giới"
+  },
+  "manufacturing": {
+    "title": "Phương châm về sản xuất", "date": "11 tháng 11, 2023",
+    "content": "Hiện trường, Hiện trường, Hiện trường\nĐứng trên lập trường của người đối diện chúng ta sẽ thực sự làm được."
+  },
+  "humanrights": {
+  "title": "Tuyên ngôn về Quyền Con Người Đa Chiều",
+  "date": "25 tháng 3, 2024",
+  "content": "Chúng tôi, All Diamonds, tôn trọng mọi màu da, nguồn gốc, dân tộc, giới tính, độ tuổi, tín ngưỡng và tôn giáo.\n\nChúng tôi không chấp nhận bất kỳ hình thức phân biệt đối xử nào và không cho phép sự bất công đối với những người yếu thế.\n\nChúng tôi duy trì các hoạt động thương mại công bằng và bền vững, không bao gồm bất kỳ hình thức phân biệt nào, nhằm phục vụ lợi ích chung của cộng đồng."
+}
+}
+
+
+
+
+
+}
