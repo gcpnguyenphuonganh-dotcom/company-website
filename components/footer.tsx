@@ -110,7 +110,9 @@ export default function Footer() {
                 </p>
                 <div className="flex items-center gap-2 mb-1.5">
                   <HiLocationMarker className="shrink-0" />
-                  <span>Bac Ninh, Vietnam</span>
+                  <a href="https://maps.app.goo.gl/KJmjhqDXFfaAj85z7" target="_blank" rel="noopener noreferrer" className="text-[#d6e2f0] hover:underline">
+                    Bac Ninh, Vietnam
+                  </a>
                 </div>
                 <div className="flex items-center gap-2 mb-1.5">
                   <HiPhone className="shrink-0" />
@@ -131,7 +133,9 @@ export default function Footer() {
                 </p>
                 <div className="flex items-center gap-2 mb-1.5">
                   <HiLocationMarker className="shrink-0" />
-                  <span>Hanoi, Vietnam</span>
+                  <a href="https://maps.app.goo.gl/7c7cReozNUrKsXuW8" target="_blank" rel="noopener noreferrer" className="text-[#d6e2f0] hover:underline">
+                    Hanoi, Vietnam
+                  </a>
                 </div>
                 <div className="flex items-center gap-2 mb-1.5">
                   <HiPhone className="shrink-0" />
