@@ -1,12 +1,13 @@
 "use client";
+export const dynamic = 'force-dynamic';
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, Suspense } from "react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useTranslation } from "react-i18next";
 import { fetchStrapi } from "@/lib/strapi";
 import TechSection from "@/components/techSection";
-import {  useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 
 type Product = {
   id: number;
@@ -29,7 +30,6 @@ const GRADIENTS = [
   ["#010f2e", "#013478"],
 ];
 
-// Category phẳng — không chia nhóm
 const CATEGORIES = [
   { value: "Transformer", label: "Transformer" },
   { value: "Inductor", label: "Inductor" },
@@ -101,34 +101,29 @@ function Banner({
         ))}
       </div>
 
-      {/* Tab nav — góc phải dưới */}
       <div className="absolute bottom-0 right-0 z-10 flex overflow-hidden">
-  {(["product", "technology"] as const).map((tab, i) => (
-    <button
-      key={tab}
-      onClick={() => onTabChange(tab)}
-      className={`relative flex items-center gap-2.5 px-8 py-4 text-sm font-semibold tracking-wide transition-all duration-300 ${
-        activeTab === tab
-          ? "bg-white text-[#020c1a]"
-          : "text-white/50 hover:text-white bg-transparent"
-      }`}
-    >
-      {/* left separator */}
-      {i > 0 && (
-        <span className={`absolute left-0 top-3 bottom-3 w-px ${
-          activeTab === tab ? "bg-black/10" : "bg-white/15"
-        }`} />
-      )}
-
-      {tab === "product" ? "Product" : "Technology"}
-
-      {/* active underline */}
-      <span className={`absolute bottom-0 left-4 right-4 h-[2px] rounded-full transition-all duration-300 ${
-        activeTab === tab ? "bg-[#013478] opacity-100" : "opacity-0"
-      }`} />
-    </button>
-  ))}
-</div>
+        {(["product", "technology"] as const).map((tab, i) => (
+          <button
+            key={tab}
+            onClick={() => onTabChange(tab)}
+            className={`relative flex items-center gap-2.5 px-8 py-4 text-sm font-semibold tracking-wide transition-all duration-300 ${
+              activeTab === tab
+                ? "bg-white text-[#020c1a]"
+                : "text-white/50 hover:text-white bg-transparent"
+            }`}
+          >
+            {i > 0 && (
+              <span className={`absolute left-0 top-3 bottom-3 w-px ${
+                activeTab === tab ? "bg-black/10" : "bg-white/15"
+              }`} />
+            )}
+            {tab === "product" ? "Product" : "Technology"}
+            <span className={`absolute bottom-0 left-4 right-4 h-[2px] rounded-full transition-all duration-300 ${
+              activeTab === tab ? "bg-[#013478] opacity-100" : "opacity-0"
+            }`} />
+          </button>
+        ))}
+      </div>
     </div>
   );
 }
@@ -175,11 +170,8 @@ function ProductCard({ p, lang, t }: { p: Product; lang: string; t: any }) {
   );
 }
 
-// ── Category List  ──
 function CategoryList({
-  activeCategory,
-  products,
-  onChange,
+  activeCategory, products, onChange,
 }: {
   activeCategory: string;
   products: Product[];
@@ -187,32 +179,22 @@ function CategoryList({
 }) {
   return (
     <div className="divide-y divide-black/8">
-      {/* All */}
       <button
         onClick={() => onChange("All")}
         className={`w-full flex justify-between items-center px-5 py-3 text-sm transition-colors text-left ${
-          activeCategory === "All"
-            ? "bg-[#1a2f4a] text-white"
-            : "bg-white text-black/70 hover:bg-black/5"
+          activeCategory === "All" ? "bg-[#1a2f4a] text-white" : "bg-white text-black/70 hover:bg-black/5"
         }`}
       >
         <span className="font-medium">All</span>
-        <span className={activeCategory === "All" ? "text-white/60" : "text-black/35"}>
-          {products.length}
-        </span>
+        <span className={activeCategory === "All" ? "text-white/60" : "text-black/35"}>{products.length}</span>
       </button>
-
       {CATEGORIES.map(({ value, label }) => {
         const count = products.filter((p) => p.category === value).length;
         const isActive = activeCategory === value;
         return (
-          <button
-            key={value}
-            onClick={() => onChange(value)}
+          <button key={value} onClick={() => onChange(value)}
             className={`w-full flex justify-between items-center px-5 py-3 text-sm transition-colors text-left ${
-              isActive
-                ? "bg-[#1a2f4a] text-white"
-                : "bg-white text-black/70 hover:bg-black/5"
+              isActive ? "bg-[#1a2f4a] text-white" : "bg-white text-black/70 hover:bg-black/5"
             }`}
           >
             <span>{label}</span>
@@ -224,11 +206,8 @@ function CategoryList({
   );
 }
 
-// ── Application Filter ──
 function ApplicationFilter({
-  activeApp,
-  products,
-  onChange,
+  activeApp, products, onChange,
 }: {
   activeApp: string;
   products: Product[];
@@ -252,15 +231,11 @@ function ApplicationFilter({
       <button
         onClick={() => onChange("All")}
         className={`w-full flex justify-between items-center px-5 py-3 text-sm transition-colors text-left ${
-          activeApp === "All"
-            ? "bg-[#1a2f4a] text-white"
-            : "bg-white text-black/70 hover:bg-black/5"
+          activeApp === "All" ? "bg-[#1a2f4a] text-white" : "bg-white text-black/70 hover:bg-black/5"
         }`}
       >
         <span className="font-medium">All</span>
-        <span className={activeApp === "All" ? "text-white/60" : "text-black/35"}>
-          {products.length}
-        </span>
+        <span className={activeApp === "All" ? "text-white/60" : "text-black/35"}>{products.length}</span>
       </button>
       {apps.map((app) => {
         const count = products.filter((p) =>
@@ -268,19 +243,13 @@ function ApplicationFilter({
         ).length;
         const isActive = activeApp === app;
         return (
-          <button
-            key={app}
-            onClick={() => onChange(app)}
+          <button key={app} onClick={() => onChange(app)}
             className={`w-full flex justify-between items-center px-5 py-3 text-sm transition-colors text-left ${
-              isActive
-                ? "bg-[#1a2f4a] text-white"
-                : "bg-white text-black/65 hover:bg-black/5 hover:text-black"
+              isActive ? "bg-[#1a2f4a] text-white" : "bg-white text-black/65 hover:bg-black/5 hover:text-black"
             }`}
           >
             <span className="line-clamp-1">{app}</span>
-            <span className={`flex-shrink-0 ml-2 ${isActive ? "text-white/60" : "text-black/30"}`}>
-              {count}
-            </span>
+            <span className={`flex-shrink-0 ml-2 ${isActive ? "text-white/60" : "text-black/30"}`}>{count}</span>
           </button>
         );
       })}
@@ -288,19 +257,20 @@ function ApplicationFilter({
   );
 }
 
-export default function ProductsPage() {
+// ── Toàn bộ logic trang ──
+function ProductsContent() {
   const params = useParams();
   const searchParams = useSearchParams();
   const lang = (params.lang as string) || "en";
   const { t } = useTranslation("common");
-  
+
   const [products, setProducts] = useState<Product[]>([]);
   const [query, setQuery] = useState("");
   const [activeCategory, setActiveCategory] = useState("All");
   const [activeApp, setActiveApp] = useState("All");
-
   const [activeTab, setActiveTab] = useState<"product" | "technology">("product");
-   useEffect(() => {
+
+  useEffect(() => {
     const tab = searchParams.get("tab");
     if (tab === "technology") {
       setActiveTab("technology");
@@ -308,7 +278,6 @@ export default function ProductsPage() {
       setActiveTab("product");
     }
   }, [searchParams]);
-
 
   useEffect(() => {
     fetchStrapi("/api/products?populate=*&pagination[pageSize]=100")
@@ -329,7 +298,6 @@ export default function ProductsPage() {
       .catch((err) => console.error(err));
   }, []);
 
-  // Filter đồng thời cả 3: query + category + application
   const filtered = products.filter((p) => {
     const q = query.toLowerCase();
     const matchQuery =
@@ -360,136 +328,126 @@ export default function ProductsPage() {
       />
       {activeTab === "product" ? (
         <section className="max-w-7xl mx-auto px-6 py-16">
-        <section className="max-w-7xl mx-auto px-6 py-16">
-              <div className="flex gap-10">
+          <section className="max-w-7xl mx-auto px-6 py-16">
+            <div className="flex gap-10">
 
-                {/* ── SIDEBAR LEFT ── */}
-                <div className="w-60 flex-shrink-0 hidden lg:flex flex-col gap-6">
-
-                  {/* Category */}
-                  <div className="border border-black/10 bg-white overflow-hidden">
-                    <div className="px-5 py-4 border-b border-black/10 bg-white">
-                      <h4 className="text-xs font-bold tracking-widest uppercase text-black/50">
-                        {t("products.category") || "Category"}
-                      </h4>
-                    </div>
-                    <CategoryList
-                      activeCategory={activeCategory}
-                      products={products}
-                      onChange={setActiveCategory}
-                    />
+              {/* ── SIDEBAR LEFT ── */}
+              <div className="w-60 flex-shrink-0 hidden lg:flex flex-col gap-6">
+                <div className="border border-black/10 bg-white overflow-hidden">
+                  <div className="px-5 py-4 border-b border-black/10 bg-white">
+                    <h4 className="text-xs font-bold tracking-widest uppercase text-black/50">
+                      {t("products.category") || "Category"}
+                    </h4>
                   </div>
-
-                  {/* Applications */}
-                  <div className="border border-black/10 bg-white overflow-hidden">
-                    <div className="px-5 py-4 border-b border-black/10 bg-white text-">
-                      <h4 className="text-xs text-black/50 font-bold tracking-widest uppercase ">
-                        {t("products.applications") || "Applications"}
-                      </h4>
-                    </div>
-                    <ApplicationFilter
-                      activeApp={activeApp}
-                      products={products}
-                      onChange={setActiveApp}
-                    />
-                  </div>
-
+                  <CategoryList activeCategory={activeCategory} products={products} onChange={setActiveCategory} />
                 </div>
 
-                {/* ── MAIN CONTENT ── */}
-                <div className="flex-1 min-w-0">
-
-                  {/* Header + search  */}
-                  <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-6">
-                    <div>
-                      <div className="flex items-center gap-2 mb-1">
-                        <div className="h-px w-8 bg-[#013478]" />
-                        <span className="text-[11px] font-bold tracking-[0.22em] uppercase text-[#013478]">
-                          {t("products.catalog_label")}
-                        </span>
-                      </div>
-                      <h2 className="text-3xl font-black text-[#020c1a]">{t("products.catalog_title")}</h2>
-                    </div>
-                    {/* Search  */}
-                    <div className="relative w-full md:w-[320px]">
-                      <div className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none">
-                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                          <circle cx="11" cy="11" r="8" /><path d="m21 21-4.35-4.35" />
-                        </svg>
-                      </div>
-                      <input
-                        type="text"
-                        placeholder={t("products.search_placeholder")}
-                        value={query}
-                        onChange={(e) => setQuery(e.target.value)}
-                        className="w-full pl-10 pr-9 h-11 border border-slate-200 rounded-xl text-sm placeholder:text-slate-400 outline-none focus:border-[#013478] focus:ring-2 focus:ring-[#013478]/10 transition-all"
-                      />
-                      {query && (
-                        <button onClick={() => setQuery("")}
-                          className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600">
-                          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                            <path d="M18 6 6 18M6 6l12 12" />
-                          </svg>
-                        </button>
-                      )}
-                    </div>
+                <div className="border border-black/10 bg-white overflow-hidden">
+                  <div className="px-5 py-4 border-b border-black/10 bg-white">
+                    <h4 className="text-xs text-black/50 font-bold tracking-widest uppercase">
+                      {t("products.applications") || "Applications"}
+                    </h4>
                   </div>
+                  <ApplicationFilter activeApp={activeApp} products={products} onChange={setActiveApp} />
+                </div>
+              </div>
 
-                  {/* Active filter chips + result count */}
-                  <div className="flex flex-wrap items-center gap-2 mb-6 min-h-[28px]">
-                    {activeFilters.map((f) => (
-                      <span key={f.label}
-                        className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#013478]/8 text-[#013478] text-xs font-semibold rounded-full border border-[#013478]/15">
-                        {f.label}
-                        <button onClick={f.clear} className="hover:text-red-500 transition-colors">
-                          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
-                            <path d="M18 6 6 18M6 6l12 12" />
-                          </svg>
-                        </button>
+              {/* ── MAIN CONTENT ── */}
+              <div className="flex-1 min-w-0">
+                <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-6">
+                  <div>
+                    <div className="flex items-center gap-2 mb-1">
+                      <div className="h-px w-8 bg-[#013478]" />
+                      <span className="text-[11px] font-bold tracking-[0.22em] uppercase text-[#013478]">
+                        {t("products.catalog_label")}
                       </span>
-                    ))}
-                    {activeFilters.length > 0 && (
-                      <button
-                        onClick={() => { setActiveCategory("All"); setActiveApp("All"); setQuery(""); }}
-                        className="text-xs text-slate-400 hover:text-red-500 transition-colors underline">
-                        Clear all
+                    </div>
+                    <h2 className="text-3xl font-black text-[#020c1a]">{t("products.catalog_title")}</h2>
+                  </div>
+                  <div className="relative w-full md:w-[320px]">
+                    <div className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none">
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <circle cx="11" cy="11" r="8" /><path d="m21 21-4.35-4.35" />
+                      </svg>
+                    </div>
+                    <input
+                      type="text"
+                      placeholder={t("products.search_placeholder")}
+                      value={query}
+                      onChange={(e) => setQuery(e.target.value)}
+                      className="w-full pl-10 pr-9 h-11 border border-slate-200 rounded-xl text-sm placeholder:text-slate-400 outline-none focus:border-[#013478] focus:ring-2 focus:ring-[#013478]/10 transition-all"
+                    />
+                    {query && (
+                      <button onClick={() => setQuery("")}
+                        className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                          <path d="M18 6 6 18M6 6l12 12" />
+                        </svg>
                       </button>
                     )}
-                    
                   </div>
+                </div>
 
-                  {query && (
-                    <p className="text-sm text-slate-400 mb-4">
-                      {t("products.results_for")}{" "}
-                      <span className="text-[#013478] font-semibold">"{query}"</span>
-                    </p>
-                  )}
-
-                  {/* Product grid */}
-                  {filtered.length > 0 ? (
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-                      {filtered.map((p) => <ProductCard key={p.slug} p={p} lang={lang} t={t} />)}
-                    </div>
-                  ) : (
-                    <div className="text-center py-24">
-                      <div className="w-14 h-14 rounded-2xl bg-slate-100 flex items-center justify-center mx-auto mb-4">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" strokeWidth="2">
-                          <circle cx="11" cy="11" r="8" /><path d="m21 21-4.35-4.35" />
+                <div className="flex flex-wrap items-center gap-2 mb-6 min-h-[28px]">
+                  {activeFilters.map((f) => (
+                    <span key={f.label}
+                      className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#013478]/8 text-[#013478] text-xs font-semibold rounded-full border border-[#013478]/15">
+                      {f.label}
+                      <button onClick={f.clear} className="hover:text-red-500 transition-colors">
+                        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
+                          <path d="M18 6 6 18M6 6l12 12" />
                         </svg>
-                      </div>
-                      <p className="font-bold text-slate-600">{t("products.no_results")}</p>
-                      <p className="text-sm text-slate-400 mt-1">{t("products.try_keyword")}</p>
-                    </div>
+                      </button>
+                    </span>
+                  ))}
+                  {activeFilters.length > 0 && (
+                    <button
+                      onClick={() => { setActiveCategory("All"); setActiveApp("All"); setQuery(""); }}
+                      className="text-xs text-slate-400 hover:text-red-500 transition-colors underline">
+                      Clear all
+                    </button>
                   )}
                 </div>
 
+                {query && (
+                  <p className="text-sm text-slate-400 mb-4">
+                    {t("products.results_for")}{" "}
+                    <span className="text-[#013478] font-semibold">"{query}"</span>
+                  </p>
+                )}
+
+                {filtered.length > 0 ? (
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                    {filtered.map((p) => <ProductCard key={p.slug} p={p} lang={lang} t={t} />)}
+                  </div>
+                ) : (
+                  <div className="text-center py-24">
+                    <div className="w-14 h-14 rounded-2xl bg-slate-100 flex items-center justify-center mx-auto mb-4">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" strokeWidth="2">
+                        <circle cx="11" cy="11" r="8" /><path d="m21 21-4.35-4.35" />
+                      </svg>
+                    </div>
+                    <p className="font-bold text-slate-600">{t("products.no_results")}</p>
+                    <p className="text-sm text-slate-400 mt-1">{t("products.try_keyword")}</p>
+                  </div>
+                )}
               </div>
-            </section>
+
+            </div>
+          </section>
         </section>
       ) : (
         <TechSection />
       )}
-      
     </main>
+  );
+}
+
+// ── Export default: chỉ bọc Suspense ──
+export default function ProductsPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-white" />}>
+      <ProductsContent />
+    </Suspense>
   );
 }
