@@ -28,7 +28,7 @@ const ABOUT_COL1 = [
 ]
 
 const ABOUT_COL2 = [
-  { label: 'Vision & Philosophy', href: '/vision' },
+  { label: 'Our vision & Philosophy', href: '/vision' },
 ]
 
 export default function Navbar() {
@@ -174,7 +174,7 @@ export default function Navbar() {
                       letterSpacing: '0.08em', textTransform: 'uppercase',
                       marginBottom: '0.6rem', paddingLeft: '0.25rem',
                     }}>
-                      Company
+                      Company information
                     </p>
                     {ABOUT_COL1.map((item) => (
                       <Link
@@ -209,7 +209,7 @@ export default function Navbar() {
                       letterSpacing: '0.08em', textTransform: 'uppercase',
                       marginBottom: '0.6rem', paddingLeft: '0.25rem',
                     }}>
-                      Philosophy
+                      Vision & Philosophy
                     </p>
                     {ABOUT_COL2.map((item) => (
                       <Link
@@ -312,7 +312,7 @@ export default function Navbar() {
                             <path d="M2 7H12M7 2L12 7L7 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                           </svg>
                         </Link>
-                        <Link href={`/${lang}/products?tab=technical`} onClick={() => setProdOpen(false)}
+                        {/* <Link href={`/${lang}/products?tab=technical`} onClick={() => setProdOpen(false)}
                           style={{
                             display: 'inline-flex', alignItems: 'center', gap: 5,
                             fontSize: '0.78rem', fontWeight: 600, color: '#013478',
@@ -323,7 +323,7 @@ export default function Navbar() {
                           <svg width="12" height="12" viewBox="0 0 14 14" fill="none">
                             <path d="M2 7H12M7 2L12 7L7 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                           </svg>
-                        </Link>
+                        </Link> */}
                       </div>
                     )}
                   </div>
