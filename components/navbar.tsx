@@ -20,15 +20,12 @@ interface CategoryGroup {
 }
 
 const ABOUT_COL1 = [
-  { label: 'Company Overview', hash: '#overview' },
-  { label: 'Company History',  hash: '#history' },
-  { label: 'Our Customers',    hash: '#customers' },
-  { label: 'Hanoi Office',     hash: '#hanoi-office' },
-  { label: 'Corporate Group',  hash: '#corporate-group' },
-]
-
-const ABOUT_COL2 = [
-  { label: 'Our vision & Philosophy', href: '/vision' },
+  { label: 'Company Overview',        hash: '#overview' },
+  { label: 'Company History',         hash: '#history' },
+  { label: 'Our Vision & Philosophy', hash: '#vision' },
+  { label: 'Our Customers',           hash: '#customers' },
+  { label: 'Hanoi Office',            hash: '#hanoi-office' },
+  { label: 'Corporate Group',         hash: '#corporate-group' },
 ]
 
 export default function Navbar() {
@@ -37,19 +34,19 @@ export default function Navbar() {
   const params = useParams()
   const lang = (params.lang as string) || 'en'
 
-  const [scrolled, setScrolled]             = useState(false)
-  const [menuOpen, setMenuOpen]             = useState(false)
-  const [prodOpen, setProdOpen]             = useState(false)
-  const [aboutOpen, setAboutOpen]           = useState(false)
-  const [ready, setReady]                   = useState(false)
-  const [categoryGroups, setCategoryGroups] = useState<CategoryGroup[]>([])
-  const [openCatName, setOpenCatName]       = useState<string | null>(null)
+  const [scrolled, setScrolled]               = useState(false)
+  const [menuOpen, setMenuOpen]               = useState(false)
+  const [prodOpen, setProdOpen]               = useState(false)
+  const [aboutOpen, setAboutOpen]             = useState(false)
+  const [ready, setReady]                     = useState(false)
+  const [categoryGroups, setCategoryGroups]   = useState<CategoryGroup[]>([])
+  const [openCatName, setOpenCatName]         = useState<string | null>(null)
   const [mobileAboutOpen, setMobileAboutOpen] = useState(false)
-  const [mobileProductsOpen, setMobileProductsOpen] = useState(false)
-  const dropdownRef                         = useRef<HTMLDivElement>(null)
-  const aboutDropdownRef                    = useRef<HTMLDivElement>(null)
-  const prodTimerRef                        = useRef<ReturnType<typeof setTimeout> | null>(null)
-  const aboutTimerRef                       = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const [mobileProdOpen, setMobileProdOpen]   = useState(false)
+  const dropdownRef                           = useRef<HTMLDivElement>(null)
+  const aboutDropdownRef                      = useRef<HTMLDivElement>(null)
+  const prodTimerRef                          = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const aboutTimerRef                         = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   useEffect(() => {
     setReady(true)
@@ -69,7 +66,7 @@ export default function Navbar() {
         const products: Product[] = json.data.map((item: any) => ({
           slug: item.slug,
           name: item.name,
-          category: item.category || 'Khác',
+          category: item.category || 'Other',
         }))
         const map = new Map<string, Product[]>()
         products.forEach((p) => {
@@ -95,8 +92,8 @@ export default function Navbar() {
     { label: t('menu.contact'),  href: `/${lang}/contact` },
   ]
 
-  const openProd  = () => { if (prodTimerRef.current) clearTimeout(prodTimerRef.current); setProdOpen(true) }
-  const closeProd = () => { prodTimerRef.current = setTimeout(() => setProdOpen(false), 150) }
+  const openProd   = () => { if (prodTimerRef.current) clearTimeout(prodTimerRef.current); setProdOpen(true) }
+  const closeProd  = () => { prodTimerRef.current  = setTimeout(() => setProdOpen(false), 150) }
   const openAbout  = () => { if (aboutTimerRef.current) clearTimeout(aboutTimerRef.current); setAboutOpen(true) }
   const closeAbout = () => { aboutTimerRef.current = setTimeout(() => setAboutOpen(false), 150) }
   const toggleCat  = (name: string) => setOpenCatName(prev => prev === name ? null : name)
@@ -120,11 +117,11 @@ export default function Navbar() {
           style={{ height: 'clamp(1rem, 3vw, 1.8rem)' }} />
       </Link>
 
-      {/* Desktop Nav */}
+      {/* ── DESKTOP NAV ── */}
       <div className="desktop-nav flex items-center gap-8 mr-6">
         {navLinks.map((link) => {
 
-          /* ── ABOUT DROPDOWN ── */
+          /* ABOUT DROPDOWN */
           if (link.hasAboutDropdown) return (
             <div key={link.href} ref={aboutDropdownRef} style={{ position: 'relative' }}
               onMouseEnter={openAbout} onMouseLeave={closeAbout}>
@@ -163,16 +160,27 @@ export default function Navbar() {
                 onMouseLeave={closeAbout}
               >
                 <div style={{
-                  display: 'flex', width: '100%', maxWidth: 700,
-                  margin: '0 auto', gap: 0, padding: '1.25rem 0',
+                  display: 'flex', width: '100%', maxWidth: 900,
+                  margin: '0 auto', gap: 0, padding: '1rem 0',
                 }}>
+                  {/* LEFT: image */}
+                  <div style={{
+                    flex: '0 0 300px', display: 'flex', flexDirection: 'column',
+                    marginRight: '2.5rem', gap: '0.6rem',
+                  }}>
+                    <div style={{ borderRadius: 12, overflow: 'hidden', background: '#f0f4ff', flex: 1 }}>
+                      <img src="/zve2.png" alt="About"
+                        style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', minHeight: 250 }} />
+                    </div>
+                    
+                  </div>
 
-                  {/* Column 1 – About sections */}
-                  <div style={{ flex: 1, borderRight: '1px solid #eef0f6', paddingRight: '2rem' }}>
+                  {/* RIGHT: links */}
+                  <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                     <p style={{
                       fontSize: '0.7rem', fontWeight: 700, color: '#a0aab8',
                       letterSpacing: '0.08em', textTransform: 'uppercase',
-                      marginBottom: '0.6rem', paddingLeft: '0.25rem',
+                      marginBottom: '0.4rem', paddingLeft: '0.75rem',
                     }}>
                       Company information
                     </p>
@@ -184,65 +192,27 @@ export default function Navbar() {
                         className="about-row"
                         style={{
                           display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-                          padding: '0.6rem 0.5rem',
-                          borderRadius: 6,
-                          textDecoration: 'none',
-                          color: '#1a1a2e',
-                          fontSize: '0.875rem', fontWeight: 500,
+                          padding: '0.75rem 0.75rem',
+                          borderRadius: 8,
+                          textDecoration: 'none', color: '#1a1a2e',
+                          fontSize: '0.92rem', fontWeight: 500,
                           transition: 'background 0.15s, color 0.15s, padding-left 0.15s',
                         }}
                       >
                         <span>{item.label}</span>
                         <svg width="13" height="13" viewBox="0 0 16 16" fill="none"
                           style={{ color: '#c0c8d8', flexShrink: 0, marginLeft: 8 }}>
-                          <path d="M6 4L10 8L6 12" stroke="currentColor"
-                            strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                          <path d="M6 4L10 8L6 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                         </svg>
                       </Link>
                     ))}
                   </div>
-
-                  {/* Column 2 – Vision */}
-                  <div style={{ flex: 1, paddingLeft: '2rem' }}>
-                    <p style={{
-                      fontSize: '0.7rem', fontWeight: 700, color: '#a0aab8',
-                      letterSpacing: '0.08em', textTransform: 'uppercase',
-                      marginBottom: '0.6rem', paddingLeft: '0.25rem',
-                    }}>
-                      Vision & Philosophy
-                    </p>
-                    {ABOUT_COL2.map((item) => (
-                      <Link
-                        key={item.href}
-                        href={`/${lang}${item.href}`}
-                        onClick={() => setAboutOpen(false)}
-                        className="about-row"
-                        style={{
-                          display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-                          padding: '0.6rem 0.5rem',
-                          borderRadius: 6,
-                          textDecoration: 'none',
-                          color: '#1a1a2e',
-                          fontSize: '0.875rem', fontWeight: 500,
-                          transition: 'background 0.15s, color 0.15s, padding-left 0.15s',
-                        }}
-                      >
-                        <span>{item.label}</span>
-                        <svg width="13" height="13" viewBox="0 0 16 16" fill="none"
-                          style={{ color: '#c0c8d8', flexShrink: 0, marginLeft: 8 }}>
-                          <path d="M6 4L10 8L6 12" stroke="currentColor"
-                            strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                        </svg>
-                      </Link>
-                    ))}
-                  </div>
-
                 </div>
               </div>
             </div>
           )
 
-          /* ── PRODUCTS DROPDOWN ── */
+          /* PRODUCTS DROPDOWN */
           if (link.hasDropdown) return (
             <div key={link.href} ref={dropdownRef} style={{ position: 'relative' }}
               onMouseEnter={openProd} onMouseLeave={closeProd}>
@@ -263,7 +233,7 @@ export default function Navbar() {
                 }} className="underline-hover" />
               </Link>
 
-              {/* Mega Dropdown */}
+              {/* Products Mega Dropdown */}
               <div
                 style={{
                   position: 'fixed', top: 'clamp(3.5rem, 8vh, 5rem)', left: 0, right: 0,
@@ -285,60 +255,40 @@ export default function Navbar() {
                   display: 'flex', width: '100%', maxWidth: 900,
                   margin: '0 auto', gap: 0, padding: '0.75rem 0',
                 }}>
-
-                  {/* LEFT: image + "view all" below */}
+                  {/* LEFT: image */}
                   <div style={{
                     flex: '0 0 300px', display: 'flex', flexDirection: 'column',
                     marginRight: '2.5rem', gap: '0.6rem',
                   }}>
-                    <div style={{
-                      borderRadius: 12, overflow: 'hidden',
-                      background: '#f0f4ff', flex: 1,
-                    }}>
+                    <div style={{ borderRadius: 12, overflow: 'hidden', background: '#f0f4ff', flex: 1 }}>
                       <img src={DROPDOWN_IMAGE} alt="Products"
                         style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', minHeight: 180 }} />
                     </div>
                     {categoryGroups.length > 0 && (
-                      <div className="flex flex-col gap-1">
-                        <Link href={`/${lang}/products`} onClick={() => setProdOpen(false)}
-                          style={{
-                            display: 'inline-flex', alignItems: 'center', gap: 5,
-                            fontSize: '0.78rem', fontWeight: 600, color: '#013478',
-                            textDecoration: 'none', letterSpacing: '0.03em', opacity: 0.8,
-                            padding: '0.4rem 0.2rem',
-                          }}>
-                          {t('menu.viewAll') || 'View all products'}
-                          <svg width="12" height="12" viewBox="0 0 14 14" fill="none">
-                            <path d="M2 7H12M7 2L12 7L7 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                          </svg>
-                        </Link>
-                        {/* <Link href={`/${lang}/products?tab=technical`} onClick={() => setProdOpen(false)}
-                          style={{
-                            display: 'inline-flex', alignItems: 'center', gap: 5,
-                            fontSize: '0.78rem', fontWeight: 600, color: '#013478',
-                            textDecoration: 'none', letterSpacing: '0.03em', opacity: 0.8,
-                            padding: '0.4rem 0.2rem',
-                          }}>
-                          {t('menu.viewTechnical') || 'View technical specs'}
-                          <svg width="12" height="12" viewBox="0 0 14 14" fill="none">
-                            <path d="M2 7H12M7 2L12 7L7 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                          </svg>
-                        </Link> */}
-                      </div>
+                      <Link href={`/${lang}/products`} onClick={() => setProdOpen(false)}
+                        style={{
+                          display: 'inline-flex', alignItems: 'center', gap: 5,
+                          fontSize: '0.78rem', fontWeight: 600, color: '#013478',
+                          textDecoration: 'none', letterSpacing: '0.03em', opacity: 0.8,
+                          padding: '0.4rem 0.2rem',
+                        }}>
+                        {t('menu.viewAll') || 'View all products'}
+                        <svg width="12" height="12" viewBox="0 0 14 14" fill="none">
+                          <path d="M2 7H12M7 2L12 7L7 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                      </Link>
                     )}
                   </div>
 
                   {/* RIGHT: category accordion */}
                   <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                    {categoryGroups.length === 0 && (
-                      Array.from({ length: 4 }).map((_, i) => (
-                        <div key={i} style={{
-                          height: 50, background: i % 2 === 0 ? '#f9fafc' : '#fff',
-                          borderBottom: '1px solid #f0f2f7',
-                          animation: 'pulse 1.5s infinite', animationDelay: `${i * 0.1}s`,
-                        }} />
-                      ))
-                    )}
+                    {categoryGroups.length === 0 && Array.from({ length: 4 }).map((_, i) => (
+                      <div key={i} style={{
+                        height: 50, background: i % 2 === 0 ? '#f9fafc' : '#fff',
+                        borderBottom: '1px solid #f0f2f7',
+                        animation: 'pulse 1.5s infinite', animationDelay: `${i * 0.1}s`,
+                      }} />
+                    ))}
                     {categoryGroups.map((cat, idx) => {
                       const isOpen = openCatName === cat.name
                       const isLast = idx === categoryGroups.length - 1
@@ -347,8 +297,7 @@ export default function Navbar() {
                           <button onClick={() => toggleCat(cat.name)}
                             style={{
                               width: '100%', display: 'flex', alignItems: 'center',
-                              padding: '0.9rem 1rem',
-                              background: 'none', border: 'none',
+                              padding: '0.9rem 1rem', background: 'none', border: 'none',
                               borderBottom: !isLast || isOpen ? '1px solid #eef0f6' : 'none',
                               cursor: 'pointer', textAlign: 'left', transition: 'background 0.15s',
                             }} className="cat-row">
@@ -361,12 +310,12 @@ export default function Navbar() {
                           </button>
                           <div style={{
                             overflow: 'hidden',
-                            maxHeight: isOpen ? `${cat.products.length * 44}px` : '0px',
+                            maxHeight: isOpen ? `${Math.min(cat.products.length, 4) * 44}px` : '0px',
                             transition: 'max-height 0.28s ease',
                             background: '#f8f9fc',
                             borderBottom: isOpen ? '1px solid #eef0f6' : 'none',
                           }}>
-                            {cat.products.map((p, pi) => (
+                            {cat.products.slice(0, 4).map((p, pi) => (
                               <Link key={p.slug} href={`/${lang}/products/${p.slug}`}
                                 onClick={() => { setProdOpen(false); setOpenCatName(null) }}
                                 style={{
@@ -390,7 +339,7 @@ export default function Navbar() {
             </div>
           )
 
-          /* ── PLAIN LINK ── */
+          /* PLAIN LINK */
           return (
             <Link key={link.href} href={link.href}
               className={`nav-link ${pathname === link.href ? 'active' : ''}`}
@@ -432,7 +381,7 @@ export default function Navbar() {
         ))}
       </button>
 
-      {/* Mobile Menu */}
+      {/* ── MOBILE MENU ── */}
       {menuOpen && (
         <div style={{
           position: 'fixed', top: 'clamp(3.5rem, 8vh, 5rem)', left: 0, right: 0,
@@ -446,7 +395,7 @@ export default function Navbar() {
           {navLinks.map((link) => (
             <div key={link.href}>
 
-              {/* About accordion header */}
+              {/* ── ABOUT ACCORDION ── */}
               {link.hasAboutDropdown ? (
                 <>
                   <button
@@ -466,16 +415,10 @@ export default function Navbar() {
                       {link.label}
                     </span>
                     <svg width="15" height="15" viewBox="0 0 16 16" fill="none"
-                      style={{
-                        color: '#b0b8c8',
-                        transform: mobileAboutOpen ? 'rotate(90deg)' : 'rotate(0deg)',
-                        transition: 'transform 0.22s ease',
-                      }}>
+                      style={{ color: '#b0b8c8', transform: mobileAboutOpen ? 'rotate(90deg)' : 'rotate(0deg)', transition: 'transform 0.22s ease' }}>
                       <path d="M6 4L10 8L6 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
                   </button>
-
-                  {/* About accordion body */}
                   <div style={{
                     overflow: 'hidden',
                     maxHeight: mobileAboutOpen ? '600px' : '0px',
@@ -483,13 +426,11 @@ export default function Navbar() {
                     background: '#f8f9fc',
                     borderBottom: mobileAboutOpen ? '1px solid rgba(47,114,248,0.08)' : 'none',
                   }}>
-                    {/* Section label */}
                     <p style={{
                       fontSize: '0.68rem', fontWeight: 700, color: '#a0aab8',
                       letterSpacing: '0.08em', textTransform: 'uppercase',
                       padding: '0.75rem 1rem 0.25rem',
                     }}>Company</p>
-
                     {ABOUT_COL1.map((item) => (
                       <Link
                         key={item.hash}
@@ -511,118 +452,106 @@ export default function Navbar() {
                         </svg>
                       </Link>
                     ))}
+                  </div>
+                </>
 
-                    {/* Section label */}
+              /* ── PRODUCTS ACCORDION ── */
+              ) : link.hasDropdown ? (
+                <>
+                  <button
+                    onClick={() => setMobileProdOpen(p => !p)}
+                    style={{
+                      width: '100%', display: 'flex', alignItems: 'center',
+                      background: 'none', border: 'none', cursor: 'pointer',
+                      padding: '1rem 0',
+                      borderBottom: '1px solid rgba(47,114,248,0.08)',
+                      textAlign: 'left',
+                    }}
+                  >
+                    <span style={{
+                      flex: 1, fontWeight: 500, fontSize: '1.05rem',
+                      color: pathname.startsWith(`/${lang}/products`) ? '#013478' : '#0d1540',
+                    }}>
+                      {link.label}
+                    </span>
+                    <svg width="15" height="15" viewBox="0 0 16 16" fill="none"
+                      style={{ color: '#b0b8c8', transform: mobileProdOpen ? 'rotate(90deg)' : 'rotate(0deg)', transition: 'transform 0.22s ease' }}>
+                      <path d="M6 4L10 8L6 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </button>
+                  <div style={{
+                    overflow: 'hidden',
+                    maxHeight: mobileProdOpen ? '1000px' : '0px',
+                    transition: 'max-height 0.3s ease',
+                    background: '#f8f9fc',
+                    borderBottom: mobileProdOpen ? '1px solid rgba(47,114,248,0.08)' : 'none',
+                  }}>
                     <p style={{
                       fontSize: '0.68rem', fontWeight: 700, color: '#a0aab8',
                       letterSpacing: '0.08em', textTransform: 'uppercase',
                       padding: '0.75rem 1rem 0.25rem',
-                    }}>Philosophy</p>
-
-                    {ABOUT_COL2.map((item) => (
-                      <Link
-                        key={item.href}
-                        href={`/${lang}${item.href}`}
-                        onClick={() => { setMenuOpen(false); setMobileAboutOpen(false) }}
-                        style={{
-                          display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-                          padding: '0.65rem 1rem 0.65rem 1.5rem',
-                          textDecoration: 'none', color: '#2a3a5c',
-                          fontSize: '0.875rem', fontWeight: 500,
-                          borderBottom: '1px solid #eef0f6',
-                          transition: 'background 0.15s',
-                        }}
-                        className="mobile-about-row"
-                      >
-                        <span>{item.label}</span>
-                        <svg width="13" height="13" viewBox="0 0 16 16" fill="none" style={{ color: '#c0c8d8' }}>
-                          <path d="M6 4L10 8L6 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                        </svg>
-                      </Link>
-                    ))}
+                    }}>Categories</p>
+                    {categoryGroups.map((cat) => {
+                      const isOpen = openCatName === cat.name
+                      return (
+                        <div key={cat.name}>
+                          <button onClick={() => toggleCat(cat.name)} style={{
+                            width: '100%', display: 'flex', alignItems: 'center',
+                            padding: '0.75rem 1rem', background: 'none', border: 'none',
+                            borderBottom: '1px solid #f0f2f7',
+                            cursor: 'pointer', textAlign: 'left',
+                          }}>
+                            <span style={{ flex: 1, fontSize: '0.88rem', fontWeight: 500, color: '#1a1a2e' }}>{cat.name}</span>
+                            <span style={{ fontSize: '0.82rem', color: '#a0aab8', marginRight: '0.75rem' }}>{cat.products.length}</span>
+                            <svg width="13" height="13" viewBox="0 0 16 16" fill="none"
+                              style={{ color: '#b0b8c8', flexShrink: 0, transform: isOpen ? 'rotate(90deg)' : 'rotate(0deg)', transition: 'transform 0.2s' }}>
+                              <path d="M6 4L10 8L6 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                            </svg>
+                          </button>
+                          <div style={{
+                            overflow: 'hidden',
+                            maxHeight: isOpen ? `${Math.min(cat.products.length, 4) * 44}px` : '0px',
+                            transition: 'max-height 0.25s ease', background: '#f0f2f8',
+                          }}>
+                            {cat.products.slice(0, 4).map((p) => (
+                              <Link key={p.slug} href={`/${lang}/products/${p.slug}`}
+                                onClick={() => { setMenuOpen(false); setOpenCatName(null); setMobileProdOpen(false) }}
+                                style={{
+                                  display: 'flex', alignItems: 'center', gap: 8,
+                                  textDecoration: 'none', fontSize: '0.85rem',
+                                  color: '#2a3a5c', fontWeight: 500,
+                                  padding: '0.6rem 1rem 0.6rem 2rem',
+                                  borderBottom: '1px solid #eef0f6',
+                                }}>
+                                <span style={{ width: 4, height: 4, borderRadius: '50%', background: '#013478', opacity: 0.35, flexShrink: 0 }} />
+                                {p.name}
+                              </Link>
+                            ))}
+                          </div>
+                        </div>
+                      )
+                    })}
                   </div>
                 </>
-              ) : (
-                <>
-                  <Link href={link.href} onClick={() => { setMenuOpen(false); setOpenCatName(null) }}
-                    style={{
-                      textDecoration: 'none', fontWeight: 500, fontSize: '1.05rem',
-                      color: pathname === link.href || (link.hasDropdown && pathname.startsWith(`/${lang}/products`))
-                        ? '#013478' : '#0d1540',
-                      padding: '1rem 0',
-                      borderBottom: '1px solid rgba(47,114,248,0.08)',
-                      display: 'block',
-                    }}>
-                    {link.label}
-                  </Link>
 
-                  {link.hasDropdown && (
-                    <div style={{ borderBottom: '1px solid rgba(47,114,248,0.08)' }}>
-                      {categoryGroups.map((cat) => {
-                        const isOpen = openCatName === cat.name
-                        return (
-                          <div key={cat.name}>
-                            <button onClick={() => toggleCat(cat.name)} style={{
-                              width: '100%', display: 'flex', alignItems: 'center',
-                              padding: '0.75rem 0 0.75rem 1rem',
-                              background: 'none', border: 'none',
-                              borderBottom: '1px solid #f0f2f7',
-                              cursor: 'pointer', textAlign: 'left',
-                            }}>
-                              <span style={{ flex: 1, fontSize: '0.88rem', fontWeight: 500, color: '#1a1a2e' }}>{cat.name}</span>
-                              <span style={{ fontSize: '0.82rem', color: '#a0aab8', marginRight: '0.75rem' }}>{cat.products.length}</span>
-                              <svg width="13" height="13" viewBox="0 0 16 16" fill="none"
-                                style={{ color: '#b0b8c8', flexShrink: 0, transform: isOpen ? 'rotate(90deg)' : 'rotate(0deg)', transition: 'transform 0.2s' }}>
-                                <path d="M6 4L10 8L6 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                              </svg>
-                            </button>
-                            <div style={{
-                              overflow: 'hidden',
-                              maxHeight: isOpen ? `${cat.products.length * 44}px` : '0px',
-                              transition: 'max-height 0.25s ease', background: '#f8f9fc',
-                            }}>
-                              {cat.products.map((p) => (
-                                <Link key={p.slug} href={`/${lang}/products/${p.slug}`}
-                                  onClick={() => { setMenuOpen(false); setOpenCatName(null) }}
-                                  style={{
-                                    display: 'flex', alignItems: 'center', gap: 8,
-                                    textDecoration: 'none', fontSize: '0.85rem',
-                                    color: '#2a3a5c', fontWeight: 500,
-                                    padding: '0.6rem 1rem 0.6rem 2rem',
-                                    borderBottom: '1px solid #eef0f6',
-                                  }}>
-                                  <span style={{ width: 4, height: 4, borderRadius: '50%', background: '#013478', opacity: 0.35, flexShrink: 0 }} />
-                                  {p.name}
-                                </Link>
-                              ))}
-                            </div>
-                          </div>
-                        )
-                      })}
-                      <div style={{ padding: '0.75rem 1rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                        <Link href={`/${lang}/products`} onClick={() => { setMenuOpen(false); setOpenCatName(null) }}
-                          style={{ display: 'inline-flex', alignItems: 'center', gap: 5, fontSize: '0.78rem', fontWeight: 600, color: '#013478', textDecoration: 'none', letterSpacing: '0.03em', opacity: 0.8 }}>
-                          {t('menu.viewAll') || 'View all products'}
-                          <svg width="12" height="12" viewBox="0 0 14 14" fill="none">
-                            <path d="M2 7H12M7 2L12 7L7 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                          </svg>
-                        </Link>
-                        <Link href={`/${lang}/products?tab=technical`} onClick={() => { setMenuOpen(false); setOpenCatName(null) }}
-                          style={{ display: 'inline-flex', alignItems: 'center', gap: 5, fontSize: '0.78rem', fontWeight: 600, color: '#013478', textDecoration: 'none', letterSpacing: '0.03em', opacity: 0.8 }}>
-                          {t('menu.viewTechnical') || 'View technical specs'}
-                          <svg width="12" height="12" viewBox="0 0 14 14" fill="none">
-                            <path d="M2 7H12M7 2L12 7L7 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                          </svg>
-                        </Link>
-                      </div>
-                    </div>
-                  )}
-                </>
+              /* ── PLAIN LINK ── */
+              ) : (
+                <Link href={link.href}
+                  onClick={() => setMenuOpen(false)}
+                  style={{
+                    textDecoration: 'none', fontWeight: 500, fontSize: '1.05rem',
+                    color: pathname === link.href ? '#013478' : '#0d1540',
+                    padding: '1rem 0',
+                    borderBottom: '1px solid rgba(47,114,248,0.08)',
+                    display: 'block',
+                  }}>
+                  {link.label}
+                </Link>
               )}
             </div>
           ))}
 
-          <div style={{ marginTop: '1rem', padding: '0.5rem 0', display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: '0.5rem' }}>
+          <div style={{ marginTop: '1rem', padding: '0.5rem 0', display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
             <LanguageSwitcher />
           </div>
         </div>
