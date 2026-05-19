@@ -23,7 +23,7 @@ export default function Footer() {
     const fetchProducts = async () => {
       try {
         const res = await fetch(
-          `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/products?populate=*`
+          `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/products?populate=*&pagination[pageSize]=5&sort[0]=createdAt:desc`
         );
         if (!res.ok) return;
         const json = await res.json();

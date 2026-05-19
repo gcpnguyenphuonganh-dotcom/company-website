@@ -216,8 +216,8 @@ export default function NewsPage() {
   }, []);
 
   useEffect(() => {
-    fetchStrapi("/api/news?populate=*&pagination[pageSize]=100&sort[0]=createdAt:desc")
-      .then((res) => {
+  fetchStrapi(`/api/news?populate=*&pagination[pageSize]=100&sort[0]=createdAt:desc`, lang)
+    .then((res) => {
         const data: Article[] = res.data.map((item: any) => ({
           id: item.id,
           slug: item.slug,
@@ -242,7 +242,7 @@ export default function NewsPage() {
         setArticles(data);
       })
       .catch((err) => console.error("Fetch error:", err));
-  }, []);
+  }, [lang]);
 
   const archive = articles.reduce<Record<number, number>>((acc, a) => {
     const y = parseInt(a.date.split(" ")[2]);

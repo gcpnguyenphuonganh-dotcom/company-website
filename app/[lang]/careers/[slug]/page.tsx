@@ -19,6 +19,7 @@ interface CareerDetail {
 export default function CareerDetailPage() {
   const params = useParams();
   const slug = params.slug as string;
+  const lang = (params.lang as string) || "en";
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   const [data, setData] = useState<CareerDetail | null>(null);
@@ -40,7 +41,7 @@ export default function CareerDetailPage() {
         setError(false);
 
         const res = await fetch(
-          `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/careers?filters[slug][$eq]=${slug}&populate=*`
+          `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/careers?filters[slug][$eq]=${slug}&populate=*&locale=${lang}`
         );
 
         const json = await res.json();
@@ -77,7 +78,7 @@ export default function CareerDetailPage() {
     };
 
     if (slug) fetchCareer();
-  }, [slug]);
+}, [slug, lang]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;

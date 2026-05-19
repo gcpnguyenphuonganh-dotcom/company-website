@@ -16,8 +16,9 @@ const navLinks = [
   { label: "Liên hệ", href: "/contact" },
 ];
 
-export default function ArticlePage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = use(params);
+export default function ArticlePage({ params }: { params: Promise<{ slug: string; lang: string }> }) {
+  const { slug, lang } = use(params);
+  const locale = lang ?? 'en';
   const router = useRouter();
   const [visible, setVisible] = useState(false);
   const [copied, setCopied] = useState(false);
@@ -44,7 +45,7 @@ export default function ArticlePage({ params }: { params: Promise<{ slug: string
   // ── FETCH ARTICLE ──
   useEffect(() => {
     
-    fetchStrapi(`/api/news?filters[slug][$eq]=${slug}&populate=*&sort[0]=createdAt:desc`)
+    fetchStrapi(`/api/news?filters[slug][$eq]=${slug}&populate=*&sort[0]=createdAt:desc`, locale)
       .then((res) => {
         console.log("🔥 MAIN ARTICLE API:", res);  //test
         if (!res.data?.length) return;
@@ -74,8 +75,8 @@ export default function ArticlePage({ params }: { params: Promise<{ slug: string
 
         // Fetch related cùng category
         return Promise.all([
-          fetchStrapi(`/api/news?filters[category][$eq]=${item.category}&filters[slug][$ne]=${slug}&populate=*&pagination[pageSize]=3`),
-          fetchStrapi(`/api/news?filters[category][$ne]=${item.category}&filters[slug][$ne]=${slug}&populate=*&pagination[pageSize]=3`),
+          fetchStrapi(`/api/news?filters[category][$eq]=${item.category}&filters[slug][$ne]=${slug}&populate=*&pagination[pageSize]=3`, locale),
+          fetchStrapi(`/api/news?filters[category][$ne]=${item.category}&filters[slug][$ne]=${slug}&populate=*&pagination[pageSize]=3`, locale),
         ]);
       })
       .then((results) => {
@@ -109,7 +110,7 @@ export default function ArticlePage({ params }: { params: Promise<{ slug: string
       .catch((err) => console.error(err))
       .finally(() => setLoading(false));
       
-  }, [slug]);
+  }, [slug, locale]);
   
 
 
@@ -302,7 +303,7 @@ export default function ArticlePage({ params }: { params: Promise<{ slug: string
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {related.map((rel) => (
-                <button key={rel.id} onClick={() => router.push(`/news/${rel.slug}`)}
+                <button key={rel.id} onClick={() => router.push(`/${locale}/news/${rel.slug}`)}
                   className="group text-left relative overflow-hidden rounded-2xl border border-black/10 hover:border-black/20 transition-all duration-200 hover:-translate-y-0.5 p-5 bg-white hover:shadow-md">
                   <div className="h-[2px] absolute top-0 left-0 right-0 rounded-t-2xl bg-black/10" />
                   <div className="flex items-center gap-2 mb-3">
@@ -324,7 +325,7 @@ export default function ArticlePage({ params }: { params: Promise<{ slug: string
             <div className="flex items-center gap-3 mb-7">
               <span className="text-xs font-bold tracking-widest uppercase text-black/25">More articles</span>
               <div className="flex-1 h-px bg-black/10" />
-              <button onClick={() => router.push("/news")} className="text-xs text-black/35 hover:text-black/60 transition-colors whitespace-nowrap">
+              <button onClick={() => router.push(`/${locale}/news`)} className="text-xs text-black/35 hover:text-black/60 transition-colors whitespace-nowrap">
                 View all →
               </button>
             </div>

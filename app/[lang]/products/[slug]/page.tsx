@@ -27,16 +27,17 @@ type Product = {
 };
 
 interface ProductDetailPageProps {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ slug: string; lang: string }>;
 }
 
 export default function ProductDetailPage({ params }: ProductDetailPageProps) {
-  const { slug } = use(params);
+  const { slug, lang } = use(params);
+  const locale = lang ?? 'en';
   const [product, setProduct] = useState<Product | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetchStrapi(`/api/products?filters[slug][$eq]=${slug}&populate=*`)
+    fetchStrapi(`/api/products?filters[slug][$eq]=${slug}&populate=*`, locale)
       .then((res) => {
         if (!res.data?.length) return;
         const item = res.data[0];
@@ -79,7 +80,7 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
       <div className="min-h-screen bg-white flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-4xl font-bold text-[#020c1a] mb-4">Product Not Found</h1>
-          <Link href="/products" className="text-[#013478] hover:underline">
+          <Link href={`/${locale}/products`} className="text-[#013478] hover:underline">
             ← Back to Products
           </Link>
         </div>
@@ -109,7 +110,7 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
       {/* Header */}
       <header className="max-w-6xl mx-auto mb-10 sm:mb-16">
         <Link
-          href="/products"
+          href={`/${locale}/products`}
           className="inline-flex items-center gap-2 text-[#020c1a]/70 hover:text-[#013478] transition-colors duration-300 mb-4"
         >
           <ArrowLeft className="w-5 h-5" />
@@ -126,7 +127,7 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
             </p>
           </div>
           <Link
-            href="/contact"
+            href={`/${locale}/contact`}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 shrink-0 bg-[#013478] text-white px-5 py-2.5 rounded-md text-sm font-semibold hover:bg-[#013478]/60  transition-colors duration-300 self-start"

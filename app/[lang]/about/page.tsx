@@ -59,7 +59,6 @@ export default function AboutUs() {
       </section>
 
       {/* ── 2. COMPANY OVERVIEW ── */}
-      {/* scroll-mt-20 compensates for the fixed navbar height */}
       <section id="overview" className="py-24 scroll-mt-20">
         <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 clamp(1rem, 6vw, 6rem)" }}>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -123,14 +122,30 @@ export default function AboutUs() {
         </div>
       </section>
 
-      {/* ── 5. OUR CUSTOMERS ── */}
+    {/* ── 5. VISION / PHILOSOPHY ── */}
+      <section id="vision" className="scroll-mt-20 border-t border-slate-100">
+        <div style={{ maxWidth: 1280, margin: "0 auto", padding: "2rem clamp(1rem, 6vw, 6rem) 0" }}>
+          <SectionLabel>{t("about.vision.label")}</SectionLabel>
+        </div>
+        {/* Kéo TitleTabsSection lên gần label */}
+        <div className="-mt-20">
+          <TitleTabsSection />
+        </div>
+      </section>
+
+      {/* Divider */}
+      <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 clamp(1rem, 6vw, 6rem)" }}>
+        <div className="h-px bg-slate-100" />
+      </div>
+
+      {/* ── 6. OUR CUSTOMERS ── */}
       <section id="customers" className="bg-white scroll-mt-20">
         <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 clamp(1rem, 6vw, 6rem)" }}>
           <OurCustomers />
         </div>
       </section>
 
-      {/* ── 6. HANOI OFFICE ── */}
+      {/* ── 7. HANOI OFFICE ── */}
       <section id="hanoi-office" className="bg-white py-16 xl:py-24 scroll-mt-20">
         <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 clamp(1rem, 6vw, 6rem)" }}>
           <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
@@ -183,7 +198,7 @@ export default function AboutUs() {
         </div>
       </section>
 
-      {/* ── 7. GROUP INFO / CORPORATE GROUP ── */}
+      {/* ── 8. GROUP INFO / CORPORATE GROUP ── */}
       <section id="corporate-group" className="bg-slate-50 py-16 scroll-mt-20">
         <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 clamp(1rem, 6vw, 6rem)" }}>
           <div className="flex flex-col md:flex-row items-center gap-10 justify-between">

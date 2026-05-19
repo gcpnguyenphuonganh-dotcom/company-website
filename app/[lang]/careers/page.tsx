@@ -56,7 +56,9 @@ export default function CareersPage() {
   useEffect(() => {
     const fetchFields = async () => {
       try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_URL}/api/careers?populate=*`);
+        const res = await fetch(
+          `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/careers?populate=*&locale=${lang}`
+        );
         if (!res.ok) throw new Error("Failed to fetch");
         const json = await res.json();
         const mapped: CareerField[] = json.data.map((item: any) => ({
@@ -80,7 +82,7 @@ export default function CareersPage() {
       }
     };
     fetchFields();
-  }, []);
+  }, [lang]);
 
   const filteredFields = fields.filter(
     (f) =>
