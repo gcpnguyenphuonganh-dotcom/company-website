@@ -175,6 +175,7 @@ export default function Navbar() {
                     
                   </div>
 
+                  
                   {/* RIGHT: links */}
                   <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                     <p style={{
@@ -184,28 +185,31 @@ export default function Navbar() {
                     }}>
                       Company information
                     </p>
-                    {ABOUT_COL1.map((item) => (
-                      <Link
-                        key={item.hash}
-                        href={`/${lang}/about${item.hash}`}
-                        onClick={() => setAboutOpen(false)}
-                        className="about-row"
-                        style={{
-                          display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-                          padding: '0.75rem 0.75rem',
-                          borderRadius: 8,
-                          textDecoration: 'none', color: '#1a1a2e',
-                          fontSize: '0.92rem', fontWeight: 500,
-                          transition: 'background 0.15s, color 0.15s, padding-left 0.15s',
-                        }}
-                      >
-                        <span>{item.label}</span>
-                        <svg width="13" height="13" viewBox="0 0 16 16" fill="none"
-                          style={{ color: '#c0c8d8', flexShrink: 0, marginLeft: 8 }}>
-                          <path d="M6 4L10 8L6 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                        </svg>
-                      </Link>
-                    ))}
+                    {/* 2 cột */}
+                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0 0.5rem' }}>
+                      {ABOUT_COL1.map((item) => (
+                        <Link
+                          key={item.hash}
+                          href={`/${lang}/about${item.hash}`}
+                          onClick={() => setAboutOpen(false)}
+                          className="about-row"
+                          style={{
+                            display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+                            padding: '0.75rem 0.75rem',
+                            borderRadius: 8,
+                            textDecoration: 'none', color: '#1a1a2e',
+                            fontSize: '0.92rem', fontWeight: 500,
+                            transition: 'background 0.15s, color 0.15s, padding-left 0.15s',
+                          }}
+                        >
+                          <span>{item.label}</span>
+                          <svg width="13" height="13" viewBox="0 0 16 16" fill="none"
+                            style={{ color: '#c0c8d8', flexShrink: 0, marginLeft: 8 }}>
+                            <path d="M6 4L10 8L6 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                          </svg>
+                        </Link>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -289,50 +293,111 @@ export default function Navbar() {
                         animation: 'pulse 1.5s infinite', animationDelay: `${i * 0.1}s`,
                       }} />
                     ))}
-                    {categoryGroups.map((cat, idx) => {
-                      const isOpen = openCatName === cat.name
-                      const isLast = idx === categoryGroups.length - 1
-                      return (
-                        <div key={cat.name}>
-                          <button onClick={() => toggleCat(cat.name)}
-                            style={{
-                              width: '100%', display: 'flex', alignItems: 'center',
-                              padding: '0.9rem 1rem', background: 'none', border: 'none',
-                              borderBottom: !isLast || isOpen ? '1px solid #eef0f6' : 'none',
-                              cursor: 'pointer', textAlign: 'left', transition: 'background 0.15s',
-                            }} className="cat-row">
-                            <span style={{ flex: 1, fontSize: '0.92rem', fontWeight: 500, color: '#1a1a2e' }}>{cat.name}</span>
-                            <span style={{ fontSize: '0.88rem', color: '#a0aab8', fontWeight: 400, marginRight: '1rem' }}>{cat.products.length}</span>
-                            <svg width="15" height="15" viewBox="0 0 16 16" fill="none"
-                              style={{ color: '#b0b8c8', flexShrink: 0, transform: isOpen ? 'rotate(90deg)' : 'rotate(0deg)', transition: 'transform 0.22s ease' }}>
-                              <path d="M6 4L10 8L6 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                            </svg>
-                          </button>
-                          <div style={{
-                            overflow: 'hidden',
-                            maxHeight: isOpen ? `${Math.min(cat.products.length, 4) * 44}px` : '0px',
-                            transition: 'max-height 0.28s ease',
-                            background: '#f8f9fc',
-                            borderBottom: isOpen ? '1px solid #eef0f6' : 'none',
-                          }}>
-                            {cat.products.slice(0, 4).map((p, pi) => (
-                              <Link key={p.slug} href={`/${lang}/products/${p.slug}`}
-                                onClick={() => { setProdOpen(false); setOpenCatName(null) }}
+                    <p style={{
+                      fontSize: '0.7rem', fontWeight: 700, color: '#a0aab8',
+                      letterSpacing: '0.08em', textTransform: 'uppercase',
+                      marginBottom: '0.4rem', paddingLeft: '0.75rem',
+                    }}>
+                      Categories
+                    </p>
+
+                    <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'flex-start' }}>
+                      {/* Cột 1: 3 cái đầu */}
+                      <div style={{ flex: 1 }}>
+                        {categoryGroups.slice(0, 3).map((cat) => {
+                          const isOpen = openCatName === cat.name
+                          return (
+                            <div key={cat.name}>
+                              <button onClick={() => toggleCat(cat.name)}
                                 style={{
-                                  display: 'flex', alignItems: 'center', gap: 10,
-                                  padding: '0.65rem 1rem 0.65rem 1.75rem',
-                                  textDecoration: 'none',
-                                  borderBottom: pi < cat.products.length - 1 ? '1px solid #eef0f6' : 'none',
-                                  transition: 'background 0.15s, padding-left 0.15s',
-                                }} className="prod-row">
-                                <span style={{ width: 4, height: 4, borderRadius: '50%', background: '#013478', opacity: 0.35, flexShrink: 0 }} />
-                                <span style={{ fontSize: '0.875rem', fontWeight: 500, color: '#2a3a5c' }}>{p.name}</span>
-                              </Link>
-                            ))}
-                          </div>
+                                  width: '100%', display: 'flex', alignItems: 'center',
+                                  padding: '0.9rem 1rem', background: 'none', border: 'none',
+                                  borderBottom: '1px solid #eef0f6',
+                                  cursor: 'pointer', textAlign: 'left', transition: 'background 0.15s',
+                                }} className="cat-row">
+                                <span style={{ flex: 1, fontSize: '0.92rem', fontWeight: 500, color: '#1a1a2e' }}>{cat.name}</span>
+                                <span style={{ fontSize: '0.88rem', color: '#a0aab8', fontWeight: 400, marginRight: '1rem' }}>{cat.products.length}</span>
+                                <svg width="15" height="15" viewBox="0 0 16 16" fill="none"
+                                  style={{ color: '#b0b8c8', flexShrink: 0, transform: isOpen ? 'rotate(90deg)' : 'rotate(0deg)', transition: 'transform 0.22s ease' }}>
+                                  <path d="M6 4L10 8L6 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                                </svg>
+                              </button>
+                              <div style={{
+                                overflow: 'hidden',
+                                maxHeight: isOpen ? '1000px' : '0px',
+                                transition: 'max-height 0.28s ease',
+                                background: '#f8f9fc',
+                                borderBottom: isOpen ? '1px solid #eef0f6' : 'none',
+                              }}>
+                                {cat.products.map((p, pi) => (
+                                  <Link key={p.slug} href={`/${lang}/products/${p.slug}`}
+                                    onClick={() => { setProdOpen(false); setOpenCatName(null) }}
+                                    style={{
+                                      display: 'flex', alignItems: 'center', gap: 10,
+                                      padding: '0.65rem 1rem 0.65rem 1.75rem',
+                                      textDecoration: 'none',
+                                      borderBottom: pi < cat.products.length - 1 ? '1px solid #eef0f6' : 'none',
+                                      transition: 'background 0.15s, padding-left 0.15s',
+                                    }} className="prod-row">
+                                    <span style={{ width: 4, height: 4, borderRadius: '50%', background: '#013478', opacity: 0.35, flexShrink: 0 }} />
+                                    <span style={{ fontSize: '0.875rem', fontWeight: 500, color: '#2a3a5c' }}>{p.name}</span>
+                                  </Link>
+                                ))}
+                              </div>
+                            </div>
+                          )
+                        })}
+                      </div>
+
+                      {/* Cột 2: từ cái thứ 4 trở đi */}
+                      {categoryGroups.length > 3 && (
+                        <div style={{ flex: 1 }}>
+                          {categoryGroups.slice(3).map((cat) => {
+                            const isOpen = openCatName === cat.name
+                            return (
+                              <div key={cat.name}>
+                                <button onClick={() => toggleCat(cat.name)}
+                                  style={{
+                                    width: '100%', display: 'flex', alignItems: 'center',
+                                    padding: '0.9rem 1rem', background: 'none', border: 'none',
+                                    borderBottom: '1px solid #eef0f6',
+                                    cursor: 'pointer', textAlign: 'left', transition: 'background 0.15s',
+                                  }} className="cat-row">
+                                  <span style={{ flex: 1, fontSize: '0.92rem', fontWeight: 500, color: '#1a1a2e' }}>{cat.name}</span>
+                                  <span style={{ fontSize: '0.88rem', color: '#a0aab8', fontWeight: 400, marginRight: '1rem' }}>{cat.products.length}</span>
+                                  <svg width="15" height="15" viewBox="0 0 16 16" fill="none"
+                                    style={{ color: '#b0b8c8', flexShrink: 0, transform: isOpen ? 'rotate(90deg)' : 'rotate(0deg)', transition: 'transform 0.22s ease' }}>
+                                    <path d="M6 4L10 8L6 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                                  </svg>
+                                </button>
+                                <div style={{
+                                  overflow: 'hidden',
+                                  maxHeight: isOpen ? '1000px' : '0px',
+                                  transition: 'max-height 0.28s ease',
+                                  background: '#f8f9fc',
+                                  borderBottom: isOpen ? '1px solid #eef0f6' : 'none',
+                                }}>
+                                  {cat.products.map((p, pi) => (
+                                    <Link key={p.slug} href={`/${lang}/products/${p.slug}`}
+                                      onClick={() => { setProdOpen(false); setOpenCatName(null) }}
+                                      style={{
+                                        display: 'flex', alignItems: 'center', gap: 10,
+                                        padding: '0.65rem 1rem 0.65rem 1.75rem',
+                                        textDecoration: 'none',
+                                        borderBottom: pi < cat.products.length - 1 ? '1px solid #eef0f6' : 'none',
+                                        transition: 'background 0.15s, padding-left 0.15s',
+                                      }} className="prod-row">
+                                      <span style={{ width: 4, height: 4, borderRadius: '50%', background: '#013478', opacity: 0.35, flexShrink: 0 }} />
+                                      <span style={{ fontSize: '0.875rem', fontWeight: 500, color: '#2a3a5c' }}>{p.name}</span>
+                                    </Link>
+                                  ))}
+                                </div>
+                              </div>
+                            )
+                          })}
                         </div>
-                      )
-                    })}
+                      )}
+                    </div>
                   </div>
                 </div>
               </div>
