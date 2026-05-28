@@ -7,9 +7,8 @@ import CertificationsSection from "@/components/certifications-section"
 import NewsPreview from "@/components/news-preview"
 import ContactPreview from "@/components/contact-preview"
 import PartnersSection from "@/components/partners-section"
-import AutomotiveSection from "@/components/oto1"
 import Automotive from "@/components/car"
-import Automotive1 from "@/components/car1"
+
 
 
 export default function Home() {
@@ -19,9 +18,7 @@ export default function Home() {
       <StatsSection />
       <AboutPreview />
       <ProductsPreview />
-      {/* <AutomotiveSection/> */}
       <Automotive/>
-      {/* <Automotive1/> */}
       <CertificationsSection />
       <NewsPreview />
       <ContactPreview />

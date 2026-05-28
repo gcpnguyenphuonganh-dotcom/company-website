@@ -9,12 +9,14 @@ import { fetchStrapi } from "@/lib/strapi";
 
 const ITEMS_PER_PAGE = 5;
 
+type CategoryEnum = "Company events" | "Awards" | "Innovations & improvement";
+
 type Article = {
   id: number;
   slug: string;
   title: string;
   excerpt: string;
-  category: string;
+  category: CategoryEnum | string;
   content: any;
   image: { url: string }[];
   img: string;
@@ -25,6 +27,36 @@ type Article = {
   tags: string[];
 };
 
+// ── Category config ────────────────────────────────────────────────────────────
+const CATEGORIES: {
+  value: CategoryEnum;
+  label: string;
+  badgeClass: string;
+}[] = [
+  {
+    value: "Company events",
+    label: "Company events",
+    badgeClass: "bg-white text-black border border-black/20",
+  },
+  {
+    value: "Awards",
+    label: "Awards",
+    badgeClass: "bg-[#1a2f4a]/10 text-[#1a2f4a] border border-[#1a2f4a]/20",
+    
+  },
+  {
+    value: "Innovations & improvement",
+    label: "Innovations ",
+    
+    badgeClass: "bg-[#1a2f4a] text-white border border-[#1a2f4a]",
+  },
+];
+
+function getCategoryConfig(category: string) {
+  return CATEGORIES.find((c) => c.value === category) ?? null;
+}
+
+// ── Pagination ─────────────────────────────────────────────────────────────────
 function Pagination({ current, total, onChange }: { current: number; total: number; onChange: (p: number) => void }) {
   const pages: (number | "...")[] = [];
   if (total <= 7) {
@@ -57,8 +89,10 @@ function Pagination({ current, total, onChange }: { current: number; total: numb
   );
 }
 
+// ── Article list item ──────────────────────────────────────────────────────────
 function ArticleListItem({ article, onClick }: { article: Article; onClick: () => void }) {
   const [day, month, year] = article.date.split(" ");
+  const config = getCategoryConfig(article.category);
   return (
     <div onClick={onClick} className="cursor-pointer flex items-start gap-4 sm:gap-6 py-6 sm:py-8 border-b border-black/10 group">
       <div className="flex flex-col items-center min-w-[40px] sm:min-w-[48px] text-center flex-shrink-0">
@@ -67,16 +101,8 @@ function ArticleListItem({ article, onClick }: { article: Article; onClick: () =
         <span className="text-xs text-black/40 uppercase">{month}</span>
       </div>
       <div className="flex-1 flex flex-col gap-1.5 sm:gap-2 min-w-0">
-        <span
-          className={`inline-block self-start text-xs font-semibold tracking-widest uppercase px-2 py-0.5 ${
-            getCategoryGroup(article.category) === "events"
-              ? "bg-white text-black border border-black/20"
-              : getCategoryGroup(article.category) === "innovation"
-              ? "bg-[#013478] text-white border border-[#013478]"
-              : "border border-teal-600 text-teal-600"
-          }`}
-        >
-          {article.category}
+        <span className={`inline-block self-start text-xs font-semibold tracking-widest uppercase px-2 py-0.5 ${config?.badgeClass ?? "border border-black/20 text-black/50"}`}>
+          {config?.label ?? article.category}
         </span>
         <h3 className="text-base sm:text-lg font-semibold text-black leading-snug group-hover:underline">{article.title}</h3>
         <p className="text-sm text-black/50 line-clamp-2 leading-relaxed">{article.excerpt}</p>
@@ -86,30 +112,8 @@ function ArticleListItem({ article, onClick }: { article: Article; onClick: () =
   );
 }
 
-const CATEGORY_TREE = [
-  {
-    group: "Events",
-    items: [
-      { value: "Company", label: "Company life" },
-      { value: "Awards", label: "Awards" },
-    ],
-  },
-  {
-    group: "Innovations & Improvement",
-    items: [
-      { value: "Product", label: "Product" },
-      { value: "Engineering", label: "Engineering" },
-    ],
-  },
-];
-
-function getCategoryGroup(category: string): "events" | "innovation" | null {
-  if (["Company", "Awards"].includes(category)) return "events";
-  if (["Product", "Engineering"].includes(category)) return "innovation";
-  return null;
-}
-
-function CategoryTreeView({
+// ── Category list (flat) ───────────────────────────────────────────────────────
+function CategoryList({
   activeCategory,
   articles,
   onChange,
@@ -118,18 +122,10 @@ function CategoryTreeView({
   articles: Article[];
   onChange: (val: string) => void;
 }) {
-  const [expanded, setExpanded] = useState<Record<string, boolean>>({
-    Events: false,
-    "Innovations & Improvement": false,
-  });
-
-  const toggleGroup = (group: string) =>
-    setExpanded((prev) => ({ ...prev, [group]: !prev[group] }));
-
   const allCount = articles.length;
-
   return (
     <div className="divide-y divide-black/8">
+      {/* All */}
       <button
         onClick={() => onChange("All")}
         className={`w-full flex justify-between items-center px-5 py-3 text-sm transition-colors text-left ${
@@ -140,62 +136,30 @@ function CategoryTreeView({
         <span className={activeCategory === "All" ? "text-white/60" : "text-black/35"}>{allCount}</span>
       </button>
 
-      {CATEGORY_TREE.map(({ group, items }) => {
-        const isOpen = expanded[group];
-        const groupCount = items.reduce(
-          (sum, item) => sum + articles.filter((a) => a.category === item.value).length,
-          0
-        );
-        const groupActive = items.some((i) => i.value === activeCategory);
-
+      {CATEGORIES.map((cat) => {
+        const count = articles.filter((a) => a.category === cat.value).length;
+        const isActive = activeCategory === cat.value;
         return (
-          <div key={group}>
-            <button
-              onClick={() => toggleGroup(group)}
-              className={`w-full flex justify-between items-center px-5 py-3 text-sm font-semibold transition-colors text-left ${
-                groupActive && !isOpen ? "bg-[#1a2f4a] text-white" : "bg-white text-[#1a2f4a] hover:bg-black/5"
-              }`}
-            >
-              <span>{group}</span>
-              <div className="flex items-center gap-2">
-                <span className={`text-xs ${groupActive && !isOpen ? "text-white/60" : "text-black/35"}`}>
-                  {groupCount}
-                </span>
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
-                  className={`transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}>
-                  <path d="M3 5l4 4 4-4" stroke="currentColor" strokeWidth="1.5"
-                    strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </div>
-            </button>
-
-            {isOpen && (
-              <div>
-                {items.map((item) => {
-                  const count = articles.filter((a) => a.category === item.value).length;
-                  const isActive = activeCategory === item.value;
-                  return (
-                    <button
-                      key={item.value}
-                      onClick={() => onChange(item.value)}
-                      className={`w-full flex justify-between items-center pl-4 pr-5 py-2.5 text-sm transition-colors text-left ${
-                        isActive ? "bg-[#1a2f4a] text-white" : "text-black/65 hover:bg-black/5 hover:text-black"
-                      }`}
-                    >
-                      <span>{item.label}</span>
-                      <span className={isActive ? "text-white/60" : "text-black/30"}>{count}</span>
-                    </button>
-                  );
-                })}
-              </div>
-            )}
-          </div>
+          <button
+            key={cat.value}
+            onClick={() => onChange(cat.value)}
+            className={`w-full flex justify-between items-center px-5 py-3 text-sm transition-colors text-left ${
+              isActive ? "bg-[#1a2f4a] text-white" : "text-black/70 hover:bg-black/5"
+            }`}
+          >
+            <div className="flex items-center gap-2">
+              
+              <span>{cat.value}</span>
+            </div>
+            <span className={isActive ? "text-white/60" : "text-black/35"}>{count}</span>
+          </button>
         );
       })}
     </div>
   );
 }
 
+// ── Main page ──────────────────────────────────────────────────────────────────
 export default function NewsPage() {
   const router = useRouter();
   const params = useParams();
@@ -216,8 +180,8 @@ export default function NewsPage() {
   }, []);
 
   useEffect(() => {
-  fetchStrapi(`/api/news?populate=*&pagination[pageSize]=100&sort[0]=createdAt:desc`, lang)
-    .then((res) => {
+    fetchStrapi(`/api/news?populate=*&pagination[pageSize]=100&sort[0]=createdAt:desc`, lang)
+      .then((res) => {
         const data: Article[] = res.data.map((item: any) => ({
           id: item.id,
           slug: item.slug,
@@ -282,14 +246,14 @@ export default function NewsPage() {
 
   const SidebarContent = () => (
     <>
-      {/* Category TreeView */}
+      {/* Category list */}
       <div className="border border-black/10 bg-white overflow-hidden">
         <div className="px-5 py-4 border-b border-black/10 bg-white">
           <h4 className="text-xs font-bold tracking-widest uppercase text-black/50">
             {t("news.sidebar.categories")}
           </h4>
         </div>
-        <CategoryTreeView
+        <CategoryList
           activeCategory={activeCategory}
           articles={articles}
           onChange={handleCategoryChange}
@@ -392,7 +356,7 @@ export default function NewsPage() {
               {t("news.sidebar.categories")}
               {activeCategory !== "All" && (
                 <span className="ml-1 px-1.5 py-0.5 bg-[#1a2f4a] text-white text-xs rounded">
-                  {activeCategory}
+                  {getCategoryConfig(activeCategory)?.label ?? activeCategory}
                 </span>
               )}
             </button>

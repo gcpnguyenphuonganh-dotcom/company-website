@@ -1,13 +1,14 @@
 "use client";
 export const dynamic = 'force-dynamic';
 
-import { useState, useEffect, useCallback, Suspense } from "react";
+
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useTranslation } from "react-i18next";
 import { fetchStrapi } from "@/lib/strapi";
 import TechSection from "@/components/techSection";
 import { useSearchParams } from "next/navigation";
+import { useState, useEffect, useCallback, useRef, Suspense } from "react";
 
 type Product = {
   id: number;
@@ -30,14 +31,6 @@ const GRADIENTS = [
   ["#020c1a", "#011d50"],
   ["#013478", "#010f2e"],
   ["#010f2e", "#013478"],
-];
-
-const CATEGORIES = [
-  { value: "Transformer", label: "Transformer" },
-  { value: "Inductor", label: "Inductor" },
-  { value: "Coil", label: "Coil" },
-  { value: "Filter", label: "Filter" },
-  { value: "Sensor", label: "Sensor" },
 ];
 
 // ── PAGINATION COMPONENT ──
@@ -98,6 +91,87 @@ function Pagination({ current, total, onChange }: {
   );
 }
 
+// ── REMOVE WHITE BACKGROUND FROM IMAGE ──
+function RemoveBgImage({
+  src,
+  alt,
+  className,
+  style,
+  threshold = 240,
+}: {
+  src: string;
+  alt: string;
+  className?: string;
+  style?: React.CSSProperties;
+  threshold?: number;
+}) {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const [ready, setReady] = useState(false);
+
+  useEffect(() => {
+    if (!src) return;
+    setReady(false);
+    const img = new Image();
+    img.crossOrigin = "anonymous";
+    img.onload = () => {
+      const canvas = canvasRef.current;
+      if (!canvas) return;
+      canvas.width = img.naturalWidth;
+      canvas.height = img.naturalHeight;
+      const ctx = canvas.getContext("2d");
+      if (!ctx) return;
+      ctx.drawImage(img, 0, 0);
+      const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      const data = imageData.data;
+
+      const visited = new Uint8Array(canvas.width * canvas.height);
+      const queue: number[] = [];
+      const w = canvas.width;
+      const h = canvas.height;
+
+      const isLight = (idx: number) => {
+        const r = data[idx], g = data[idx + 1], b = data[idx + 2];
+        return r >= threshold && g >= threshold && b >= threshold;
+      };
+
+      const enqueue = (x: number, y: number) => {
+        const i = y * w + x;
+        if (x < 0 || x >= w || y < 0 || y >= h) return;
+        if (visited[i]) return;
+        const idx = i * 4;
+        if (!isLight(idx)) return;
+        visited[i] = 1;
+        queue.push(x, y);
+      };
+
+      for (let x = 0; x < w; x++) { enqueue(x, 0); enqueue(x, h - 1); }
+      for (let y = 0; y < h; y++) { enqueue(0, y); enqueue(w - 1, y); }
+
+      while (queue.length) {
+        const y = queue.pop()!;
+        const x = queue.pop()!;
+        const idx = (y * w + x) * 4;
+        data[idx + 3] = 0;
+        enqueue(x + 1, y); enqueue(x - 1, y);
+        enqueue(x, y + 1); enqueue(x, y - 1);
+      }
+
+      ctx.putImageData(imageData, 0, 0);
+      setReady(true);
+    };
+    img.src = src;
+  }, [src, threshold]);
+
+  return (
+    <canvas
+      ref={canvasRef}
+      aria-label={alt}
+      className={className}
+      style={{ ...style, display: ready ? undefined : "none" }}
+    />
+  );
+}
+
 // ── BANNER COMPONENT ──
 function Banner({
   products, lang, t, activeTab, onTabChange,
@@ -128,6 +202,9 @@ function Banner({
 
   const item = products[cur];
   const [c1, c2] = GRADIENTS[cur % GRADIENTS.length];
+  const imgUrl = item.image?.[0]?.url
+    ? `${process.env.NEXT_PUBLIC_STRAPI_URL}${item.image[0].url}`
+    : null;
 
   return (
     <div className="relative w-full h-[500px] lg:h-[580px] overflow-hidden"
@@ -138,22 +215,59 @@ function Banner({
       <div className="absolute top-6 right-6 z-10 text-xs font-mono text-white/40">
         <span className="text-white/60 font-bold">{String(cur + 1).padStart(2, "0")}</span> / {String(products.length).padStart(2, "0")}
       </div>
-      <div className="relative h-full max-w-6xl mx-auto px-6 flex flex-col justify-center"
-        style={{ opacity: fading ? 0 : 1, transform: fading ? "translateY(14px)" : "translateY(0)", transition: "opacity 0.38s ease, transform 0.38s ease" }}>
-        <h1 className="text-5xl lg:text-[62px] font-black text-white leading-[1.05] tracking-tight mb-3 max-w-2xl">{item.name}</h1>
-        <p className="text-slate-400 text-base leading-relaxed max-w-lg mb-8">{item.tagline}</p>
-        <Link href={`/${lang}/products/${item.slug}`}
-          className="inline-flex items-center gap-2 px-6 py-3 bg-[#013478] hover:bg-[#4a7fd4] text-white text-sm font-bold rounded-xl transition-all duration-200 w-fit border border-[#4a7fd4]/30">
-          {t("products.view_product")}
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
-        </Link>
+
+      {/* Ảnh absolute chiếm vùng phải */}
+      <div
+        className="absolute right-0 top-0 bottom-0 w-[55%] hidden lg:block"
+        style={{ opacity: fading ? 0 : 1, transform: fading ? "scale(0.97)" : "scale(1)", transition: "opacity 0.38s ease, transform 0.38s ease" }}
+      >
+        {imgUrl ? (
+          <RemoveBgImage
+            src={imgUrl}
+            alt={item.name}
+            className="w-full h-full object-contain"
+            style={{
+              filter: "drop-shadow(0 20px 80px rgba(12, 12, 12, 0.5))",
+              opacity: 0.1,
+            }}
+            threshold={225}
+          />
+        ) : (
+          <div className="w-full h-full flex items-center justify-center">
+            <div className="w-48 h-48 rounded-3xl bg-white/5 border border-white/10 flex items-center justify-center">
+              <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.2)" strokeWidth="1.5">
+                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+              </svg>
+            </div>
+          </div>
+        )}
       </div>
+
+      {/* Text bên trái */}
+      <div className="relative h-full max-w-7xl mx-auto px-6 flex items-center">
+        <div
+          className="flex flex-col justify-center w-full lg:w-[45%]"
+          style={{ opacity: fading ? 0 : 1, transform: fading ? "translateY(14px)" : "translateY(0)", transition: "opacity 0.38s ease, transform 0.38s ease" }}
+        >
+          <h1 className="text-5xl lg:text-[62px] font-black text-white leading-[1.05] tracking-tight mb-3 max-w-2xl">{item.name}</h1>
+          <p className="text-slate-400 text-base leading-relaxed max-w-lg mb-8">{item.tagline}</p>
+          <Link href={`/${lang}/products/${item.slug}`}
+            className="inline-flex items-center gap-2 px-6 py-3 bg-[#013478] hover:bg-[#4a7fd4] text-white text-sm font-bold rounded-xl transition-all duration-200 w-fit border border-[#4a7fd4]/30">
+            {t("products.view_product")}
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+          </Link>
+        </div>
+      </div>
+
+      {/* Nav arrows */}
       {[{ dir: "prev", onClick: prev, path: "M15 18l-6-6 6-6" }, { dir: "next", onClick: next, path: "M9 18l6-6-6-6" }].map((a, i) => (
         <button key={a.dir} onClick={a.onClick}
           className={`absolute ${i === 0 ? "left-4" : "right-4"} top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-white/8 hover:bg-white/18 text-white flex items-center justify-center transition-all backdrop-blur-sm border border-white/10`}>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d={a.path} /></svg>
         </button>
       ))}
+
+      {/* Dots */}
       <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-10">
         {products.map((_, i) => (
           <button key={i} onClick={() => go(i)}
@@ -161,6 +275,8 @@ function Banner({
             style={{ width: i === cur ? "28px" : "8px", backgroundColor: i === cur ? "#4a7fd4" : "rgba(255,255,255,0.22)" }} />
         ))}
       </div>
+
+      {/* Tabs */}
       <div className="absolute bottom-0 right-0 z-10 flex overflow-hidden">
         {(["product", "technology"] as const).map((tab, i) => (
           <button
@@ -231,6 +347,10 @@ function CategoryList({ activeCategory, products, onChange }: {
   products: Product[];
   onChange: (val: string) => void;
 }) {
+  const categories = Array.from(
+    new Set(products.map((p) => p.category).filter(Boolean))
+  ).sort();
+
   return (
     <div className="divide-y divide-black/8">
       <button onClick={() => onChange("All")}
@@ -240,7 +360,7 @@ function CategoryList({ activeCategory, products, onChange }: {
         <span className="font-medium">All</span>
         <span className={activeCategory === "All" ? "text-white/60" : "text-black/35"}>{products.length}</span>
       </button>
-      {CATEGORIES.map(({ value, label }) => {
+      {categories.map((value) => {
         const count = products.filter((p) => p.category === value).length;
         const isActive = activeCategory === value;
         return (
@@ -248,7 +368,7 @@ function CategoryList({ activeCategory, products, onChange }: {
             className={`w-full flex justify-between items-center px-5 py-3 text-sm transition-colors text-left ${
               isActive ? "bg-[#1a2f4a] text-white" : "bg-white text-black/70 hover:bg-black/5"
             }`}>
-            <span>{label}</span>
+            <span>{value}</span>
             <span className={isActive ? "text-white/60" : "text-black/35"}>{count}</span>
           </button>
         );
@@ -341,7 +461,6 @@ function ProductsContent() {
       .catch((err) => console.error(err));
   }, [lang]);
 
-  // Reset page khi filter thay đổi
   useEffect(() => {
     setPage(1);
   }, [query, activeCategory, activeApp, lang]);
@@ -410,7 +529,6 @@ function ProductsContent() {
 
             {/* ── MAIN CONTENT ── */}
             <div className="flex-1 min-w-0">
-              {/* Header + Search */}
               <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-6">
                 <div>
                   <div className="flex items-center gap-2 mb-1">
@@ -445,7 +563,6 @@ function ProductsContent() {
                 </div>
               </div>
 
-              {/* Active filters */}
               <div className="flex flex-wrap items-center gap-2 mb-4 min-h-[28px]">
                 {activeFilters.map((f) => (
                   <span key={f.label}
@@ -467,9 +584,6 @@ function ProductsContent() {
                 )}
               </div>
 
-              
-
-              {/* Grid */}
               {filtered.length > 0 ? (
                 <>
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">

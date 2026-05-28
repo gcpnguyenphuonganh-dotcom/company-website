@@ -306,16 +306,10 @@
 },
 
 "products_preview": {
-  "label": "Sản phẩm của chúng tôi",
-  "title": "Giải pháp máy biến áp",
-  "desc": "Từ linh kiện động cơ đến hệ thống an toàn, chúng tôi cung cấp các sản phẩm chất lượng đáp ứng tiêu chuẩn cao nhất.",
-  "cta": "Xem tất cả sản phẩm",
-  "items": {
-    "hft":  { "title": "Máy biến áp tần số cao",                 "desc": "Linh kiện cốt lõi cho nguồn điện chuyển mạch và bộ chuyển đổi DC-DC. Cuộn dây và lõi tùy chỉnh." },
-    "hftc": { "title": "Cuộn chặn máy biến áp tần số cao",       "desc": "Triệt tiêu nhiễu và lưu trữ năng lượng cho lọc EMI và điều hòa nguồn điện." },
-    "hsrf": { "title": "Tần số cộng hưởng tự cao",               "desc": "Tối ưu hóa cho thiết bị truyền thông và mạch xử lý tín hiệu tần số cao." },
-    "ct":   { "title": "Máy biến dòng",                          "desc": "Cảm biến dòng điện độ chính xác cao cho đo lường, bảo vệ và giám sát hệ thống điện." }
-  }
+  "label": "Sản Phẩm",
+  "title": "Giải Pháp Biến Áp",
+  "desc": "Từ linh kiện động cơ đến hệ thống an toàn, chúng tôi cung cấp các sản phẩm chất lượng đáp ứng tiêu chuẩn công nghiệp cao nhất.",
+  "cta": "Xem Tất Cả Sản Phẩm"
 },
 
 

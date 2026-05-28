@@ -314,15 +314,8 @@
   "label": "Our Products",
   "title": "Transformer Solutions",
   "desc": "From engine components to safety systems, we deliver quality parts that meet the highest industry standards.",
-  "cta": "View All Products",
-  "items": {
-    "hft":  { "title": "High Frequency Transformer",             "desc": "Core component for switching power supplies and DC-DC converters. Custom winding and core selection." },
-    "hftc": { "title": "High Frequency Transformer Choke",       "desc": "Noise suppression and energy storage for EMI filtering and power conditioning applications." },
-    "hsrf": { "title": "High Self Resonance Frequency",          "desc": "Optimized for communication equipment and high-frequency signal processing circuits." },
-    "ct":   { "title": "Current Transformer",                    "desc": "High-accuracy current sensing for measurement, protection, and power monitoring systems." }
-  }
+  "cta": "View All Products"
 },
-
 "news_preview": {
   "label": "Latest News",
   "title": "Innovation & Improvement",
