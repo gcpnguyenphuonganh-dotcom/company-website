@@ -1,8 +1,8 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
-const DEFAULT_LANG = 'en';
-const LANGS = ['vi', 'en', 'ja'];
+const DEFAULT_LOCALE = 'en';
+const LOCALES = ['vi', 'en', 'ja'];
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
@@ -11,16 +11,15 @@ export function middleware(request: NextRequest) {
   const isLoginPage = pathname === '/login' || pathname.startsWith('/login/');
 
   if (!isAuthenticated && !isLoginPage) {
-    return NextResponse.redirect(new URL('/login', request.url));
-  }
-
-  const pathnameHasLang = LANGS.some(
-    (lang) => pathname.startsWith(`/${lang}/`) || pathname === `/${lang}`
-  );
-
-  if (isAuthenticated && !pathnameHasLang && !isLoginPage) {
-    return NextResponse.redirect(new URL(`/${DEFAULT_LANG}${pathname}`, request.url));
+    const loginUrl = new URL('/login', request.url);
+    return NextResponse.redirect(loginUrl);
   }
 
   return NextResponse.next();
 }
+
+export const config = {
+  matcher: [
+    '/((?!api|_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico)$).*)',
+  ],
+};
