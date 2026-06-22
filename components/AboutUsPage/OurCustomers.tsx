@@ -2,24 +2,8 @@
 
 import { useTranslation } from "react-i18next";
 
-const partners = [
-  "Canon",
-  "Brother​",
-  "FUJIFILM",
-  "Panasonic​",
-  "DAIKIN​",
-  "FUJITSU",
-  "MITSUBISHI",
-  "Toshiba \n Carrier",
-  "TOYOTA​",
-  "mazDa​",
-  "Yamaha​",
-  "Nichicon",
-  "SHARP",
-  "HITACHI​",
-  "MITSUMI",
-  "TDK-Lambda​",
-];
+const beforeMazda = ["Canon", "Brother", "FUJIFILM", "Panasonic", "DAIKIN", "FUJITSU", "MITSUBISHI", "Toshiba \n Carrier", "TOYOTA"];
+const afterMazda = ["Yamaha", "Nichicon", "SHARP", "HITACHI", "MITSUMI", "TDK-Lambda"];
 
 export default function OurCustomers() {
   const { t } = useTranslation("common");
@@ -41,15 +25,31 @@ export default function OurCustomers() {
 
         {/* RIGHT: PARTNERS GRID */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-          {partners.map((partner) => (
+          {beforeMazda.map((partner) => (
             <div
               key={partner}
-              className="flex items-center justify-center h-[72px]  px-4 border border-gray-200 rounded-xl bg-gray-50 hover:bg-[#013478]/5 hover:border-[#013478]/30 hover:scale-[1.05] transition-all duration-300"
+              className="flex items-center justify-center h-[72px] px-4 border border-gray-200 rounded-xl bg-gray-50 hover:bg-[#013478]/5 hover:border-[#013478]/30 hover:scale-[1.05] transition-all duration-300"
             >
-              <span
-                style={{ fontVariantCaps: 'all-small-caps' }}
-                className="text-[13px] font-semibold text-gray-500 hover:text-[#013478] transition-colors whitespace-pre-line items-center justify-center">
-                {typeof partner === 'string' ? partner.replaceAll('\\n', '\n') : partner}
+              <span className="text-[13px] font-semibold text-gray-500 hover:text-[#013478] transition-colors whitespace-pre-line items-center justify-center">
+                {partner.replaceAll('\\n', '\n')}
+              </span>
+            </div>
+          ))}
+
+          {/* mazDa */}
+          <div className="flex items-center justify-center h-[72px] px-4 border border-gray-200 rounded-xl bg-gray-50 hover:bg-[#013478]/5 hover:border-[#013478]/30 hover:scale-[1.05] transition-all duration-300">
+            <span className="text-[13px] font-semibold text-gray-500 hover:text-[#013478] transition-colors whitespace-pre-line items-center justify-center">
+              maz<span style={{ fontSize: '10px' }}>D</span>a
+            </span>
+          </div>
+
+          {afterMazda.map((partner) => (
+            <div
+              key={partner}
+              className="flex items-center justify-center h-[72px] px-4 border border-gray-200 rounded-xl bg-gray-50 hover:bg-[#013478]/5 hover:border-[#013478]/30 hover:scale-[1.05] transition-all duration-300"
+            >
+              <span className="text-[13px] font-semibold text-gray-500 hover:text-[#013478] transition-colors whitespace-pre-line items-center justify-center">
+                {partner.replaceAll('\\n', '\n')}
               </span>
             </div>
           ))}
