@@ -1,5 +1,5 @@
 import * as React from 'react'
-
+//phân biệt xem có phải màn hình mobile không
 const MOBILE_BREAKPOINT = 768
 
 export function useIsMobile() {

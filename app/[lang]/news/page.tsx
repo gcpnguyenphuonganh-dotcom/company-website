@@ -7,7 +7,7 @@ import { useRouter, useParams } from "next/navigation";
 import { useTranslation } from "react-i18next";
 import { fetchStrapi } from "@/lib/strapi";
 
-const ITEMS_PER_PAGE = 5;
+const ITEMS_PER_PAGE = 5; // Item per page
 
 type CategoryEnum = "Company events" | "Awards" | "Innovations & improvement";
 
@@ -27,36 +27,34 @@ type Article = {
   tags: string[];
 };
 
-// ── Category config ────────────────────────────────────────────────────────────
 const CATEGORIES: {
   value: CategoryEnum;
   label: string;
   badgeClass: string;
 }[] = [
-  {
-    value: "Company events",
-    label: "Company events",
-    badgeClass: "bg-white text-black border border-black/20",
-  },
-  {
-    value: "Awards",
-    label: "Awards",
-    badgeClass: "bg-[#1a2f4a]/10 text-[#1a2f4a] border border-[#1a2f4a]/20",
-    
-  },
-  {
-    value: "Innovations & improvement",
-    label: "Innovations ",
-    
-    badgeClass: "bg-[#1a2f4a] text-white border border-[#1a2f4a]",
-  },
-];
+    {
+      value: "Company events",
+      label: "Company events",
+      badgeClass: "bg-white text-black/50 border border-black/20",
+    },
+    {
+      value: "Awards",
+      label: "Awards",
+      badgeClass: "bg-[#1a2f4a]/10 text-[#1a2f4a] border border-[#1a2f4a]/20",
+
+    },
+    {
+      value: "Innovations & improvement",
+      label: "Innovations ",
+
+      badgeClass: "bg-[#1a2f4a] text-white border border-[#1a2f4a]",
+    },
+  ];
 
 function getCategoryConfig(category: string) {
   return CATEGORIES.find((c) => c.value === category) ?? null;
 }
 
-// ── Pagination ─────────────────────────────────────────────────────────────────
 function Pagination({ current, total, onChange }: { current: number; total: number; onChange: (p: number) => void }) {
   const pages: (number | "...")[] = [];
   if (total <= 7) {
@@ -89,7 +87,6 @@ function Pagination({ current, total, onChange }: { current: number; total: numb
   );
 }
 
-// ── Article list item ──────────────────────────────────────────────────────────
 function ArticleListItem({ article, onClick }: { article: Article; onClick: () => void }) {
   const [day, month, year] = article.date.split(" ");
   const config = getCategoryConfig(article.category);
@@ -101,7 +98,7 @@ function ArticleListItem({ article, onClick }: { article: Article; onClick: () =
         <span className="text-xs text-black/40 uppercase">{month}</span>
       </div>
       <div className="flex-1 flex flex-col gap-1.5 sm:gap-2 min-w-0">
-        <span className={`inline-block self-start text-xs font-semibold tracking-widest uppercase px-2 py-0.5 ${config?.badgeClass ?? "border border-black/20 text-black/50"}`}>
+        <span className={`inline-block self-start text-xs font-semibold tracking-widest px-2 py-0.5 ${config?.badgeClass ?? "border border-black/20 text-black/50"}`}>
           {config?.label ?? article.category}
         </span>
         <h3 className="text-base sm:text-lg font-semibold text-black leading-snug group-hover:underline">{article.title}</h3>
@@ -112,7 +109,6 @@ function ArticleListItem({ article, onClick }: { article: Article; onClick: () =
   );
 }
 
-// ── Category list (flat) ───────────────────────────────────────────────────────
 function CategoryList({
   activeCategory,
   articles,
@@ -128,9 +124,8 @@ function CategoryList({
       {/* All */}
       <button
         onClick={() => onChange("All")}
-        className={`w-full flex justify-between items-center px-5 py-3 text-sm transition-colors text-left ${
-          activeCategory === "All" ? "bg-[#1a2f4a] text-white" : "text-black/70 hover:bg-black/5"
-        }`}
+        className={`w-full flex justify-between items-center px-5 py-3 text-sm transition-colors text-left ${activeCategory === "All" ? "bg-[#1a2f4a] text-white" : "text-black/70 hover:bg-black/5"
+          }`}
       >
         <span className="font-medium">All</span>
         <span className={activeCategory === "All" ? "text-white/60" : "text-black/35"}>{allCount}</span>
@@ -143,15 +138,14 @@ function CategoryList({
           <button
             key={cat.value}
             onClick={() => onChange(cat.value)}
-            className={`w-full flex justify-between items-center px-5 py-3 text-sm transition-colors text-left ${
-              isActive ? "bg-[#1a2f4a] text-white" : "text-black/70 hover:bg-black/5"
-            }`}
+            className={`w-full flex justify-between items-center px-5 py-3 text-sm transition-colors text-left ${isActive ? "bg-[#1a2f4a] text-white" : "text-black/70 hover:bg-black/5"
+              }`}
           >
             <div className="flex items-center gap-2">
-              
+
               <span>{cat.value}</span>
             </div>
-            <span className={isActive ? "text-white/60" : "text-black/35"}>{count}</span>
+            <span className={isActive ? "text-white/60" : "text-black/50"}>{count}</span>
           </button>
         );
       })}
@@ -159,7 +153,6 @@ function CategoryList({
   );
 }
 
-// ── Main page ──────────────────────────────────────────────────────────────────
 export default function NewsPage() {
   const router = useRouter();
   const params = useParams();
@@ -195,8 +188,8 @@ export default function NewsPage() {
             : "",
           date: item.createdAt
             ? new Date(item.createdAt).toLocaleDateString("en-GB", {
-                day: "2-digit", month: "short", year: "numeric",
-              })
+              day: "2-digit", month: "short", year: "numeric",
+            })
             : "",
           featured: item.featured ?? false,
           author: item.author ?? "",
@@ -270,9 +263,8 @@ export default function NewsPage() {
         <div className="divide-y divide-black/8">
           {archiveYears.map((year) => (
             <button key={year} onClick={() => handleYearFilter(year)}
-              className={`w-full flex justify-between items-center px-5 py-3 text-sm transition-colors text-left ${
-                selectedYear === year ? "bg-[#1a2f4a] text-white" : "text-black/70 hover:bg-black/5"
-              }`}>
+              className={`w-full flex justify-between items-center px-5 py-3 text-sm transition-colors text-left ${selectedYear === year ? "bg-[#1a2f4a] text-white" : "text-black/70 hover:bg-black/5"
+                }`}>
               <span>{year}</span>
               <span className={selectedYear === year ? "text-white/60" : "text-black/35"}>
                 {archive[year]}
@@ -290,7 +282,7 @@ export default function NewsPage() {
         )}
       </div>
 
-      {/* Japan IR */}
+      {/* Japan IR - link  website JP  */}
       <div className="border border-black/10 bg-white">
         <div className="px-5 py-4 border-b border-black/10">
           <h4 className="text-xs font-bold tracking-widest uppercase text-black/50">
@@ -300,10 +292,10 @@ export default function NewsPage() {
         <div className="px-5 py-5 flex flex-col gap-3">
           <p className="text-xs text-black/50 leading-relaxed">{t("news.sidebar.japan_desc")}</p>
           <a href="https://www.diaelec-hd.co.jp/en/ir_news/" target="_blank" rel="noopener noreferrer"
-            className="flex w-32 items-center justify-between px-4 py-2.5 bg-[#1a2f4a] text-white text-xs font-medium rounded hover:bg-[#013478] transition-colors duration-200">
+            className="flex w-40 items-center justify-between px-4 py-2.5 bg-[#1a2f4a] text-white text-xs font-medium rounded hover:bg-[#013478] transition-colors duration-200">
             <span>{t("news.sidebar.japan_btn")}</span>
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-              <path d="M2 7H12M7 2L12 7L7 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M2 7H12M7 2L12 7L7 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </a>
         </div>
@@ -323,11 +315,11 @@ export default function NewsPage() {
                 background: `radial-gradient(ellipse at center, rgba(37,99,235,0.55) 0%, rgba(37,99,235,0.28) 35%, rgba(26,47,74,0.95) 75%), linear-gradient(#ffffff15 1px, transparent 1px), linear-gradient(90deg, #ffffff15 1px, transparent 1px)`,
                 backgroundSize: "100% 100%, 30px 30px, 30px 30px",
               }} />
-              <div className="max-w-3xl relative z-10">
+              <div className="max-w-3xl relative z-10" style={{ paddingLeft: "clamp(2rem, 10vw, 10rem)" }}>
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-8 h-px bg-blue-400" />
-                  <span className="text-xs font-semibold tracking-[0.2em] text-blue-400 uppercase">
-                    Diamond Zebra Electric
+                  <span className="text-[8px]  xl:text-xs font-semibold tracking-[0.2em] text-blue-400 uppercase">
+                    {t("news.hero.label")}
                   </span>
                 </div>
                 <h1 className="text-3xl sm:text-4xl xl:text-6xl font-bold leading-tight mb-3 sm:mb-4 text-white">
@@ -351,7 +343,7 @@ export default function NewsPage() {
               className="flex items-center gap-2 px-4 py-2 border border-black/15 bg-white text-sm font-medium text-black/70 hover:border-black/30 transition-colors"
             >
               <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                <path d="M3 6h18M7 12h10M11 18h2" strokeLinecap="round"/>
+                <path d="M3 6h18M7 12h10M11 18h2" strokeLinecap="round" />
               </svg>
               {t("news.sidebar.categories")}
               {activeCategory !== "All" && (
@@ -417,8 +409,8 @@ export default function NewsPage() {
                   {selectedYear
                     ? `${selectedYear} — ${listArticles.length} ${t("news.articles")}`
                     : showFeatured
-                    ? t("news.all_articles")
-                    : `${listArticles.length} ${t("news.articles")}`}
+                      ? t("news.all_articles")
+                      : `${listArticles.length} ${t("news.articles")}`}
                 </span>
                 <div className="flex-1 h-px bg-black/10" />
               </div>

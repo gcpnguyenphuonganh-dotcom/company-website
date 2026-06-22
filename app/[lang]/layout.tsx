@@ -1,5 +1,5 @@
-import Navbar from "@/components/navbar";
-import Footer from "@/components/footer";
+import Navbar from "@/components/Header/NavBar";
+import Footer from "@/components/Footer/Footer";
 import { I18nProvider } from "@/lib/I18nProvider";
 
 export async function generateStaticParams() {
@@ -15,9 +15,9 @@ export default async function LangLayout({
   params,
 }: {
   children: React.ReactNode
-  params: Promise<{ lang: string }>  // ← Promise
+  params: Promise<{ lang: string }>  
 }) {
-  const { lang } = await params      // ← await
+  const { lang } = await params      
 
   return (
     <I18nProvider lang={lang}>

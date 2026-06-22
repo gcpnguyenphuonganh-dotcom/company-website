@@ -1,67 +1,80 @@
 {
-
-  
   "menu": {
     "home": "Home",
     "about": "About Us",
-    "products": "Our Products",
+    "products": "Products",
     "news": "News",
     "careers": "Careers",
-    "contact": "Contact Us",
-    "viewAll": "View All Products",
-    "viewTechnical": "View All Technology"
+    "contact": "Contact",
+    "viewAll": "View all products"
   },
-
-
-
+  "navbar": {
+    "about_dropdown": {
+      "section_label": "Company information",
+      "mobile_section_label": "Company",
+      "links": {
+        "overview": "Company Overview",
+        "history": "Company History",
+        "vision": "Our Vision & Philosophy",
+        "customers": "Our Clients",
+        "hanoi_branch": "Hanoi Branch",
+        "corporate_group": "Corporate Group"
+      }
+    },
+    "products_dropdown": {
+      "section_label": "Categories",
+      "loading_placeholder": "Loading..."
+    }
+  },
   "footer": {
-    "description": "A subsidiary of Diamond Electric Holdings Co., Ltd. (Japan). Manufacturing precision transformers in Vietnam since establishment, serving global customers with 90+ years of expertise.",
+    "description": "A subsidiary of Diamond Electric Holdings Co., Ltd. (Japan), specializing in the manufacturing of precision transformers in Vietnam. Backed by over 90 years of expertise, we proudly deliver high-quality solutions to clients worldwide.",
     "products": "Products",
     "company": "Company",
     "contact": "Contact",
     "about": "About Us",
     "careers": "Careers",
     "news": "News",
-    "hanoi_office": "Branch of Diamond & Zebra Electric Vietnam Co., Ltd. in Hanoi City",
-    "copyright": "© 2026 VIETNAM DIAMOND & ZEBRA ELECTRIC COMPANY LIMITED. ALL RIGHTS RESERVED."
+    "hanoi_office": "Branch of Diamond & Zebra Electric Vietnam Company Limited in Hanoi City",
+    "copyright": "© 2026 VIETNAM DIAMOND & ZEBRA ELECTRIC COMPANY LIMITED. ALL RIGHTS RESERVED",
+    "logo_alt": "Company Logo",
+    "map_title": "TTC Tower Location",
+    "company_name": "Vietnam Diamond & Zebra Electric Company Limited",
+    "hq_address": "Lot I-3, Dai Dong-Hoan Son Industrial Park, Dai Dong Commune, Bac Ninh Province, Vietnam",
+    "hq_phone": "0222 3847 437",
+    "hq_email": "zve_sales_4@dia-zbr.com.vn",
+    "hanoi_address": "M Floor, TTC Tower, No. 19 Duy Tan Street, Cau Giay Ward, Hanoi City, Vietnam",
+    "hanoi_phone": "0243 2123 407",
+    "hanoi_email": "seita_yamasaki@dia-zbr.co.jp"
   },
-
-
-
   "hero": {
-  "badge": "A Division of Diamond Electric Holdings Co., Ltd.",
-  "line1": "High Frequency",
-  "line2": "Transformer",
-  "line3": "Manufacturing",
-  "line4": "for Global Markets",
-  "description": "A subsidiary of Diamond Electric Holdings Co., Ltd.(Japan) - delivering 90+ years of engineering excellence in high-frequency transformers and electronic components",
-  "cta": "Explore Products",
-  "scroll": "Scroll"
-},
-
-"stats": {
-  "years":   "Years Excellence",
-  "units":   "Units Per Year",
-  "certs":   "ISO / IATF Certifications",
-  "support": "Custom Support"
-},
-
-
-"about_preview": {
-  "label":       "About us",
-  "heading":     "90 Years of Transformer Excellence",
-  "description": "VIETNAM DIAMOND & ZEBRA ELECTRIC is a subsidiary of Diamond Electric Holdings Co., Ltd. (Japan), specializing in high-quality transformer production for the global market.",
-  "years":       "Years of Excellence",
-  "cta":         "Learn More About Us",
-  "f1_title":    "Full Custom Design",
-  "f1_desc":     "Every product is designed and optimized to meet each customer's unique specifications.",
-  "f2_title":    "Japanese Engineering Standards",
-  "f2_desc":     "Applying decades of Japanese manufacturing expertise with Vietnamese operational excellence.",
-  "f3_title":    "Serving Global Japanese Manufacturers",
-  "f3_desc":     "Home appliances, AV equipment, office automation, and xEV (electric vehicle) industries."
-},
-
-
+    "badge": "A Division of Diamond Electric Holdings Co., Ltd.",
+    "line1": "High Frequency",
+    "line2": "Transformer",
+    "line3": "Manufacturing",
+    "line4": "for Global Markets",
+    "description": "A subsidiary of Diamond Electric Holdings Co., Ltd.(Japan) - delivering 90+ years of engineering excellence in high-frequency transformers and electronic components",
+    "cta": "Explore Products",
+    "scroll": "Scroll"
+  },
+  "stats": {
+    "years": "Years Excellence",
+    "units": "Units Per Year",
+    "certs": "ISO / IATF Certifications",
+    "support": "Custom Support"
+  },
+  "about_preview": {
+    "label": "About us",
+    "heading": "90+ years of Transformers Manufacturing",
+    "description": "VIETNAM DIAMOND & ZEBRA ELECTRIC CO., LTD. is a subsidiary of Diamond Electric Holdings Co., Ltd. (Japan), specializing in the manufacturing of high-quality precision transformers for global markets.",
+    "years": "Years of Excellence",
+    "cta": "Learn More About Us",
+    "f1_title": "Full Client's Designs",
+    "f1_desc": "Every product is designed and optimized to meet each client's unique specifications and requirements.",
+    "f2_title": "Japanese Engineering Standards",
+    "f2_desc": "Applying decades of Japanese manufacturing expertise with Vietnamese operational excellence.",
+    "f3_title": "Serving Global Japanese Manufacturers",
+    "f3_desc": "Home appliances, AV equipment, office automation, and xEV (electric vehicle) industries."
+  },
   "automotiveSection": {
     "eyebrow": "Automotive Application",
     "titleLine1": "Powering the Future",
@@ -73,32 +86,26 @@
       "custom": "Fully Customizable to OEM Specs"
     }
   },
-
-  
   "certificationsSection": {
     "badge": "Quality Assurance",
     "title": "Our Certifications",
     "description": "Manufactured in compliance with Japanese quality standards, ensuring high reliability and precision performance.",
     "alt": "Certification"
   },
-
-  
   "contactPreview": {
     "badge": "Contact us",
-    "titleLine1": "Let's Build",
-    "titleLine2": "Together",
-    "description": "Whether you need custom automotive parts, want to discuss a partnership, or have questions about our capabilities, our team is ready to help. Reach out and experience the Zve difference.",
+    "titleLine1": " the Future Together",
+    "titleLine2": "Let's Build",
+    "description": "Whether you need custom automotive parts, would like to discuss a partnership, or have any questions about our capabilities, our team is always ready to help. Reach out today and experience the ZVE difference — where quality, innovation, and client satisfaction come first.",
     "button": "Get in Touch",
     "items": {
       "visit": {
         "label": "Visit Us",
-        "value": "Lot I-3, Dai Dong – Hoan Son Industrial Park",
-        "subValue": "Tien Du, Bac Ninh"
+        "value": "Lot I-3, Dai Dong-Hoan Son Industrial Park, Dai Dong Commune, Bac Ninh Province, Vietnam"
       },
       "call": {
         "label": "Call Us",
-        "value": "+84-222-3847-435",
-        "subValue": "Mon-Fri 8:00 AM - 6:00 PM"
+        "value": "+84-222-3847-435"
       },
       "email": {
         "label": "Email Us",
@@ -108,304 +115,652 @@
       "hours": {
         "label": "Business Hours",
         "value": "Monday - Friday",
-        "subValue": "8:00 AM - 6:00 PM ICT"
+        "subValue": "8:00 AM - 5:00 PM ICT"
       }
     }
   },
-
-   "partnersSection": {
+  "partnersSection": {
     "badge": "Trusted By Industry Leaders",
-    "title": "Our Global Partners",
+    "title": "Our Global Clients",
     "stats": {
       "countries": "Countries",
-      "oem": "OEM Partners",
-      "support": "Support"
+      "oem": "Clients",
+      "support2": "Annual Production Capacity",
+      "support1": "40M+ Products"
     }
   },
-
-
-"contact": {
-  "heading":                "Contact us\nfor support today",
-  "subheading":             "Whether you need a custom transformer design, a quotation for volume production, or technical consultation — our engineering team is ready to support you.",
-  "loc1_tag":               "Factory", "loc1_name": "Vietnam Diamond & Zebra company limited",
-  "loc1_address":           "Lo I3, khu cong nghiep Dai Dong - Hoan Son, Xã Hoàn Sơn, Huyện Tiên Du, Tỉnh Bắc Ninh, Việt Nam",
-  "loc2_tag":               "Office",  "loc2_name": "Branch of Diamond & Zebra Electric Vietnam Co., Ltd. in Hanoi City",
-  "loc2_address":           "Tầng M, Tòa nhà TTC Tower, số 19 Duy Tân, Phường Dịch Vọng Hậu, Quận Cầu Giấy, Hà Nội.",
-  "loc3_tag":               "Global",  "loc3_name": "Diamond Electric Holding",
-  "loc3_address":            "1-15-27, Tsukamoto, Yodogawa-ku, Osaka 532-0026, Japan",
-  "form_title":             "Send Us an Inquiry",
-  "field_name":             "Name",       "placeholder_name":         "Your name",
-  "field_company":          "Company",    "placeholder_company":      "Company name",
-  "field_email":            "Email",
-  "field_phone":            "Phone",
-  "field_subject":         "Subject", "placeholder_subject": "e.g. Subject",
-  "field_product":          "Product Interest",
-  "field_requirements":     "Contents",
-  "placeholder_requirements": "Please describe your request in detail",
-  "product_placeholder":    "Select a product",
- 
-  "submit":                 "Send Inquiry"
-},
-
-
-
-"about": {
-  "hero": {
-    "badge": "Company Overview",
-    "title_1": "Build on",
-    "title_highlight_1": "Precision.",
-    "title_2": "Trusted",
-    "title_highlight_2": "Worldwide.",
-    "description": "VIETNAM DIAMOND & ZEBRA ELECTRIC is a subsidiary of Diamond Electric Holdings Co., Ltd. (Japan), specializing in high-quality transformer production for the global market.",
-    "stat_employees": "Employees",
-    "stat_projects": "Projects Delivered",
-    "stat_years": "Years in Vietnam",
-    "stat_countries": "Export Countries"
+  "contact": {
+    "heading": "Contact us\nfor support today",
+    "subheading": "Whether you need a custom transformer design, a quotation for volume production, or technical consultation — our engineering team is ready to support you.",
+    "loc1_tag": "Factory",
+    "loc1_name": "Vietnam Diamond & Zebra Company Limited",
+    "loc1_address": "Lot I-3, Dai Dong-Hoan Son Industrial Park, Dai Dong Commune, Bac Ninh Province, Vietnam",
+    "loc2_tag": "Branch",
+    "loc2_name": "Branch of Diamond & Zebra Electric Vietnam Company Limited in Hanoi City",
+    "loc2_address": "M Floor, TTC Tower, No. 19 Duy Tan Street, Cau Giay Ward, Hanoi City, Vietnam",
+    "loc3_tag": "Group",
+    "loc3_name": "Diamond Electric Holdings Co., Ltd.",
+    "loc3_address": "1-15-27, Tsukamoto, Yodogawa-ku, Osaka 532-0026, Japan",
+    "form_title": "Send Us an Inquiry",
+    "field_name": "Name",
+    "placeholder_name": "Your name",
+    "field_company": "Company",
+    "placeholder_company": "Company name",
+    "field_email": "Email",
+    "field_phone": "Phone",
+    "field_subject": "Subject",
+    "placeholder_subject": "e.g. Subject",
+    "field_product": "Product Interest",
+    "field_requirements": "Contents",
+    "placeholder_requirements": "Please describe your request in detail",
+    "product_placeholder": "Select a product",
+    "submit": "Send Inquiry"
   },
-  "overview": {
-    "label": "Company Overview",
-    "title": "A World-Class Transformer Manufacturer in Vietnam",
-    "desc_1": "ZVE Vietnam operates a state-of-the-art manufacturing facility at Hoan Son Industrial Park, Bac Ninh. With over 500 engineers and technicians, we design and produce power, distribution, instrument, and custom transformers for utilities, industrial clients, and OEM partners across Asia and beyond.",
-    "desc_2": "As a wholly-owned subsidiary of Diamond Electric Holdings Co., Ltd. (Japan), we combine Japanese engineering discipline with Vietnamese manufacturing agility — delivering premium quality at competitive lead times.",
-    "factory_area": "Factory Area",
-    "annual_capacity": "Annual Capacity",
-    "engineering_staff": "Engineering Staff",
-    "quality_rate": "Quality Rate"
+  "about": {
+    "hero": {
+      "badge": "Company Overview",
+      "title_1": "Build on",
+      "title_highlight_1": "Precision",
+      "title_2": "Trusted",
+      "title_highlight_2": "Worldwide",
+      "description": "VIETNAM DIAMOND & ZEBRA ELECTRIC CO., LTD. is a subsidiary of Diamond Electric Holdings Co., Ltd. (Japan), specializing in the manufacturing of high-quality precision transformers for global markets.",
+      "stat_employees": "Employees",
+      "stat_customers": "Clients",
+      "stat_years": "Years in Vietnam",
+      "stat_countries": "Export Countries"
+    },
+    "overview": {
+      "label": "Company Overview",
+      "title": "A World-Class Transformer Manufacturer in Vietnam",
+      "desc_1": "Vietnam Diamond & Zebra Electric Co., Ltd. (ZVE) operates a state-of-the-art manufacturing facility located in Dai Dong-Hoan Son Industrial Park, Bac Ninh, Vietnam. With a team of more than 600 engineers, technicians and skilled labors, we specialize in the design and production of power transformers, distribution transformers, instrument transformers, and customized transformer solutions for utilities, industrial clients, and OEM clients across Asia and global markets.",
+      "desc_2": "As a wholly owned subsidiary of Diamond Electric Holdings Co., Ltd. (Japan), ZVE combines Japanese engineering excellence with Vietnam’s manufacturing flexibility and efficiency — delivering premium-quality products, reliable performance, and competitive lead times to clients worldwide.",
+      "factory_area": "Factory Area",
+      "factory_area_value": "32,040 m²",
+      "annual_capacity": " Annual Production Capacity",
+      "annual_capacity_value": "40M+ Products",
+      "engineering_staff": "Skilled Employees",
+      "engineering_staff_value": "600+"
+    },
+    "timeline": {
+      "label": "Company History",
+      "title": "Our Journey",
+      "items": [
+        {
+          "year": "1925",
+          "title": "Tabuchi Group founded in Osaka, Japan",
+          "desc": "Key Operations & Products\nEnergy Solutions: Manufactures residential and business solar inverters, hybrid solar inverter & storage battery systems, and remote monitoring services (TABUCHI-cloud)\nElectronics & Transformers: Designs and produces high-voltage transformers, power devices, and industrial power supplies.\nAutomotive: Develops on-board chargers, DC-DC converters, and ignition coils"
+        },
+        {
+          "year": "1937",
+          "title": "Diamond Electric Group founded in Osaka, Japan",
+          "desc": "Key Operations & Products\n Automotive: Specializes in global manufacturing of advanced ignition coils, engine control systems, and multi-spark ignition technologies for major automakers.\nOn-board Power Electronics: Develops and supplies automotive on-board chargers (OBC), DC-DC converters, and power control units for electric and hybrid vehicles (EV/HV).Electronic Control\nDevices: Designs and produces electronic control boards, ignition units for home water heaters, and climate control systems."
+        },
+        {
+          "year": "2007",
+          "title": " Vietnam Tabuchi Electric Co. Ltd, established in Bac Ninh Province, Vietnam",
+          "desc": "Production Focus\n The plant focused on high-efficiency, customized high-frequency electrical transformers and electronic components destined for worldwide export."
+        },
+        {
+          "year": "2018",
+          "title": "Diamond Electric Vietnam founded in Hanoi City, Vietnam",
+          "desc": "Core objective\n Research and Development (R&D) Center. It focused on hiring local engineers to develop embedded software, electronic control circuits, and advanced power electronics."
+        },
+        {
+          "year": "2019",
+          "title": "Tabuchi Electric group and Diamond Electric group merged",
+          "desc": ""
+        },
+        {
+          "year": "2022",
+          "title": "Vietnam Tabuchi Electric changed name to Vietnam Diamond & Zebra Electric",
+          "desc": ""
+        },
+        {
+          "year": "2023",
+          "title": "Diamond Electric Vietnam became branch of Vietnam Diamond & Zebra Electric",
+          "desc": ""
+        }
+      ]
+    },
+    "vision": {
+      "label": "Vision & Philosophy",
+      "title": "Our Vision & Philosophy"
+    },
+    "values": {
+      "label": "Core Values",
+      "title": "The Principles We Live By",
+      "items": [
+        {
+          "title": "Japanese Quality Spirit",
+          "desc": "Rooted in Kaizen philosophy — continuous improvement, zero defects, and absolute accountability in every product we deliver."
+        },
+        {
+          "title": "Customer Commitment",
+          "desc": "We treat every client requirement as a precise engineering challenge — delivering on time, on spec, and beyond expectation."
+        },
+        {
+          "title": "Innovation & R&D",
+          "desc": "Investing continuously in new technologies and smart manufacturing to push the boundaries of transformer design."
+        },
+        {
+          "title": "Team & Partnership",
+          "desc": "A culture of collaboration — our engineers, partners, and clients work as one team toward shared success."
+        },
+        {
+          "title": "Environmental Responsibility",
+          "desc": "Designing energy-efficient transformers that reduce losses and contribute to a sustainable, low-carbon future."
+        },
+        {
+          "title": "Precision Engineering",
+          "desc": "Every winding, every core, every test — performed to exacting tolerances that define the ZVE standard."
+        }
+      ]
+    },
+    "hanoi": {
+      "label": "About · Hanoi Branch",
+      "title_1": "Serving clients with",
+      "title_highlight": "local expertise",
+      "title_2": "& Japanese precision",
+      "desc": "Our Hanoi Branch undertakes projects and works directly with engineers from Japan. Simultaneously, we receive support projects to increase the efficiency of the factory in Bac Ninh.",
+      "feature_1_title": "Technical Office",
+      "feature_1_desc": "Direct point of contact for specifications, and project coordination.",
+      "feature_2_title": "After-Sales Support",
+      "feature_2_desc": "Our team of engineers is responsible for product development, installation guidance, warranty services, product upgrades, and other client requirements.",
+      "years": "Years of experience",
+      "cta": "View more"
+    },
+    "group": {
+      "label": "Corporate Group",
+      "title": "Part of Diamond Electric Holdings",
+      "desc": "ZVE is a wholly-owned subsidiary of Diamond Electric Holdings Co., Ltd. (DEHD) with 80+ years of heritage and operations in 15+ countries.",
+      "parent": "Parent Company",
+      "headquarters": "Headquarters",
+      "headquarters_val": "Osaka, Japan",
+      "listed": "Listed",
+      "listed_val": "Tokyo Stock Exchange",
+      "founded": "Founded",
+      "founded_val": "1938"
+    },
+    "cta": {
+      "title": "Ready to grow your business with ZVE?",
+      "title_1": "",
+      "desc": "Send us your technical requirements and get a response within 24 hours.",
+      "button": "Contact Our Engineers "
+    }
   },
-  "timeline": {
-    "label": "Company History",
-    "title": "Our Journey",
-    "items": [
-      { "year": "1938", "title": "Diamond Electric Founded", "desc": "Diamond Electric Co., Ltd. established in Japan, beginning a legacy of precision electrical engineering." },
-      { "year": "1995", "title": "Global Expansion", "desc": "Diamond Electric Holdings expanded into Southeast Asian markets, bringing Japanese quality to the region." },
-      { "year": "2010", "title": "Vietnam Factory Established", "desc": "ZVE Vietnam factory launched at Hoan Son Industrial Park, Bac Ninh — serving local and export markets." },
-      { "year": "2016", "title": "ISO 9001 Certified", "desc": "Achieved international quality management certification, reinforcing commitment to world-class standards." },
-      { "year": "2020", "title": "R&D Center Opened", "desc": "Dedicated research and development center inaugurated to accelerate innovation in transformer technology." },
-      { "year": "2024", "title": "1,000+ Projects Delivered", "desc": "Milestone of over 1,000 transformer projects delivered across Vietnam, Japan, and global partners." }
-    ]
+  "careers": {
+    "hero": {
+      "title": "Build the future\nwith us",
+      "desc": "We are looking for passionate individuals who are not afraid of challenges and want to create products with real impact"
+    },
+    "fields": {
+      "title": "Recruitment Fields",
+      "search": "Search ...",
+      "all_locations": "All locations",
+      "loading": "Loading...",
+      "no_results": "No jobs found.",
+      "salary": "Salary: "
+    },
+    "why": {
+      "title": "Why Choose Us"
+    },
+    "process": {
+      "title": "Hiring Process"
+    },
+    "benefits": {
+      "stable": {
+        "title": "Stable Working Environment",
+        "desc": "We provide a stable and well-structured working environment with clear processes and long-term orientation."
+      },
+      "career": {
+        "title": "Long-term Career Development",
+        "desc": "Employees are supported to develop their skills and build a sustainable career path within the company."
+      },
+      "respect": {
+        "title": "Respectful Workplace",
+        "desc": "We value mutual respect, responsibility, and professionalism in daily work."
+      },
+      "performance": {
+        "title": "Performance-based Evaluation",
+        "desc": "Salary and bonuses are reviewed based on individual performance and contribution."
+      },
+      "activities": {
+        "title": "Company Activities",
+        "desc": "Annual events and internal activities are organized to strengthen team cohesion."
+      },
+      "international": {
+        "title": "International Collaboration",
+        "desc": "Opportunities to work with Japanese clients and follow international standards."
+      }
+    },
+    "steps": {
+      "application": {
+        "title": "Application Submission",
+        "desc": "Interested candidates are invited to submit CV to the email address hr@dia-zbr.com.vn. We will contact qualified candidates for the next steps."
+      },
+      "hr": {
+        "title": "HR Interview",
+        "desc": "We will conduct a 30-minute phone interview to better understand you, your expectations, and your fit with our company culture."
+      },
+      "test": {
+        "title": " 1st round Interview",
+        "desc": "We will arrange an in-depth interview with the Department Manager to evaluate the candidate's professional expertise, experience, and problem-solving skills."
+      },
+      "interview": {
+        "title": "2nd round Interview",
+        "desc": "Qualified candidates will proceed to the final round with our General Director to discuss long-term orientation, vision, and cultural fit."
+      },
+      "offer": {
+        "title": "Offer & Onboarding",
+        "desc": "We will send an official job offer to the successful candidate within 1 week. Welcome to our team!"
+      }
+    }
   },
-  "vision": {
-    "label": "Vision & Philosophy",
-    "title": "Our Vision & Philosophy"
-    
+  "products": {
+    "view_product": "View Product",
+    "in_production": "In Production",
+    "details": "Details",
+    "category": "Category",
+    "applications": "Applications",
+    "catalog_label": "Product Catalog",
+    "catalog_title": "All Products",
+    "search_placeholder": "Search products...",
+    "no_results": "No products found",
+    "try_keyword": "Try a different keyword or clear the filters",
+    "all": "All",
+    "clear_all": "Clear all",
+    "tab_product": "Product",
+    "tab_technology": "Technology",
+    "products.tab_product": "Product",
+    "products.tab_technology": "Technology"
   },
-  "values": {
-    "label": "Core Values",
-    "title": "The Principles We Live By",
-    "items": [
-      { "title": "Japanese Quality Spirit", "desc": "Rooted in Kaizen philosophy — continuous improvement, zero defects, and absolute accountability in every product we deliver." },
-      { "title": "Customer Commitment", "desc": "We treat every client requirement as a precise engineering challenge — delivering on time, on spec, and beyond expectation." },
-      { "title": "Innovation & R&D", "desc": "Investing continuously in new technologies and smart manufacturing to push the boundaries of transformer design." },
-      { "title": "Team & Partnership", "desc": "A culture of collaboration — our engineers, partners, and clients work as one team toward shared success." },
-      { "title": "Environmental Responsibility", "desc": "Designing energy-efficient transformers that reduce losses and contribute to a sustainable, low-carbon future." },
-      { "title": "Precision Engineering", "desc": "Every winding, every core, every test — performed to exacting tolerances that define the ZVE standard." }
-    ]
+  "news": {
+    "hero": {
+      "label": "Vietnam Diamond & Zebra Electric Company Limited",
+      "title": "News & Announcements",
+      "desc": "Latest product updates, certifications, and corporate news from ZVE"
+    },
+    "search_placeholder": "Search articles...",
+    "results_for": "Results for",
+    "all_articles": "All Articles",
+    "articles": "Articles",
+    "not_found": "Not found",
+    "categories": {
+      "all": "All",
+      "products": "Products",
+      "engineering": "Engineering",
+      "company": "Company",
+      "awards": "Awards"
+    },
+    "sidebar": {
+      "archive": "Archive",
+      "clear_filter": "Filter",
+      "categories": "Categories",
+      "japan_title": "News in Japan",
+      "japan_desc": "Read the latest news and updates from our headquarters in Japan.",
+      "japan_btn": "Group company site"
+    }
   },
-  "hanoi": {
-    "label": "About · Hanoi Office",
-    "title_1": "Serving customers with",
-    "title_highlight": "local expertise",
-    "title_2": "& Japanese precision",
-    "desc": "Our Hanoi office bridges the gap between our Bac Ninh factory and clients across Vietnam — offering technical consultation, project support, and fast on-site response.",
-    "feature_1_title": "Technical Office",
-    "feature_1_desc": "Direct point of contact for quotations, specifications, and project coordination.",
-    "feature_2_title": "After-Sales Support",
-    "feature_2_desc": "Dedicated engineering team for installation guidance and warranty services.",
-    "years": "Years of experience",
-    "cta": "View more"
+  "products_preview": {
+    "label": "Our Products",
+    "title": "Transformer Solutions",
+    "desc": "From power supply component for home and office electrical equipment to automotive, we deliver quality parts that meet the highest industry standards.",
+    "cta": "View All Products"
   },
-  "group": {
-    "label": "Corporate Group",
-    "title": "Part of Diamond Electric Holdings",
-    "desc": "ZVE Vietnam is a wholly-owned subsidiary of Diamond Electric Holdings Co., Ltd. (DEHD), a Tokyo-based global leader in electrical components with 80+ years of heritage and operations in 15+ countries.",
-    "parent": "Parent Company",
-    "headquarters": "Headquarters",
-    "headquarters_val": "Osaka, Japan",
-    "listed": "Listed",
-    "listed_val": "Tokyo Stock Exchange",
-    "founded": "Founded",
-    "founded_val": "1938"
+  "news_preview": {
+    "label": "Latest News",
+    "title": "Innovation & Improvement",
+    "cta": "View All",
+    "read_more": "Read More"
   },
-  "cta": {
-    "title": "Ready to work with ZVE?",
-    "desc": "Send us your technical requirements and get a response within 24 hours.",
-    "button": "Contact Our Engineers →"
-  }
-},
-
-
-"careers": {
-  "hero": {
-    "title": "Build the future\nwith us",
-    "desc": "We are looking for passionate individuals who are not afraid of challenges and want to create products with real impact."
+  "activities": {
+    "label": "Company Life",
+    "title": "Life at",
+    "view_all": "View all",
+    "view_all_card": "View all activities",
+    "events_count": "events & counting"
   },
-  "fields": {
-    "title": "Recruitment Fields",
-    "search": "Search ...",
-    "all_locations": "All locations",
+  "office": {
+    "overview": {
+      "label": "Branch of Diamond & Zebra Electric Vietnam Company Limited in Hanoi City",
+      "title_1": "Where Innovation ",
+      "title_2": "Meets Engineering",
+      "desc": "Branch of Diamond & Zebra Electric Vietnam Company Limited in Hanoi City, located on M Floor, TTC Tower, 19 Duy Tan, Cau Giay, Hanoi serves as a collaborative workspace for engineering software and hardware, project management, and client support across Japan and Vietnam."
+    },
+    "capabilities": {
+      "label": "CORE CAPABILITIES",
+      "title": "What We Do",
+      "desc": "Delivering innovative power electronics, embedded systems, and software solutions for a smarter future.​",
+      "energy": {
+        "title": "Energy Solutions",
+        "subtitle": "Our Energy Solutions Engineering team delivers advanced power and renewable energy solutions through innovative design, automation, and system integration, helping clients reduce costs and achieve sustainable growth.",
+        "items": [
+          {
+            "name": "Battery Management System",
+            "desc": "Provides optimal performance solutions, ensuring absolute safety and extending the sustainable lifespan of your battery."
+          },
+          {
+            "name": "Power Conditioner",
+            "desc": "Is an energy storage system that captures solar power, stores it in batteries, and converts it into AC electricity to provide reliable power for users whenever needed."
+          }
+        ]
+      },
+      "manufacturing": {
+        "title": "Application Development",
+        "subtitle": "Creating innovative applications that provide seamless user experiences and real business value.​",
+        "items": [
+          {
+            "name": "Block Diagram Builder",
+            "desc": "Is a tool used to draw block diagrams professionally, allowing users to unleash their creativity with their ideas."
+          },
+          {
+            "name": "Component Management",
+            "desc": "Digitizes inventory management by tracking component quantities, stock movements, and low-stock alerts in real time."
+          },
+          {
+            "name": "Task Manager",
+            "desc": "Is a project management platform that enables task assignment, progress tracking, and overdue task monitoring to improve team productivity and project visibility."
+          }
+        ]
+      },
+      "global": {
+        "title": "Embedded Software Design",
+        "subtitle": "Specializing in the design and development of Advanced Embedded Software, we transform complex ideas into the most intelligent and reliable products.",
+        "items": [
+          {
+            "name": "Inverter",
+            "desc": "Is a power conversion system that converts AC power to DC for EV charging and supports bidirectional energy flow between the grid and battery."
+          },
+          {
+            "name": "DC-DC Converter",
+            "desc": "Converts high-voltage DC from the EV battery pack into regulated 12V DC power.​"
+          },
+          {
+            "name": "Signal Converter",
+            "desc": "Transforms input signals into configurable output signals using configurable parameters received via CAN communication.​"
+          },
+          {
+            "name": "Simulation Board",
+            "desc": "Is a CAN-enabled testing platform that monitors input signals on a PC and generates configurable output signals based on user commands."
+          }
+        ]
+      },
+      "electronic": {
+        "title": "Circuit Design",
+        "subtitle": "Our team of experts designs and optimizes circuit boards, transforming technological ideas into practical, durable, and high-performance hardware solutions.",
+        "items": [
+          {
+            "name": "Inverter Circuit Design",
+            "desc": "Develops the power, control, and protection circuits required for efficient bidirectional energy conversion in EV charging systems."
+          },
+          {
+            "name": "DC-DC Converter Circuit Design",
+            "desc": "Focuses on developing high-efficiency power electronics circuits that convert a high-voltage DC from the traction battery into regulated 12V DC for auxiliary systems and battery charging."
+          },
+          {
+            "name": "Signal Converter Circuit Design",
+            "desc": "Develops configurable signal conditioning and conversion circuits that process input signals and generate required outputs based on parameters received via CAN communication."
+          }
+        ]
+      }
+    },
+    "equipment": {
+      "label": "OFFICE FACILITIES",
+      "title": "Friendly",
+      "title-2": "Workspaces",
+      "desc": "Our office is equipped with high-performance engineering workstations, advanced electronic testing laboratories, and dedicated research & development facilities. These resources enable us to create innovative software and hardware solutions that deliver exceptional performance, reliability, and value to our clients.​",
+      "workstations": {
+        "label": "High-Performance Workstations​",
+        "desc": "Advanced work tools, in line with market trends​"
+      },
+      "lab": {
+        "label": "Electronic Lab & Test Room",
+        "desc": "Module testing with precision instruments"
+      },
+      "oscilloscopes": {
+        "label": "Oscilloscopes & Signal Analyzers",
+        "desc": "Advanced waveform and signal analysis"
+      },
+      "server": {
+        "label": "Internal Server Infrastructure",
+        "desc": "Secure on-premise data management"
+      },
+      "meeting": {
+        "label": "Hybrid Meeting Rooms",
+        "desc": "Seamless collaboration across global offices"
+      },
+      "dashboard": {
+        "label": "New generation test kits​",
+        "desc": "Ready-to-use boards are always updated according to market demands​"
+      },
+      "qa": {
+        "label": "Component QA Equipment",
+        "desc": "End-to-end quality inspection systems"
+      },
+      "rd": {
+        "label": "R&D Prototype Zone",
+        "desc": "Dedicated space for next-gen innovation"
+      }
+    },
+    "gallery": {
+      "label": "GALLERY",
+      "title": "Our Workspace",
+      "items": [
+        "Open Workspace",
+        "Client Meeting Room",
+        "Testing Lab",
+        "Prototype Zone",
+        "Technical Discussion"
+      ]
+    },
+    "cta": {
+      "title": "Ready to collaborate?",
+      "desc": "Connect with our engineering team for technical inquiries, partnership opportunities, or product information.",
+      "button": "GET IN TOUCH"
+    }
+  },
+  "tabs": {
+    "established": "Established on",
+    "by_president": "by YuuRi Ono, President and CEO",
+    "mission": {
+      "title": "Our Mission",
+      "date": "October 1, 2021",
+      "content": "We Are Diverse Shiny Diamonds.\nWe Are Seeking the Happiness of Our Comrades*,\nBy Supporting Our Customers First,\nBy Contributing to Society,\nWith the Commitment to Earn Their Trust.",
+      "footnote": "* I intentionally call employees Comrades as they are far more than colleagues or teammates: we have overcome fierce struggles against all odds in the past and now fight for a bright future, powered by our Scrum of Fire, a symbol of burning passion binding us as one."
+    },
+    "vision": {
+      "title": "Vision",
+      "date": "August, 2023",
+      "content": "Contribute to the Improvement of Global Environment by Connecting Cars and Homes with Manufacturing"
+    },
+    "policies": {
+      "title": "President's Three Major Policies",
+      "date": "July 4, 2016",
+      "content": "1. Meet Customer Quality Standards.\n2. Reduce Costs.\n3. Promote Positive Work Environment."
+    },
+    "quality": {
+      "title": "Quality Policy",
+      "date": "October 31, 2017",
+      "content": "We Keep on Providing Peace of Mind,\nSafety and Excitement to the World \n by Striving to Meet the High Standards of \n Our World-Class Customers in Manufacturing."
+    },
+    "slogan": {
+      "title": "Slogan",
+      "date": "January 7, 2021",
+      "content": "Re-Ignite the World",
+      "subtitle": "Reignition and Counterattack, Keep Pushing"
+    },
+    "manufacturing": {
+      "title": "President’s Manufacturing Policy",
+      "date": "November 11, 2023",
+      "content": "GENBA, GENBA, GENBA\nDo Stand in Their Shoes,\n Really Do."
+    },
+    "humanrights": {
+      "title": "Declaration of Multifaceted Human Rights",
+      "date": "Match 25, 2024",
+      "content": "We, All Diamonds, respect all kinds of blood, color, body, origin, tribe, gender, age, belief or religion.\n\nWe never accept any kind of discrimination, never allow people discriminate against the weak.\n\nWe maintain fair and green trades, never include any kind of discrimination, to serve the public interest."
+    }
+  },
+  "customers": {
+    "label": "Our Clients",
+    "title": "Trusted by Our Valued Clients",
+    "desc": "We are proud to collaborate with a wide range of trusted clients who rely on our quality, reliability, and commitment to excellence. Through close partnerships and continuous innovation, we strive to understand each client's unique needs and deliver solutions that create lasting value. Our dedication to high standards and long-term relationships enables us to consistently exceed expectations and build trust across every collaboration."
+  },
+  "product": {
     "loading": "Loading...",
-    "no_results": "No jobs found."
+    "not_found": "Product Not Found",
+    "back_to_products": "Back to Products",
+    "contact_us": "Contact Us",
+    "field_application": "Application",
+    "no_applications": "No applications listed",
+    "field_frequency": "Frequency",
+    "field_core_material": "Core Material",
+    "field_category": "Category",
+    "field_description": "Description",
+    "external_dimensions": "External Dimensions",
+    "specification": "Specification",
+    "related_products": "Related Products"
   },
-  "why": {
-    "title": "Why Choose Us"
+  "tech": {
+    "section_label": "Technology",
+    "transformer": {
+      "label": "Transformer",
+      "summary": "High-efficiency magnetic energy transfer for power conversion and isolation.",
+      "features": [
+        {
+          "title": "Isolation Transformers",
+          "desc": "Galvanic isolation between primary and secondary windings for safety and noise suppression."
+        },
+        {
+          "title": "Switching Transformers",
+          "desc": "Optimized for high-frequency SMPS applications with low core loss and precise inductance."
+        },
+        {
+          "title": "Pulse Transformers",
+          "desc": "Fast rise-time signal coupling for gate drive and digital isolation circuits."
+        },
+        {
+          "title": "Planar Transformers",
+          "desc": "Ultra-low profile PCB-mounted design for space-critical power modules."
+        },
+        {
+          "title": "3FL Switch Mode Transformer",
+          "desc": "With Diamond & Zebra's patented technology on bobbin structure, possible to reduce the size, and its dimension down by approximately 30% from the ordinary structure. Diamond & Zebra's 3FL series bobbin structure has a small groove on the pin-block in order to secure enough insulation distance (patended technology). By this technology, Diamond & Zebra's high-reliable and unique low-height structure becomes possible."
+        }
+      ]
+    },
+    "inductor": {
+      "label": "Inductor",
+      "summary": "Surface mount & through-hole inductors for DC-DC converters and RF circuits.",
+      "features": [
+        {
+          "title": "SMD Power Inductors",
+          "desc": "Shielded construction for low EMI in compact DC-DC converter designs up to 30A."
+        },
+        {
+          "title": "Multilayer Inductors",
+          "desc": "Ceramic multilayer process achieving sub-nH tolerances for GHz-range RF circuits."
+        },
+        {
+          "title": "Wirewound Inductors",
+          "desc": "High-Q wirewound construction for IF and impedance matching filter networks."
+        },
+        {
+          "title": "Variable Inductors",
+          "desc": "Adjustable slug-tuned coils for precision circuit alignment and calibration."
+        }
+      ]
+    },
+    "coil": {
+      "label": "Coil",
+      "summary": "Precision wound coils for power delivery and signal conditioning.",
+      "features": [
+        {
+          "title": "Power Choke Coils",
+          "desc": "High-current inductors for DC-DC converters with excellent saturation characteristics."
+        },
+        {
+          "title": "RF Coils",
+          "desc": "Air-core and ferrite-core designs tuned for radio frequency filtering and matching networks."
+        },
+        {
+          "title": "Toroidal Coils",
+          "desc": "Low EMI radiation with closed magnetic path, ideal for audio and precision measurement."
+        },
+        {
+          "title": "Bobbin Coils",
+          "desc": "Cost-effective wound assembly for relay, solenoid, and motor applications."
+        }
+      ]
+    },
+    "filter": {
+      "label": "Filter",
+      "summary": "EMI/EMC noise suppression solutions for industrial and automotive systems.",
+      "features": [
+        {
+          "title": "Common Mode Filters",
+          "desc": "Suppress common-mode noise on power and signal lines in automotive and industrial systems."
+        },
+        {
+          "title": "EMI Line Filters",
+          "desc": "Meets CISPR/EN 55032 Class B with combined differential and common mode attenuation."
+        },
+        {
+          "title": "LC Pi Filters",
+          "desc": "Multi-stage LC networks for power entry filtering in harsh electromagnetic environments."
+        },
+        {
+          "title": "Feedthrough Filters",
+          "desc": "Board-level filtering with direct chassis mounting for high-frequency interference rejection."
+        }
+      ]
+    },
+    "sensor": {
+      "label": "Sensor",
+      "summary": "Current & position sensing technology with galvanic isolation.",
+      "features": [
+        {
+          "title": "Current Transformers",
+          "desc": "Precision current sensing with wide bandwidth for energy metering and protection relays."
+        },
+        {
+          "title": "Rogowski Coils",
+          "desc": "Flexible air-core design for non-intrusive AC current measurement in tight spaces."
+        },
+        {
+          "title": "Hall Effect Sensors",
+          "desc": "Contactless DC/AC current sensing with galvanic isolation up to 3kV."
+        },
+        {
+          "title": "Magnetic Position Sensors",
+          "desc": "Rotary and linear position detection for motor control and industrial automation."
+        }
+      ]
+    }
   },
-  "process": {
-    "title": "Hiring Process"
-  },
-  "benefits": {
-    "stable":        { "title": "Stable Working Environment",      "desc": "We provide a stable and well-structured working environment with clear processes and long-term orientation." },
-    "career":        { "title": "Long-term Career Development",    "desc": "Employees are supported to develop their skills and build a sustainable career path within the company." },
-    "training":      { "title": "Training and Guidance",           "desc": "Regular training sessions and guidance from experienced team members are provided." },
-    "respect":       { "title": "Respectful Workplace",            "desc": "We value mutual respect, responsibility, and professionalism in daily work." },
-    "performance":   { "title": "Performance-based Evaluation",    "desc": "Salary and bonuses are reviewed based on individual performance and contribution." },
-    "activities":    { "title": "Company Activities",              "desc": "Annual events and internal activities are organized to strengthen team cohesion." },
-    "international": { "title": "International Collaboration",     "desc": "Opportunities to work with Japanese clients and follow international standards." },
-    "process":       { "title": "Process-oriented Work",           "desc": "Work is carried out following defined procedures to ensure quality and efficiency." }
-  },
-  "steps": {
-    "application": { "title": "Application Submission",  "desc": "Fill out the online form or send your CV via email. Response within 3 working days." },
-    "hr":          { "title": "HR Interview",             "desc": "A 30-minute call to understand you, your expectations, and company culture fit." },
-    "test":        { "title": "Technical Test",           "desc": "Online test or take-home assignment suitable for the position." },
-    "interview":   { "title": "Technical Interview",      "desc": "Meet with the tech lead and team. In-depth discussion about your experience and solutions." },
-    "offer":       { "title": "Offer & Onboarding",       "desc": "Receive offer letter within 1 week. Welcome to the team!" }
+  "career": {
+    "loading": "Loading...",
+    "not_found": "Job not found",
+    "job_openings": "Job Openings",
+    "job_opening": "Job Opening",
+    "business_content": "Business Content",
+    "required_skills": "Required Skills",
+    "recruitment_guidelines": "Recruitment Guidelines",
+    "salary": "Salary",
+    "position": "Position",
+    "probation": "Probation",
+    "working_hours": "Working Hours",
+    "location": "Location",
+    "contact_title": "Contact Us",
+    "field_name": "Name",
+    "field_email": "Email",
+    "field_phone": "Phone",
+    "field_cv": "CV",
+    "placeholder_name": "John Doe",
+    "cv_upload": "Upload your CV (PDF, DOC, DOCX)",
+    "submit": "Submit Application",
+    "form_success": "Your application has been submitted successfully!",
+    "form_error": "Something went wrong. Please try again.",
+    "form_server_error": "Unable to connect to the server. Please try again later.",
+    "benefits": "Benefits"
   }
-},
-
-"products": {
-  "category": "Category",
-  "applications": "Applications",
-  "results": "products",
-  "results_for": "results for",
-  "catalog_label": "Product Catalog",
-  "catalog_title": "Our Product Range",
-  "search_placeholder": "Search by name, application, category,...",
-  "view_product": "View Product",
-  "in_production": "In production",
-  "details": "Details",
-  "no_results": "No products found",
-  "try_keyword": "Try a different keyword or filter"
-},
-
-
-"news": {
-  "hero": {
-    "title": "News & Announcements",
-    "desc": "Latest product updates, certifications, and corporate news from ZVE."
-  },
-  "search_placeholder": "Search articles...",
-  "results_for": "Results for",
-  "all_articles": "All Articles",
-  "articles": "Articles",
-  "not_found": "Not found",
-  "categories": {
-    "all": "All", "products": "Products", "engineering": "Engineering",
-    "company": "Company", "awards": "Awards"
-  },
-  "sidebar": {
-    "archive": "Archive", "clear_filter": "Filter",
-    "categories": "Categories",
-    "japan_title": "News in Japan",
-    "japan_desc": "Read the latest news and updates from our headquarters in Japan.",
-    "japan_btn": "Japanese site"
-  }
-},
-
-"products_preview": {
-  "label": "Our Products",
-  "title": "Transformer Solutions",
-  "desc": "From engine components to safety systems, we deliver quality parts that meet the highest industry standards.",
-  "cta": "View All Products"
-},
-"news_preview": {
-  "label": "Latest News",
-  "title": "Innovation & Improvement",
-  "cta": "View All",
-  "read_more": "Read More"
-},
-
-"activities": {
-  "label": "Company Life",
-  "title": "Life at",
-  "view_all": "View all",
-  "view_all_card": "View all activities",
-  "events_count": "events & counting"
-},
-
-"office": {
-  "overview": {
-    "label": "OVERVIEW",
-    "title_1": "Where Innovation Meets",
-    "title_2": "Engineering",
-    "desc": "Diamond & Zebra Electric's Hanoi office, located at 19 Duy Tan, serves as a collaborative workspace for engineering coordination, project management, and client support in Vietnam.",
-    "items": ["Electronic Components R&D", "Mobility Equipment", "Energy Solutions", "Electronic Control Systems"]
-  },
-  "capabilities": {
-    "label": "CORE CAPABILITIES", "title": "What We Do",
-    "automotive":     { "title": "Automotive Electronics",      "items": ["Ignition coil", "ECU modules", "Sensors & control circuits", "Hybrid / EV components"] },
-    "energy":         { "title": "Energy Solutions",            "items": ["Charging systems", "Power conversion", "V2X / V2G solutions", "Smart charging systems"] },
-    "manufacturing":  { "title": "Manufacturing Engineering",   "items": ["Production line optimization", "Quality control", "Automation process", "Process monitoring"] },
-    "global":         { "title": "Global Technical Support",    "items": ["OEM client support", "Supply chain coordination", "R&D collaboration"] },
-    "electronic":     { "title": "Electronic Control Systems",  "items": ["Embedded control units", "Signal processing", "Firmware development", "System integration"] },
-    "mobility":       { "title": "Mobility Equipment",          "items": ["Next-gen mobility R&D", "Component testing", "Safety validation", "Prototype development"] }
-  },
-  "equipment": {
-    "label": "OFFICE FACILITIES", "title": "World-Class Workspace",
-    "desc": "Our office is equipped with high-performance engineering workstations, an electronic signal testing lab, and a dedicated R&D zone for next-generation automotive component prototyping.",
-    "workstations":  { "label": "High-Performance Workstations", "desc": "CAD/EDA-optimized engineering stations" },
-    "lab":           { "label": "Electronic Lab & Test Room",    "desc": "Module testing with precision instruments" },
-    "oscilloscopes": { "label": "Oscilloscopes & Signal Analyzers", "desc": "Advanced waveform and signal analysis" },
-    "server":        { "label": "Internal Server Infrastructure", "desc": "Secure on-premise data management" },
-    "meeting":       { "label": "Hybrid Meeting Rooms",          "desc": "Seamless collaboration across global offices" },
-    "dashboard":     { "label": "Production Dashboard Displays", "desc": "Real-time manufacturing monitoring" },
-    "qa":            { "label": "Component QA Equipment",        "desc": "End-to-end quality inspection systems" },
-    "rd":            { "label": "R&D Prototype Zone",            "desc": "Dedicated space for next-gen innovation" }
-  },
-  "gallery": {
-    "label": "GALLERY", "title": "Our Workspace",
-    "items": ["Open Workspace", "Client Meeting Room", "Testing Lab", "Prototype Zone", "Technical Discussion"]
-  },
-  "cta": {
-    "title": "Ready to collaborate?",
-    "desc": "Connect with our engineering team for technical inquiries, partnership opportunities, or product information.",
-    "button": "GET IN TOUCH"
-  }
-},
-
-"tabs": {
-  "established": "Established on",
-  "by_president": "by YuuRi Ono, President and CEO",
-  "mission": {
-    "title": "Our Mission", "date": "October 1, 2021",
-    "content": "We Are Diverse Shiny Diamonds.\nWe Are Seeking the Happiness of Our Comrades*,\nBy Supporting Our Customers First,\nBy Contributing to Society,\nWith the Commitment to Earn Their Trust.",
-    "footnote": "* I intentionally call employees Comrades as they are far more than colleagues or teammates: we have overcome fierce struggles against all odds in the past and now fight for a bright future, powered by our Scrum of Fire, a symbol of burning passion binding us as one."
-
-  },
-  "vision": {
-    "title": "Vision", "date": "August, 2023",
-    "content": "Contribute to the Improvement of Global Environment by Connecting Cars and Homes with Manufacturing"
-  },
-  "policies": {
-    "title": "President's Three Major Policies", "date": "July 4, 2016",
-    "content": "1. Meet Customer Quality Standards.\n2. Reduce Costs.\n3. Promote Positive Work Environment."
-  },
-  "quality": {
-    "title": "Quality Policy", "date": "October 31, 2017",
-    "content": "We Keep on Providing Peace of Mind,\nSafety and Excitement to the World \n by Striving to Meet the High Standards of \n Our World-Class Customers in Manufacturing."
-  },
-  "slogan": {
-    "title": "Slogan", "date": "January 7, 2021",
-    "content": "Re-Ignite the World",
-    "subtitle": "Reignition and Counterattack, Keep Pushing"
-  },
-  "manufacturing": {
-    "title": "President’s Manufacturing Policy", "date": "November 11, 2023",
-    "content": "GENBA, GENBA, GENBA\nDo Stand in Their Shoes.\n Really Do."
-  },
-  "humanrights": {
-    "title": "Declaration of Multifaceted Human Rights", "date": "Match 25, 2024",
-    "content": "We, All Diamonds, respect all kinds of blood, color, body, origin, tribe, gender, age, belief or religion.\n\nWe never accept any kind of discrimination, never allow people discriminate against the weak.\n\nWe maintain fair and green trades, never include any kind of discrimination, to serve the public interest."
-  }
-}
-
-
 }

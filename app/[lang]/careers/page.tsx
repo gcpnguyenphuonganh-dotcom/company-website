@@ -1,11 +1,10 @@
 "use client";
 
 import { useRouter, useParams } from "next/navigation";
-import { useState, useRef, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { HiMail, HiPhone, HiClipboardList, HiUser, HiCheckCircle } from 'react-icons/hi';
 import {
-  HiCash, HiTrendingUp, HiOutlineOfficeBuilding, HiHeart,
-  HiAcademicCap, HiGift, HiGlobe, HiLightningBolt
+  HiCash, HiTrendingUp, HiOutlineOfficeBuilding, HiHeart, HiGift, HiGlobe
 } from "react-icons/hi";
 import { MapPin, ChevronRight } from "lucide-react";
 import { useTranslation } from "react-i18next";
@@ -20,6 +19,7 @@ interface CareerField {
   probation: string;
   workingHours: string;
   location: string;
+  loca: string;
 }
 
 export default function CareersPage() {
@@ -27,7 +27,6 @@ export default function CareersPage() {
   const params = useParams();
   const lang = (params.lang as string) || "en";
   const { t } = useTranslation("common");
-
   const [fields, setFields] = useState<CareerField[]>([]);
   const [loadingFields, setLoadingFields] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
@@ -35,22 +34,20 @@ export default function CareersPage() {
   const [locations, setLocations] = useState<string[]>([]);
 
   const benefits = [
-    { icon: HiOutlineOfficeBuilding, title: t("careers.benefits.stable.title"),     desc: t("careers.benefits.stable.desc") },
-    { icon: HiTrendingUp,            title: t("careers.benefits.career.title"),      desc: t("careers.benefits.career.desc") },
-    { icon: HiAcademicCap,           title: t("careers.benefits.training.title"),    desc: t("careers.benefits.training.desc") },
-    { icon: HiHeart,                 title: t("careers.benefits.respect.title"),     desc: t("careers.benefits.respect.desc") },
-    { icon: HiCash,                  title: t("careers.benefits.performance.title"), desc: t("careers.benefits.performance.desc") },
-    { icon: HiGift,                  title: t("careers.benefits.activities.title"),  desc: t("careers.benefits.activities.desc") },
-    { icon: HiGlobe,                 title: t("careers.benefits.international.title"), desc: t("careers.benefits.international.desc") },
-    { icon: HiLightningBolt,         title: t("careers.benefits.process.title"),     desc: t("careers.benefits.process.desc") },
+    { icon: HiOutlineOfficeBuilding, title: t("careers.benefits.stable.title"), desc: t("careers.benefits.stable.desc") },
+    { icon: HiTrendingUp, title: t("careers.benefits.career.title"), desc: t("careers.benefits.career.desc") },
+    { icon: HiHeart, title: t("careers.benefits.respect.title"), desc: t("careers.benefits.respect.desc") },
+    { icon: HiCash, title: t("careers.benefits.performance.title"), desc: t("careers.benefits.performance.desc") },
+    { icon: HiGift, title: t("careers.benefits.activities.title"), desc: t("careers.benefits.activities.desc") },
+    { icon: HiGlobe, title: t("careers.benefits.international.title"), desc: t("careers.benefits.international.desc") },
   ];
 
   const steps = [
-    { icon: HiMail,          title: t("careers.steps.application.title"), desc: t("careers.steps.application.desc") },
-    { icon: HiPhone,         title: t("careers.steps.hr.title"),          desc: t("careers.steps.hr.desc") },
-    { icon: HiClipboardList, title: t("careers.steps.test.title"),        desc: t("careers.steps.test.desc") },
-    { icon: HiUser,          title: t("careers.steps.interview.title"),   desc: t("careers.steps.interview.desc") },
-    { icon: HiCheckCircle,   title: t("careers.steps.offer.title"),       desc: t("careers.steps.offer.desc") },
+    { icon: HiMail, title: t("careers.steps.application.title"), desc: t("careers.steps.application.desc") },
+    { icon: HiPhone, title: t("careers.steps.hr.title"), desc: t("careers.steps.hr.desc") },
+    { icon: HiClipboardList, title: t("careers.steps.test.title"), desc: t("careers.steps.test.desc") },
+    { icon: HiUser, title: t("careers.steps.interview.title"), desc: t("careers.steps.interview.desc") },
+    { icon: HiCheckCircle, title: t("careers.steps.offer.title"), desc: t("careers.steps.offer.desc") },
   ];
 
   useEffect(() => {
@@ -71,9 +68,11 @@ export default function CareersPage() {
           probation: item.probation,
           workingHours: item.workingHours,
           location: item.location,
+          loca: item.loca,
         }));
         setFields(mapped);
-        const uniqueLocations = [...new Set(mapped.map((f) => f.location).filter(Boolean))];
+
+        const uniqueLocations = [...new Set(mapped.map((f) => f.loca).filter(Boolean))];
         setLocations(uniqueLocations);
       } catch (err) {
         console.error(err);
@@ -87,29 +86,28 @@ export default function CareersPage() {
   const filteredFields = fields.filter(
     (f) =>
       f.title.toLowerCase().includes(searchQuery.toLowerCase()) &&
-      (selectedLocation === "" || f.location === selectedLocation)
+      (selectedLocation === "" || f.loca === selectedLocation)
   );
 
   return (
-    <main className="min-h-screen  text-gray-650 font-sans">
-
-      {/* Hero */}
-      <section className="relative overflow-hidden px-6 pt-24 pb-20 text-center">
+    <main className="min-h-screen text-gray-650 font-sans mt-16 sm:mt-20">
+      {/* ── 1. HERO ── */}
+      <section className="relative overflow-hidden text-center h-[300px] sm:h-[400px] lg:h-[500px]">
         <div className="absolute inset-0">
-          <img src="/banner-career.png" alt="Banner" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-black/40"></div>
+          <img src="/Career/hiring.png" alt="Banner" className="w-full h-full object-cover object-center" />
+          <div className="absolute inset-0 bg-black/50 sm:bg-black/40"></div>
         </div>
-        <div className="relative z-10 max-w-3xl mx-auto">
-          <h1 className="text-5xl md:text-6xl font-bold leading-tight mb-6 text-white">
+        <div className="relative z-10 max-w-3xl mx-auto px-6 flex flex-col items-center justify-center h-full">
+          <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold leading-tight mb-4 sm:mb-6 text-white">
             {t("careers.hero.title")}
           </h1>
-          <p className="text-lg text-gray-200 max-w-xl mx-auto mb-10 leading-relaxed">
+          <p className="text-sm sm:text-lg text-gray-200 max-w-xs sm:max-w-xl mx-auto mb-6 sm:mb-10 leading-relaxed">
             {t("careers.hero.desc")}
           </p>
         </div>
       </section>
 
-      {/* Recruitment Fields */}
+      {/* ── 2. RECRUITMENT FIELDS ── */}
       <section className="px-6 py-20 max-w-6xl mx-auto">
         <div className="mb-8">
           <h2 className="text-3xl font-bold text-gray-800">{t("careers.fields.title")}</h2>
@@ -155,9 +153,9 @@ export default function CareersPage() {
                     </p>
                     <span className="text-xs text-gray-400 group-hover:text-[#013478]/70 flex items-center gap-1 mt-0.5 transition-colors duration-200">
                       <MapPin className="w-3 h-3" />
-                      {f.location}
+                      {f.loca}
                     </span>
-                    <p className="text-sm text-gray-500 mt-1">{f.description}</p>
+                    <p className="text-sm text-gray-500 mt-1">{t("careers.fields.salary")} {f.salary}</p>
                   </div>
                 </div>
                 <ChevronRight className="w-4 h-4 text-gray-300 group-hover:text-[#013478] group-hover:translate-x-1 transition-all duration-200 flex-shrink-0" />
@@ -170,39 +168,38 @@ export default function CareersPage() {
         )}
       </section>
 
-      {/* Hiring Process */}
-      <section className="px-6 py-20  bg-[#fafafa]">
+      {/* ── 3. HIRING PROCESS ── */}
+      <section className="px-6 py-20 bg-[#fafafa]">
         <div className="max-w-3xl mx-auto">
-            <h2 className="text-3xl font-bold text-gray-800 mb-12 text-center">{t("careers.process.title")}</h2>
-            <div className="flex flex-col gap-10">
-              {steps.map((step, index) => {
-                const Icon = step.icon;
-                return (
-                  <div key={index} className="flex items-start gap-6">
-                    <div className="flex-shrink-0">
-                      <div className="w-12 h-12 flex items-center justify-center rounded-full bg-[#013478]/10 text-[#013478] text-2xl">
-                        <Icon />
-                      </div>
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-semibold text-gray-800">{step.title}</h3>
-                      <p className="text-gray-600 mt-1">{step.desc}</p>
+          <h2 className="text-3xl font-bold text-gray-800 mb-12 text-center">{t("careers.process.title")}</h2>
+          <div className="flex flex-col gap-10">
+            {steps.map((step, index) => {
+              const Icon = step.icon;
+              return (
+                <div key={index} className="flex items-start gap-6">
+                  <div className="flex-shrink-0">
+                    <div className="w-12 h-12 flex items-center justify-center rounded-full bg-[#013478]/10 text-[#013478] text-2xl">
+                      <Icon />
                     </div>
                   </div>
-                );
-              })}
-            </div>
+                  <div>
+                    <h3 className="text-xl font-semibold text-gray-800">{step.title}</h3>
+                    <p className="text-gray-600 mt-1">{step.desc}</p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </div>
-        
       </section>
 
-      {/* Why Choose Us */}
+      {/* ── 4. WHY CHOOSE US ── */}
       <section className="px-6 py-20 bg-[#fff]">
         <div className="max-w-6xl mx-auto">
           <div className="mb-12 text-center">
             <h2 className="text-3xl font-bold text-gray-800">{t("careers.why.title")}</h2>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {benefits.map((b, i) => (
               <div key={i} className="group p-6 rounded-2xl bg-white border border-gray-100 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col items-center text-center">
                 <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-[#013478]/10 mb-4">
@@ -216,9 +213,6 @@ export default function CareersPage() {
           </div>
         </div>
       </section>
-
-      
-
     </main>
   );
 }

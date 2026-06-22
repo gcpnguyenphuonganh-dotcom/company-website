@@ -6,9 +6,11 @@ import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useTranslation } from "react-i18next";
 import { fetchStrapi } from "@/lib/strapi";
-import TechSection from "@/components/techSection";
+import TechSection from "@/components/ProductsPage/TechSection";
 import { useSearchParams } from "next/navigation";
 import { useState, useEffect, useCallback, useRef, Suspense } from "react";
+import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
 
 type Product = {
   id: number;
@@ -33,7 +35,7 @@ const GRADIENTS = [
   ["#010f2e", "#013478"],
 ];
 
-// ── PAGINATION COMPONENT ──
+
 function Pagination({ current, total, onChange }: {
   current: number;
   total: number;
@@ -70,11 +72,10 @@ function Pagination({ current, total, onChange }: {
           <button
             key={p}
             onClick={() => onChange(p as number)}
-            className={`${btn} ${
-              current === p
+            className={`${btn} ${current === p
                 ? "bg-[#013478] text-white border-[#013478]"
                 : "border-black/20 text-black hover:border-[#013478] hover:text-[#013478]"
-            }`}
+              }`}
           >
             {p}
           </button>
@@ -91,8 +92,8 @@ function Pagination({ current, total, onChange }: {
   );
 }
 
-// ── REMOVE WHITE BACKGROUND FROM IMAGE ──
-function RemoveBgImage({
+
+ function RemoveBgImage({
   src,
   alt,
   className,
@@ -172,7 +173,7 @@ function RemoveBgImage({
   );
 }
 
-// ── BANNER COMPONENT ──
+
 function Banner({
   products, lang, t, activeTab, onTabChange,
 }: {
@@ -216,7 +217,7 @@ function Banner({
         <span className="text-white/60 font-bold">{String(cur + 1).padStart(2, "0")}</span> / {String(products.length).padStart(2, "0")}
       </div>
 
-      {/* Ảnh absolute chiếm vùng phải */}
+     
       <div
         className="absolute right-0 top-0 bottom-0 w-[55%] hidden lg:block"
         style={{ opacity: fading ? 0 : 1, transform: fading ? "scale(0.97)" : "scale(1)", transition: "opacity 0.38s ease, transform 0.38s ease" }}
@@ -243,7 +244,7 @@ function Banner({
         )}
       </div>
 
-      {/* Text bên trái */}
+     
       <div className="relative h-full max-w-7xl mx-auto px-6 flex items-center">
         <div
           className="flex flex-col justify-center w-full lg:w-[45%]"
@@ -251,11 +252,16 @@ function Banner({
         >
           <h1 className="text-5xl lg:text-[62px] font-black text-white leading-[1.05] tracking-tight mb-3 max-w-2xl">{item.name}</h1>
           <p className="text-slate-400 text-base leading-relaxed max-w-lg mb-8">{item.tagline}</p>
-          <Link href={`/${lang}/products/${item.slug}`}
-            className="inline-flex items-center gap-2 px-6 py-3 bg-[#013478] hover:bg-[#4a7fd4] text-white text-sm font-bold rounded-xl transition-all duration-200 w-fit border border-[#4a7fd4]/30">
-            {t("products.view_product")}
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
-          </Link>
+          <Button
+            size="lg"
+            className="bg-[#013478] hover:bg-[#4a7fd4] text-white transition-all duration-200 group w-fit border border-[#4a7fd4]/30"
+            asChild
+          >
+            <Link href={`/${lang}/products/${item.slug}`}>
+              {t("products.view_product")}
+              <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
+            </Link>
+          </Button>
         </div>
       </div>
 
@@ -282,14 +288,13 @@ function Banner({
           <button
             key={tab}
             onClick={() => onTabChange(tab)}
-            className={`relative flex items-center gap-2.5 px-8 py-4 text-sm font-semibold tracking-wide transition-all duration-300 ${
-              activeTab === tab ? "bg-white text-[#020c1a]" : "text-white/50 hover:text-white bg-transparent"
-            }`}
+            className={`relative flex items-center gap-2.5 px-8 py-4 text-sm font-semibold tracking-wide transition-all duration-300 ${activeTab === tab ? "bg-white text-[#020c1a]" : "text-white/50 hover:text-white bg-transparent"
+              }`}
           >
             {i > 0 && (
               <span className={`absolute left-0 top-3 bottom-3 w-px ${activeTab === tab ? "bg-black/10" : "bg-white/15"}`} />
             )}
-            {tab === "product" ? "Product" : "Technology"}
+            {tab === "product" ? t("products.tab_product") : t("products.tab_technology")}
             <span className={`absolute bottom-0 left-4 right-4 h-[2px] rounded-full transition-all duration-300 ${activeTab === tab ? "bg-[#013478] opacity-100" : "opacity-0"}`} />
           </button>
         ))}
@@ -298,7 +303,6 @@ function Banner({
   );
 }
 
-// ── PRODUCT CARD ──
 function ProductCard({ p, lang, t }: { p: Product; lang: string; t: any }) {
   const imgUrl = p.image?.[0]?.url
     ? `${process.env.NEXT_PUBLIC_STRAPI_URL}${p.image[0].url}`
@@ -341,7 +345,6 @@ function ProductCard({ p, lang, t }: { p: Product; lang: string; t: any }) {
   );
 }
 
-// ── CATEGORY LIST ──
 function CategoryList({ activeCategory, products, onChange }: {
   activeCategory: string;
   products: Product[];
@@ -354,9 +357,8 @@ function CategoryList({ activeCategory, products, onChange }: {
   return (
     <div className="divide-y divide-black/8">
       <button onClick={() => onChange("All")}
-        className={`w-full flex justify-between items-center px-5 py-3 text-sm transition-colors text-left ${
-          activeCategory === "All" ? "bg-[#1a2f4a] text-white" : "bg-white text-black/70 hover:bg-black/5"
-        }`}>
+        className={`w-full flex justify-between items-center px-5 py-3 text-sm transition-colors text-left ${activeCategory === "All" ? "bg-[#1a2f4a] text-white" : "bg-white text-black/70 hover:bg-black/5"
+          }`}>
         <span className="font-medium">All</span>
         <span className={activeCategory === "All" ? "text-white/60" : "text-black/35"}>{products.length}</span>
       </button>
@@ -365,9 +367,8 @@ function CategoryList({ activeCategory, products, onChange }: {
         const isActive = activeCategory === value;
         return (
           <button key={value} onClick={() => onChange(value)}
-            className={`w-full flex justify-between items-center px-5 py-3 text-sm transition-colors text-left ${
-              isActive ? "bg-[#1a2f4a] text-white" : "bg-white text-black/70 hover:bg-black/5"
-            }`}>
+            className={`w-full flex justify-between items-center px-5 py-3 text-sm transition-colors text-left ${isActive ? "bg-[#1a2f4a] text-white" : "bg-white text-black/70 hover:bg-black/5"
+              }`}>
             <span>{value}</span>
             <span className={isActive ? "text-white/60" : "text-black/35"}>{count}</span>
           </button>
@@ -377,7 +378,6 @@ function CategoryList({ activeCategory, products, onChange }: {
   );
 }
 
-// ── APPLICATION FILTER ──
 function ApplicationFilter({ activeApp, products, onChange }: {
   activeApp: string;
   products: Product[];
@@ -398,9 +398,8 @@ function ApplicationFilter({ activeApp, products, onChange }: {
   return (
     <div className="divide-y divide-black/8">
       <button onClick={() => onChange("All")}
-        className={`w-full flex justify-between items-center px-5 py-3 text-sm transition-colors text-left ${
-          activeApp === "All" ? "bg-[#1a2f4a] text-white" : "bg-white text-black/70 hover:bg-black/5"
-        }`}>
+        className={`w-full flex justify-between items-center px-5 py-3 text-sm transition-colors text-left ${activeApp === "All" ? "bg-[#1a2f4a] text-white" : "bg-white text-black/70 hover:bg-black/5"
+          }`}>
         <span className="font-medium">All</span>
         <span className={activeApp === "All" ? "text-white/60" : "text-black/35"}>{products.length}</span>
       </button>
@@ -411,10 +410,9 @@ function ApplicationFilter({ activeApp, products, onChange }: {
         const isActive = activeApp === app;
         return (
           <button key={app} onClick={() => onChange(app)}
-            className={`w-full flex justify-between items-center px-5 py-3 text-sm transition-colors text-left ${
-              isActive ? "bg-[#1a2f4a] text-white" : "bg-white text-black/65 hover:bg-black/5 hover:text-black"
-            }`}>
-            <span className="line-clamp-1">{app}</span>
+            className={`w-full flex justify-between items-center px-5 py-3 text-sm transition-colors text-left ${isActive ? "bg-[#1a2f4a] text-white" : "bg-white text-black/65 hover:bg-black/5 hover:text-black"
+              }`}>
+            <span className="break-words leading-snug">{app}</span>
             <span className={`flex-shrink-0 ml-2 ${isActive ? "text-white/60" : "text-black/30"}`}>{count}</span>
           </button>
         );
@@ -423,7 +421,6 @@ function ApplicationFilter({ activeApp, products, onChange }: {
   );
 }
 
-// ── MAIN CONTENT ──
 function ProductsContent() {
   const params = useParams();
   const searchParams = useSearchParams();

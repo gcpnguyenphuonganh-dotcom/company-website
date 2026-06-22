@@ -10,7 +10,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html className="h-full antialiased">
-      <body className="min-h-screen flex flex-col">
+      <body className="min-h-screen flex flex-col font-sans">
         {children}
       </body>
     </html>

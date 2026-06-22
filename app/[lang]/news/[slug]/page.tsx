@@ -29,7 +29,6 @@ export default function ArticlePage({ params }: { params: Promise<{ slug: string
   const [others, setOthers] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
-  // ── SCROLL + VISIBLE ──
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 20);
@@ -42,16 +41,12 @@ export default function ArticlePage({ params }: { params: Promise<{ slug: string
     return () => { window.removeEventListener("scroll", onScroll); clearTimeout(t); };
   }, []);
 
-  // ── FETCH ARTICLE ──
   useEffect(() => {
-    
+
     fetchStrapi(`/api/news?filters[slug][$eq]=${slug}&populate=*&sort[0]=createdAt:desc`, locale)
       .then((res) => {
-        console.log("🔥 MAIN ARTICLE API:", res);  //test
         if (!res.data?.length) return;
         const item = res.data[0];
-
-        console.log("📌 FIRST ITEM:", item); // 👈 THÊM LUÔN
         const mapped = {
           id: item.id,
           slug: item.slug,
@@ -64,28 +59,22 @@ export default function ArticlePage({ params }: { params: Promise<{ slug: string
             : "",
           date: item.createdAt
             ? new Date(item.createdAt).toLocaleDateString("en-GB", {
-                day: "2-digit", month: "short", year: "numeric",
-              })
+              day: "2-digit", month: "short", year: "numeric",
+            })
             : "",
           author: item.author ?? "",
         };
-
-         console.log("✅ MAPPED ARTICLE:", mapped); //test
+  
         setArticle(mapped);
 
-        // Fetch related cùng category
         return Promise.all([
           fetchStrapi(`/api/news?filters[category][$eq]=${item.category}&filters[slug][$ne]=${slug}&populate=*&pagination[pageSize]=3`, locale),
           fetchStrapi(`/api/news?filters[category][$ne]=${item.category}&filters[slug][$ne]=${slug}&populate=*&pagination[pageSize]=3`, locale),
         ]);
       })
       .then((results) => {
-        console.log("🧨 RELATED API RESULTS:", results); // 👈 THÊM Ở ĐÂY
         if (!results) return;
         const [relRes, othRes] = results;
-
-        console.log("📦 relRes:", relRes);
-        console.log("📦 othRes:", othRes);
 
         const mapItem = (item: any) => ({
           id: item.id,
@@ -103,16 +92,11 @@ export default function ArticlePage({ params }: { params: Promise<{ slug: string
 
         setRelated(relRes?.data?.map(mapItem) ?? []);
         setOthers(othRes?.data?.map(mapItem) ?? []);
-
-        console.log("🟢 relRes.data:", relRes?.data);
-        console.log("🟡 othRes.data:", othRes?.data);
       })
       .catch((err) => console.error(err))
       .finally(() => setLoading(false));
-      
-  }, [slug, locale]);
-  
 
+  }, [slug, locale]);
 
   const handleCopy = () => {
     navigator.clipboard.writeText(window.location.href);
@@ -120,7 +104,6 @@ export default function ArticlePage({ params }: { params: Promise<{ slug: string
     setTimeout(() => setCopied(false), 2200);
   };
 
-  // ── LOADING STATE ──
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-white">
@@ -129,7 +112,7 @@ export default function ArticlePage({ params }: { params: Promise<{ slug: string
     );
   }
 
-  // ── 404 STATE ──
+
   if (!article) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-white">
@@ -151,71 +134,24 @@ export default function ArticlePage({ params }: { params: Promise<{ slug: string
       {/* Read progress bar */}
       <div className="fixed top-0 left-0 z-[60] h-[2px] bg-blue-500 transition-all duration-100"
         style={{ width: `${readProgress}%` }} />
-
       {/* ── NAV ── */}
-      <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled ? "border-b border-black/10 backdrop-blur-2xl bg-white/90" : "border-b border-transparent"
-        }`}
-      >
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex items-center justify-between h-16">
-            <button onClick={() => router.push("/")} className="flex items-center gap-3 group">
-              <div className="relative w-9 h-9">
-                <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-cyan-400 to-violet-600 opacity-90" />
-                <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-cyan-400 to-violet-600 blur-md opacity-35" />
-                <span className="relative flex items-center justify-center w-full h-full text-sm font-black text-white">N</span>
-              </div>
-              <span className="font-black text-base tracking-tight">NexTech</span>
-            </button>
-
-            <nav className="hidden lg:flex items-center gap-1">
-              {navLinks.map((link) => (
-                <button key={link.label} onClick={() => router.push(link.href)}
-                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
-                    link.active ? "text-black bg-black/[0.06]" : "text-black/45 hover:text-black/80 hover:bg-black/[0.04]"
-                  }`}>
-                  {link.label}
-                </button>
-              ))}
-            </nav>
-
-            <div className="flex items-center gap-3">
-              <button onClick={handleCopy}
-                className="hidden sm:flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-medium border border-black/10 hover:border-black/20 hover:bg-black/5 transition-all">
-                {copied
-                  ? <><span className="text-emerald-500">✓</span><span className="text-emerald-500">Copied</span></>
-                  : <><span>🔗</span><span className="text-black/50">Share</span></>}
-              </button>
-              <button onClick={() => router.push("/products")}
-                className="px-4 py-2 rounded-xl text-sm font-semibold text-white hover:opacity-90 transition-opacity"
-                style={{ background: "linear-gradient(135deg,#06b6d4,#7c3aed)" }}>
-                Try now
-              </button>
-            </div>
-          </div>
-        </div>
-      </header>
 
       <main className="relative z-10 pt-16">
-
         {/* ── ARTICLE HERO ── */}
         <section className="max-w-7xl mx-auto px-6 pt-14 pb-10">
           <div className={`transition-all duration-700 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-
             {/* Breadcrumb */}
             <div className="flex items-center gap-2 text-xs text-black/30 mb-8">
               <button onClick={() => router.push("/")} className="hover:text-black/55 transition-colors">Home</button>
               <span>/</span>
               <button onClick={() => router.push("/news")} className="hover:text-black/55 transition-colors">News</button>
               <span>/</span>
-              <span className="text-blue-600">{article.category}</span>
+              <span className="text-black/55">{article.category}</span>
             </div>
-
             {/* Title block */}
             <div className="max-w-3xl">
               <div className="flex flex-wrap items-center gap-3 mb-6">
-                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold border border-blue-200 text-blue-700 bg-blue-50">
+                <span className="inline-flex items-center px-3 py-1 text-xs font-semibold border border-black/20 text-black/50 ">
                   {article.category}
                 </span>
                 <span className="text-black/25 text-xs">·</span>
@@ -227,17 +163,15 @@ export default function ArticlePage({ params }: { params: Promise<{ slug: string
                   </>
                 )}
               </div>
-
-              <h1 className="text-3xl md:text-4xl xl:text-5xl font-black tracking-tight leading-[1.1] mb-6 text-black">
+              <h1 className="text-3xl md:text-4xl xl:text-5xl font-black  tracking-tight leading-[1.1] mb-6 text-black">
                 {article.title}
               </h1>
 
               {article.excerpt && (
                 <div className="pl-4 mb-10 border-l-2 border-blue-300">
-                  <p className="text-black/50 text-lg leading-relaxed">{article.excerpt}</p>
+                  <p className="text-black/50 text-lg text-justify leading-relaxed">{article.excerpt}</p>
                 </div>
               )}
-
               {article.img && (
                 <div className="w-full rounded-2xl overflow-hidden mb-10">
                   <img src={article.img} alt={article.title} className="w-full h-[420px] object-cover" />
@@ -246,53 +180,51 @@ export default function ArticlePage({ params }: { params: Promise<{ slug: string
             </div>
           </div>
         </section>
-
         {/* ── ARTICLE BODY ── */}
         <article className="max-w-7xl mx-auto px-6 pb-16">
           <div className={`max-w-3xl transition-all duration-700 delay-100 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
             <div className="space-y-4">
               {Array.isArray(article.content)
                 ? article.content.map((block: any, i: number) => {
-                    if (block.type === "paragraph") {
-                      const parts = block.children ?? [];
-                      return (
-                        <p key={i} className="text-[17px] leading-8 text-black/70">
-                          {parts.map((part: any, j: number) =>
-                            part.bold ? (
-                              <strong key={j} className="text-black/90 font-semibold">{part.text}</strong>
-                            ) : (
-                              <span key={j}>{part.text}</span>
-                            )
-                          )}
-                        </p>
-                      );
-                    }
-                    if (block.type === "heading") {
-                      return (
-                        <h2 key={i} className="text-xl md:text-2xl font-black tracking-tight mt-10 mb-1 text-black">
-                          {block.children?.map((c: any) => c.text).join("")}
-                        </h2>
-                      );
-                    }
-                    if (block.type === "list") {
-                      return (
-                        <ul key={i} className="list-disc list-inside space-y-1 text-[17px] leading-8 text-black/70">
-                          {block.children?.map((item: any, j: number) => (
-                            <li key={j}>{item.children?.map((c: any) => c.text).join("")}</li>
-                          ))}
-                        </ul>
-                      );
-                    }
-                    return null;
-                  })
+                  if (block.type === "paragraph") {
+                    const parts = block.children ?? [];
+                    return (
+                      <p key={i} className="text-[17px] leading-8 text-justify text-black/70">
+                        {parts.map((part: any, j: number) =>
+                          part.bold ? (
+                            <strong key={j} className="text-black/90 font-semibold">{part.text}</strong>
+                          ) : (
+                            <span key={j}>{part.text}</span>
+                          )
+                        )}
+                      </p>
+                    );
+                  }
+                  if (block.type === "heading") {
+                    return (
+                      <h2 key={i} className="text-xl md:text-2xl font-black text-justify tracking-tight mt-10 mb-1 text-black">
+                        {block.children?.map((c: any) => c.text).join("")}
+                      </h2>
+                    );
+                  }
+                  if (block.type === "list") {
+                    return (
+                      <ul key={i} className="list-disc list-inside space-y-1 text-justify text-[17px] leading-8 text-black/70">
+                        {block.children?.map((item: any, j: number) => (
+                          <li className="text-justify" key={j}>{item.children?.map((c: any) => c.text).join("")}</li>
+                        ))}
+                      </ul>
+                    );
+                  }
+                  return null;
+                })
                 : article.content?.split("\n\n").filter(Boolean).map((para: string, i: number) => (
-                    <p key={i} className="text-[17px] leading-8 text-black/70">{para}</p>
-                  ))
+                  <p key={i} className="text-[17px] leading-8 text-justify text-black/70">{para}</p>
+                ))
               }
             </div>
           </div>
         </article>
-
         {/* ── RELATED ── */}
         {related.length > 0 && (
           <section className="max-w-7xl mx-auto px-6 pb-16">
@@ -307,7 +239,7 @@ export default function ArticlePage({ params }: { params: Promise<{ slug: string
                   className="group text-left relative overflow-hidden rounded-2xl border border-black/10 hover:border-black/20 transition-all duration-200 hover:-translate-y-0.5 p-5 bg-white hover:shadow-md">
                   <div className="h-[2px] absolute top-0 left-0 right-0 rounded-t-2xl bg-black/10" />
                   <div className="flex items-center gap-2 mb-3">
-                    <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold border border-black/10 text-black/50">
+                    <span className="inline-flex items-center px-2.5 py-0.5 text-xs font-semibold  border border-black/20 text-black/50">
                       {rel.category}
                     </span>
                   </div>
@@ -318,7 +250,6 @@ export default function ArticlePage({ params }: { params: Promise<{ slug: string
             </div>
           </section>
         )}
-
         {/* ── MORE ARTICLES ── */}
         {others.length > 0 && (
           <section className="max-w-7xl mx-auto px-6 pb-16">
@@ -335,7 +266,7 @@ export default function ArticlePage({ params }: { params: Promise<{ slug: string
                   className="group text-left relative overflow-hidden rounded-2xl border border-black/10 hover:border-black/20 transition-all duration-200 hover:-translate-y-0.5 p-5 bg-white hover:shadow-md">
                   <div className="h-[2px] absolute top-0 left-0 right-0 rounded-t-2xl bg-black/10" />
                   <div className="flex items-center gap-2 mb-3">
-                    <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold border border-black/10 text-black/50">
+                    <span className="inline-flex items-center px-2.5 py-0.5  text-xs font-semibold border border-black/20 text-black/50">
                       {rel.category}
                     </span>
                   </div>
@@ -346,7 +277,6 @@ export default function ArticlePage({ params }: { params: Promise<{ slug: string
             </div>
           </section>
         )}
-
       </main>
     </div>
   );
