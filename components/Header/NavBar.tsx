@@ -126,7 +126,7 @@ export default function Navbar() {
     >
       {/* Logo */}
       <Link href={`/${lang}`} className="flex items-center gap-2 z-10">
-        <img src="/header/header_logo.png" alt="Company Logo" className=" transition-all duration-300 "
+        <img src="/Header/header_logo.png" alt="Company Logo" className=" transition-all duration-300 "
           style={{ height: 'clamp(1rem, 5vw, 2rem)', width: 'clamp(12rem, 12vw, 22rem)', }} />
       </Link>
 
@@ -180,7 +180,7 @@ export default function Navbar() {
                     marginRight: '2.5rem', gap: '0.6rem',
                   }}>
                     <div style={{ borderRadius: 12, overflow: 'hidden', background: '#f0f4ff', flex: 1 }}>
-                      <img src="/header/anhcty.png" alt="About"
+                      <img src="/Header/anhcty.png" alt="About"
                         style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', minHeight: 250 }} />
                     </div>
                   </div>

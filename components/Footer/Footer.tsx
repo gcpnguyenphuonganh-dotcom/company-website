@@ -59,7 +59,7 @@ export default function Footer() {
           <div className="sm:col-span-2 lg:col-span-1">
             <div className="flex items-center gap-3 mb-4">
               <img
-                src="/footer/footer_logo.png"
+                src="/Footer/footer_logo.png"
                 alt={t("footer.logo_alt")}
                 className="w-full h-auto object-contain object-left flex-shrink-0"
               />
