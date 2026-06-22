@@ -6,7 +6,7 @@ import { usePathname, useParams } from 'next/navigation'
 import { useTranslation } from 'react-i18next'
 import LanguageSwitcher from '@/components/Header/Language'
 
-const DROPDOWN_IMAGE = '/Products/HFT.png'
+const DROPDOWN_IMAGE = '/Header/HFT.png'
 
 interface Product {
   slug: string
