@@ -10,7 +10,7 @@ const partners = [
   "DAIKIN​",
   "FUJITSU",
   "MITSUBISHI",
-  "TOSHIBA \n Carrier",
+  "Toshiba \n Carrier",
   "TOYOTA​",
   "mazDa​",
   "Yamaha​",
@@ -46,7 +46,9 @@ export default function OurCustomers() {
               key={partner}
               className="flex items-center justify-center h-[72px]  px-4 border border-gray-200 rounded-xl bg-gray-50 hover:bg-[#013478]/5 hover:border-[#013478]/30 hover:scale-[1.05] transition-all duration-300"
             >
-              <span className="text-[13px] font-semibold text-gray-500 hover:text-[#013478] transition-colors whitespace-pre-line items-center justify-center">
+              <span
+                style={{ fontVariantCaps: 'all-small-caps' }}
+                className="text-[13px] font-semibold text-gray-500 hover:text-[#013478] transition-colors whitespace-pre-line items-center justify-center">
                 {typeof partner === 'string' ? partner.replaceAll('\\n', '\n') : partner}
               </span>
             </div>

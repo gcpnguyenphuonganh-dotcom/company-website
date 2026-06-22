@@ -11,7 +11,7 @@ const partners = [
   "DAIKIN​",
   "FUJITSU",
   "MITSUBISHI",
-  "TOSHIBA Carrier",
+  "Toshiba Carrier",
   "TOYOTA​",
   "mazDa​",
   "Yamaha​",
@@ -55,8 +55,8 @@ export default function PartnersSection() {
             <div className="w-6 h-px bg-blue-900" />
             <span
               className={`inline-block text-sm font-medium text-[#013478] tracking-widest uppercase transition-all duration-700 ${inView
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-10"
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-10"
                 }`}
             >
               {t("partnersSection.badge")}
@@ -66,8 +66,8 @@ export default function PartnersSection() {
 
           <h2
             className={`text-4xl md:text-5xl font-bold text-foreground mt-4 text-balance transition-all duration-700 delay-200 ${inView
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-10"
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 translate-y-10"
               }`}
           >
             {t("partnersSection.title")}
@@ -81,7 +81,9 @@ export default function PartnersSection() {
               key={partner}
               className="flex items-center justify-center h-18 px-6 py-4 border border-border rounded-xl bg-muted/30 hover:bg-primary/5 hover:border-primary/30 hover:scale-105 transition-all duration-300"
             >
-              <span className="text-xl font-bold text-muted-foreground hover:text-foreground transition-colors duration-300">
+              <span
+                style={{ fontVariantCaps: 'all-small-caps' }}
+                className="text-xl font-bold text-muted-foreground hover:text-foreground transition-colors duration-300">
                 {partner}
               </span>
             </div>
