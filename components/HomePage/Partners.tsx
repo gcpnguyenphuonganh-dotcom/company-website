@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next"
 const partners = [
   "Canon",
   "Brother​",
-  "FUJI XEROX",
+  "FUJIFILM",
   "Panasonic​",
   "DAIKIN​",
   "FUJITSU",
@@ -15,11 +15,11 @@ const partners = [
   "TOYOTA​",
   "mazDa​",
   "Yamaha​",
+  "Nichicon",
   "SHARP",
   "HITACHI​",
   "MITSUMI",
   "TDK-Lambda​",
-
 ]
 
 export default function PartnersSection() {
