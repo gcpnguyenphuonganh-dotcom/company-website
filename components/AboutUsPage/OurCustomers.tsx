@@ -2,7 +2,7 @@
 
 import { useTranslation } from "react-i18next";
 
-const beforeMazda = ["Canon", "Brother", "FUJIFILM", "Panasonic", "DAIKIN", "FUJITSU", "MITSUBISHI", "Toshiba \n Carrier", "TOYOTA"];
+const beforeMazda = ["Canon", "Brother", "FUJIFILM", "Panasonic", "DAIKIN", "FUJITSU", "MITSUBISHI", "TOSHIBA \n Carrier", "TOYOTA"];
 const afterMazda = ["Yamaha", "Nichicon", "SHARP", "HITACHI", "MITSUMI", "TDK-Lambda"];
 
 export default function OurCustomers() {

@@ -25,9 +25,8 @@ export default function PartnersSection() {
   const partnerClass = "flex items-center justify-center h-18 px-6 py-4 border border-border rounded-xl bg-muted/30 hover:bg-primary/5 hover:border-primary/30 hover:scale-105 transition-all duration-300"
   const spanClass = "text-xl font-bold text-muted-foreground hover:text-foreground transition-colors duration-300"
 
-  const before = ["Canon", "Brother", "FUJIFILM", "Panasonic", "DAIKIN", "FUJITSU", "MITSUBISHI", "Toshiba Carrier", "TOYOTA"]
+  const before = ["Canon", "Brother", "FUJIFILM", "Panasonic", "DAIKIN", "FUJITSU", "MITSUBISHI", "TOYOTA"]
   const after = ["Yamaha", "Nichicon", "SHARP", "HITACHI", "MITSUMI", "TDK-Lambda"]
-
   return (
     <section id="partners" ref={ref} className="py-24 bg-background overflow-hidden">
       <div className="container mx-auto px-6">
@@ -46,17 +45,34 @@ export default function PartnersSection() {
         </div>
 
         {/* Partners Grid */}
+        {/* Partners Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3">
-          {before.map((partner) => (
+          {["Canon", "Brother", "FUJIFILM", "Panasonic", "DAIKIN", "FUJITSU"].map((partner) => (
             <div key={partner} className={partnerClass}>
               <span className={spanClass}>{partner}</span>
             </div>
           ))}
 
+          {/* MITSUBISHI */}
+          <div className={partnerClass}>
+            <span className={spanClass}>MITSUBISHI</span>
+          </div>
+
+          {/* TOSHIBA Carrier — 2 dòng, căn giữa */}
+          <div className={`${partnerClass} flex-col gap-0.5`}>
+            <span className={`${spanClass} leading-tight`}>TOSHIBA</span>
+            <span className={`${spanClass} leading-tight`}>Carrier</span>
+          </div>
+
+          {/* TOYOTA */}
+          <div className={partnerClass}>
+            <span className={spanClass}>TOYOTA</span>
+          </div>
+
           {/* mazDa */}
           <div className={partnerClass}>
             <span className={spanClass}>
-              maz<span style={{ fontSize: '15px' }}>D</span>a
+              maz<span style={{ fontSize: "15px" }}>D</span>a
             </span>
           </div>
 
