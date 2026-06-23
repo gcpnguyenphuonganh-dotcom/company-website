@@ -45,7 +45,6 @@ export default function PartnersSection() {
         </div>
 
         {/* Partners Grid */}
-        {/* Partners Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3">
           {["Canon", "Brother", "FUJIFILM", "Panasonic", "DAIKIN", "FUJITSU"].map((partner) => (
             <div key={partner} className={partnerClass}>

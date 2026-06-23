@@ -2,7 +2,7 @@
 
 import { useTranslation } from "react-i18next";
 
-const beforeMazda = ["Canon", "Brother", "FUJIFILM", "Panasonic", "DAIKIN", "FUJITSU", "MITSUBISHI", "TOSHIBA \n Carrier", "TOYOTA"];
+const beforeMazda = ["Canon", "Brother", "FUJIFILM", "Panasonic", "DAIKIN", "FUJITSU", "MITSUBISHI", "TOYOTA"];
 const afterMazda = ["Yamaha", "Nichicon", "SHARP", "HITACHI", "MITSUMI", "TDK-Lambda"];
 
 export default function OurCustomers() {
@@ -24,21 +24,33 @@ export default function OurCustomers() {
         </div>
 
         {/* RIGHT: PARTNERS GRID */}
+        {/* RIGHT: PARTNERS GRID */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-          {beforeMazda.map((partner) => (
+          {["Canon", "Brother", "FUJIFILM", "Panasonic", "DAIKIN", "FUJITSU", "MITSUBISHI"].map((partner) => (
             <div
               key={partner}
               className="flex items-center justify-center h-[72px] px-4 border border-gray-200 rounded-xl bg-gray-50 hover:bg-[#013478]/5 hover:border-[#013478]/30 hover:scale-[1.05] transition-all duration-300"
             >
-              <span className="text-[13px] font-semibold text-gray-500 hover:text-[#013478] transition-colors whitespace-pre-line items-center justify-center">
-                {partner.replaceAll('\\n', '\n')}
+              <span className="text-[13px] font-semibold text-gray-500 hover:text-[#013478] transition-colors">
+                {partner}
               </span>
             </div>
           ))}
 
+          {/* TOSHIBA Carrier — 2 dòng, căn giữa */}
+          <div className="flex flex-col items-center justify-center h-[72px] px-4 border border-gray-200 rounded-xl bg-gray-50 hover:bg-[#013478]/5 hover:border-[#013478]/30 hover:scale-[1.05] transition-all duration-300">
+            <span className="text-[13px] font-semibold text-gray-500 hover:text-[#013478] transition-colors leading-tight">TOSHIBA</span>
+            <span className="text-[13px] font-semibold text-gray-500 hover:text-[#013478] transition-colors leading-tight">Carrier</span>
+          </div>
+
+          {/* TOYOTA */}
+          <div className="flex items-center justify-center h-[72px] px-4 border border-gray-200 rounded-xl bg-gray-50 hover:bg-[#013478]/5 hover:border-[#013478]/30 hover:scale-[1.05] transition-all duration-300">
+            <span className="text-[13px] font-semibold text-gray-500 hover:text-[#013478] transition-colors">TOYOTA</span>
+          </div>
+
           {/* mazDa */}
           <div className="flex items-center justify-center h-[72px] px-4 border border-gray-200 rounded-xl bg-gray-50 hover:bg-[#013478]/5 hover:border-[#013478]/30 hover:scale-[1.05] transition-all duration-300">
-            <span className="text-[13px] font-semibold text-gray-500 hover:text-[#013478] transition-colors whitespace-pre-line items-center justify-center">
+            <span className="text-[13px] font-semibold text-gray-500 hover:text-[#013478] transition-colors">
               maz<span style={{ fontSize: '10px' }}>D</span>a
             </span>
           </div>
@@ -48,8 +60,8 @@ export default function OurCustomers() {
               key={partner}
               className="flex items-center justify-center h-[72px] px-4 border border-gray-200 rounded-xl bg-gray-50 hover:bg-[#013478]/5 hover:border-[#013478]/30 hover:scale-[1.05] transition-all duration-300"
             >
-              <span className="text-[13px] font-semibold text-gray-500 hover:text-[#013478] transition-colors whitespace-pre-line items-center justify-center">
-                {partner.replaceAll('\\n', '\n')}
+              <span className="text-[13px] font-semibold text-gray-500 hover:text-[#013478] transition-colors">
+                {partner}
               </span>
             </div>
           ))}
