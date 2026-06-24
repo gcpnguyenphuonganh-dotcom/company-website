@@ -2,190 +2,59 @@
 
 export const dynamic = 'force-dynamic';
 
-import { useState, useEffect } from "react";
-import { useRouter, useParams } from "next/navigation";
-import { useTranslation } from "react-i18next";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import { fetchStrapi } from "@/lib/strapi";
 import Spinner from "@/components/Spinner";
+import { use } from "react";
 
-const ITEMS_PER_PAGE = 5; // Item per page
+const navLinks = [
+  { label: "Trang chủ", href: "/" },
+  { label: "Sản phẩm", href: "/products" },
+  { label: "Giải pháp", href: "/solutions" },
+  { label: "Tin tức", href: "/news", active: true },
+  { label: "Về chúng tôi", href: "/about" },
+  { label: "Liên hệ", href: "/contact" },
+];
 
-type CategoryEnum = "Company events" | "Awards" | "Innovations & improvement";
-
-type Article = {
-  id: number;
-  slug: string;
-  title: string;
-  excerpt: string;
-  category: CategoryEnum | string;
-  content: any;
-  image: { url: string }[];
-  img: string;
-  date: string;
-  featured: boolean;
-  author: string;
-  authorAvatar: string;
-  tags: string[];
-};
-
-const CATEGORIES: {
-  value: CategoryEnum;
-  label: string;
-  badgeClass: string;
-}[] = [
-    {
-      value: "Company events",
-      label: "Company events",
-      badgeClass: "bg-white text-black/50 border border-black/20",
-    },
-    {
-      value: "Awards",
-      label: "Awards",
-      badgeClass: "bg-[#1a2f4a]/10 text-[#1a2f4a] border border-[#1a2f4a]/20",
-
-    },
-    {
-      value: "Innovations & improvement",
-      label: "Innovations ",
-
-      badgeClass: "bg-[#1a2f4a] text-white border border-[#1a2f4a]",
-    },
-  ];
-
-function getCategoryConfig(category: string) {
-  return CATEGORIES.find((c) => c.value === category) ?? null;
-}
-
-function Pagination({ current, total, onChange }: { current: number; total: number; onChange: (p: number) => void }) {
-  const pages: (number | "...")[] = [];
-  if (total <= 7) {
-    for (let i = 1; i <= total; i++) pages.push(i);
-  } else {
-    pages.push(1, 2, 3);
-    if (current > 4) pages.push("...");
-    if (current > 3 && current < total - 1) pages.push(current);
-    pages.push("...");
-    pages.push(total);
-  }
-  const btn = "w-9 h-9 flex items-center justify-center text-sm border transition-colors";
-  return (
-    <div className="flex items-center gap-1 mt-10">
-      <button onClick={() => onChange(Math.max(1, current - 1))} disabled={current === 1}
-        className={`${btn} border-black/20 text-black/50 hover:border-black/50 disabled:opacity-30`}>‹</button>
-      {pages.map((p, i) =>
-        p === "..." ? (
-          <span key={`dot-${i}`} className="w-9 h-9 flex items-center justify-center text-black/40">…</span>
-        ) : (
-          <button key={p} onClick={() => onChange(p as number)}
-            className={`${btn} ${current === p ? "bg-[#1a2f4a] text-white border-[#1a2f4a]" : "border-black/20 text-black hover:border-black/50"}`}>
-            {p}
-          </button>
-        )
-      )}
-      <button onClick={() => onChange(Math.min(total, current + 1))} disabled={current === total}
-        className={`${btn} border-black/20 text-black/50 hover:border-black/50 disabled:opacity-30`}>›</button>
-    </div>
-  );
-}
-
-function ArticleListItem({ article, onClick }: { article: Article; onClick: () => void }) {
-  const [day, month, year] = article.date.split(" ");
-  const config = getCategoryConfig(article.category);
-  return (
-    <div onClick={onClick} className="cursor-pointer flex items-start gap-4 sm:gap-6 py-6 sm:py-8 border-b border-black/10 group">
-      <div className="flex flex-col items-center min-w-[40px] sm:min-w-[48px] text-center flex-shrink-0">
-        <span className="text-xs text-black/40">{year}</span>
-        <span className="text-3xl sm:text-4xl font-bold text-black leading-none">{day}</span>
-        <span className="text-xs text-black/40 uppercase">{month}</span>
-      </div>
-      <div className="flex-1 flex flex-col gap-1.5 sm:gap-2 min-w-0">
-        <span className={`inline-block self-start text-xs font-semibold tracking-widest px-2 py-0.5 ${config?.badgeClass ?? "border border-black/20 text-black/50"}`}>
-          {config?.label ?? article.category}
-        </span>
-        <h3 className="text-base sm:text-lg font-semibold text-black leading-snug group-hover:underline">{article.title}</h3>
-        <p className="text-sm text-black/50 line-clamp-2 leading-relaxed">{article.excerpt}</p>
-      </div>
-      <div className="text-black/30 group-hover:text-black/60 transition-colors pt-1 text-xl flex-shrink-0">›</div>
-    </div>
-  );
-}
-
-function CategoryList({
-  activeCategory,
-  articles,
-  onChange,
-}: {
-  activeCategory: string;
-  articles: Article[];
-  onChange: (val: string) => void;
-}) {
-  const allCount = articles.length;
-  return (
-    <div className="divide-y divide-black/8">
-      {/* All */}
-      <button
-        onClick={() => onChange("All")}
-        className={`w-full flex justify-between items-center px-5 py-3 text-sm transition-colors text-left ${activeCategory === "All" ? "bg-[#1a2f4a] text-white" : "text-black/70 hover:bg-black/5"
-          }`}
-      >
-        <span className="font-medium">All</span>
-        <span className={activeCategory === "All" ? "text-white/60" : "text-black/35"}>{allCount}</span>
-      </button>
-
-      {CATEGORIES.map((cat) => {
-        const count = articles.filter((a) => a.category === cat.value).length;
-        const isActive = activeCategory === cat.value;
-        return (
-          <button
-            key={cat.value}
-            onClick={() => onChange(cat.value)}
-            className={`w-full flex justify-between items-center px-5 py-3 text-sm transition-colors text-left ${isActive ? "bg-[#1a2f4a] text-white" : "text-black/70 hover:bg-black/5"
-              }`}
-          >
-            <div className="flex items-center gap-2">
-
-              <span>{cat.value}</span>
-            </div>
-            <span className={isActive ? "text-white/60" : "text-black/50"}>{count}</span>
-          </button>
-        );
-      })}
-    </div>
-  );
-}
-
-export default function NewsPage() {
+export default function ArticlePage({ params }: { params: Promise<{ slug: string; lang: string }> }) {
+  const { slug, lang } = use(params);
+  const locale = lang ?? 'en';
   const router = useRouter();
-  const params = useParams();
-  const lang = (params.lang as string) || "en";
-  const { t } = useTranslation("common");
-
-  const [articles, setArticles] = useState<Article[]>([]);
-  const [loadingArticles, setLoadingArticles] = useState(true); // 👈 thêm: trạng thái loading khi fetch danh sách bài viết
-  const [activeCategory, setActiveCategory] = useState("All");
-  const [search, setSearch] = useState("");
   const [visible, setVisible] = useState(false);
-  const [page, setPage] = useState(1);
-  const [selectedYear, setSelectedYear] = useState<number | null>(null);
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [copied, setCopied] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [readProgress, setReadProgress] = useState(0);
+  const [article, setArticle] = useState<any>(null);
+  const [related, setRelated] = useState<any[]>([]);
+  const [others, setOthers] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const timer = setTimeout(() => setVisible(true), 80);
-    return () => { clearTimeout(timer); };
+    const onScroll = () => {
+      setScrolled(window.scrollY > 20);
+      const el = document.documentElement;
+      const progress = (el.scrollTop / (el.scrollHeight - el.clientHeight)) * 100;
+      setReadProgress(Math.min(100, progress));
+    };
+    window.addEventListener("scroll", onScroll);
+    const t = setTimeout(() => setVisible(true), 80);
+    return () => { window.removeEventListener("scroll", onScroll); clearTimeout(t); };
   }, []);
 
   useEffect(() => {
-    setLoadingArticles(true); // 👈 thêm: bắt đầu fetch thì set loading = true
-    fetchStrapi(`/api/news?populate=*&pagination[pageSize]=100&sort[0]=createdAt:desc`, lang)
+
+    fetchStrapi(`/api/news?filters[slug][$eq]=${slug}&populate=*&sort[0]=createdAt:desc`, locale)
       .then((res) => {
-        const data: Article[] = res.data.map((item: any) => ({
+        if (!res.data?.length) return;
+        const item = res.data[0];
+        const mapped = {
           id: item.id,
           slug: item.slug,
           title: item.title,
           excerpt: item.excerpt,
-          category: item.category,
+          category: item.category ?? "",
           content: item.content,
-          image: item.image ?? [],
           img: item.image?.[0]?.url
             ? `${process.env.NEXT_PUBLIC_STRAPI_URL}${item.image[0].url}`
             : "",
@@ -194,255 +63,222 @@ export default function NewsPage() {
               day: "2-digit", month: "short", year: "numeric",
             })
             : "",
-          featured: item.featured ?? false,
           author: item.author ?? "",
-          authorAvatar: item.author?.[0] ?? "A",
-          tags: item.tags ?? [],
-        }));
-        setArticles(data);
+        };
+  
+        setArticle(mapped);
+
+        return Promise.all([
+          fetchStrapi(`/api/news?filters[category][$eq]=${item.category}&filters[slug][$ne]=${slug}&populate=*&pagination[pageSize]=3`, locale),
+          fetchStrapi(`/api/news?filters[category][$ne]=${item.category}&filters[slug][$ne]=${slug}&populate=*&pagination[pageSize]=3`, locale),
+        ]);
       })
-      .catch((err) => console.error("Fetch error:", err))
-      .finally(() => setLoadingArticles(false)); // 👈 thêm: fetch xong (thành công hoặc lỗi) thì tắt loading
-  }, [lang]);
+      .then((results) => {
+        if (!results) return;
+        const [relRes, othRes] = results;
 
-  const archive = articles.reduce<Record<number, number>>((acc, a) => {
-    const y = parseInt(a.date.split(" ")[2]);
-    if (!isNaN(y)) acc[y] = (acc[y] || 0) + 1;
-    return acc;
-  }, {});
-  const archiveYears = Object.keys(archive).map(Number).sort((a, b) => b - a);
+        const mapItem = (item: any) => ({
+          id: item.id,
+          slug: item.slug,
+          title: item.title,
+          excerpt: item.excerpt,
+          category: item.category ?? "",
+          img: item.image?.[0]?.url
+            ? `${process.env.NEXT_PUBLIC_STRAPI_URL}${item.image[0].url}`
+            : "",
+          date: item.createdAt
+            ? new Date(item.createdAt).toLocaleDateString("en-GB")
+            : "",
+        });
 
-  const filtered = articles.filter((a) => {
-    const matchCat = activeCategory === "All" || a.category === activeCategory;
-    const matchSearch =
-      a.title.toLowerCase().includes(search.toLowerCase()) ||
-      a.excerpt.toLowerCase().includes(search.toLowerCase()) ||
-      a.tags?.some((tag) => tag.toLowerCase().includes(search.toLowerCase()));
-    const matchYear = !selectedYear || parseInt(a.date.split(" ")[2]) === selectedYear;
-    return matchCat && matchSearch && matchYear;
-  });
+        setRelated(relRes?.data?.map(mapItem) ?? []);
+        setOthers(othRes?.data?.map(mapItem) ?? []);
+      })
+      .catch((err) => console.error(err))
+      .finally(() => setLoading(false));
 
-  const showFeatured = activeCategory === "All" && !search && !selectedYear;
-  const listArticles = showFeatured ? filtered.filter((a) => !a.featured) : filtered;
-  const totalPages = Math.ceil(listArticles.length / ITEMS_PER_PAGE);
-  const paginated = listArticles.slice((page - 1) * ITEMS_PER_PAGE, page * ITEMS_PER_PAGE);
+  }, [slug, locale]);
 
-  const handleYearFilter = (year: number) => {
-    setSelectedYear(selectedYear === year ? null : year);
-    setPage(1);
-    setActiveCategory("All");
-    setSidebarOpen(false);
+  const handleCopy = () => {
+    navigator.clipboard.writeText(window.location.href);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2200);
   };
 
-  const handleCategoryChange = (val: string) => {
-    setActiveCategory(val);
-    setPage(1);
-    setSelectedYear(null);
-    setSidebarOpen(false);
-  };
-
-  const SidebarContent = () => (
-    <>
-      {/* Category list */}
-      <div className="border border-black/10 bg-white overflow-hidden">
-        <div className="px-5 py-4 border-b border-black/10 bg-white">
-          <h4 className="text-xs font-bold tracking-widest uppercase text-black/50">
-            {t("news.sidebar.categories")}
-          </h4>
-        </div>
-        <CategoryList
-          activeCategory={activeCategory}
-          articles={articles}
-          onChange={handleCategoryChange}
-        />
+  if (loading) {
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center gap-3 bg-white">
+        <Spinner size={40} color="#013478" />
+        <div className="text-black/30 text-sm">Đang tải...</div>
       </div>
+    );
+  }
 
-      {/* Archive */}
-      <div className="border border-black/10 bg-white">
-        <div className="px-5 py-4 border-b border-black/10">
-          <h4 className="text-xs font-bold tracking-widest uppercase text-black/50">
-            {t("news.sidebar.archive")}
-          </h4>
-        </div>
-        <div className="divide-y divide-black/8">
-          {archiveYears.map((year) => (
-            <button key={year} onClick={() => handleYearFilter(year)}
-              className={`w-full flex justify-between items-center px-5 py-3 text-sm transition-colors text-left ${selectedYear === year ? "bg-[#1a2f4a] text-white" : "text-black/70 hover:bg-black/5"
-                }`}>
-              <span>{year}</span>
-              <span className={selectedYear === year ? "text-white/60" : "text-black/35"}>
-                {archive[year]}
-              </span>
-            </button>
-          ))}
-        </div>
-        {selectedYear && (
-          <div className="px-5 py-3 border-t border-black/10">
-            <button onClick={() => { setSelectedYear(null); setPage(1); }}
-              className="text-xs text-teal-600 hover:underline">
-              ✕ {t("news.sidebar.clear_filter")}
-            </button>
-          </div>
-        )}
-      </div>
 
-      {/* Japan IR - link  website JP  */}
-      <div className="border border-black/10 bg-white">
-        <div className="px-5 py-4 border-b border-black/10">
-          <h4 className="text-xs font-bold tracking-widest uppercase text-black/50">
-            {t("news.sidebar.japan_title")}
-          </h4>
-        </div>
-        <div className="px-5 py-5 flex flex-col gap-3">
-          <p className="text-xs text-black/50 leading-relaxed">{t("news.sidebar.japan_desc")}</p>
-          <a href="https://www.diaelec-hd.co.jp/en/ir_news/" target="_blank" rel="noopener noreferrer"
-            className="flex w-40 items-center justify-between px-4 py-2.5 bg-[#1a2f4a] text-white text-xs font-medium rounded hover:bg-[#013478] transition-colors duration-200">
-            <span>{t("news.sidebar.japan_btn")}</span>
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-              <path d="M2 7H12M7 2L12 7L7 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </a>
+  if (!article) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-white">
+        <div className="text-center">
+          <div className="text-6xl font-black text-black/10 mb-4">404</div>
+          <p className="text-black/40 mb-6">Bài viết không tồn tại</p>
+          <button onClick={() => router.push("/news")}
+            className="px-6 py-3 rounded-xl text-sm font-semibold border border-black/10 hover:bg-black/5 text-black transition-colors">
+            ← Về Tin tức
+          </button>
         </div>
       </div>
-    </>
-  );
+    );
+  }
 
   return (
-    <div className="min-h-screen text-black antialiased" style={{ background: "#fafafa" }}>
-      <main className="relative z-10">
+    <div className="min-h-screen text-black antialiased bg-white">
 
-        {/* ── HERO BANNER ── */}
-        <section className="pb-8 sm:pb-14">
+      {/* Read progress bar */}
+      <div className="fixed top-0 left-0 z-[60] h-[2px] bg-blue-500 transition-all duration-100"
+        style={{ width: `${readProgress}%` }} />
+      {/* ── NAV ── */}
+
+      <main className="relative z-10 pt-16">
+        {/* ── ARTICLE HERO ── */}
+        <section className="max-w-7xl mx-auto px-6 pt-14 pb-10">
           <div className={`transition-all duration-700 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-            <div className="relative bg-[#1a2f4a] px-5 sm:px-10 lg:px-16 pt-24 sm:pt-28 lg:pt-36 pb-10 sm:pb-14 overflow-hidden">
-              <div className="absolute inset-0" style={{
-                background: `radial-gradient(ellipse at center, rgba(37,99,235,0.55) 0%, rgba(37,99,235,0.28) 35%, rgba(26,47,74,0.95) 75%), linear-gradient(#ffffff15 1px, transparent 1px), linear-gradient(90deg, #ffffff15 1px, transparent 1px)`,
-                backgroundSize: "100% 100%, 30px 30px, 30px 30px",
-              }} />
-              <div className="max-w-3xl relative z-10" style={{ paddingLeft: "clamp(2rem, 10vw, 10rem)" }}>
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-8 h-px bg-blue-400" />
-                  <span className="text-[8px]  xl:text-xs font-semibold tracking-[0.2em] text-blue-400 uppercase">
-                    {t("news.hero.label")}
-                  </span>
-                </div>
-                <h1 className="text-3xl sm:text-4xl xl:text-6xl font-bold leading-tight mb-3 sm:mb-4 text-white">
-                  {t("news.hero.title")}
-                </h1>
-                <p className="text-slate-400 text-sm sm:text-base pb-2 sm:pb-5">
-                  {t("news.hero.desc")}
-                </p>
-              </div>
+            {/* Breadcrumb */}
+            <div className="flex items-center gap-2 text-xs text-black/30 mb-8">
+              <button onClick={() => router.push("/")} className="hover:text-black/55 transition-colors">Home</button>
+              <span>/</span>
+              <button onClick={() => router.push("/news")} className="hover:text-black/55 transition-colors">News</button>
+              <span>/</span>
+              <span className="text-black/55">{article.category}</span>
             </div>
-          </div>
-        </section>
-
-        {/* ── MAIN CONTENT ── */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 pb-24">
-
-          {/* Mobile filter toggle */}
-          <div className="lg:hidden mb-4 flex items-center justify-between">
-            <button
-              onClick={() => setSidebarOpen(!sidebarOpen)}
-              className="flex items-center gap-2 px-4 py-2 border border-black/15 bg-white text-sm font-medium text-black/70 hover:border-black/30 transition-colors"
-            >
-              <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                <path d="M3 6h18M7 12h10M11 18h2" strokeLinecap="round" />
-              </svg>
-              {t("news.sidebar.categories")}
-              {activeCategory !== "All" && (
-                <span className="ml-1 px-1.5 py-0.5 bg-[#1a2f4a] text-white text-xs rounded">
-                  {getCategoryConfig(activeCategory)?.label ?? activeCategory}
+            {/* Title block */}
+            <div className="max-w-3xl">
+              <div className="flex flex-wrap items-center gap-3 mb-6">
+                <span className="inline-flex items-center px-3 py-1 text-xs font-semibold border border-black/20 text-black/50 ">
+                  {article.category}
                 </span>
-              )}
-            </button>
-            {(activeCategory !== "All" || selectedYear) && (
-              <button
-                onClick={() => { setActiveCategory("All"); setSelectedYear(null); setPage(1); }}
-                className="text-xs text-teal-600 hover:underline"
-              >
-                ✕ Clear filters
-              </button>
-            )}
-          </div>
-
-          {/* Mobile sidebar drawer */}
-          {sidebarOpen && (
-            <div className="lg:hidden mb-6 flex flex-col gap-4">
-              <SidebarContent />
-            </div>
-          )}
-
-          <div className="flex gap-8 lg:gap-12">
-
-            {/* ── SIDEBAR LEFT (desktop) ── */}
-            <div className="w-60 flex-shrink-0 hidden lg:flex flex-col gap-6 pt-16">
-              <SidebarContent />
-            </div>
-
-            {/* ── ARTICLE LIST RIGHT ── */}
-            <div className="flex-1 min-w-0">
-              <div className="mb-6">
-                <div className="relative max-w-md">
-                  <span className="absolute left-4 top-1/2 -translate-y-1/2 text-black/25 pointer-events-none">
-                    <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                      <circle cx="11" cy="11" r="8" /><path d="m21 21-4.35-4.35" />
-                    </svg>
-                  </span>
-                  <input
-                    type="text"
-                    placeholder={t("news.search_placeholder")}
-                    value={search}
-                    onChange={(e) => { setSearch(e.target.value); setPage(1); }}
-                    className="w-full pl-11 pr-10 py-3 rounded-xl text-sm text-black placeholder:text-black/30 focus:outline-none border border-black/15 focus:border-black/30 bg-white transition-all"
-                  />
-                  {search && (
-                    <button onClick={() => setSearch("")}
-                      className="absolute right-4 top-1/2 -translate-y-1/2 text-black/30 hover:text-black/60 transition-colors">✕</button>
-                  )}
-                </div>
-                {search && (
-                  <p className="text-xs text-black/40 mt-2">
-                    {filtered.length} {t("news.results_for")} &quot;{search}&quot;
-                  </p>
+                <span className="text-black/25 text-xs">·</span>
+                <span className="text-black/35 text-xs">{article.date}</span>
+                {article.author && (
+                  <>
+                    <span className="text-black/25 text-xs">·</span>
+                    <span className="text-black/35 text-xs">{article.author}</span>
+                  </>
                 )}
               </div>
+              <h1 className="text-3xl md:text-4xl xl:text-5xl font-black  tracking-tight leading-[1.1] mb-6 text-black">
+                {article.title}
+              </h1>
 
-              <div className="flex items-center gap-3 mb-2">
-                <span className="text-xs font-bold tracking-widest uppercase text-black/25">
-                  {selectedYear
-                    ? `${selectedYear} — ${listArticles.length} ${t("news.articles")}`
-                    : showFeatured
-                      ? t("news.all_articles")
-                      : `${listArticles.length} ${t("news.articles")}`}
-                </span>
-                <div className="flex-1 h-px bg-black/10" />
-              </div>
-
-              {loadingArticles ? (
-                // 👈 spinner khi đang fetch danh sách bài viết
-                <div className="py-20 sm:py-28 flex flex-col items-center justify-center gap-3">
-                  <Spinner size={36} color="#1a2f4a" />
-                  <p className="text-black/30 text-sm">{t("news.fields.loading")}</p>
+              {article.excerpt && (
+                <div className="pl-4 mb-10 border-l-2 border-blue-300">
+                  <p className="text-black/50 text-lg text-justify leading-relaxed">{article.excerpt}</p>
                 </div>
-              ) : paginated.length === 0 ? (
-                <div className="py-20 sm:py-28 text-center">
-                  <div className="text-5xl mb-4 opacity-40">🔍</div>
-                  <p className="text-black/30 mb-4">{t("news.not_found")}</p>
+              )}
+              {article.img && (
+                <div className="w-full rounded-2xl overflow-hidden mb-10">
+                  <img src={article.img} alt={article.title} className="w-full h-[420px] object-cover" />
                 </div>
-              ) : (
-                <>
-                  {paginated.map((article) => (
-                    <ArticleListItem key={article.id} article={article}
-                      onClick={() => router.push(`/${lang}/news/${article.slug}`)} />
-                  ))}
-                  {totalPages > 1 && <Pagination current={page} total={totalPages} onChange={setPage} />}
-                </>
               )}
             </div>
-
           </div>
         </section>
+        {/* ── ARTICLE BODY ── */}
+        <article className="max-w-7xl mx-auto px-6 pb-16">
+          <div className={`max-w-3xl transition-all duration-700 delay-100 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
+            <div className="space-y-4">
+              {Array.isArray(article.content)
+                ? article.content.map((block: any, i: number) => {
+                  if (block.type === "paragraph") {
+                    const parts = block.children ?? [];
+                    return (
+                      <p key={i} className="text-[17px] leading-8 text-justify text-black/70">
+                        {parts.map((part: any, j: number) =>
+                          part.bold ? (
+                            <strong key={j} className="text-black/90 font-semibold">{part.text}</strong>
+                          ) : (
+                            <span key={j}>{part.text}</span>
+                          )
+                        )}
+                      </p>
+                    );
+                  }
+                  if (block.type === "heading") {
+                    return (
+                      <h2 key={i} className="text-xl md:text-2xl font-black text-justify tracking-tight mt-10 mb-1 text-black">
+                        {block.children?.map((c: any) => c.text).join("")}
+                      </h2>
+                    );
+                  }
+                  if (block.type === "list") {
+                    return (
+                      <ul key={i} className="list-disc list-inside space-y-1 text-justify text-[17px] leading-8 text-black/70">
+                        {block.children?.map((item: any, j: number) => (
+                          <li className="text-justify" key={j}>{item.children?.map((c: any) => c.text).join("")}</li>
+                        ))}
+                      </ul>
+                    );
+                  }
+                  return null;
+                })
+                : article.content?.split("\n\n").filter(Boolean).map((para: string, i: number) => (
+                  <p key={i} className="text-[17px] leading-8 text-justify text-black/70">{para}</p>
+                ))
+              }
+            </div>
+          </div>
+        </article>
+        {/* ── RELATED ── */}
+        {related.length > 0 && (
+          <section className="max-w-7xl mx-auto px-6 pb-16">
+            <div className="h-px mb-10" style={{ background: "linear-gradient(90deg,transparent,rgba(0,0,0,0.08),transparent)" }} />
+            <div className="flex items-center gap-3 mb-7">
+              <span className="text-xs font-bold tracking-widest uppercase text-black/25">Related topics</span>
+              <div className="flex-1 h-px bg-black/10" />
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {related.map((rel) => (
+                <button key={rel.id} onClick={() => router.push(`/${locale}/news/${rel.slug}`)}
+                  className="group text-left relative overflow-hidden rounded-2xl border border-black/10 hover:border-black/20 transition-all duration-200 hover:-translate-y-0.5 p-5 bg-white hover:shadow-md">
+                  <div className="h-[2px] absolute top-0 left-0 right-0 rounded-t-2xl bg-black/10" />
+                  <div className="flex items-center gap-2 mb-3">
+                    <span className="inline-flex items-center px-2.5 py-0.5 text-xs font-semibold  border border-black/20 text-black/50">
+                      {rel.category}
+                    </span>
+                  </div>
+                  <h3 className="font-bold text-sm leading-snug text-black group-hover:text-black/60 transition-colors line-clamp-2">{rel.title}</h3>
+                  <p className="text-xs text-black/35 mt-2">{rel.date}</p>
+                </button>
+              ))}
+            </div>
+          </section>
+        )}
+        {/* ── MORE ARTICLES ── */}
+        {others.length > 0 && (
+          <section className="max-w-7xl mx-auto px-6 pb-16">
+            <div className="flex items-center gap-3 mb-7">
+              <span className="text-xs font-bold tracking-widest uppercase text-black/25">More articles</span>
+              <div className="flex-1 h-px bg-black/10" />
+              <button onClick={() => router.push(`/${locale}/news`)} className="text-xs text-black/35 hover:text-black/60 transition-colors whitespace-nowrap">
+                View all →
+              </button>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {others.map((rel) => (
+                <button key={rel.id} onClick={() => router.push(`/news/${rel.slug}`)}
+                  className="group text-left relative overflow-hidden rounded-2xl border border-black/10 hover:border-black/20 transition-all duration-200 hover:-translate-y-0.5 p-5 bg-white hover:shadow-md">
+                  <div className="h-[2px] absolute top-0 left-0 right-0 rounded-t-2xl bg-black/10" />
+                  <div className="flex items-center gap-2 mb-3">
+                    <span className="inline-flex items-center px-2.5 py-0.5  text-xs font-semibold border border-black/20 text-black/50">
+                      {rel.category}
+                    </span>
+                  </div>
+                  <h3 className="font-bold text-sm leading-snug text-black group-hover:text-black/60 transition-colors line-clamp-2">{rel.title}</h3>
+                  <p className="text-xs text-black/35 mt-2">{rel.date}</p>
+                </button>
+              ))}
+            </div>
+          </section>
+        )}
       </main>
     </div>
   );

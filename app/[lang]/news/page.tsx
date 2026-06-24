@@ -161,7 +161,7 @@ export default function NewsPage() {
   const { t } = useTranslation("common");
 
   const [articles, setArticles] = useState<Article[]>([]);
-  const [loadingArticles, setLoadingArticles] = useState(true); // 👈 thêm: trạng thái loading khi fetch danh sách bài viết
+  const [loadingArticles, setLoadingArticles] = useState(true); 
   const [activeCategory, setActiveCategory] = useState("All");
   const [search, setSearch] = useState("");
   const [visible, setVisible] = useState(false);
@@ -175,7 +175,7 @@ export default function NewsPage() {
   }, []);
 
   useEffect(() => {
-    setLoadingArticles(true); // 👈 thêm: bắt đầu fetch thì set loading = true
+    setLoadingArticles(true); 
     fetchStrapi(`/api/news?populate=*&pagination[pageSize]=100&sort[0]=createdAt:desc`, lang)
       .then((res) => {
         const data: Article[] = res.data.map((item: any) => ({
@@ -202,7 +202,7 @@ export default function NewsPage() {
         setArticles(data);
       })
       .catch((err) => console.error("Fetch error:", err))
-      .finally(() => setLoadingArticles(false)); // 👈 thêm: fetch xong (thành công hoặc lỗi) thì tắt loading
+      .finally(() => setLoadingArticles(false)); 
   }, [lang]);
 
   const archive = articles.reduce<Record<number, number>>((acc, a) => {
@@ -420,7 +420,6 @@ export default function NewsPage() {
               </div>
 
               {loadingArticles ? (
-                // 👈 spinner khi đang fetch danh sách bài viết
                 <div className="py-20 sm:py-28 flex flex-col items-center justify-center gap-3">
                   <Spinner size={36} color="#1a2f4a" />
                   <p className="text-black/30 text-sm">{t("news.fields.loading")}</p>
