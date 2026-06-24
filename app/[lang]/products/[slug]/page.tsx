@@ -8,6 +8,7 @@ import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 import { fetchStrapi } from '@/lib/strapi';
 import { useTranslation } from 'react-i18next';
+import Spinner from '@/components/Spinner';
 
 type Product = {
   id: number;
@@ -155,7 +156,8 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-white flex items-center justify-center">
+      <div className="min-h-screen bg-white flex flex-col items-center justify-center gap-3">
+        <Spinner size={40} color="#013478" />
         <div className="text-[#020c1a]/40 text-sm">{t('product.loading')}</div>
       </div>
     );

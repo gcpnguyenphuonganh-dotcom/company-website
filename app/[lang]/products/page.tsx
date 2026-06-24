@@ -11,6 +11,7 @@ import { useSearchParams } from "next/navigation";
 import { useState, useEffect, useCallback, useRef, Suspense } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import Spinner from "@/components/Spinner";
 
 type Product = {
   id: number;
@@ -585,8 +586,9 @@ function ProductsContent() {
               </div>
 
               {loadingProducts ? (
-                // 👈 thêm: trạng thái loading khi đang fetch danh sách sản phẩm
-                <div className="text-center py-24">
+                // 👈 spinner khi đang fetch danh sách sản phẩm
+                <div className="flex flex-col items-center justify-center gap-3 py-24">
+                  <Spinner size={36} color="#013478" />
                   <p className="text-sm text-slate-400">{t("products.loading") ?? "Đang tải..."}</p>
                 </div>
               ) : filtered.length > 0 ? (

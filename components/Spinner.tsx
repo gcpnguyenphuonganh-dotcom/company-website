@@ -1,50 +1,52 @@
-import type { CSSProperties } from "react"
-
-type SpinnerSize = "sm" | "md" | "lg"
+"use client";
 
 interface SpinnerProps {
-  size?:  SpinnerSize
-  label?: string
-  className?: string
+  size?: number;   
+  color?: string;  
 }
 
-const SIZE_MAP: Record<SpinnerSize, CSSProperties> = {
-  sm: { width: "24px", height: "24px", borderWidth: "2px" },
-  md: { width: "40px", height: "40px", borderWidth: "3px" },
-  lg: { width: "56px", height: "56px", borderWidth: "4px" },
-}
 
-export default function Spinner({
-  size = "md",
-  label,
-  className,
-}: SpinnerProps) {
-  const style = SIZE_MAP[size]
+export default function Spinner({ size = 36, color = "#013478" }: SpinnerProps) {
+  const dotCount = 8;
+  const dotSize = size * 0.16;
+  const radius = size / 2 - dotSize / 2;
 
   return (
     <div
+      className="relative inline-block"
+      style={{ width: size, height: size }}
       role="status"
-      aria-label={label ?? "Đang tải..."}
-      className={className}
-      style={{ display: "flex", flexDirection: "column",
-               alignItems: "center", gap: "10px" }}
+      aria-label="loading"
     >
-      <div
-        aria-hidden="true"
-        style={{
-          ...style,
-          border: `${style.borderWidth} solid #e5e7eb`,
-          borderTopColor: "#111827",
-          borderRadius: "50%",
-          animation: "spin 0.75s linear infinite",
-        }}
-      />
-      {label && (
-        <span style={{ fontSize: "13px", color: "#6b7280" }}>
-          {label}
-        </span>
-      )}
-      <span className="sr-only">{label ?? "Đang tải..."}</span>
+      {Array.from({ length: dotCount }).map((_, i) => {
+        const angle = (360 / dotCount) * i;
+        const delay = (i * 1) / dotCount;
+        return (
+          <span
+            key={i}
+            className="absolute rounded-full"
+            style={{
+              width: dotSize,
+              height: dotSize,
+              backgroundColor: color,
+              top: "50%",
+              left: "50%",
+              marginTop: -dotSize / 2,
+              marginLeft: -dotSize / 2,
+              transform: `rotate(${angle}deg) translate(${radius}px)`,
+              transformOrigin: "0 0",
+              animation: "spinner-dot-fade 1s linear infinite",
+              animationDelay: `${delay}s`,
+            }}
+          />
+        );
+      })}
+      <style>{`
+        @keyframes spinner-dot-fade {
+          0%, 100% { opacity: 0.15; }
+          50% { opacity: 1; }
+        }
+      `}</style>
     </div>
-  )
+  );
 }

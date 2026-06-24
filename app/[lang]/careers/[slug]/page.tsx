@@ -4,6 +4,7 @@ import { useParams } from "next/navigation";
 import { useEffect, useState, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
+import Spinner from "@/components/Spinner";
 
 interface CareerDetail {
   slug: string;
@@ -143,7 +144,14 @@ export default function CareerDetailPage() {
   const splitLines = (str: string) =>
     str.split("\n").map((s) => s.trim()).filter(Boolean);
 
-  if (loading) return <div className="p-10 text-center">{t("career.loading")}</div>;
+  if (loading) {
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center gap-3">
+        <Spinner size={40} color="#013478" />
+        <p className="text-sm text-gray-400">{t("career.loading")}</p>
+      </div>
+    );
+  }
   if (error || !data) return <div className="p-10 text-center">{t("career.not_found")}</div>;
 
   const descLines = splitLines(data.description);

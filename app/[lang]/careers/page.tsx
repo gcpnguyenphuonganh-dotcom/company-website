@@ -8,6 +8,7 @@ import {
 } from "react-icons/hi";
 import { MapPin, ChevronRight } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import Spinner from "@/components/Spinner";
 
 interface CareerField {
   slug: string;
@@ -134,7 +135,10 @@ export default function CareersPage() {
         </div>
 
         {loadingFields ? (
-          <p className="text-center text-sm text-gray-400 py-10">{t("careers.fields.loading")}</p>
+          <div className="flex flex-col items-center justify-center gap-3 py-10">
+            <Spinner size={36} color="#013478" />
+            <p className="text-sm text-gray-400">{t("careers.fields.loading")}</p>
+          </div>
         ) : (
           <div className="flex flex-col gap-3">
             {filteredFields.map((f, index) => (
