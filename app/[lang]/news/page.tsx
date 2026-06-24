@@ -160,6 +160,7 @@ export default function NewsPage() {
   const { t } = useTranslation("common");
 
   const [articles, setArticles] = useState<Article[]>([]);
+  const [loadingArticles, setLoadingArticles] = useState(true); // 👈 thêm: trạng thái loading khi fetch danh sách bài viết
   const [activeCategory, setActiveCategory] = useState("All");
   const [search, setSearch] = useState("");
   const [visible, setVisible] = useState(false);
@@ -173,6 +174,7 @@ export default function NewsPage() {
   }, []);
 
   useEffect(() => {
+    setLoadingArticles(true); // 👈 thêm: bắt đầu fetch thì set loading = true
     fetchStrapi(`/api/news?populate=*&pagination[pageSize]=100&sort[0]=createdAt:desc`, lang)
       .then((res) => {
         const data: Article[] = res.data.map((item: any) => ({
@@ -198,7 +200,8 @@ export default function NewsPage() {
         }));
         setArticles(data);
       })
-      .catch((err) => console.error("Fetch error:", err));
+      .catch((err) => console.error("Fetch error:", err))
+      .finally(() => setLoadingArticles(false)); // 👈 thêm: fetch xong (thành công hoặc lỗi) thì tắt loading
   }, [lang]);
 
   const archive = articles.reduce<Record<number, number>>((acc, a) => {
@@ -415,7 +418,12 @@ export default function NewsPage() {
                 <div className="flex-1 h-px bg-black/10" />
               </div>
 
-              {paginated.length === 0 ? (
+              {loadingArticles ? (
+                // 👈 thêm: trạng thái loading khi đang fetch danh sách bài viết
+                <div className="py-20 sm:py-28 text-center">
+                  <p className="text-black/30 text-sm">{t("news.fields.loading")}</p>
+                </div>
+              ) : paginated.length === 0 ? (
                 <div className="py-20 sm:py-28 text-center">
                   <div className="text-5xl mb-4 opacity-40">🔍</div>
                   <p className="text-black/30 mb-4">{t("news.not_found")}</p>

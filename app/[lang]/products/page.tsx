@@ -428,6 +428,7 @@ function ProductsContent() {
   const { t } = useTranslation("common");
 
   const [products, setProducts] = useState<Product[]>([]);
+  const [loadingProducts, setLoadingProducts] = useState(true); // 👈 thêm: trạng thái loading khi fetch danh sách sản phẩm
   const [query, setQuery] = useState("");
   const [activeCategory, setActiveCategory] = useState("All");
   const [activeApp, setActiveApp] = useState("All");
@@ -440,6 +441,7 @@ function ProductsContent() {
   }, [searchParams]);
 
   useEffect(() => {
+    setLoadingProducts(true); // 👈 thêm: bắt đầu fetch thì set loading = true
     fetchStrapi(`/api/products?populate=*&pagination[pageSize]=100`, lang)
       .then((res) => {
         const data: Product[] = res.data.map((item: any) => ({
@@ -455,7 +457,8 @@ function ProductsContent() {
         }));
         setProducts(data);
       })
-      .catch((err) => console.error(err));
+      .catch((err) => console.error(err))
+      .finally(() => setLoadingProducts(false)); // 👈 thêm: fetch xong (thành công hoặc lỗi) thì tắt loading
   }, [lang]);
 
   useEffect(() => {
@@ -581,7 +584,12 @@ function ProductsContent() {
                 )}
               </div>
 
-              {filtered.length > 0 ? (
+              {loadingProducts ? (
+                // 👈 thêm: trạng thái loading khi đang fetch danh sách sản phẩm
+                <div className="text-center py-24">
+                  <p className="text-sm text-slate-400">{t("products.loading") ?? "Đang tải..."}</p>
+                </div>
+              ) : filtered.length > 0 ? (
                 <>
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
                     {paginated.map((p) => (
