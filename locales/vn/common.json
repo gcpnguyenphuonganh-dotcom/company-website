@@ -365,6 +365,7 @@
     }
   },
   "products": {
+    "loading": "Đang tải...",
     "view_product": "Xem sản phẩm",
     "in_production": "Đang sản xuất",
     "details": "Chi tiết",
@@ -393,6 +394,9 @@
     "all_articles": "Tất cả bài viết",
     "articles": "Bài viết",
     "not_found": "Không tìm thấy",
+    "fields": {
+      "loading": "Đang tải..."
+    },
     "categories": {
       "all": "Tất cả",
       "products": "Sản phẩm",

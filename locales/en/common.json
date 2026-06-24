@@ -357,6 +357,7 @@
     }
   },
   "products": {
+    "loading": "Loading...",
     "view_product": "View Product",
     "in_production": "In Production",
     "details": "Details",
@@ -385,6 +386,9 @@
     "all_articles": "All Articles",
     "articles": "Articles",
     "not_found": "Not found",
+    "fields": {
+      "loading": "Loading..."
+    },
     "categories": {
       "all": "All",
       "products": "Products",
