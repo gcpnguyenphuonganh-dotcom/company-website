@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import { useRouter, useParams } from "next/navigation";
 import { useTranslation } from "react-i18next";
 import { fetchStrapi } from "@/lib/strapi";
+import Spinner from "@/components/Spinner";
 
 const ITEMS_PER_PAGE = 5; // Item per page
 
@@ -419,8 +420,9 @@ export default function NewsPage() {
               </div>
 
               {loadingArticles ? (
-                // 👈 thêm: trạng thái loading khi đang fetch danh sách bài viết
-                <div className="py-20 sm:py-28 text-center">
+                // 👈 spinner khi đang fetch danh sách bài viết
+                <div className="py-20 sm:py-28 flex flex-col items-center justify-center gap-3">
+                  <Spinner size={36} color="#1a2f4a" />
                   <p className="text-black/30 text-sm">{t("news.fields.loading")}</p>
                 </div>
               ) : paginated.length === 0 ? (
