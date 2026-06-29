@@ -1,3 +1,4 @@
+// components/StatsSection.tsx
 "use client"
 
 import { useEffect, useRef, useState } from "react"
@@ -31,20 +32,31 @@ export default function StatsSection() {
   return (
     <section
       ref={ref}
-      className="relative bg-[#020c1a] border-t border-white/10 py-12 md:py-16"
+      className="relative bg-[#020c1a] border-t border-white/10 py-16 md:py-24 lg:py-28 overflow-hidden"
     >
+      {/* Subtle background glow */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-blue-500/5 rounded-full blur-3xl" />
+      </div>
+
       <div
-        className={`container mx-auto px-6 transition-all duration-1000 ${
+        className={`relative container mx-auto px-6 transition-all duration-1000 ${
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
         }`}
       >
-        <div className="grid grid-cols-3 gap-8 max-w-2xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-3 max-w-5xl mx-auto divide-y sm:divide-y-0 sm:divide-x divide-white/10">
           {stats.map((stat, i) => (
-            <div key={i} className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-white">
+            <div
+              key={i}
+              className={`flex flex-col items-center justify-center text-center py-8 sm:py-0 px-4 transition-all duration-700 ${
+                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+              }`}
+              style={{ transitionDelay: isVisible ? `${i * 150}ms` : "0ms" }}
+            >
+              <div className="text-5xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight">
                 {stat.value}
               </div>
-              <div className="text-white/50 text-sm mt-1">
+              <div className="text-white/50 text-sm md:text-base mt-2 md:mt-3 uppercase tracking-wider">
                 {t(stat.labelKey)}
               </div>
             </div>
