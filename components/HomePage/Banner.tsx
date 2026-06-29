@@ -32,7 +32,6 @@ const particles = [
 
 export default function HeroSection() {
   const { t } = useTranslation("common")
-
   const [mounted, setMounted] = useState(false)
   const [isLoaded, setIsLoaded] = useState(false)
 
@@ -43,10 +42,8 @@ export default function HeroSection() {
 
   if (!mounted) return null
 
-
-
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -90,44 +87,47 @@ export default function HeroSection() {
       )}
 
       {/* Main Content */}
-      <div className="relative z-20 container mx-auto px-6 pt-20">
+      <div className="relative z-20 container mx-auto px-6 pt-20 flex-1 flex items-center">
         <div className="max-w-4xl">
           {/* Badge */}
           <div
-            className={`inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-8 transition-all duration-1000 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-              }`}
+            className={`inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-8 transition-all duration-1000 ${
+              isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+            }`}
           >
             <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-            <span className="text-white/80 text-sm">
-              {t("hero.badge")}
-            </span>
+            <span className="text-white/80 text-sm">{t("hero.badge")}</span>
           </div>
 
           {/* Headline */}
           <h1 className="text-white mb-6">
-            <div className="rela">
+            <div>
               <span
-                className={`block text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight transition-all duration-1000 delay-200 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-                  }`}
+                className={`block text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight transition-all duration-1000 delay-200 ${
+                  isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+                }`}
               >
                 {t("hero.line1")}
               </span>
               <span
-                className={`block text-5xl md:text-7xl lg:text-8xl font-bold text-blue-500 tracking-tight transition-all duration-1000 delay-200 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-                  }`}
+                className={`block text-5xl md:text-7xl lg:text-8xl font-bold text-blue-500 tracking-tight transition-all duration-1000 delay-200 ${
+                  isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+                }`}
               >
                 {t("hero.line2")}
               </span>
             </div>
             <span
-              className={`block text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight transition-all duration-1000 delay-400 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-                }`}
+              className={`block text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight transition-all duration-1000 delay-400 ${
+                isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+              }`}
             >
               {t("hero.line3")}
             </span>
             <span
-              className={`block text-5xl md:text-7xl lg:text-8xl font-light tracking-tight text-white/60 transition-all duration-1000 delay-[600ms] ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-                }`}
+              className={`block text-5xl md:text-7xl lg:text-8xl font-light tracking-tight text-white/60 transition-all duration-1000 delay-[600ms] ${
+                isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+              }`}
             >
               {t("hero.line4")}
             </span>
@@ -135,16 +135,18 @@ export default function HeroSection() {
 
           {/* Description */}
           <p
-            className={`text-white/70 text-lg md:text-xl text-justify max-w-2xl mb-10 leading-relaxed transition-all duration-1000 delay-[800ms] ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-              }`}
+            className={`text-white/70 text-lg md:text-xl text-justify max-w-2xl mb-10 leading-relaxed transition-all duration-1000 delay-[800ms] ${
+              isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+            }`}
           >
             {t("hero.description")}
           </p>
 
           {/* CTA Buttons */}
           <div
-            className={`flex flex-wrap gap-4 transition-all duration-1000 delay-[1000ms] ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-              }`}
+            className={`flex flex-wrap gap-4 transition-all duration-1000 delay-[1000ms] ${
+              isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+            }`}
           >
             <Link href="/products">
               <Button
@@ -161,40 +163,43 @@ export default function HeroSection() {
 
       {/* Scroll Indicator */}
       <div
-        className={`absolute bottom-10 left-1/2 -translate-x-1/2 z-20 transition-all duration-1000 delay-[1200ms] ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-          }`}
+        className={`absolute bottom-10 left-1/2 -translate-x-1/2 z-20 transition-all duration-1000 delay-[1200ms] ${
+          isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+        }`}
       >
         <div className="flex flex-col items-center gap-2 animate-bounce">
-          <span className="text-white/50 text-xs uppercase tracking-widest">
-            {t("hero.scroll")}
-          </span>
+          <span className="text-white/50 text-xs uppercase tracking-widest">{t("hero.scroll")}</span>
           <ChevronDown className="w-5 h-5 text-white/50" />
         </div>
       </div>
 
       {/* Stats Row */}
-      <div
-        className={`grid grid-cols-3 gap-8 mt-20 pt-12 border-t border-white/10 transition-all duration-1000 delay-500 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+      <div className="relative z-20 w-full border-t border-white/10">
+        <div
+          className={`container mx-auto px-6 py-10 grid grid-cols-3 gap-8 transition-all duration-1000 delay-500 ${
+            isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
-      >
-        <div className="text-center">
-          <div className="text-3xl md:text-4xl font-bold text-white">10+</div>
-          <div className="text-white/50 text-sm mt-1">{t("partnersSection.stats.countries")}</div>
-        </div>
-        <div className="text-center">
-          <div className="text-3xl md:text-4xl font-bold text-white">60+</div>
-          <div className="text-white/50 text-sm mt-1">{t("partnersSection.stats.oem")}</div>
-        </div>
-        <div className="text-center">
-          <div className="text-3xl md:text-4xl font-bold text-white">{t("partnersSection.stats.support1")}</div>
-          <div className="text-white/50 text-sm mt-1">{t("partnersSection.stats.support2")}</div>
+        >
+          <div className="text-center">
+            <div className="text-3xl md:text-4xl font-bold text-white">10+</div>
+            <div className="text-white/50 text-sm mt-1">{t("partnersSection.stats.countries")}</div>
+          </div>
+          <div className="text-center">
+            <div className="text-3xl md:text-4xl font-bold text-white">60+</div>
+            <div className="text-white/50 text-sm mt-1">{t("partnersSection.stats.oem")}</div>
+          </div>
+          <div className="text-center">
+            <div className="text-3xl md:text-4xl font-bold text-white">{t("partnersSection.stats.support1")}</div>
+            <div className="text-white/50 text-sm mt-1">{t("partnersSection.stats.support2")}</div>
+          </div>
         </div>
       </div>
 
       {/* Decorative Line */}
       <div
-        className={`absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent z-20 transition-all duration-1000 delay-[1400ms] ${isLoaded ? "opacity-100 scale-x-100" : "opacity-0 scale-x-0"
-          }`}
+        className={`absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent z-20 transition-all duration-1000 delay-[1400ms] ${
+          isLoaded ? "opacity-100 scale-x-100" : "opacity-0 scale-x-0"
+        }`}
       />
 
       <style>{`
