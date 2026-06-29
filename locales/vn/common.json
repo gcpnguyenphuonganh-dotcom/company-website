@@ -173,7 +173,7 @@
       "label": "Giới thiệu công ty",
       "title": "Nhà sản xuất máy biến áp đẳng cấp thế giới tại Việt Nam",
       "desc_1": "Công ty TNHH Vietnam Diamond & Zebra Electric vận hành nhà máy sản xuất hiện đại tại Khu công nghiệp Đại Đồng-Hoàn Sơn, tỉnh Bắc Ninh, Việt Nam. Với đội ngũ hơn 600 kỹ sư, kỹ thuật viên và công nhân lành nghề, chúng tôi chuyên thiết kế và sản xuất các loại máy biến áp nguồn, máy biến áp phân phối, máy biến điện áp - biến dòng đo lường (instrument transformers), cùng các giải pháp máy biến áp tùy chỉnh theo yêu cầu của khách hàng. Sản phẩm của chúng tôi phục vụ các đơn vị điện lực, khách hàng công nghiệp và khách hàng OEM tại châu Á cũng như nhiều thị trường trên thế giới.",
-      "desc_2": "Là công ty con do Diamond Electric Holdings Co., Ltd. sở hữu 100% vốn, kết hợp tinh hoa kỹ thuật Nhật Bản với tính linh hoạt và hiệu quả trong sản xuất tại Việt Nam, từ đó mang đến cho khách hàng trên toàn cầu những sản phẩm chất lượng cao, hiệu suất vận hành tin cậy và thời gian giao hàng cạnh tranh.",
+      "desc_2": "Là công ty con do Diamond Electric Holdings Co., Ltd. sở hữu 100% vốn,chúng tôi kết hợp tinh hoa kỹ thuật Nhật Bản với tính linh hoạt và hiệu quả trong sản xuất tại Việt Nam, từ đó mang đến cho khách hàng trên toàn cầu những sản phẩm chất lượng cao, hiệu suất vận hành tin cậy và thời gian giao hàng cạnh tranh.",
       "factory_area": " Diện tích nhà máy",
       "factory_area_value": "32,040 m²",
       "annual_capacity": "Năng lực sản xuất hằng năm",
@@ -279,13 +279,13 @@
       "listed": "Niêm yết",
       "listed_val": "Sở Giao dịch Chứng khoán Tokyo",
       "founded": "Thành lập",
-      "founded_val": "1938"
+      "founded_val": "2018"
     },
     "cta": {
       "title": "Sẵn sàng phát triển cùng chúng tôi?",
-      "title_1": "Hãy liên hệ với chúng tôi ngay hôm nay!",
+      "title_1": "Hãy liên hệ ngay hôm nay!",
       "desc": "Gửi cho chúng tôi yêu cầu kỹ thuật của bạn và nhận phản hồi trong vòng 24 giờ.",
-      "button": "Liên hệ kỹ sư của chúng tôi"
+      "button": "Liên hệ với chúng tôi"
     }
   },
   "careers": {
@@ -388,7 +388,7 @@
     "hero": {
       "label": "Công ty TNHH Việt Nam Diamond & Zebra Electric",
       "title": "Tin tức & Thông báo",
-      "desc": "Cập nhật sản phẩm mới nhất, chứng nhận và tin tức doanh nghiệp từ chúng tôi"
+      "desc": "Cập nhật sản phẩm mới nhất, chứng nhận và tin tức doanh nghiệp"
     },
     "search_placeholder": "Tìm kiếm bài viết...",
     "results_for": "Kết quả cho",
