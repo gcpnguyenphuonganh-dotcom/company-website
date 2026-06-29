@@ -373,7 +373,8 @@
     "tab_product": "Product",
     "tab_technology": "Technology",
     "products.tab_product": "Product",
-    "products.tab_technology": "Technology"
+    "products.tab_technology": "Technology",
+    "tab_application": "Applications"
   },
   "news": {
     "hero": {
