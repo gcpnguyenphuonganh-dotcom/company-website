@@ -161,25 +161,13 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* Scroll Indicator */}
+      {/* Stats Row */}
       <div
-        className={`absolute bottom-10 left-1/2 -translate-x-1/2 z-20 transition-all duration-1000 delay-[1200ms] ${
+        className={`absolute bottom-16 left-0 right-0 z-20 border-t border-white/10 transition-all duration-1000 delay-500 ${
           isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
         }`}
       >
-        <div className="flex flex-col items-center gap-2 animate-bounce">
-          <span className="text-white/50 text-xs uppercase tracking-widest">{t("hero.scroll")}</span>
-          <ChevronDown className="w-5 h-5 text-white/50" />
-        </div>
-      </div>
-
-      {/* Stats Row */}
-      <div className="relative z-20 w-full border-t border-white/10">
-        <div
-          className={`container mx-auto px-6 py-10 grid grid-cols-3 gap-8 transition-all duration-1000 delay-500 ${
-            isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-          }`}
-        >
+        <div className="container mx-auto px-6 pt-8 grid grid-cols-3 gap-8">
           <div className="text-center">
             <div className="text-3xl md:text-4xl font-bold text-white">10+</div>
             <div className="text-white/50 text-sm mt-1">{t("partnersSection.stats.countries")}</div>
@@ -192,6 +180,18 @@ export default function HeroSection() {
             <div className="text-3xl md:text-4xl font-bold text-white">{t("partnersSection.stats.support1")}</div>
             <div className="text-white/50 text-sm mt-1">{t("partnersSection.stats.support2")}</div>
           </div>
+        </div>
+      </div>
+
+      {/* Scroll Indicator */}
+      <div
+        className={`absolute bottom-4 left-1/2 -translate-x-1/2 z-20 transition-all duration-1000 delay-[1200ms] ${
+          isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+        }`}
+      >
+        <div className="flex flex-col items-center gap-2 animate-bounce">
+          <span className="text-white/50 text-xs uppercase tracking-widest">{t("hero.scroll")}</span>
+          <ChevronDown className="w-5 h-5 text-white/50" />
         </div>
       </div>
 
