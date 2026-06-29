@@ -1,25 +1,15 @@
 "use client";
 
-import {
-  Car,
-  MoveVertical,
-  Zap,
-  Factory,
-  Home as HomeIcon,
-  Cog,
-  Building2,
-  PlugZap,
-} from "lucide-react";
+import { useState } from "react";
 
 // ── Application catalogue ──
-// Replace `image` with a real image URL (e.g. from /public or Strapi) when available.
-// While `image` is empty, the icon fallback below is used instead.
+// Put your actual images in /public/images/applications/ with these exact
+// file names (or change the `image` path below to wherever you store them).
 type ApplicationItem = {
   key: string;
   name: string;
   description: string;
-  image?: string;
-  Icon: React.ComponentType<{ size?: number; className?: string; strokeWidth?: number }>;
+  image: string;
 };
 
 const APPLICATIONS: ApplicationItem[] = [
@@ -28,70 +18,80 @@ const APPLICATIONS: ApplicationItem[] = [
     name: "Automotive",
     description:
       "Relays and components engineered for reliability in vehicle electrical systems, EV charging and onboard control units.",
-    Icon: Car,
+    image: "/images/applications/automotive.jpg",
   },
   {
     key: "elevating-machine",
     name: "Elevating Machine",
     description:
       "Switching solutions built for elevators, hoists and lifting equipment that demand long mechanical life and safety.",
-    Icon: MoveVertical,
+    image: "/images/applications/elevating-machine.jpg",
   },
   {
     key: "energy-related",
     name: "Energy Related",
     description:
       "Components supporting solar inverters, energy storage systems and other renewable energy applications.",
-    Icon: Zap,
+    image: "/images/applications/energy-related.jpg",
   },
   {
     key: "factory-automation",
     name: "Factory Automation",
     description:
       "High-cycle, durable switching devices for PLCs, robotics and industrial control panels on the production line.",
-    Icon: Factory,
+    image: "/images/applications/factory-automation.jpg",
   },
   {
     key: "home-appliance",
     name: "Home Appliance",
     description:
       "Compact, cost-effective relays for washing machines, refrigerators, air conditioners and other household devices.",
-    Icon: HomeIcon,
+    image: "/images/applications/home-appliance.jpg",
   },
   {
     key: "industrial-appliance",
     name: "Industrial Appliance",
     description:
       "Rugged components designed for heavy-duty industrial equipment operating in demanding environments.",
-    Icon: Cog,
+    image: "/images/applications/industrial-appliance.jpg",
   },
   {
     key: "office-automation",
     name: "Office Automation",
     description:
       "Precision switching parts for printers, copiers and other office equipment requiring quiet, stable operation.",
-    Icon: Building2,
+    image: "/images/applications/office-automation.jpg",
   },
   {
     key: "power-distribution",
     name: "Power Distribution",
     description:
       "Reliable, high-capacity switching for power distribution boards, meters and smart grid infrastructure.",
-    Icon: PlugZap,
+    image: "/images/applications/power-distribution.jpg",
   },
 ];
 
 function ApplicationCard({ app }: { app: ApplicationItem }) {
-  const { name, description, image, Icon } = app;
+  const { name, description, image } = app;
+  const [broken, setBroken] = useState(false);
 
   return (
     <div className="group flex flex-col border border-slate-100 rounded-2xl overflow-hidden hover:border-[#013478]/25 hover:shadow-xl hover:shadow-[#013478]/6 transition-all duration-300 bg-white h-[360px]">
       <div className="relative w-full h-[45%] flex justify-center items-center overflow-hidden bg-[#013478]/5">
-        {image ? (
-          <img src={image} alt={name} className="h-full w-full object-cover" />
+        {!broken ? (
+          <img
+            src={image}
+            alt={name}
+            onError={() => setBroken(true)}
+            className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+          />
         ) : (
           <div className="w-full h-full bg-gradient-to-br from-[#013478]/10 to-[#013478]/5 flex items-center justify-center">
-            <Icon size={44} strokeWidth={1.5} className="text-[#013478] opacity-60 group-hover:opacity-90 group-hover:scale-110 transition-all duration-300" />
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#013478" strokeWidth="1.5" className="opacity-40">
+              <rect x="3" y="3" width="18" height="18" rx="2" />
+              <circle cx="8.5" cy="8.5" r="1.5" />
+              <path d="M21 15l-5-5L5 21" />
+            </svg>
           </div>
         )}
       </div>
