@@ -79,7 +79,7 @@
     "eyebrow": "Ứng dụng ô tô",
     "titleLine1": "Dẫn đầu tương lai",
     "titleLine2": "của xe điện",
-    "description": "ZVE cung cấp máy biến áp và linh kiện điện tử được chế tạo chính xác cho ngành ô tô — hỗ trợ các nền tảng xe xEV, hybrid và thế hệ tiếp theo với tiêu chuẩn chất lượng Nhật Bản.",
+    "description":"Chúng tôi cung cấp máy biến áp và linh kiện điện tử được chế tạo chính xác cho ngành ô tô — hỗ trợ các nền tảng xe xEV, hybrid và thế hệ tiếp theo với tiêu chuẩn chất lượng Nhật Bản.",
     "features": {
       "ev": "Linh kiện xEV & Xe điện",
       "certified": "Quy trình được chứng nhận IATF 16949",
@@ -96,7 +96,7 @@
     "badge": "Liên hệ với chúng tôi",
     "titleLine1": "Kiến tạo tương lai",
     "titleLine2": "Hãy cùng nhau ",
-    "description": "Dù bạn đang tìm kiếm các linh kiện ô tô được thiết kế theo yêu cầu, mong muốn thảo luận về cơ hội hợp tác, hay có bất kỳ câu hỏi nào liên quan đến năng lực sản xuất của chúng tôi, đội ngũ ZVE luôn sẵn sàng hỗ trợ bạn. Hãy liên hệ với chúng tôi ngay hôm nay để trải nghiệm sự khác biệt của ZVE – nơi chất lượng, đổi mới sáng tạo và sự hài lòng của khách hàng luôn được đặt lên hàng đầu.",
+    "description": "Dù bạn đang tìm kiếm các linh kiện ô tô được thiết kế theo yêu cầu, mong muốn thảo luận về cơ hội hợp tác, hay có bất kỳ câu hỏi nào liên quan đến năng lực sản xuất của chúng tôi, đội ngũ chúng tôi luôn sẵn sàng hỗ trợ bạn. Hãy liên hệ với chúng tôi ngay hôm nay để trải nghiệm sự khác biệt – nơi chất lượng, đổi mới sáng tạo và sự hài lòng của khách hàng luôn được đặt lên hàng đầu.",
     "button": "Liên hệ ngay",
     "items": {
       "visit": {
@@ -172,8 +172,8 @@
     "overview": {
       "label": "Giới thiệu công ty",
       "title": "Nhà sản xuất máy biến áp đẳng cấp thế giới tại Việt Nam",
-      "desc_1": "Công ty TNHH Vietnam Diamond & Zebra Electric (ZVE) vận hành nhà máy sản xuất hiện đại tại Khu công nghiệp Đại Đồng-Hoàn Sơn, tỉnh Bắc Ninh, Việt Nam. Với đội ngũ hơn 600 kỹ sư, kỹ thuật viên và công nhân lành nghề, chúng tôi chuyên thiết kế và sản xuất các loại máy biến áp nguồn, máy biến áp phân phối, máy biến điện áp - biến dòng đo lường (instrument transformers), cùng các giải pháp máy biến áp tùy chỉnh theo yêu cầu của khách hàng. Sản phẩm của ZVE phục vụ các đơn vị điện lực, khách hàng công nghiệp và khách hàng OEM tại châu Á cũng như nhiều thị trường trên thế giới.",
-      "desc_2": "Là công ty con do Diamond Electric Holdings Co., Ltd. sở hữu 100% vốn, ZVE kết hợp tinh hoa kỹ thuật Nhật Bản với tính linh hoạt và hiệu quả trong sản xuất tại Việt Nam, từ đó mang đến cho khách hàng trên toàn cầu những sản phẩm chất lượng cao, hiệu suất vận hành tin cậy và thời gian giao hàng cạnh tranh.",
+      "desc_1": "Công ty TNHH Vietnam Diamond & Zebra Electric vận hành nhà máy sản xuất hiện đại tại Khu công nghiệp Đại Đồng-Hoàn Sơn, tỉnh Bắc Ninh, Việt Nam. Với đội ngũ hơn 600 kỹ sư, kỹ thuật viên và công nhân lành nghề, chúng tôi chuyên thiết kế và sản xuất các loại máy biến áp nguồn, máy biến áp phân phối, máy biến điện áp - biến dòng đo lường (instrument transformers), cùng các giải pháp máy biến áp tùy chỉnh theo yêu cầu của khách hàng. Sản phẩm của chúng tôi phục vụ các đơn vị điện lực, khách hàng công nghiệp và khách hàng OEM tại châu Á cũng như nhiều thị trường trên thế giới.",
+      "desc_2": "Là công ty con do Diamond Electric Holdings Co., Ltd. sở hữu 100% vốn, kết hợp tinh hoa kỹ thuật Nhật Bản với tính linh hoạt và hiệu quả trong sản xuất tại Việt Nam, từ đó mang đến cho khách hàng trên toàn cầu những sản phẩm chất lượng cao, hiệu suất vận hành tin cậy và thời gian giao hàng cạnh tranh.",
       "factory_area": " Diện tích nhà máy",
       "factory_area_value": "32,040 m²",
       "annual_capacity": "Năng lực sản xuất hằng năm",
@@ -212,7 +212,7 @@
         },
         {
           "year": "2022",
-          "title": " Đổi tên Công ty TNHH Việt Nam Tabuchi Electric thành Công ty TNHH Việt Nam Diamond & Zebra Electric (ZVE)",
+          "title": " Đổi tên Công ty TNHH Việt Nam Tabuchi Electric thành Công ty TNHH Việt Nam Diamond & Zebra Electric",
           "desc": "Đánh dấu bước chuyển mình theo định hướng phát triển mới của tập đoàn sau quá trình sáp nhập."
         },
         {
@@ -252,7 +252,7 @@
         },
         {
           "title": "Kỹ thuật chính xác",
-          "desc": "Mỗi cuộn dây, mỗi lõi, mỗi thử nghiệm — được thực hiện với dung sai chính xác định nghĩa tiêu chuẩn ZVE."
+          "desc": "Mỗi cuộn dây, mỗi lõi, mỗi thử nghiệm — được thực hiện với dung sai chính xác định nghĩa tiêu chuẩn."
         }
       ]
     },
@@ -272,7 +272,7 @@
     "group": {
       "label": "Tập đoàn",
       "title": "Thành viên của Diamond Electric Holdings",
-      "desc": "ZVE là công ty con thuộc sở hữu hoàn toàn của Diamond Electric Holdings Co., Ltd. (DEHD), tập đoàn toàn cầu với hơn 80 năm lịch sử và hoạt động tại hơn 15 quốc gia.",
+      "desc": "Công ty TNHH Việt Nam Diamond & Zebra Electric là công ty con thuộc sở hữu hoàn toàn của Diamond Electric Holdings Co., Ltd. (DEHD), tập đoàn toàn cầu với hơn 80 năm lịch sử và hoạt động tại hơn 15 quốc gia.",
       "parent": "Công ty mẹ",
       "headquarters": "Trụ sở chính",
       "headquarters_val": "Osaka, Nhật Bản",
@@ -282,7 +282,7 @@
       "founded_val": "1938"
     },
     "cta": {
-      "title": "Sẵn sàng phát triển cùng ZVE?",
+      "title": "Sẵn sàng phát triển cùng chúng tôi?",
       "title_1": "Hãy liên hệ với chúng tôi ngay hôm nay!",
       "desc": "Gửi cho chúng tôi yêu cầu kỹ thuật của bạn và nhận phản hồi trong vòng 24 giờ.",
       "button": "Liên hệ kỹ sư của chúng tôi"
@@ -360,7 +360,7 @@
       },
       "offer": {
         "title": "Thư mời nhận việc & Hội nhập",
-        "desc": "Chúng tôi sẽ gửi thư mời nhận việc chính thức đến ứng viên trúng tuyển trong vòng 1 tuần. Chào mừng bạn gia nhập đại gia đình ZVE!"
+        "desc": "Chúng tôi sẽ gửi thư mời nhận việc chính thức đến ứng viên trúng tuyển trong vòng 1 tuần. Chào mừng bạn gia nhập đại gia đình chúng tôi!"
       }
     }
   },
@@ -388,7 +388,7 @@
     "hero": {
       "label": "Công ty TNHH Việt Nam Diamond & Zebra Electric",
       "title": "Tin tức & Thông báo",
-      "desc": "Cập nhật sản phẩm mới nhất, chứng nhận và tin tức doanh nghiệp từ ZVE"
+      "desc": "Cập nhật sản phẩm mới nhất, chứng nhận và tin tức doanh nghiệp từ chúng tôi"
     },
     "search_placeholder": "Tìm kiếm bài viết...",
     "results_for": "Kết quả cho",
