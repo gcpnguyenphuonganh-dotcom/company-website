@@ -7,6 +7,7 @@ import { useParams } from "next/navigation";
 import { useTranslation } from "react-i18next";
 import { fetchStrapi } from "@/lib/strapi";
 import TechSection from "@/components/ProductsPage/TechSection";
+import ApplicationSection from "@/components/ProductsPage/Application";
 import { useSearchParams } from "next/navigation";
 import { useState, useEffect, useCallback, useRef, Suspense } from "react";
 import { Button } from "@/components/ui/button";
@@ -25,6 +26,8 @@ type Product = {
   image: { url: string }[];
 };
 
+type TabKey = "product" | "technology" | "application";
+
 const ITEMS_PER_PAGE = 6;
 
 const GRADIENTS = [
@@ -35,7 +38,6 @@ const GRADIENTS = [
   ["#013478", "#010f2e"],
   ["#010f2e", "#013478"],
 ];
-
 
 function Pagination({ current, total, onChange }: {
   current: number;
@@ -181,8 +183,8 @@ function Banner({
   products: Product[];
   lang: string;
   t: any;
-  activeTab: "product" | "technology";
-  onTabChange: (tab: "product" | "technology") => void;
+  activeTab: TabKey;
+  onTabChange: (tab: TabKey) => void;
 }) {
   const [cur, setCur] = useState(0);
   const [fading, setFading] = useState(false);
@@ -207,6 +209,13 @@ function Banner({
   const imgUrl = item.image?.[0]?.url
     ? `${process.env.NEXT_PUBLIC_STRAPI_URL}${item.image[0].url}`
     : null;
+
+  const TABS: TabKey[] = ["product", "technology", "application"];
+  const tabLabel = (tab: TabKey) => {
+    if (tab === "product") return t("products.tab_product");
+    if (tab === "technology") return t("products.tab_technology");
+    return t("products.tab_application") ?? "Application";
+  };
 
   return (
     <div className="relative w-full h-[500px] lg:h-[580px] overflow-hidden"
@@ -285,17 +294,17 @@ function Banner({
 
       {/* Tabs */}
       <div className="absolute bottom-0 right-0 z-10 flex overflow-hidden">
-        {(["product", "technology"] as const).map((tab, i) => (
+        {TABS.map((tab, i) => (
           <button
             key={tab}
             onClick={() => onTabChange(tab)}
-            className={`relative flex items-center gap-2.5 px-8 py-4 text-sm font-semibold tracking-wide transition-all duration-300 ${activeTab === tab ? "bg-white text-[#020c1a]" : "text-white/50 hover:text-white bg-transparent"
+            className={`relative flex items-center gap-2.5 px-8 py-4 text-sm font-semibold tracking-wide transition-all duration-300 whitespace-nowrap ${activeTab === tab ? "bg-white text-[#020c1a]" : "text-white/50 hover:text-white bg-transparent"
               }`}
           >
             {i > 0 && (
               <span className={`absolute left-0 top-3 bottom-3 w-px ${activeTab === tab ? "bg-black/10" : "bg-white/15"}`} />
             )}
-            {tab === "product" ? t("products.tab_product") : t("products.tab_technology")}
+            {tabLabel(tab)}
             <span className={`absolute bottom-0 left-4 right-4 h-[2px] rounded-full transition-all duration-300 ${activeTab === tab ? "bg-[#013478] opacity-100" : "opacity-0"}`} />
           </button>
         ))}
@@ -429,20 +438,24 @@ function ProductsContent() {
   const { t } = useTranslation("common");
 
   const [products, setProducts] = useState<Product[]>([]);
-  const [loadingProducts, setLoadingProducts] = useState(true); // 👈 thêm: trạng thái loading khi fetch danh sách sản phẩm
+  const [loadingProducts, setLoadingProducts] = useState(true); 
   const [query, setQuery] = useState("");
   const [activeCategory, setActiveCategory] = useState("All");
   const [activeApp, setActiveApp] = useState("All");
-  const [activeTab, setActiveTab] = useState<"product" | "technology">("product");
+  const [activeTab, setActiveTab] = useState<TabKey>("product");
   const [page, setPage] = useState(1);
 
   useEffect(() => {
     const tab = searchParams.get("tab");
-    setActiveTab(tab === "technology" ? "technology" : "product");
+    if (tab === "technology" || tab === "application") {
+      setActiveTab(tab);
+    } else {
+      setActiveTab("product");
+    }
   }, [searchParams]);
 
   useEffect(() => {
-    setLoadingProducts(true); // 👈 thêm: bắt đầu fetch thì set loading = true
+    setLoadingProducts(true);
     fetchStrapi(`/api/products?populate=*&pagination[pageSize]=100`, lang)
       .then((res) => {
         const data: Product[] = res.data.map((item: any) => ({
@@ -459,7 +472,7 @@ function ProductsContent() {
         setProducts(data);
       })
       .catch((err) => console.error(err))
-      .finally(() => setLoadingProducts(false)); // 👈 thêm: fetch xong (thành công hoặc lỗi) thì tắt loading
+      .finally(() => setLoadingProducts(false)); 
   }, [lang]);
 
   useEffect(() => {
@@ -503,7 +516,7 @@ function ProductsContent() {
         onTabChange={setActiveTab}
       />
 
-      {activeTab === "product" ? (
+      {activeTab === "product" && (
         <section className="max-w-7xl mx-auto px-6 py-16">
           <div className="flex gap-10">
 
@@ -586,7 +599,6 @@ function ProductsContent() {
               </div>
 
               {loadingProducts ? (
-                // 👈 spinner khi đang fetch danh sách sản phẩm
                 <div className="flex flex-col items-center justify-center gap-3 py-24">
                   <Spinner size={36} color="#013478" />
                   <p className="text-sm text-slate-400">{t("products.loading") ?? "Đang tải..."}</p>
@@ -615,9 +627,11 @@ function ProductsContent() {
 
           </div>
         </section>
-      ) : (
-        <TechSection />
       )}
+
+      {activeTab === "technology" && <TechSection />}
+
+      {activeTab === "application" && <ApplicationSection />}
     </main>
   );
 }
