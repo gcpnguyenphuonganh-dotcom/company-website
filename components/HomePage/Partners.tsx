@@ -81,22 +81,6 @@ export default function PartnersSection() {
             </div>
           ))}
         </div>
-
-        {/* Stats Row */}
-        <div className={`grid grid-cols-3 gap-8 mt-20 pt-12 border-t border-border transition-all duration-1000 delay-500 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
-          <div className="text-center">
-            <div className="text-3xl md:text-4xl font-bold text-foreground">10+</div>
-            <div className="text-muted-foreground text-sm mt-1">{t("partnersSection.stats.countries")}</div>
-          </div>
-          <div className="text-center">
-            <div className="text-3xl md:text-4xl font-bold text-foreground">60+</div>
-            <div className="text-muted-foreground text-sm mt-1">{t("partnersSection.stats.oem")}</div>
-          </div>
-          <div className="text-center">
-            <div className="text-3xl md:text-4xl font-bold text-foreground">{t("partnersSection.stats.support1")}</div>
-            <div className="text-muted-foreground text-sm mt-1">{t("partnersSection.stats.support2")}</div>
-          </div>
-        </div>
       </div>
     </section>
   )

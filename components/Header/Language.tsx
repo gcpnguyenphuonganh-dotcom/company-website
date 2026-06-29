@@ -12,18 +12,6 @@ const LANGUAGES = [
   // { code: "ja", label: "JA", full: "日本語", countryCode: "jp" },
 ] as const;
 
-function Flag({ countryCode, size = 18 }: { countryCode: string; size?: number }) {
-  return (
-    <img
-      src={`https://cdn.jsdelivr.net/npm/flag-icons@7.2.3/flags/4x3/${countryCode}.svg`}
-      alt={countryCode}
-      width={size}
-      height={Math.round(size * 0.75)}
-      className="rounded-sm object-cover flex-shrink-0"
-      style={{ width: size, height: Math.round(size * 0.75) }}
-    />
-  );
-}
 
 export default function LanguageSwitcher() {
   const { i18n } = useTranslation("common");
@@ -58,7 +46,6 @@ export default function LanguageSwitcher() {
         onClick={() => setOpen((v) => !v)}
         className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-100 transition-all duration-150"
       >
-        <Flag countryCode={current.countryCode} size={18} />
         <span>{current.label}</span>
         <svg
           width="12" height="12" viewBox="0 0 24 24"
@@ -84,7 +71,6 @@ export default function LanguageSwitcher() {
                   }`}
               >
                 <div className="flex items-center gap-2">
-                  <Flag countryCode={lang.countryCode} size={18} />
                   <span className="font-bold text-xs min-w-[24px]">{lang.label}</span>
                   <span>{lang.full}</span>
                 </div>

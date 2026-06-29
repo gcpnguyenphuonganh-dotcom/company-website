@@ -172,6 +172,25 @@ export default function HeroSection() {
         </div>
       </div>
 
+      {/* Stats Row */}
+      <div
+        className={`grid grid-cols-3 gap-8 mt-20 pt-12 border-t border-white/10 transition-all duration-1000 delay-500 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+          }`}
+      >
+        <div className="text-center">
+          <div className="text-3xl md:text-4xl font-bold text-white">10+</div>
+          <div className="text-white/50 text-sm mt-1">{t("partnersSection.stats.countries")}</div>
+        </div>
+        <div className="text-center">
+          <div className="text-3xl md:text-4xl font-bold text-white">60+</div>
+          <div className="text-white/50 text-sm mt-1">{t("partnersSection.stats.oem")}</div>
+        </div>
+        <div className="text-center">
+          <div className="text-3xl md:text-4xl font-bold text-white">{t("partnersSection.stats.support1")}</div>
+          <div className="text-white/50 text-sm mt-1">{t("partnersSection.stats.support2")}</div>
+        </div>
+      </div>
+
       {/* Decorative Line */}
       <div
         className={`absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent z-20 transition-all duration-1000 delay-[1400ms] ${isLoaded ? "opacity-100 scale-x-100" : "opacity-0 scale-x-0"

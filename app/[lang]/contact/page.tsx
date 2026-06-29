@@ -42,7 +42,7 @@ export default function ContactUs() {
       tag: t("contact.loc3_tag"),
       name: t("contact.loc3_name"),
       address: t("contact.loc3_address"),
-      mapLink: "https://maps.app.goo.gl/gFUMBtqgfzxwqcdV7",
+      mapLink: "https://maps.app.goo.gl/Yh7KBgdNEZy4gQuz9",
       phone: "+81-6-6195-5230",
       email: ["https://www.diaelec-hd.co.jp/en/contact"],
       tagColor: "bg-[#013478]/15 text-[#013478]",

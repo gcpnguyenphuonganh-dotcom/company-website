@@ -79,7 +79,7 @@
     "eyebrow": "Automotive Application",
     "titleLine1": "Powering the Future",
     "titleLine2": "of Electric Vehicles",
-    "description": "ZVE supplies precision-engineered transformers and electronic components for the automotive sector — supporting xEV, hybrid, and next-generation vehicle platforms with Japan-grade quality standards.",
+    "description": "We supplies precision-engineered transformers and electronic components for the automotive sector — supporting xEV, hybrid, and next-generation vehicle platforms with Japan-grade quality standards.",
     "features": {
       "ev": "xEV & Electric Vehicle Components",
       "certified": "IATF 16949 Certified Processes",
@@ -96,7 +96,7 @@
     "badge": "Contact us",
     "titleLine1": " the Future Together",
     "titleLine2": "Let's Build",
-    "description": "Whether you need custom automotive parts, would like to discuss a partnership, or have any questions about our capabilities, our team is always ready to help. Reach out today and experience the ZVE difference — where quality, innovation, and client satisfaction come first.",
+    "description": "Whether you need custom automotive parts, would like to discuss a partnership, or have any questions about our capabilities, our team is always ready to help. Reach out today and experience the difference — where quality, innovation, and client satisfaction come first.",
     "button": "Get in Touch",
     "items": {
       "visit": {
@@ -172,8 +172,8 @@
     "overview": {
       "label": "Company Overview",
       "title": "A World-Class Transformer Manufacturer in Vietnam",
-      "desc_1": "Vietnam Diamond & Zebra Electric Co., Ltd. (ZVE) operates a state-of-the-art manufacturing facility located in Dai Dong-Hoan Son Industrial Park, Bac Ninh, Vietnam. With a team of more than 600 engineers, technicians and skilled labors, we specialize in the design and production of power transformers, distribution transformers, instrument transformers, and customized transformer solutions for utilities, industrial clients, and OEM clients across Asia and global markets.",
-      "desc_2": "As a wholly owned subsidiary of Diamond Electric Holdings Co., Ltd. (Japan), ZVE combines Japanese engineering excellence with Vietnam’s manufacturing flexibility and efficiency — delivering premium-quality products, reliable performance, and competitive lead times to clients worldwide.",
+      "desc_1": "Vietnam Diamond & Zebra Electric Co., Ltd. operates a state-of-the-art manufacturing facility located in Dai Dong-Hoan Son Industrial Park, Bac Ninh, Vietnam. With a team of more than 600 engineers, technicians and skilled labors, we specialize in the design and production of power transformers, distribution transformers, instrument transformers, and customized transformer solutions for utilities, industrial clients, and OEM clients across Asia and global markets.",
+      "desc_2": "As a wholly owned subsidiary of Diamond Electric Holdings Co., Ltd. (Japan), we combines Japanese engineering excellence with Vietnam’s manufacturing flexibility and efficiency — delivering premium-quality products, reliable performance, and competitive lead times to clients worldwide.",
       "factory_area": "Factory Area",
       "factory_area_value": "32,040 m²",
       "annual_capacity": " Annual Production Capacity",
@@ -252,7 +252,7 @@
         },
         {
           "title": "Precision Engineering",
-          "desc": "Every winding, every core, every test — performed to exacting tolerances that define the ZVE standard."
+          "desc": "Every winding, every core, every test — performed to exacting tolerances that define standard."
         }
       ]
     },
@@ -272,7 +272,7 @@
     "group": {
       "label": "Corporate Group",
       "title": "Part of Diamond Electric Holdings",
-      "desc": "ZVE is a wholly-owned subsidiary of Diamond Electric Holdings Co., Ltd. (DEHD) with 80+ years of heritage and operations in 15+ countries.",
+      "desc": "Vietnam Diamond & Zebra Electric Company Limited is a wholly-owned subsidiary of Diamond Electric Holdings Co., Ltd. (DEHD) with 80+ years of heritage and operations in 15+ countries.",
       "parent": "Parent Company",
       "headquarters": "Headquarters",
       "headquarters_val": "Osaka, Japan",
@@ -282,10 +282,10 @@
       "founded_val": "1938"
     },
     "cta": {
-      "title": "Ready to grow your business with ZVE?",
+      "title": "Ready to grow your business with us?",
       "title_1": "",
       "desc": "Send us your technical requirements and get a response within 24 hours.",
-      "button": "Contact Our Engineers "
+      "button": "Contact Us"
     }
   },
   "careers": {
@@ -379,7 +379,7 @@
     "hero": {
       "label": "Vietnam Diamond & Zebra Electric Company Limited",
       "title": "News & Announcements",
-      "desc": "Latest product updates, certifications, and corporate news from ZVE"
+      "desc": "Latest product updates, certifications, and corporate news"
     },
     "search_placeholder": "Search articles...",
     "results_for": "Results for",
