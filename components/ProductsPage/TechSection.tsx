@@ -115,8 +115,8 @@ export default function HFTArticle() {
             <Image
               src="/Products/Tech/tech1.png"
               alt="High Frequency Transformer"
-              width={1000}
-              height={650}
+              width={1200}
+              height={800}
               className="w-full max-w-md h-auto"
             />
           </div>
