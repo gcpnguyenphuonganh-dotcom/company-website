@@ -117,7 +117,7 @@ export default function HFTArticle() {
               alt="High Frequency Transformer"
               width={1200}
               height={800}
-              className="w-full max-w-md h-auto"
+              className="w-full max-w-xl h-auto"
             />
           </div>
 
