@@ -654,6 +654,49 @@
     "form_error": "Có lỗi xảy ra. Vui lòng thử lại.",
     "form_server_error": "Không thể kết nối đến máy chủ. Vui lòng thử lại sau.",
     "benefits": "Quyền lợi"
+  },
+  "tech": {
+    "section_label": "Công nghệ",
+    "transformer": {
+      "label": "Biến áp tần số cao",
+      "title": "BIẾN ÁP CAO TẦN (HIGH FREQUENCY TRANSFORMER - HFT): BỘ PHẬN QUAN TRỌNG CỦA BỘ CẤP NGUỒN CHO THIẾT BỊ ĐIỆN TỬ",
+      "hero_alt": "Biến áp tần số cao",
+      "summary": "Biến áp tần số cao (HFT) là công nghệ cốt lõi giúp bộ nguồn nhỏ gọn, nhẹ và hiệu suất cao hơn, dần thay thế các biến áp tần số lưới điện cồng kềnh truyền thống.",
+      "intro": "Trong kỷ nguyên công nghệ số và chuyển dịch năng lượng xanh, xu hướng tối ưu hóa hiệu suất và thu nhỏ kích thước thiết bị điện tử trở thành bài toán sống còn của các doanh nghiệp. Để giải quyết bài toán này, High Frequency Transformer (HFT) – Biến áp cao tần đã và sẽ trở thành một trong những nền tảng công nghệ cốt lõi, thay thế dần các biến áp tần số nguồn truyền thống vốn cồng kềnh và nặng nề.",
+      "toc": {
+        "label": "Mục lục",
+        "sec-1": "1. Biến áp cao tần (HFT) là gì?",
+        "sec-2": "2. Nguyên lý hoạt động của HFT",
+        "sec-3": "3. Ứng dụng chi tiết của HFT trong các sản phẩm thực tế",
+        "sec-4": "4. Ưu điểm vượt trội: Đạt Tiêu chuẩn cách điện UL1446",
+        "sec-5": "5. Định hướng phát triển công nghệ HFT của chúng tôi"
+      },
+      "sections": {
+        "sec-1": {
+          "heading": "1. Biến áp cao tần (HFT) là gì?",
+          "structure_alt": "Cấu tạo cơ bản của biến áp",
+          "body_html": "<p><strong>Biến áp cao tần (HFT)</strong> là loại biến áp được thiết kế để hoạt động ở dải tần số cao - thường từ vài chục kHz cho đến hàng MHz (trong khi biến áp thông thường chỉ chạy ở tần số nguồn lưới là 50Hz hoặc 60Hz).</p><p>Nhờ hoạt động ở tần số cao, HFT sở hữu những ưu điểm vượt trội:</p><p><strong>Kích thước siêu nhỏ gọn:</strong> Trọng lượng và thể tích có thể giảm từ 5 đến 10 lần so với biến áp truyền thống có cùng công suất.</p><p><strong>Mật độ công suất cao:</strong> Truyền tải năng lượng lớn hơn trên một đơn vị thể tích.</p><p><strong>Vật liệu tiên tiến:</strong> Sử dụng lõi làm bằng Ferrite thay vì lá thép kỹ thuật điện silic thông thường để giảm thiểu tổn hao ở tần số cao.</p><p><strong>Cấu trúc cơ bản của một HFT như hình dưới đây:</strong></p>"
+        },
+        "sec-2": {
+          "heading": "2. Nguyên lý hoạt động của HFT",
+          "body_html": "<p>Về cơ bản, HFT vẫn hoạt động dựa trên <strong>hiện tượng cảm ứng điện từ.</strong>. Tuy nhiên, quy trình vận hành trong các mạch điện hiện đại có sự khác biệt rất lớn:</p><p><strong>Băm xung gia tốc (Giai đoạn nghịch lưu):</strong> Dòng điện một chiều (DC) hoặc xoay chiều tần số thấp (50Hz) sẽ được biến đổi và \"băm\" thành dòng điện xoay chiều tần số cao nhờ các linh kiện bán dẫn công suất (như MOSFET, IGBT, hoặc linh kiện thế hệ mới GaN, SiC).</p><p><strong>Truyền tải năng lượng qua lõi biến áp:</strong> Dòng điện cao tần này chạy qua cuộn sơ cấp, tạo ra một từ thông biến thiên liên tục với tốc độ cực nhanh bên trong lõi Ferrite. Từ thông này cảm ứng sang cuộn thứ cấp tạo ra điện áp đầu ra theo tỷ lệ số vòng dây.</p><p><strong>Chỉnh lưu và lọc (Đầu ra):</strong> Dòng điện cao tần ở cuộn thứ cấp tiếp tục được chỉnh lưu thành DC và đi qua bộ lọc (L-C) để cung cấp nguồn điện sạch, ổn định cho tải.</p><p><strong>Tại sao tần số cao lại giúp giảm kích thước?</strong></p><p>Theo phương trình điện áp cảm ứng lý tưởng: E = 4.44. f . N .Фm (trong đó f là tần số, N là số vòng dây, Ф m là từ thông cực đại qua lõi). Khi tần số f tăng lên hàng nghìn lần, số vòng dây N và tiết diện lõi từ (yếu tố quyết định Фm ) có thể giảm đi rõ rệt mà vẫn đảm bảo giữ nguyên suất điện động E.</p>"
+        },
+        "sec-3": {
+          "heading": "3. Ứng dụng chi tiết của HFT trong các sản phẩm thực tế",
+          "body_html": "<p>Để thấy rõ tầm quan trọng của HFT, hãy cùng mổ xẻ cấu trúc của các thiết bị công nghệ hàng đầu hiện nay để xem HFT nằm ở bộ phận nào và đóng vai trò gì, chẳng hạn như:</p><h3>1) Hệ thống Trạm sạc xe điện (EV Fast Chargers) &amp; Bộ sạc On-board (OBC) trên xe điện</h3><p><strong>Vị trí lắp đặt:</strong> HFT nằm chính giữa <strong>Khối chuyển đổi DC-DC cách ly (Isolated DC-DC Converter Stage)</strong> thuộc bộ sạc nhanh DC hoặc bộ sạc On-board gắn trong xe.</p><p><strong>Chức năng &amp; Tác dụng:</strong></p><p><strong>Cách ly an toàn:</strong> Ngăn cách hoàn toàn về mặt điện giữa lưới điện cao áp nguy hiểm và hệ thống pin của xe điện, đảm bảo an toàn tuyệt đối cho người dùng.</p><p><strong>Hạ áp/Nâng áp hiệu suất cao:</strong> Biến đổi điện áp từ mức nguồn (ví dụ 400V/800V từ lưới hoặc từ bộ sạc) sang mức điện áp tối ưu để nạp vào cell pin với hiệu suất &gt;97%, giảm thiểu sinh nhiệt.</p><h3>2) Bộ biến tần năng lượng mặt trời (Solar Inverter) &amp; Hệ thống lưu trữ năng lượng (ESS)</h3><p><strong>Vị trí lắp đặt:</strong> Nằm trong <strong>Mạch nâng áp (Boost Stage) và Mạch cách ly tầng trung gian</strong> của Inverter.</p><p><strong>Chức năng &amp; Tác dụng:</strong></p><p><strong>Tối ưu hóa điện áp:</strong> Điện áp một chiều từ các tấm pin mặt trời thường biến thiên liên tục. HFT phối hợp với mạch điện tử để ổn định và nâng điện áp này lên mức cao hơn trước khi chuyển thành dòng AC hòa lưới.</p><p><strong>Thu nhỏ thiết bị:</strong> Giúp các bộ Inverter gia đình đạt kích thước mỏng nhẹ, có thể dễ dàng treo tường thay vì phải dùng tủ đứng nặng hàng trăm kilogram như trước đây.</p><h3>3) Điều hòa không khí công nghệ biến tần (Inverter Air Conditioner)</h3><p><strong>Vị trí lắp đặt:</strong> Bộ biến tần điều khiển động cơ máy nén (Inverter Compressor Drive Board)</strong> đặt ở cục nóng.</p><p><strong>Chức năng &amp; Tác dụng:</strong></p><p><strong>Cung cấp nguồn nuôi cho mạch vi xử lý và Driver:</strong> HFT hạ áp từ nguồn lưới để cấp nguồn DC ổn định, chống nhiễu cho các chip vi xử lý (MCU) và mạch kích (Gate Driver) điều khiển IGBT/MOSFET công suất.</p><p><strong>Tối ưu hóa dòng điện nuôi máy nén:</strong> HFT tham gia vào quá trình biến đổi điện áp giúp bộ biến tần linh hoạt thay đổi tần số dòng điện cấp cho động cơ máy nén. Nhờ đó, máy nén có thể tăng tốc làm lạnh nhanh hoặc giảm tốc để duy trì nhiệt độ ổn định, giúp tiết kiệm lên tới 30 - 50% điện năng so với điều hòa dòng cơ (Non-Inverter).</p><h3>4) Máy in văn phòng và Máy in công nghiệp (Printers)</h3><p><strong>Vị trí lắp đặt:</strong> Nằm trong <strong>Khối cấp nguồn hạ áp (LVPS - Low Voltage Power Supply) và Khối nguồn cao áp (HVPS - High Voltage Power Supply).</strong></p><p><strong>Chức năng &amp; Tác dụng:</strong></p><p><strong>Khối nguồn cao áp (HVPS):</strong> Trong máy in laser, HFT đóng vai trò cực kỳ quan trọng trong việc nâng áp lên mức từ vài trăm đến vài nghìn Volts (kV). Dòng cao áp này dùng để nạp điện tích cho trống từ (Drum), trục sạc (Changer Roller) và trục truyền mực (Transfer Roller), giúp mực hút dính chính xác lên giấy bám theo các hạt điện tích.</p><p><strong>Khối nguồn hạ áp (LVPS):</strong> HFT thực hiện hạ áp và cách ly để cấp nguồn 5V, 3.3V cho bo mạch điều khiển (Format board), cảm biến và nguồn 24V cho các mô-tơ kéo giấy, bộ phận sấy (Fuser), đảm bảo máy in vận hành êm ái, liên tục mà không bị sụt áp.</p>"
+        },
+        "sec-4": {
+          "heading": "4. Ưu điểm vượt trội: Đạt Tiêu chuẩn cách điện UL1446",
+          "body_html": "<p>Đối với các thiết bị hoạt động ở tần số cao, nhiệt độ phát sinh do tổn hao lõi từ và cuộn dây là rất lớn. Chính vì vậy, hệ thống cách điện của HFT do chúng tôi thiết kế đều nghiêm ngặt tuân thủ và đạt chứng nhận <strong>UL1446</strong> - tiêu chuẩn an toàn quốc tế khắt khe nhất của Hoa Kỳ dành cho hệ thống vật liệu cách điện (EIS).</p><p>Việc đạt chứng nhận UL1446 với các cấp cách điện <strong>Class B</strong> và <strong>Class F</strong> mang lại những lợi thế vượt trội:</p><p><strong>Khả năng chịu nhiệt độ cao và vận hành khắc nghiệt:</strong></p><p><strong>Class B:</strong> Cho phép biến áp hoạt động ổn định ở nhiệt độ tối đa lên tới <strong>130°C</strong>.</p><p><strong>Class F:</strong> Nâng giới hạn chịu nhiệt lên tới <strong>155°C</strong>, giúp HFT hoạt động bền bỉ ngay cả trong các môi trường công nghiệp kín, tỏa nhiệt lớn hoặc các ứng dụng tải nặng liên tục (như trạm sạc EV hoặc biến tần năng lượng mặt trời).</p><p><strong>Độ tin cậy và Tuổi thọ tối đa:</strong> Chứng nhận UL1446 không chỉ kiểm tra riêng lẻ từng vật liệu, mà là thử nghiệm sự tương thích của toàn bộ hệ thống (bao gồm dây quấn, màng cách điện, bobbin và sơn đổ khuôn) dưới tác động của nhiệt độ theo thời gian. Điều này đảm bảo hệ thống cách điện không bị thoái hóa, giòn gãy hay chập cháy sau nhiều năm sử dụng.</p><p><strong>Hộ chiếu an toàn cho xuất khẩu toàn cầu:</strong> Sản phẩm đạt tiêu chuẩn UL1446 giúp chúng tôi dễ dàng vượt qua các kỳ kiểm định khắt khe để xuất khẩu sang các thị trường khó tính như Bắc Mỹ (Mỹ, Canada, Mexico) và Châu Âu.</p>"
+        },
+        "sec-5": {
+          "heading": "5. Định hướng phát triển công nghệ HFT của chúng tôi",
+          "body_html": "<p>Tại <strong>Công ty TNHH Việt Nam Diamond &amp; Zebra Electric</strong>, chúng tôi không ngừng nghiên cứu và tích hợp các công nghệ HFT tiên tiến nhất vào dải sản phẩm của mình. Định hướng của chúng tôi tập trung vào:</p><p>Tối ưu hóa thiết kế cuộn dây (Litz wire hoặc PCB phẳng - Planar Transformer) để triệt tiêu hiệu ứng bề mặt (Skin effect) ở tần số siêu cao.</p><p>Thiết kế cho tự động hóa để giảm giá thành sản xuất và tăng tính cạnh tranh.</p><p>Công nghệ lõi chính là chìa khóa giúp các sản phẩm HFT của <strong>Công ty TNHH Việt Nam Diamond &amp; Zebra Electric</strong> đạt được tiêu chí: <strong>Nhỏ hơn - Hiệu suất cao hơn - Bền bỉ hơn.</strong></p>"
+        }
+      }
+    }
   }
-
 }
+
+
+
