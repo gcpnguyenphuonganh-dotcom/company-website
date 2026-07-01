@@ -1,15 +1,5 @@
 "use client";
 
-/**
- * HFTArticle — literal replica of HIGH_FREQUENCY_TRANSFORMER.docx.
- * Same text, same order, same headings/bold/bullets as the Word file.
- * No added UI elements — just typography and layout.
- *
- * Images expected at:
- *   /public/products/tech/hft-hero.png
- *   /public/products/tech/hft-structure-diagram.png
- */
-
 import Image from "next/image";
 
 export default function HFTArticle() {
@@ -21,7 +11,7 @@ export default function HFTArticle() {
       </h1>
 
       <Image
-        src="/products/tech/hft-hero.png"
+        src="/Products/Tech/tech1.png"
         alt="High Frequency Transformer"
         width={1000}
         height={650}
@@ -68,7 +58,7 @@ export default function HFTArticle() {
       </p>
 
       <Image
-        src="/products/tech/hft-structure-diagram.png"
+        src="/Products/Tech/tech2.png"
         alt="Basic structure of a transformer"
         width={1400}
         height={520}
