@@ -2,6 +2,14 @@
 
 import Image from "next/image";
 
+const TOC = [
+  { id: "sec-1", label: "1. What is a High Frequency Transformer (HFT)?" },
+  { id: "sec-2", label: "2. Operating principle of HFT" },
+  { id: "sec-3", label: "3. Detailed applications of HFTs in real-world products" },
+  { id: "sec-4", label: "4. Key advantage: UL1446 Certified Insulation System" },
+  { id: "sec-5", label: "5. Our HFT technology development orientation" },
+];
+
 export default function HFTArticle() {
   return (
     <article className="max-w-3xl mx-auto px-6 py-16 text-[#020c1a]">
@@ -10,13 +18,15 @@ export default function HFTArticle() {
         SUPPLY UNIT FOR ELECTRONIC DEVICES
       </h1>
 
-      <Image
-        src="/Products/Tech/tech1.png"
-        alt="High Frequency Transformer"
-        width={1000}
-        height={650}
-        className="w-full max-w-md h-auto mb-6"
-      />
+      <div className="flex justify-center mb-6">
+        <Image
+          src="/Products/Tech/tech1.png"
+          alt="High Frequency Transformer"
+          width={1000}
+          height={650}
+          className="w-full max-w-md h-auto"
+        />
+      </div>
 
       <p className="leading-relaxed mb-6">
         In the era of digital transformation and the green energy transition,
@@ -27,7 +37,26 @@ export default function HFTArticle() {
         heavy line-frequency transformers.
       </p>
 
-      <h2 className="text-xl font-bold mb-3">
+      {/* ── Table of Content ── */}
+      <nav className="border border-black/10 rounded-lg px-5 py-4 mb-10">
+        <h2 className="text-sm font-bold tracking-wide uppercase mb-3">
+          Table of Content
+        </h2>
+        <ol className="space-y-2 list-decimal list-inside">
+          {TOC.map((item) => (
+            <li key={item.id}>
+              <a
+                href={`#${item.id}`}
+                className="text-[#013478] hover:underline"
+              >
+                {item.label.replace(/^\d+\.\s*/, "")}
+              </a>
+            </li>
+          ))}
+        </ol>
+      </nav>
+
+      <h2 id="sec-1" className="text-xl font-bold mb-3 scroll-mt-24">
         1. What is a High Frequency Transformer (HFT)?
       </h2>
       <p className="leading-relaxed mb-4">
@@ -65,7 +94,7 @@ export default function HFTArticle() {
         className="w-full h-auto mb-8"
       />
 
-      <h2 className="text-xl font-bold mb-3">
+      <h2 id="sec-2" className="text-xl font-bold mb-3 scroll-mt-24">
         2. Operating principle of HFT
       </h2>
       <p className="leading-relaxed mb-4">
@@ -105,7 +134,7 @@ export default function HFTArticle() {
         same electromotive force E.
       </p>
 
-      <h2 className="text-xl font-bold mb-3">
+      <h2 id="sec-3" className="text-xl font-bold mb-3 scroll-mt-24">
         3. Detailed applications of HFTs in real-world products
       </h2>
       <p className="leading-relaxed mb-6">
@@ -210,7 +239,7 @@ export default function HFTArticle() {
         smoothly and continuously without voltage sags.
       </p>
 
-      <h2 className="text-xl font-bold mb-3">
+      <h2 id="sec-4" className="text-xl font-bold mb-3 scroll-mt-24">
         4. Key advantage: UL1446 Certified Insulation System
       </h2>
       <p className="leading-relaxed mb-4">
@@ -257,7 +286,7 @@ export default function HFTArticle() {
         Europe.
       </p>
 
-      <h2 className="text-xl font-bold mb-3">
+      <h2 id="sec-5" className="text-xl font-bold mb-3 scroll-mt-24">
         5. Our HFT technology development orientation
       </h2>
       <p className="leading-relaxed mb-4">

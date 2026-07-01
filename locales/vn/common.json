@@ -628,61 +628,6 @@
     "specification": "Thông số kỹ thuật",
     "related_products": "Sản phẩm liên quan"
   },
-  
-  "tech": {
-    "section_label": "Công nghệ",
-    "transformer": {
-      "label": "Biến áp",
-      "summary": "Truyền năng lượng từ tính hiệu suất cao cho chuyển đổi điện và cách ly.",
-      "features": [
-        { "title": "Biến áp cách ly", "desc": "Cách ly điện galvanic giữa cuộn sơ cấp và thứ cấp để đảm bảo an toàn và triệt tiêu nhiễu." },
-        { "title": "Biến áp chuyển mạch", "desc": "Tối ưu cho ứng dụng SMPS tần số cao với tổn hao lõi thấp và độ tự cảm chính xác." },
-        { "title": "Biến áp xung", "desc": "Ghép tín hiệu thời gian tăng nhanh cho mạch điều khiển cổng và cách ly kỹ thuật số." },
-        { "title": "Biến áp phẳng", "desc": "Thiết kế gắn PCB siêu mỏng cho các module nguồn có yêu cầu không gian nghiêm ngặt." },
-        { "title": "Biến áp chế độ chuyển mạch 3FL", "desc": "Với công nghệ độc quyền của Diamond & Zebra trên kết cấu cuộn dây, có thể giảm kích thước xuống khoảng 30% so với kết cấu thông thường. Kết cấu cuộn dây series 3FL có rãnh nhỏ trên khối chân để đảm bảo khoảng cách cách điện đủ lớn (công nghệ độc quyền), giúp tạo ra kết cấu thấp độ tin cậy cao và độc đáo." }
-      ]
-    },
-    "inductor": {
-      "label": "Cuộn cảm",
-      "summary": "Cuộn cảm dán bề mặt và xuyên lỗ cho bộ chuyển đổi DC-DC và mạch RF.",
-      "features": [
-        { "title": "Cuộn cảm nguồn SMD", "desc": "Kết cấu có vỏ chắn để giảm EMI trong thiết kế bộ chuyển đổi DC-DC nhỏ gọn lên đến 30A." },
-        { "title": "Cuộn cảm đa lớp", "desc": "Quy trình đa lớp gốm đạt dung sai dưới nH cho mạch RF dải GHz." },
-        { "title": "Cuộn cảm quấn dây", "desc": "Kết cấu quấn dây Q cao cho mạng lọc IF và phối hợp trở kháng." },
-        { "title": "Cuộn cảm điều chỉnh", "desc": "Cuộn chỉnh bằng lõi trượt cho căn chỉnh và hiệu chỉnh mạch chính xác." }
-      ]
-    },
-    "coil": {
-      "label": "Cuộn dây",
-      "summary": "Cuộn dây quấn chính xác cho truyền tải điện và điều hòa tín hiệu.",
-      "features": [
-        { "title": "Cuộn chặn nguồn", "desc": "Cuộn cảm dòng cao cho bộ chuyển đổi DC-DC với đặc tính bão hòa xuất sắc." },
-        { "title": "Cuộn RF", "desc": "Thiết kế lõi không khí và lõi ferrite điều chỉnh cho lọc và phối hợp tần số vô tuyến." },
-        { "title": "Cuộn xuyến", "desc": "Bức xạ EMI thấp với đường dẫn từ khép kín, lý tưởng cho âm thanh và đo lường chính xác." },
-        { "title": "Cuộn lõi ống", "desc": "Cụm quấn tiết kiệm chi phí cho ứng dụng rơ-le, solenoid và động cơ." }
-      ]
-    },
-    "filter": {
-      "label": "Bộ lọc",
-      "summary": "Giải pháp triệt tiêu nhiễu EMI/EMC cho hệ thống công nghiệp và ô tô.",
-      "features": [
-        { "title": "Bộ lọc chế độ chung", "desc": "Triệt tiêu nhiễu chế độ chung trên đường dây nguồn và tín hiệu trong hệ thống ô tô và công nghiệp." },
-        { "title": "Bộ lọc đường dây EMI", "desc": "Đáp ứng CISPR/EN 55032 Class B với suy giảm kết hợp chế độ vi sai và chế độ chung." },
-        { "title": "Bộ lọc LC Pi", "desc": "Mạng LC đa tầng cho lọc đầu vào nguồn trong môi trường điện từ khắc nghiệt." },
-        { "title": "Bộ lọc xuyên vách", "desc": "Lọc cấp bảng mạch với gắn chassis trực tiếp để loại bỏ nhiễu tần số cao." }
-      ]
-    },
-    "sensor": {
-      "label": "Cảm biến",
-      "summary": "Công nghệ cảm biến dòng điện và vị trí với cách ly điện galvanic.",
-      "features": [
-        { "title": "Biến dòng", "desc": "Cảm biến dòng chính xác với băng thông rộng cho đo điện năng và rơ-le bảo vệ." },
-        { "title": "Cuộn Rogowski", "desc": "Thiết kế lõi không khí linh hoạt để đo dòng AC không xâm lấn trong không gian hạn chế." },
-        { "title": "Cảm biến hiệu ứng Hall", "desc": "Cảm biến dòng DC/AC không tiếp xúc với cách ly điện galvanic lên đến 3kV." },
-        { "title": "Cảm biến vị trí từ", "desc": "Phát hiện vị trí quay và tuyến tính cho điều khiển động cơ và tự động hóa công nghiệp." }
-      ]
-    }
-  },
 
   "career": {
     "loading": "Đang tải...",
