@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
 const TOC = [
@@ -11,6 +12,43 @@ const TOC = [
 ];
 
 export default function HFTArticle() {
+  const [activeId, setActiveId] = useState<string>(TOC[0].id);
+  const clickLockRef = useRef(false);
+
+  useEffect(() => {
+    const sections = TOC.map((item) => document.getElementById(item.id)).filter(
+      (el): el is HTMLElement => el !== null
+    );
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        // Ignore scroll-driven updates right after a manual click,
+        // so the clicked item stays highlighted instead of flickering.
+        if (clickLockRef.current) return;
+
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+
+        if (visible.length > 0) {
+          setActiveId(visible[0].target.id);
+        }
+      },
+      { rootMargin: "-100px 0px -70% 0px", threshold: 0 }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
+  }, []);
+
+  const handleTocClick = (id: string) => {
+    setActiveId(id);
+    clickLockRef.current = true;
+    window.setTimeout(() => {
+      clickLockRef.current = false;
+    }, 700);
+  };
+
   return (
     <section className="max-w-7xl mx-auto px-6 py-16">
       <div className="flex gap-10">
@@ -24,15 +62,23 @@ export default function HFTArticle() {
               </h4>
             </div>
             <div className="divide-y divide-black/8">
-              {TOC.map((item) => (
-                <a
-                  key={item.id}
-                  href={`#${item.id}`}
-                  className="w-full flex items-center gap-3 px-5 py-3.5 text-sm transition-colors text-left bg-white text-black/70 hover:bg-black/5 hover:text-[#013478]"
-                >
-                  {item.label}
-                </a>
-              ))}
+              {TOC.map((item) => {
+                const isActive = activeId === item.id;
+                return (
+                  <a
+                    key={item.id}
+                    href={`#${item.id}`}
+                    onClick={() => handleTocClick(item.id)}
+                    className={`w-full flex items-center gap-3 px-5 py-3.5 text-sm transition-colors text-left ${
+                      isActive
+                        ? "bg-[#1a2f4a] text-white"
+                        : "bg-white text-black/70 hover:bg-black/5"
+                    }`}
+                  >
+                    {item.label}
+                  </a>
+                );
+              })}
             </div>
           </div>
         </div>
@@ -46,15 +92,23 @@ export default function HFTArticle() {
 
           {/* Mobile: TOC as pill list since sidebar is hidden below lg */}
           <div className="flex gap-2 flex-wrap mb-8 lg:hidden">
-            {TOC.map((item, i) => (
-              <a
-                key={item.id}
-                href={`#${item.id}`}
-                className="px-4 py-1.5 rounded-full text-xs font-semibold border border-black/15 text-black/60 hover:border-[#013478]/40 hover:text-[#013478]"
-              >
-                {i + 1}
-              </a>
-            ))}
+            {TOC.map((item, i) => {
+              const isActive = activeId === item.id;
+              return (
+                <a
+                  key={item.id}
+                  href={`#${item.id}`}
+                  onClick={() => handleTocClick(item.id)}
+                  className={`px-4 py-1.5 rounded-full text-xs font-semibold border transition-all ${
+                    isActive
+                      ? "bg-[#013478] text-white border-[#013478]"
+                      : "bg-white text-black/60 border-black/15 hover:border-[#013478]/40"
+                  }`}
+                >
+                  {i + 1}
+                </a>
+              );
+            })}
           </div>
 
           <div className="flex justify-center mb-6">
