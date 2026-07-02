@@ -234,17 +234,18 @@ export default function PhotoCollage() {
       {!isMobile && (
         <div className="collage-root">
 
-          {/* Hàng 1: 1 ảnh to nhất, nằm giữa */}
           <div className="collage-row-1">
             <Img index={0} style={{ width: 620, height: 420 }} onOpen={() => openImg(0)} />
           </div>
 
-          {/* Grid 2x2: 4 ảnh còn lại, to hơn trước */}
-          <div className="collage-grid">
-            <Img index={1} style={{ width: '100%', height: 280 }} onOpen={() => openImg(1)} />
-            <Img index={2} style={{ width: '100%', height: 280 }} onOpen={() => openImg(2)} />
-            <Img index={3} style={{ width: '100%', height: 280 }} onOpen={() => openImg(3)} />
-            <Img index={4} style={{ width: '100%', height: 280 }} onOpen={() => openImg(4)} />
+          <div className="collage-row-2">
+            <Img index={1} style={{ width: 500, height: 260 }} onOpen={() => openImg(1)} />
+            <Img index={2} style={{ width: 500, height: 260 }} onOpen={() => openImg(2)} />
+          </div>
+
+          <div className="collage-row-3">
+            <Img index={3} style={{ width: 500, height: 260 }} onOpen={() => openImg(3)} />
+            <Img index={4} style={{ width: 500, height: 260 }} onOpen={() => openImg(4)} />
           </div>
 
           <style jsx>{`
@@ -253,7 +254,7 @@ export default function PhotoCollage() {
               flex-direction: column;
               align-items: center;
               justify-content: center;
-              gap: 16px;
+              gap: 24px;
               padding: 40px;
               font-family: sans-serif;
             }
@@ -261,11 +262,11 @@ export default function PhotoCollage() {
               display: flex;
               justify-content: center;
             }
-            .collage-grid {
-              display: grid;
-              grid-template-columns: repeat(2, 1fr);
-              gap: 16px;
-              width: 620px;
+            .collage-row-2,
+            .collage-row-3 {
+              display: flex;
+              justify-content: center;
+              gap: 24px;
             }
           `}</style>
         </div>
