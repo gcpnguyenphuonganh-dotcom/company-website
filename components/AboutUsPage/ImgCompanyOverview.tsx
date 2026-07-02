@@ -236,19 +236,15 @@ export default function PhotoCollage() {
 
           {/* Hàng 1: 1 ảnh to nhất, nằm giữa */}
           <div className="collage-row-1">
-            <Img index={0} style={{ width: 560, height: 380 }} onOpen={() => openImg(0)} />
+            <Img index={0} style={{ width: 620, height: 420 }} onOpen={() => openImg(0)} />
           </div>
 
-          {/* Hàng 2: 2 ảnh chia đôi, nhỏ hơn */}
-          <div className="collage-row-2">
-            <Img index={1} style={{ width: 270, height: 190 }} onOpen={() => openImg(1)} />
-            <Img index={2} style={{ width: 270, height: 190 }} onOpen={() => openImg(2)} />
-          </div>
-
-          {/* Hàng 3: 2 ảnh chia đôi, nhỏ hơn */}
-          <div className="collage-row-3">
-            <Img index={3} style={{ width: 270, height: 190 }} onOpen={() => openImg(3)} />
-            <Img index={4} style={{ width: 270, height: 190 }} onOpen={() => openImg(4)} />
+          {/* Grid 2x2: 4 ảnh còn lại, to hơn trước */}
+          <div className="collage-grid">
+            <Img index={1} style={{ width: '100%', height: 280 }} onOpen={() => openImg(1)} />
+            <Img index={2} style={{ width: '100%', height: 280 }} onOpen={() => openImg(2)} />
+            <Img index={3} style={{ width: '100%', height: 280 }} onOpen={() => openImg(3)} />
+            <Img index={4} style={{ width: '100%', height: 280 }} onOpen={() => openImg(4)} />
           </div>
 
           <style jsx>{`
@@ -265,11 +261,11 @@ export default function PhotoCollage() {
               display: flex;
               justify-content: center;
             }
-            .collage-row-2,
-            .collage-row-3 {
-              display: flex;
-              justify-content: center;
+            .collage-grid {
+              display: grid;
+              grid-template-columns: repeat(2, 1fr);
               gap: 16px;
+              width: 620px;
             }
           `}</style>
         </div>
