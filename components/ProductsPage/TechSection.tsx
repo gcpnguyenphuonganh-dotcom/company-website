@@ -117,14 +117,14 @@ export default function HFTArticle() {
             />
           </div>
 
-          <p className="leading-relaxed mb-10">{t("tech.transformer.intro")}</p>
+          <p className="leading-relaxed text-justify mb-10">{t("tech.transformer.intro")}</p>
 
           {/* ── 1. What is an HFT ── */}
           <h2 id="sec-1" className="text-xl font-bold mb-3 scroll-mt-24">
             {t("tech.transformer.sections.sec-1.heading")}
           </h2>
           <div
-            className="leading-relaxed [&_p]:mb-4 last:[&_p]:mb-3"
+            className="leading-relaxed text-justify [&_p]:mb-4 last:[&_p]:mb-3"
             dangerouslySetInnerHTML={{
               __html: t("tech.transformer.sections.sec-1.body_html"),
             }}
@@ -142,7 +142,7 @@ export default function HFTArticle() {
             {t("tech.transformer.sections.sec-2.heading")}
           </h2>
           <div
-            className="leading-relaxed [&_p]:mb-4 last:[&_p]:mb-8"
+            className="leading-relaxed text-justify [&_p]:mb-4 last:[&_p]:mb-8"
             dangerouslySetInnerHTML={{
               __html: t("tech.transformer.sections.sec-2.body_html"),
             }}
@@ -153,7 +153,7 @@ export default function HFTArticle() {
             {t("tech.transformer.sections.sec-3.heading")}
           </h2>
           <div
-            className="leading-relaxed [&_p]:mb-4 [&_h3]:text-lg [&_h3]:font-bold [&_h3]:mb-3 [&_h3]:mt-6 last:[&_p]:mb-8"
+            className="leading-relaxed text-justify [&_p]:mb-4 [&_h3]:text-lg [&_h3]:font-bold [&_h3]:mb-3 [&_h3]:mt-6 last:[&_p]:mb-8"
             dangerouslySetInnerHTML={{
               __html: t("tech.transformer.sections.sec-3.body_html"),
             }}
@@ -164,7 +164,7 @@ export default function HFTArticle() {
             {t("tech.transformer.sections.sec-4.heading")}
           </h2>
           <div
-            className="leading-relaxed [&_p]:mb-4 last:[&_p]:mb-8"
+            className="leading-relaxed text-justify [&_p]:mb-4 last:[&_p]:mb-8"
             dangerouslySetInnerHTML={{
               __html: t("tech.transformer.sections.sec-4.body_html"),
             }}
@@ -175,7 +175,7 @@ export default function HFTArticle() {
             {t("tech.transformer.sections.sec-5.heading")}
           </h2>
           <div
-            className="leading-relaxed [&_p]:mb-4 last:[&_p]:mb-0"
+            className="leading-relaxed text-justify [&_p]:mb-4 last:[&_p]:mb-0"
             dangerouslySetInnerHTML={{
               __html: t("tech.transformer.sections.sec-5.body_html"),
             }}
