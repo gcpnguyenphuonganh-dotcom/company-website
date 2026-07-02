@@ -10,15 +10,6 @@ const PHOTOS = [
   '/AboutUs/CompanyOverview/3.jpg',
   '/AboutUs/CompanyOverview/4.jpg',
   '/AboutUs/CompanyOverview/5.jpg',
-  '/AboutUs/CompanyOverview/6.jpg', 
-  '/AboutUs/CompanyOverview/7.jpg',
-  '/AboutUs/CompanyOverview/8.jpg',
-  '/AboutUs/CompanyOverview/9.jpg',
-  '/AboutUs/CompanyOverview/10.jpg',
-  '/AboutUs/CompanyOverview/11.jpg',
-  '/AboutUs/CompanyOverview/12.jpg',
-  '/AboutUs/CompanyOverview/13.jpg',
-  '/Home/AboutUs/aboutus_home.jpg',
 ];
 
 type LightboxItem = { type: 'image'; src: string };
@@ -44,7 +35,6 @@ function Lightbox({ item, onClose }: { item: LightboxItem; onClose: () => void }
     >
       <div className="relative w-full max-w-3xl" onClick={(e) => e.stopPropagation()}>
         <div className="absolute -top-11 right-0 flex items-center gap-2">
-
           <button
             onClick={onClose}
             className="flex items-center justify-center w-8 h-8 rounded-lg bg-white/15 hover:bg-white/25 text-white border border-white/20 transition-colors"
@@ -53,7 +43,6 @@ function Lightbox({ item, onClose }: { item: LightboxItem; onClose: () => void }
             <X className="w-4 h-4" />
           </button>
         </div>
-        {/* Chỉ còn hiển thị hình ảnh */}
         <img
           src={item.src}
           alt={filename}
@@ -94,7 +83,7 @@ const Img = ({
         </svg>
       </div>
     </div>
-    </div>
+  </div>
 );
 
 function MobilePhotoSlider({ onOpen }: { onOpen: (index: number) => void }) {
@@ -135,7 +124,6 @@ function MobilePhotoSlider({ onOpen }: { onOpen: (index: number) => void }) {
 
   return (
     <div className="w-full">
-      {/* Track */}
       <div
         className="overflow-hidden rounded-sm"
         onTouchStart={handleTouchStart}
@@ -163,7 +151,6 @@ function MobilePhotoSlider({ onOpen }: { onOpen: (index: number) => void }) {
                 fill
                 className="object-cover"
               />
-              {/* zoom hint */}
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="bg-white/80 rounded-full p-2 opacity-60">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#111" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -177,7 +164,6 @@ function MobilePhotoSlider({ onOpen }: { onOpen: (index: number) => void }) {
         </div>
       </div>
 
-      {/* Dots + counter */}
       <div className="flex items-center justify-between mt-3 px-1">
         <span className="text-xs text-neutral-400"></span>
         <div className="flex gap-1.5">
@@ -194,7 +180,7 @@ function MobilePhotoSlider({ onOpen }: { onOpen: (index: number) => void }) {
           ))}
         </div>
         <span className="text-xs text-neutral-400 invisible">0/0</span>
-        </div>
+      </div>
     </div>
   )
 }
@@ -219,19 +205,17 @@ export default function PhotoCollage() {
       {/* ── MOBILE layout ────── */}
       {isMobile && (
         <div className="flex flex-col gap-4 px-4 py-6 ">
-      
           <div
             className="relative w-full rounded-sm overflow-hidden cursor-pointer"
             style={{ height: 220 }}
-            onClick={() => openImg(5)} 
+            onClick={() => openImg(0)}
           >
             <Image
-              src={PHOTOS[5]}
-              alt="photo-6"
+              src={PHOTOS[0]}
+              alt="photo-1"
               fill
               className="object-cover transition-transform duration-300 hover:scale-105"
             />
-           
             <div className="absolute inset-0 bg-black/0 hover:bg-black/25 transition-colors duration-300 flex items-center justify-center">
               <div className="opacity-0 hover:opacity-100 transition-opacity duration-300 bg-white/90 rounded-full p-2">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#111" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -242,65 +226,29 @@ export default function PhotoCollage() {
             </div>
           </div>
 
-          {/* Slide ảnh bên dưới */}
           <MobilePhotoSlider onOpen={openImg} />
         </div>
       )}
 
-      {/* ── DESKTOP layout  ────── */}
+      {/* ── DESKTOP layout ────── */}
       {!isMobile && (
         <div className="collage-root">
 
-          <div className="collage-top-row">
-            <Img index={8} style={{ width: 220, height: 160 }} onOpen={() => openImg(8)} />
-            <Img index={9} style={{ width: 200, height: 110 }} onOpen={() => openImg(9)} />
+          {/* Hàng 1: 1 ảnh to nhất, nằm giữa */}
+          <div className="collage-row-1">
+            <Img index={0} style={{ width: 560, height: 380 }} onOpen={() => openImg(0)} />
           </div>
 
-          <div className="collage-middle">
-            <div className="collage-left">
-              <Img index={0} style={{ width: 200, height: 150 }} onOpen={() => openImg(0)} />
-              <Img index={1} style={{ width: 300, height: 200 }} onOpen={() => openImg(1)} />
-              <div className="flex gap-2">
-                <Img index={2} style={{ width: 220, height: 120 }} onOpen={() => openImg(2)} />
-                <Img index={3} style={{ width: 180, height: 150 }} onOpen={() => openImg(3)} />
-              </div>
-            </div>
-
-            <div className="collage-center-col">
-              <div className="collage-above-video">
-                <Img index={4} style={{ width: 220, height: 120 }} onOpen={() => openImg(4)} />
-                <Img index={5} style={{ width: 230, height: 140 }} onOpen={() => openImg(5)} />
-              </div>
-            
-              {/* Ảnh lớn giữa: index 13 = /Home/AboutUs/aboutus_home.jpg */}
-              <div className="collage-video-wrapper" onClick={() => openImg(13)} style={{ cursor: 'pointer' }}>
-                <Image
-                  src={PHOTOS[13]}
-                  alt="aboutus-home"
-                  fill
-                  className="collage-video object-cover"
-                />
-                <div className="collage-video-hint">
-                  <div className="bg-white/90 rounded-full p-4 scale-75 opacity-0 transition-opacity duration-300">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#111" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                      <circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" />
-                      <line x1="11" y1="8" x2="11" y2="14" /><line x1="8" y1="11" x2="14" y2="11" />
-                    </svg>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="collage-right">
-              <Img index={6} style={{ width: 180, height: 120 }} onOpen={() => openImg(6)} />
-              <Img index={7} style={{ width: 300, height: 170 }} onOpen={() => openImg(7)} />
-            </div>
+          {/* Hàng 2: 2 ảnh chia đôi, nhỏ hơn */}
+          <div className="collage-row-2">
+            <Img index={1} style={{ width: 270, height: 190 }} onOpen={() => openImg(1)} />
+            <Img index={2} style={{ width: 270, height: 190 }} onOpen={() => openImg(2)} />
           </div>
 
-          <div className="collage-bottom-row">
-            <Img index={10} style={{ width: 220, height: 140 }} onOpen={() => openImg(10)} />
-            <Img index={11} style={{ width: 220, height: 240 }} className="collage-breakout" onOpen={() => openImg(11)} />
-            <Img index={12} style={{ width: 180, height: 120 }} onOpen={() => openImg(12)} />
+          {/* Hàng 3: 2 ảnh chia đôi, nhỏ hơn */}
+          <div className="collage-row-3">
+            <Img index={3} style={{ width: 270, height: 190 }} onOpen={() => openImg(3)} />
+            <Img index={4} style={{ width: 270, height: 190 }} onOpen={() => openImg(4)} />
           </div>
 
           <style jsx>{`
@@ -309,85 +257,19 @@ export default function PhotoCollage() {
               flex-direction: column;
               align-items: center;
               justify-content: center;
-              gap: 8px;
+              gap: 16px;
               padding: 40px;
-              min-height: 100vh;
               font-family: sans-serif;
             }
-            .collage-top-row {
+            .collage-row-1 {
               display: flex;
-              align-items: flex-end;
-              gap: 12px;
-              margin-bottom: 4px;
-              transform: translateX(-50px);
-            }
-            .collage-middle {
-              display: flex;
-              align-items: center;
-              gap: 16px;
-            }
-            .collage-left {
-              display: flex;
-              flex-direction: column;
-              align-items: flex-end;
-              gap: 12px;
-            }
-            .collage-center-col {
-              display: flex;
-              flex-direction: column;
-              align-items: flex-start;
-              gap: 12px;
-            }
-            .collage-above-video {
-              display: flex;
-              gap: 12px;
-            }
-            .collage-video-wrapper {
-              position: relative;
-              width: 500px;
-              height: 350px;
-              border-radius: 4px;
-              overflow: hidden;
-              box-shadow: 0 8px 40px rgba(0, 0, 0, 0.28);
-              background: #1a1a1a;
-              z-index: 10;
-            }
-            .collage-video {
-              width: 100%;
-              height: 100%;
-              object-fit: cover;
-              display: block;
-            }
-            .collage-video-hint {
-              position: absolute;
-              inset: 0;
-              display: flex;
-              align-items: center;
               justify-content: center;
-              background: transparent;
-              transition: all 0.2s;
-              pointer-events: none;
             }
-            .collage-video-wrapper:hover .collage-video-hint {
-              background: rgba(0, 0, 0, 0.25);
-            }
-            .collage-video-wrapper:hover .collage-video-hint div {
-                opacity: 1;
-            }
-            .collage-right {
+            .collage-row-2,
+            .collage-row-3 {
               display: flex;
-              flex-direction: column;
-              gap: 12px;
-            }
-            .collage-bottom-row {
-              display: flex;
-              align-items: flex-start;
+              justify-content: center;
               gap: 16px;
-              margin-top: 4px;
-            }
-            .collage-breakout {
-              margin-top: -60px !important;
-              box-shadow: 0 12px 32px rgba(0, 0, 0, 0.22) !important;
             }
           `}</style>
         </div>
