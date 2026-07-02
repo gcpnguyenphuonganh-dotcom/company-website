@@ -239,13 +239,13 @@ export default function PhotoCollage() {
           </div>
 
           <div className="collage-row-2">
-            <Img index={1} style={{ width: 400, height: 160 }} onOpen={() => openImg(1)} />
-            <Img index={2} style={{ width: 400, height: 160 }} onOpen={() => openImg(2)} />
+            <Img index={1} style={{ width: 400, height: 200 }} onOpen={() => openImg(1)} />
+            <Img index={2} style={{ width: 400, height: 200 }} onOpen={() => openImg(2)} />
           </div>
 
           <div className="collage-row-3">
-            <Img index={3} style={{ width: 400, height: 160 }} onOpen={() => openImg(3)} />
-            <Img index={4} style={{ width: 400, height: 160 }} onOpen={() => openImg(4)} />
+            <Img index={3} style={{ width: 400, height: 200 }} onOpen={() => openImg(3)} />
+            <Img index={4} style={{ width: 400, height: 200 }} onOpen={() => openImg(4)} />
           </div>
 
           <style jsx>{`
