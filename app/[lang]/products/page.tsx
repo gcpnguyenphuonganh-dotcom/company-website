@@ -8,6 +8,7 @@ import { useTranslation } from "react-i18next";
 import { fetchStrapi } from "@/lib/strapi";
 import TechSection from "@/components/ProductsPage/TechSection";
 import ApplicationSection from "@/components/ProductsPage/Application";
+import ApplicationOverview from "@/components/ProductsPage/ApplicationOverview";
 import { useSearchParams } from "next/navigation";
 import { useState, useEffect, useCallback, useRef, Suspense } from "react";
 import { Button } from "@/components/ui/button";
@@ -597,6 +598,8 @@ function ProductsContent() {
                   </button>
                 )}
               </div>
+
+              <ApplicationOverview activeApp={activeApp} />
 
               {loadingProducts ? (
                 <div className="flex flex-col items-center justify-center gap-3 py-24">
