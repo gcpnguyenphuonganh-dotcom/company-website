@@ -4,6 +4,7 @@ import { useState } from "react"
 import { useTranslation } from "react-i18next"
 import { ArrowRight } from "lucide-react"
 
+// Slugs match common.json → applications.items.<slug>
 type AppMeta = {
   id: number
   slug: string
@@ -21,12 +22,21 @@ const APP_META: AppMeta[] = [
   { id: 8, slug: "power", code: "PWR" },
 ]
 
+/**
+ * activeApp is matched against the English "name" values from your tab
+ * list (e.g. "Automotive"). Matching is resolved against the fixed "en"
+ * translation so the prop stays stable no matter which locale is active —
+ * swap this for a slug prop if your tabs already use slugs.
+ */
 export default function ApplicationOverview({ activeApp }: { activeApp: string }) {
   const [expanded, setExpanded] = useState(false)
   const { t } = useTranslation("common")
 
   if (activeApp === "All") return null
 
+  // activeApp arrives already translated into the current UI language
+  // (the tab list renders it with the same t() call), so match against
+  // the current locale's name — not a fixed "en" one.
   const meta = APP_META.find(
     (a) => t(`applications.items.${a.slug}.name`) === activeApp
   )
