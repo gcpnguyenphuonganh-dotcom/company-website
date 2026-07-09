@@ -18,9 +18,12 @@ function ApplicationCard({ slug, index }: { slug: string; index: number }) {
   const { t } = useTranslation("common")
   const name = t(`applications.items.${slug}.name`)
   const intro = t(`applications.items.${slug}.intro`)
+  const bullets = t(`applications.items.${slug}.bullets`, {
+    returnObjects: true,
+  }) as string[]
 
   return (
-    <div className="flex flex-col border border-slate-200 rounded-2xl p-6 h-[280px]">
+    <div className="flex flex-col border border-slate-200 rounded-2xl p-6">
       <span className="text-[11px] font-bold tracking-[0.18em] uppercase text-slate-400 mb-3">
         {String(index).padStart(2, "0")}/08
       </span>
@@ -28,9 +31,16 @@ function ApplicationCard({ slug, index }: { slug: string; index: number }) {
       <h3 className="text-[15px] font-black text-[#020c1a] mb-2 leading-snug">
         {name}
       </h3>
-      <p className="text-sm text-slate-500 leading-relaxed flex-1 line-clamp-6">
-        {intro}
-      </p>
+      <p className="text-sm text-slate-500 leading-relaxed mb-4">{intro}</p>
+
+      <ul className="space-y-2">
+        {bullets.map((item, i) => (
+          <li key={i} className="flex gap-2 text-sm text-slate-600 leading-relaxed">
+            <span className="text-slate-400 flex-shrink-0">—</span>
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
     </div>
   )
 }
@@ -49,7 +59,7 @@ export default function ApplicationSection() {
         </h2>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
         {APPLICATION_SLUGS.map((slug, i) => (
           <ApplicationCard key={slug} slug={slug} index={i + 1} />
         ))}
