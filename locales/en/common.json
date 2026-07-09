@@ -805,7 +805,7 @@
           },
           {
             "bold": "Measurement signal transmission:",
-            "text": "Transmitting pulse signals or high-frequency AC signals between circuit blocks. They maintain signal accuracy, reduce electromagnetic interference (EMI) impacts, and enable safe measurements because the measurement circuit not directly connect to high-voltage sources. They are present in digital oscilloscopes, spectrum analyzers, power meters, data acquisition systems (DAQs), and many industrial measuring devices…"
+            "text": "Transmitting pulse signals or high-frequency AC signals between circuit blocks. They maintain signal accuracy, reduce electromagnetic interference (EMI) impacts, and enable safe measurements because the measurement circuit not directly connect to high-voltage sources."
            },
           { "text": "They are present in digital oscilloscopes, spectrum analyzers, power meters, data acquisition systems (DAQs), and many industrial measuring devices…" },
           { "text": "Thanks to its isolation capabilities and high-frequency operation, high-frequency transformers help reduce common-mode noise, improving measurement stability and accuracy." }
