@@ -1,8 +1,6 @@
 "use client"
 
-import { useState } from "react"
 import { useTranslation } from "react-i18next"
-import { ArrowRight } from "lucide-react"
 
 type AppMeta = {
   id: number
@@ -21,8 +19,13 @@ const APP_META: AppMeta[] = [
   { id: 8, slug: "power", code: "PWR" },
 ]
 
+type Bullet = {
+  bold?: string
+  text: string
+  subBullets?: string[]
+}
+
 export default function ApplicationOverview({ activeApp }: { activeApp: string }) {
-  const [expanded, setExpanded] = useState(false)
   const { t } = useTranslation("common")
 
   if (activeApp === "All") return null
@@ -32,15 +35,12 @@ export default function ApplicationOverview({ activeApp }: { activeApp: string }
   )
   if (!meta) return null
 
-  const index = APP_META.findIndex((a) => a.slug === meta.slug) + 1
   const name = t(`applications.items.${meta.slug}.name`)
   const intro = t(`applications.items.${meta.slug}.intro`)
+  const listLabel = t(`applications.items.${meta.slug}.listLabel`)
   const bullets = t(`applications.items.${meta.slug}.bullets`, {
     returnObjects: true,
-  }) as string[]
-
-  const visibleBullets = expanded ? bullets : bullets.slice(0, 3)
-  const hasMore = bullets.length > 3
+  }) as Bullet[]
 
   return (
     <div className="rounded-2xl border border-[#0B1220]/10 bg-white p-6 md:p-8 mb-8">
@@ -52,26 +52,33 @@ export default function ApplicationOverview({ activeApp }: { activeApp: string }
         {intro}
       </p>
 
-      <ul className="space-y-2 mb-2">
-        {visibleBullets.map((item, i) => (
+      {listLabel && (
+        <p className="text-sm font-bold text-[#0B1220] mb-2">{listLabel}</p>
+      )}
+
+      <ul className="space-y-2">
+        {bullets.map((item, i) => (
           <li key={i} className="flex gap-2 text-sm text-[#0B1220]/80 leading-relaxed">
-            <span className="text-[#0B1220] mt-1 flex-shrink-0">—</span>
-            <span>{item}</span>
+            <span className="text-[#BE7C4D] mt-1 flex-shrink-0">—</span>
+            <span>
+              {item.bold && (
+                <span className="font-bold text-[#0B1220]">{item.bold} </span>
+              )}
+              {item.text}
+              {item.subBullets && item.subBullets.length > 0 && (
+                <ul className="mt-2 space-y-1.5 pl-1">
+                  {item.subBullets.map((sub, j) => (
+                    <li key={j} className="flex gap-2">
+                      <span className="text-[#BE7C4D] mt-1 flex-shrink-0">·</span>
+                      <span>{sub}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </span>
           </li>
         ))}
       </ul>
-
-      {hasMore && (
-        <button
-          onClick={() => setExpanded((v) => !v)}
-          className="inline-flex items-center gap-1 text-[#13253D] font-bold text-sm mt-2 hover:text-[#BE7C4D] transition-colors"
-        >
-          {expanded ? t("applications.showLess") : t("applications.showMore")}
-          <ArrowRight
-            className={`w-4 h-4 transition-transform ${expanded ? "-rotate-90" : ""}`}
-          />
-        </button>
-      )}
     </div>
   )
 }

@@ -703,87 +703,142 @@
       "automotive": {
         "name": "Automotive",
         "intro": "High-frequency transformers are a foundational component of modern automotive electronics. With their compact size and high efficiency, they perfectly meet the automotive industry's demand for space-saving components and outstanding performance.",
+        "listLabel": "They are used in:",
         "bullets": [
-          "Electric Vehicle (EV) Fast Chargers & On-board Chargers (OBC).",
-          "On-board DC-DC converters to manage power distribution among various electrical systems in the vehicle.",
-          "DC-AC converters for Vehicle-to-Home (V2H) systems — bidirectional inverters that convert DC voltage from the EV battery into AC to power household appliances or feed back into the grid."
+          { "text": "Electric Vehicle (EV) Fast Chargers & On-board Chargers (OBC)." },
+          { "text": "On-board DC-DC converters to manage power distribution among various electrical systems in the vehicle." },
+          { "text": "DC-AC converters for Vehicle-to-Home (V2H) systems, which are bidirectional inverter devices responsible for converting direct current (DC) voltage from the EV battery into alternating current (AC) to power household appliances or feed back into the grid." }
         ]
       },
       "elevating": {
         "name": "Elevating Machine",
-        "intro": "High-frequency transformers play an important role in modern elevator systems, especially those using switched-mode power supplies and inverter-driven controls.",
+        "intro": "High-frequency transformers play an important role in modern elevator systems, especially those utilizing switched-mode power supplies and inverter-driven controls.",
+        "listLabel": "Key applications include:",
         "bullets": [
-          "Power supplies for control circuits, sensors, display screens, and in-cabin communication systems — isolating grid voltage from control circuits to protect users and components.",
-          "In Variable Frequency Drives (VFD): powering IGBT/MOSFET control circuits, driver circuits, and feedback/protection circuits.",
-          "In Automatic Rescue Devices (ARD) and lifting equipment: stepping battery voltage up or down and powering the controller."
+          {
+            "bold": "Power supplies for:",
+            "text": "Control circuits, sensors, display screens, and in-cabin communication systems. They create isolation between the grid voltage and the control circuit, protecting users and safeguarding electronic components to reduce the risk of failure during electrical faults."
+          },
+          {
+            "bold": "Applications in motor control inverters:",
+            "text": "In Variable Frequency Drives (VFD), high-frequency transformers are used in auxiliary power supplies to:",
+            "subBullets": [
+              "Supply power to IGBT/MOSFET control circuits.",
+              "Supply power to driver circuits.",
+              "Supply power to feedback and protection circuits."
+            ]
+          },
+          {
+            "bold": "Applications in Automatic Rescue Devices (ARD) and lifting equipment:",
+            "text": "Rescue devices operating on batteries require a DC-DC converter power supply. High-frequency transformers help step up or step down battery voltage, supply power to the controller."
+          }
         ]
       },
       "energy": {
         "name": "Energy Related",
-        "intro": "High-frequency transformers are an important component in modern energy conversion and transmission systems, optimizing transmission efficiency and saving energy for the system.",
+        "intro": "High-frequency transformers are important component in modern energy conversion and transmission systems, optimizing transmission efficiency and saving energy for the system.",
+        "listLabel": "They are used in:",
         "bullets": [
-          "Switched-Mode Power Supplies (SMPS).",
-          "DC-DC converters in solar inverters.",
-          "Energy Storage Systems (ESS).",
-          "AC-DC converters in wind turbine inverters."
+          { "text": "Switched-Mode Power Supplies (SMPS)." },
+          { "text": "DC-DC converters in solar inverters (Solar energy systems)." },
+          { "text": "Energy Storage Systems (ESS)." },
+          { "text": "AC-DC converters in wind turbine inverters (Wind turbine systems)." }
         ]
       },
       "factory": {
         "name": "Factory Automation",
         "intro": "High-frequency transformers are widely used in factory automation due to their small size, high efficiency, and ability to operate at frequencies ranging from tens of kHz to several MHz.",
+        "listLabel": "Key applications include:",
         "bullets": [
-          "SMPS for automation equipment: powering PLCs, HMI screens, servo controllers and sensors; converting AC/DC to stable 24V, 12V, or 5V.",
-          "Motor controllers and inverters: providing isolated power for control and power circuits.",
-          "Power supplies for industrial robots: compact, efficient, fast-response power that reduces weight for robotic arms and precision motion systems.",
-          "Power supplies for sensors and Industrial IoT: isolated power with stable signal transmission in noisy environments.",
-          "Welding and induction heating equipment: transmitting large power in a small footprint, generating magnetic fields for fast, efficient heating.",
-          "Chargers and energy storage systems: used in battery chargers, UPS systems, and DC-DC converters, ensuring electrical isolation and safety."
+          {
+            "bold": "Switched-Mode Power Supplies (SMPS) for automation equipment:",
+            "text": "Supplying power to PLCs, HMI screens, servo controllers, and sensors. They convert AC/DC voltage into stable DC voltage levels such as 24 V, 12 V, or 5 V."
+          },
+          {
+            "bold": "Motor controllers and inverters:",
+            "text": "Providing isolated power for control circuits and power circuits."
+          },
+          {
+            "bold": "Power supplies for industrial robots:",
+            "text": "Robots require compact, high-efficiency, and fast-response power supplies. High-frequency transformers help reduce the weight of the power supply unit, making them ideal for robotic arms and precision motion systems."
+          },
+          {
+            "bold": "Power supplies for sensor systems and Industrial IoT (IIoT):",
+            "text": "Providing isolated power for sensors that measure temperature, pressure, flow, position, etc. They support stable signal transmission in high-electrical-noise environments."
+          },
+          {
+            "bold": "Welding and induction heating equipment:",
+            "text": "In inverter welding machines, high-frequency transformers transmit large amounts of power within a small footprint. In induction heating, the high-frequency power source generates a magnetic field to heat metal quickly and efficiently."
+          },
+          {
+            "bold": "Chargers and energy storage systems:",
+            "text": "Used in battery chargers, UPS systems, and DC-DC converters, ensuring electrical isolation between the power source and the load to enhance safety."
+          }
         ]
       },
       "home": {
         "name": "Home Appliance",
-        "intro": "High-frequency transformers are an important component in power converters within electronic devices, offering high efficiency that helps reduce size and weight.",
+        "intro": "High-frequency transformers are important component in power converters within electronic devices. They offer high efficiency, which helps reduce the size and weight of the products.",
+        "listLabel": "They are used in:",
         "bullets": [
-          "Phone chargers.",
-          "Computer power supplies.",
-          "TV and monitor power supplies.",
-          "Telecommunication equipment power supplies.",
-          "Power supplies for home appliances, lighting, and entertainment systems.",
-          "Medical device power supplies.",
-          "Ventilation, control, and compressor systems of air conditioners."
+          { "text": "Phone chargers." },
+          { "text": "Computer power supplies." },
+          { "text": "TV and monitor power supplies." },
+          { "text": "Telecommunication equipment power supplies." },
+          { "text": "Power supplies for home appliances, lighting systems, and entertainment systems." },
+          { "text": "Medical device power supplies." },
+          { "text": "Ventilation, control, and compressor systems of air conditioners." }
         ]
       },
       "index": {
         "name": "Index Appliance",
         "intro": "High-frequency transformers are widely used in modern measurement equipment due to their ability to transmit high-frequency signals, provide electrical isolation, and reduce circuit size.",
+        "listLabel": "Key applications include:",
         "bullets": [
-          "Electrical isolation between measurement circuits and power circuits, minimizing noise and leakage current.",
-          "Power supplies for measurement instruments, used in the SMPS of oscilloscopes, digital multimeters, and signal analyzers.",
-          "Measurement signal transmission that maintains accuracy, reduces EMI, and enables safe isolated measurement.",
-          "Present in digital oscilloscopes, spectrum analyzers, power meters, DAQs, and many industrial measuring devices."
+          {
+            "bold": "Electrical isolation between measurement circuits and power circuits:",
+            "text": "Minimizing the risk of noise and leakage current between different sections of the measurement system."
+          },
+          {
+            "bold": "Power supplies for measurement instruments:",
+            "text": "Used in the Switched-Mode Power Supplies (SMPS) of oscilloscopes, digital multimeters, signal analyzers, and other electronic measurement devices."
+          },
+          {
+            "bold": "Measurement signal transmission:",
+            "text": "Transmitting pulse signals or high-frequency AC signals between circuit blocks. They maintain signal accuracy, reduce electromagnetic interference (EMI) impacts, and enable safe measurements because the measurement circuit not directly connect to high-voltage sources."
+          },
+          { "text": "They are present in digital oscilloscopes, spectrum analyzers, power meters, data acquisition systems (DAQs), and many industrial measuring devices…" },
+          { "text": "Thanks to its isolation capabilities and high-frequency operation, high-frequency transformers help reduce common-mode noise, improving measurement stability and accuracy." }
         ]
       },
       "office": {
         "name": "Office Automation",
-        "intro": "High-frequency transformers are an essential component in power converters for office equipment, optimizing operational efficiency and reliability in frequent-use environments.",
+        "intro": "High-frequency transformers are essential component in power converters for office equipment, optimizing operational efficiency and reliability in high-frequency usage environments.",
+        "listLabel": "They are used in:",
         "bullets": [
-          "Computer power supplies.",
-          "Printer and fax machine power supplies.",
-          "Control systems for printers and fax machines.",
-          "Power supplies for LCD monitors.",
-          "Lighting system power supplies.",
-          "Ventilation, control, and compressor systems of air conditioners."
+          { "text": "Computer power supplies." },
+          { "text": "Printer and fax machine power supplies." },
+          { "text": "Control systems for printers and fax machines." },
+          { "text": "Power supplies for LCD monitors." },
+          { "text": "Lighting system power supplies." },
+          { "text": "Ventilation, control, and compressor systems of air conditioners." }
         ]
       },
       "power": {
         "name": "Power Distribution",
-        "intro": "High-frequency transformers are increasingly used in modern power distribution and conversion systems due to their compact size, high efficiency, and compatibility with power electronic converters.",
+        "intro": "High-frequency transformers are increasingly utilized in modern power distribution and conversion systems due to their compact size, high efficiency, and compatibility with power electronic converters.",
+        "listLabel": "Key applications include:",
         "bullets": [
-          "Solid-State Transformers (SST): integrating high-frequency transformers with power electronic converters.",
-          "Microgrids and Smart Grids: connecting distributed energy resources, supporting bidirectional power control and rapid response to load changes."
+          {
+            "bold": "Solid-State Transformers (SST):",
+            "text": "Integrating high-frequency transformers with power electronic converters."
+          },
+          {
+            "bold": "Microgrids and Smart Grids:",
+            "text": "Connecting distributed energy resources such as solar panels, battery storage, and generators. They support bidirectional power control and respond rapidly to load changes."
+          }
         ]
       }
     }
   }
-
 }

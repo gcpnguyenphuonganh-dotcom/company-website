@@ -706,88 +706,145 @@
       "automotive": {
         "name": "Công nghiệp ô tô",
         "intro": "Máy biến áp cao tần là thành phần nền tảng cho điện tử ô tô hiện đại, với kích thước gọn và hiệu suất cao hoàn toàn phù hợp với nhu cầu ngành ô tô về các linh kiện tiết kiệm không gian và hiệu suất vượt trội.",
+        "listLabel": "Chúng được sử dụng trong:",
         "bullets": [
-          "Hệ thống trạm sạc xe điện (EV Fast Chargers) & Bộ sạc On-board (OBC) trên xe điện.",
-          "Bộ chuyển đổi DC-DC trên xe để quản lý phân bổ điện giữa các hệ thống điện khác nhau trên xe.",
-          "Bộ chuyển đổi DC-AC cho hệ thống V2H (Vehicle-to-Home) — thiết bị biến tần hai chiều chuyển đổi điện áp DC từ pin xe điện thành AC để cấp điện cho thiết bị gia dụng hoặc hòa vào lưới điện."
+          { "text": "Hệ thống trạm sạc xe điện (EV Fast Chargers) & Bộ sạc On-board (OBC) trên xe điện." },
+          { "text": "Bộ chuyển đổi DC-DC trên xe để quản lý phân bổ điện giữa các hệ thống điện khác nhau trên xe." },
+          { "text": "Bộ chuyển đổi DC-AC cho hệ thống V2H (Vehicle-to-Home) — thiết bị biến tần hai chiều chuyển đổi điện áp DC từ pin xe điện thành AC để cấp điện cho thiết bị gia dụng hoặc hòa vào lưới điện." }
         ]
       },
       "elevating": {
         "name": "Thiết bị nâng hạ",
         "intro": "Biến áp cao tần có vai trò quan trọng trong các hệ thống thang máy hiện đại, đặc biệt là các hệ thống sử dụng nguồn điện chuyển mạch và điều khiển bằng biến tần.",
+        "listLabel": "Một số ứng dụng chính gồm:",
         "bullets": [
-          "Cấp nguồn cho mạch điều khiển, cảm biến, màn hình hiển thị và hệ thống liên lạc trong cabin; cách ly điện áp lưới và mạch điều khiển để bảo vệ người dùng và linh kiện.",
-          "Trong bộ biến tần (VFD): cấp nguồn cho mạch điều khiển IGBT/MOSFET, mạch driver, mạch phản hồi và bảo vệ.",
-          "Trong hệ thống cứu hộ tự động (ARD) và thiết bị nâng hạ: nâng/hạ điện áp từ pin và cấp điện cho bộ điều khiển."
+          {
+            "bold": "Cấp nguồn cho:",
+            "text": "Mạch điều khiển, cảm biến, màn hình hiển thị và hệ thống liên lạc trong cabin; cách ly điện áp lưới và mạch điều khiển để bảo vệ người dùng và linh kiện."
+          },
+          {
+            "bold": "Ứng dụng trong bộ biến tần điều khiển động cơ:",
+            "text": "Trong bộ biến tần (VFD), biến áp cao tần được dùng trong các nguồn phụ trợ để:",
+            "subBullets": [
+              "Cấp nguồn cho mạch điều khiển IGBT/MOSFET.",
+              "Cấp nguồn cho mạch driver.",
+              "Cấp nguồn cho mạch phản hồi và bảo vệ."
+            ]
+          },
+          {
+            "bold": "Ứng dụng trong hệ thống cứu hộ tự động (ARD), thiết bị nâng hạ:",
+            "text": "Bộ cứu hộ sử dụng pin hoặc ắc quy cần bộ nguồn chuyển đổi DC-DC. Biến áp cao tần giúp nâng hoặc hạ điện áp từ pin, cung cấp điện cho bộ điều khiển."
+          }
         ]
       },
       "energy": {
         "name": "Lĩnh vực năng lượng",
         "intro": "Biến áp cao tần là thành phần quan trọng trong các bộ chuyển đổi và truyền tải năng lượng hiện đại, tối ưu hiệu suất truyền tải và tiết kiệm năng lượng cho hệ thống.",
+        "listLabel": "Chúng được sử dụng trong:",
         "bullets": [
-          "Bộ nguồn chuyển mạch (SMPS).",
-          "Bộ chuyển đổi DC-DC trong Solar Inverters (hệ thống năng lượng mặt trời).",
-          "Hệ thống lưu trữ năng lượng (ESS).",
-          "Bộ chuyển đổi AC-DC trong Wind turbine inverter (hệ thống turbine gió)."
+          { "text": "Bộ nguồn chuyển mạch (SMPS)." },
+          { "text": "Bộ chuyển đổi DC-DC trong Solar Inverters (hệ thống năng lượng mặt trời)." },
+          { "text": "Hệ thống lưu trữ năng lượng (ESS)." },
+          { "text": "Bộ chuyển đổi AC-DC trong Wind turbine inverter (hệ thống turbine gió)." }
         ]
       },
       "factory": {
         "name": "Tự động hóa nhà máy",
         "intro": "Biến áp cao tần được sử dụng rộng rãi trong tự động hóa nhà máy nhờ kích thước nhỏ, hiệu suất cao và khả năng hoạt động ở tần số từ hàng chục kHz đến hàng MHz.",
+        "listLabel": "Một số ứng dụng tiêu biểu gồm:",
         "bullets": [
-          "Nguồn xung (SMPS) cho thiết bị tự động hóa: cấp nguồn cho PLC, HMI, bộ điều khiển servo và cảm biến; chuyển đổi AC/DC sang 24V, 12V hoặc 5V.",
-          "Bộ điều khiển động cơ và biến tần: cung cấp nguồn cách ly cho mạch điều khiển và mạch công suất.",
-          "Nguồn cấp cho robot công nghiệp: giảm trọng lượng bộ nguồn, phù hợp với cánh tay robot và hệ thống chuyển động chính xác.",
-          "Nguồn cho cảm biến và IoT công nghiệp: cấp nguồn cách ly, hỗ trợ truyền tín hiệu ổn định trong môi trường nhiễu điện.",
-          "Thiết bị hàn và gia nhiệt cảm ứng: truyền công suất lớn với kích thước nhỏ, tạo từ trường nung nóng kim loại nhanh và hiệu quả.",
-          "Bộ sạc và hệ thống lưu trữ năng lượng: dùng trong sạc ắc quy, UPS và bộ chuyển đổi DC-DC, đảm bảo cách ly an toàn."
+          {
+            "bold": "Nguồn xung (SMPS) cho thiết bị tự động hóa:",
+            "text": "Cấp nguồn cho PLC, HMI, bộ điều khiển servo và cảm biến; chuyển đổi AC/DC sang 24V, 12V hoặc 5V."
+          },
+          {
+            "bold": "Bộ điều khiển động cơ và biến tần:",
+            "text": "Cung cấp nguồn cách ly cho mạch điều khiển và mạch công suất."
+          },
+          {
+            "bold": "Nguồn cấp cho robot công nghiệp:",
+            "text": "Giảm trọng lượng bộ nguồn, phù hợp với cánh tay robot và hệ thống chuyển động chính xác."
+          },
+          {
+            "bold": "Nguồn cho hệ thống cảm biến và IoT công nghiệp:",
+            "text": "Cấp nguồn cách ly, hỗ trợ truyền tín hiệu ổn định trong môi trường nhiễu điện."
+          },
+          {
+            "bold": "Thiết bị hàn và gia nhiệt cảm ứng:",
+            "text": "Truyền công suất lớn với kích thước nhỏ, tạo từ trường nung nóng kim loại nhanh và hiệu quả."
+          },
+          {
+            "bold": "Bộ sạc và hệ thống lưu trữ năng lượng:",
+            "text": "Dùng trong sạc ắc quy, UPS và bộ chuyển đổi DC-DC, đảm bảo cách ly an toàn."
+          }
         ]
       },
       "home": {
         "name": "Thiết bị gia dụng",
         "intro": "Biến áp cao tần là thành phần quan trọng trong các bộ chuyển đổi năng lượng của thiết bị điện tử, với ưu điểm hiệu suất cao giúp giảm kích thước và khối lượng sản phẩm.",
+        "listLabel": "Chúng được sử dụng trong:",
         "bullets": [
-          "Bộ sạc điện thoại.",
-          "Nguồn máy tính.",
-          "Nguồn TV, màn hình.",
-          "Nguồn thiết bị viễn thông.",
-          "Nguồn thiết bị gia dụng, hệ thống chiếu sáng, hệ thống giải trí.",
-          "Nguồn thiết bị y tế.",
-          "Hệ thống quạt gió, điều khiển, máy nén của điều hòa không khí."
+          { "text": "Bộ sạc điện thoại." },
+          { "text": "Nguồn máy tính." },
+          { "text": "Nguồn TV, màn hình." },
+          { "text": "Nguồn thiết bị viễn thông." },
+          { "text": "Nguồn thiết bị gia dụng, hệ thống chiếu sáng, hệ thống giải trí." },
+          { "text": "Nguồn thiết bị y tế." },
+          { "text": "Hệ thống quạt gió, điều khiển, máy nén của điều hòa không khí." }
         ]
       },
       "index": {
         "name": "Thiết bị đo lường",
         "intro": "Biến áp cao tần được sử dụng rộng rãi trong các thiết bị đo lường hiện đại nhờ khả năng truyền tín hiệu ở tần số cao, cách ly điện và giảm kích thước mạch.",
+        "listLabel": "Một số ứng dụng chính gồm:",
         "bullets": [
-          "Cách ly điện giữa mạch đo và mạch nguồn, giảm nguy cơ nhiễu và dòng rò.",
-          "Cấp nguồn cho thiết bị đo trong các bộ SMPS của máy hiện sóng, đồng hồ đo số, máy phân tích tín hiệu.",
-          "Truyền tín hiệu đo lường, duy trì độ chính xác, giảm nhiễu điện từ và cho phép đo an toàn.",
-          "Có mặt trong máy hiện sóng số, máy phân tích phổ, thiết bị đo công suất, DAQ và nhiều thiết bị đo công nghiệp khác."
+          {
+            "bold": "Cách ly điện giữa mạch đo và mạch nguồn:",
+            "text": "Giảm nguy cơ nhiễu và dòng rò giữa các phần của hệ thống đo."
+          },
+          {
+            "bold": "Nguồn cấp cho thiết bị đo:",
+            "text": "Được sử dụng trong các bộ nguồn chuyển mạch (SMPS) của máy hiện sóng, đồng hồ đo số, máy phân tích tín hiệu và các thiết bị đo điện tử khác."
+          },
+          {
+            "bold": "Truyền tín hiệu đo lường:",
+            "text": "Truyền tín hiệu xung hoặc tín hiệu AC tần số cao giữa các khối mạch. Duy trì độ chính xác của tín hiệu và giảm ảnh hưởng của nhiễu điện từ, cho phép đo an toàn do mạch đo không nối trực tiếp với nguồn điện áp cao."
+          },
+          { "text": "Có mặt trong các máy hiện sóng số, máy phân tích phổ, thiết bị đo công suất, bộ thu thập dữ liệu (DAQ) và nhiều thiết bị đo công nghiệp…" },
+          { "text": "Nhờ khả năng cách ly và hoạt động ở tần số cao, biến áp cao tần giúp giảm nhiễu chế độ chung (common-mode noise), cải thiện độ ổn định và độ chính xác của phép đo." }
         ]
       },
       "office": {
         "name": "Thiết bị văn phòng",
         "intro": "Biến áp cao tần là thành phần quan trọng trong các bộ chuyển đổi năng lượng của thiết bị văn phòng, tối ưu hiệu suất hoạt động và độ tin cậy trong môi trường sử dụng thường xuyên.",
+        "listLabel": "Chúng được sử dụng trong:",
         "bullets": [
-          "Nguồn máy tính.",
-          "Nguồn máy in, fax.",
-          "Hệ thống điều khiển máy in, fax.",
-          "Nguồn cho màn hình LCD.",
-          "Nguồn hệ thống chiếu sáng.",
-          "Hệ thống quạt gió, điều khiển, máy nén của điều hòa không khí."
+          { "text": "Nguồn máy tính." },
+          { "text": "Nguồn máy in, fax." },
+          { "text": "Hệ thống điều khiển máy in, fax." },
+          { "text": "Nguồn cho màn hình LCD." },
+          { "text": "Nguồn hệ thống chiếu sáng." },
+          { "text": "Hệ thống quạt gió, điều khiển, máy nén của điều hòa không khí." }
         ]
       },
       "power": {
         "name": "Phân phối điện năng",
         "intro": "Biến áp cao tần được sử dụng ngày càng nhiều trong hệ thống phân phối và chuyển đổi năng lượng hiện đại nhờ kích thước nhỏ, hiệu suất cao và khả năng hoạt động với các bộ biến đổi điện tử công suất.",
+        "listLabel": "Một số ứng dụng chính gồm:",
         "bullets": [
-          "Trạm biến áp điện tử (Solid-state transformer - SST): kết hợp biến áp cao tần với bộ biến đổi điện tử công suất.",
-          "Vi lưới (Microgrid) và lưới điện thông minh (Smart Grid): kết nối các nguồn điện phân tán, hỗ trợ điều khiển công suất hai chiều, đáp ứng nhanh với thay đổi phụ tải."
+          {
+            "bold": "Trạm biến áp điện tử (Solid-state transformer - SST):",
+            "text": "Sử dụng biến áp cao tần kết hợp với bộ biến đổi điện tử công suất."
+          },
+          {
+            "bold": "Vi lưới (Microgrid) và lưới điện thông minh (Smart Grid):",
+            "text": "Kết nối các nguồn điện phân tán như pin mặt trời, pin lưu trữ và máy phát. Hỗ trợ điều khiển công suất hai chiều, đáp ứng nhanh với sự thay đổi của phụ tải."
+          }
         ]
       }
     }
   }
+
 }
 
 
