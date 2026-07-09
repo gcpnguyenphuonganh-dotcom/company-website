@@ -59,7 +59,7 @@ export default function ApplicationOverview({ activeApp }: { activeApp: string }
       <ul className="space-y-2">
         {bullets.map((item, i) => (
           <li key={i} className="flex gap-2 text-sm text-[#0B1220]/80 leading-relaxed">
-            <span className="text-[#BE7C4D] mt-1 flex-shrink-0">—</span>
+            <span className="text-[#0B1220] mt-1 flex-shrink-0">—</span>
             <span>
               {item.bold && (
                 <span className="font-bold text-[#0B1220]">{item.bold} </span>
@@ -69,7 +69,7 @@ export default function ApplicationOverview({ activeApp }: { activeApp: string }
                 <ul className="mt-2 space-y-1.5 pl-1">
                   {item.subBullets.map((sub, j) => (
                     <li key={j} className="flex gap-2">
-                      <span className="text-[#BE7C4D] mt-1 flex-shrink-0">·</span>
+                      <span className="text-[#0B1220] mt-1 flex-shrink-0">·</span>
                       <span>{sub}</span>
                     </li>
                   ))}
