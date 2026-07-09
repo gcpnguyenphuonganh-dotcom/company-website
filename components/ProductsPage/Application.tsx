@@ -5,10 +5,10 @@ import { useTranslation } from "react-i18next"
 // Slugs match common.json → applications.items.<slug>
 const APPLICATION_SLUGS = [
   "automotive",
-  "elevating",
+  "home",
   "energy",
   "factory",
-  "home",
+  "elevating",
   "index",
   "office",
   "power",
