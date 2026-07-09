@@ -704,7 +704,7 @@
     "showLess": "Thu gọn",
     "items": {
       "automotive": {
-        "name": "Công nghiệp ô tô",
+        "name": "Automotive",
         "intro": "Máy biến áp cao tần là thành phần nền tảng cho điện tử ô tô hiện đại, với kích thước gọn và hiệu suất cao hoàn toàn phù hợp với nhu cầu ngành ô tô về các linh kiện tiết kiệm không gian và hiệu suất vượt trội.",
         "bullets": [
           "Hệ thống trạm sạc xe điện (EV Fast Chargers) & Bộ sạc On-board (OBC) trên xe điện.",
@@ -713,7 +713,7 @@
         ]
       },
       "elevating": {
-        "name": "Lĩnh vực năng lượng",
+        "name": "Elevating Machine",
         "intro": "Biến áp cao tần có vai trò quan trọng trong các hệ thống thang máy hiện đại, đặc biệt là các hệ thống sử dụng nguồn điện chuyển mạch và điều khiển bằng biến tần.",
         "bullets": [
           "Cấp nguồn cho mạch điều khiển, cảm biến, màn hình hiển thị và hệ thống liên lạc trong cabin; cách ly điện áp lưới và mạch điều khiển để bảo vệ người dùng và linh kiện.",
@@ -722,7 +722,7 @@
         ]
       },
       "energy": {
-        "name": "Phân phối điện năng",
+        "name": "Energy Related",
         "intro": "Biến áp cao tần là thành phần quan trọng trong các bộ chuyển đổi và truyền tải năng lượng hiện đại, tối ưu hiệu suất truyền tải và tiết kiệm năng lượng cho hệ thống.",
         "bullets": [
           "Bộ nguồn chuyển mạch (SMPS).",
@@ -732,7 +732,7 @@
         ]
       },
       "factory": {
-        "name": "Thiết bị gia dụng",
+        "name": "Factory Automation",
         "intro": "Biến áp cao tần được sử dụng rộng rãi trong tự động hóa nhà máy nhờ kích thước nhỏ, hiệu suất cao và khả năng hoạt động ở tần số từ hàng chục kHz đến hàng MHz.",
         "bullets": [
           "Nguồn xung (SMPS) cho thiết bị tự động hóa: cấp nguồn cho PLC, HMI, bộ điều khiển servo và cảm biến; chuyển đổi AC/DC sang 24V, 12V hoặc 5V.",
@@ -744,7 +744,7 @@
         ]
       },
       "home": {
-        "name": "Thiết bị hiển thị (trong thiết bị đo)",
+        "name": "Home Appliance",
         "intro": "Biến áp cao tần là thành phần quan trọng trong các bộ chuyển đổi năng lượng của thiết bị điện tử, với ưu điểm hiệu suất cao giúp giảm kích thước và khối lượng sản phẩm.",
         "bullets": [
           "Bộ sạc điện thoại.",
@@ -757,7 +757,7 @@
         ]
       },
       "index": {
-        "name": "Thiết bị nâng hạ",
+        "name": "Index Appliance",
         "intro": "Biến áp cao tần được sử dụng rộng rãi trong các thiết bị đo lường hiện đại nhờ khả năng truyền tín hiệu ở tần số cao, cách ly điện và giảm kích thước mạch.",
         "bullets": [
           "Cách ly điện giữa mạch đo và mạch nguồn, giảm nguy cơ nhiễu và dòng rò.",
@@ -767,7 +767,7 @@
         ]
       },
       "office": {
-        "name": "Thiết bị văn phòng",
+        "name": "Office Automation",
         "intro": "Biến áp cao tần là thành phần quan trọng trong các bộ chuyển đổi năng lượng của thiết bị văn phòng, tối ưu hiệu suất hoạt động và độ tin cậy trong môi trường sử dụng thường xuyên.",
         "bullets": [
           "Nguồn máy tính.",
@@ -779,7 +779,7 @@
         ]
       },
       "power": {
-        "name": "Tự động hóa nhà máy",
+        "name": "Power Distribution",
         "intro": "Biến áp cao tần được sử dụng ngày càng nhiều trong hệ thống phân phối và chuyển đổi năng lượng hiện đại nhờ kích thước nhỏ, hiệu suất cao và khả năng hoạt động với các bộ biến đổi điện tử công suất.",
         "bullets": [
           "Trạm biến áp điện tử (Solid-state transformer - SST): kết hợp biến áp cao tần với bộ biến đổi điện tử công suất.",
