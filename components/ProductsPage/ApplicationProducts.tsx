@@ -23,13 +23,12 @@ const APP_META: AppMeta[] = [
 
 export default function ApplicationOverview({ activeApp }: { activeApp: string }) {
   const [expanded, setExpanded] = useState(false)
-  const { t, i18n } = useTranslation("common")
-  const tEn = i18n.getFixedT("en", "common")
+  const { t } = useTranslation("common")
 
   if (activeApp === "All") return null
 
   const meta = APP_META.find(
-    (a) => tEn(`applications.items.${a.slug}.name`) === activeApp
+    (a) => t(`applications.items.${a.slug}.name`) === activeApp
   )
   if (!meta) return null
 
@@ -45,6 +44,16 @@ export default function ApplicationOverview({ activeApp }: { activeApp: string }
 
   return (
     <div className="rounded-2xl border border-[#0B1220]/10 bg-white p-6 md:p-8 mb-8">
+      <div className="flex items-center gap-2 mb-3">
+        <span className="text-[11px] font-bold tracking-[0.18em] text-[#BE7C4D] font-mono">
+          {meta.code}
+        </span>
+        <span className="text-[#0B1220]/20">·</span>
+        <span className="text-[11px] font-bold tracking-[0.18em] text-[#0B1220]/50 font-mono">
+          {t("applications.sectionLabel")} {String(index).padStart(2, "0")}/08
+        </span>
+      </div>
+
       <h3 className="text-xl font-extrabold text-[#0B1220] mb-3 leading-tight">
         {name}
       </h3>
@@ -56,7 +65,7 @@ export default function ApplicationOverview({ activeApp }: { activeApp: string }
       <ul className="space-y-2 mb-2">
         {visibleBullets.map((item, i) => (
           <li key={i} className="flex gap-2 text-sm text-[#0B1220]/80 leading-relaxed">
-            <span className="text-[#0B1220] mt-1 flex-shrink-0">—</span>
+            <span className="text-[#BE7C4D] mt-1 flex-shrink-0">—</span>
             <span>{item}</span>
           </li>
         ))}
