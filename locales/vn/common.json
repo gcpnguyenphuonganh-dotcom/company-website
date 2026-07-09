@@ -710,17 +710,17 @@
         "bullets": [
           { "text": "Hệ thống trạm sạc xe điện (EV Fast Chargers) & Bộ sạc On-board (OBC) trên xe điện." },
           { "text": "Bộ chuyển đổi DC-DC trên xe để quản lý phân bổ điện giữa các hệ thống điện khác nhau trên xe." },
-          { "text": "Bộ chuyển đổi DC-AC cho hệ thống V2H (Vehicle-to-Home) — thiết bị biến tần hai chiều chuyển đổi điện áp DC từ pin xe điện thành AC để cấp điện cho thiết bị gia dụng hoặc hòa vào lưới điện." }
+          { "text": "Bộ chuyển đổi DC-AC cho hệ thống V2H (Vehicle-to-Home) là thiết bị biến tần hai chiều có nhiệm vụ chuyển đổi điện áp một chiều (DC) từ pin xe điện thành điện xoay chiều (AC) để cấp điện cho các thiết bị gia dụng hoặc hòa vào lưới điện." }
         ]
       },
       "elevating": {
         "name": "Thiết bị nâng hạ",
-        "intro": "Biến áp cao tần có vai trò quan trọng trong các hệ thống thang máy hiện đại, đặc biệt là các hệ thống sử dụng nguồn điện chuyển mạch và điều khiển bằng biến tần.",
+        "intro": "Biến áp cao tần có vai trò quan trọng trong các hệ thống thang máy hiện đại, đặc biệt là các hệ thống sử dụng nguồn điện chuyển mạch và điều khiển bằng biến tần. ",
         "listLabel": "Một số ứng dụng chính gồm:",
         "bullets": [
           {
             "bold": "Cấp nguồn cho:",
-            "text": "Mạch điều khiển, cảm biến, màn hình hiển thị và hệ thống liên lạc trong cabin; cách ly điện áp lưới và mạch điều khiển để bảo vệ người dùng và linh kiện."
+            "text": "Mạch điều khiển, Cảm biến., Màn hình hiển thị. Hệ thống liên lạc trong cabin. Tạo sự cách ly giữa điện áp lưới và mạch điều khiển, bảo vệ người sử dụng. Bảo vệ linh kiện điện tử, giảm nguy cơ hỏng hóc khi xảy ra sự cố điện."
           },
           {
             "bold": "Ứng dụng trong bộ biến tần điều khiển động cơ:",
@@ -743,9 +743,9 @@
         "listLabel": "Chúng được sử dụng trong:",
         "bullets": [
           { "text": "Bộ nguồn chuyển mạch (SMPS)." },
-          { "text": "Bộ chuyển đổi DC-DC trong Solar Inverters (hệ thống năng lượng mặt trời)." },
-          { "text": "Hệ thống lưu trữ năng lượng (ESS)." },
-          { "text": "Bộ chuyển đổi AC-DC trong Wind turbine inverter (hệ thống turbine gió)." }
+          { "text": "Bộ chuyển đổi DC-DC trong Solar Inverters (Hệ thống năng lượng mặt trời)" },
+          { "text": "Energy Storage Systems (ESS) (Hệ thống lưu trữ năng lượng)" },
+          { "text": "Bộ chuyển đổi AC-DC trong Wind turbine inverter (Hệ thống tubine gió)" }
         ]
       },
       "factory": {
@@ -755,7 +755,7 @@
         "bullets": [
           {
             "bold": "Nguồn xung (SMPS) cho thiết bị tự động hóa:",
-            "text": "Cấp nguồn cho PLC, HMI, bộ điều khiển servo và cảm biến; chuyển đổi AC/DC sang 24V, 12V hoặc 5V."
+            "text": "Cấp nguồn cho PLC, màn hình HMI, bộ điều khiển servo và các cảm biến. Chuyển đổi điện áp AC/DC sang các mức điện áp DC ổn định như 24 V, 12 V hoặc 5 V."
           },
           {
             "bold": "Bộ điều khiển động cơ và biến tần:",
@@ -763,19 +763,19 @@
           },
           {
             "bold": "Nguồn cấp cho robot công nghiệp:",
-            "text": "Giảm trọng lượng bộ nguồn, phù hợp với cánh tay robot và hệ thống chuyển động chính xác."
+            "text": "Robot yêu cầu nguồn nhỏ gọn, hiệu suất cao và phản hồi nhanh. Biến áp cao tần giúp giảm trọng lượng bộ nguồn, phù hợp với các cánh tay robot và hệ thống chuyển động chính xác."
           },
           {
             "bold": "Nguồn cho hệ thống cảm biến và IoT công nghiệp:",
-            "text": "Cấp nguồn cách ly, hỗ trợ truyền tín hiệu ổn định trong môi trường nhiễu điện."
+            "text": "Cấp nguồn cách ly cho các cảm biến đo nhiệt độ, áp suất, lưu lượng, vị trí... Hỗ trợ truyền tín hiệu ổn định trong môi trường có nhiều nhiễu điện."
           },
           {
             "bold": "Thiết bị hàn và gia nhiệt cảm ứng:",
-            "text": "Truyền công suất lớn với kích thước nhỏ, tạo từ trường nung nóng kim loại nhanh và hiệu quả."
+            "text": "Trong máy hàn inverter, biến áp cao tần truyền công suất lớn với kích thước nhỏ. Trong gia nhiệt cảm ứng, nguồn cao tần tạo ra từ trường để nung nóng kim loại nhanh và hiệu quả."
           },
           {
             "bold": "Bộ sạc và hệ thống lưu trữ năng lượng:",
-            "text": "Dùng trong sạc ắc quy, UPS và bộ chuyển đổi DC-DC, đảm bảo cách ly an toàn."
+            "text": "Dùng trong bộ sạc ắc quy, hệ thống UPS và bộ chuyển đổi DC-DC. Đảm bảo cách ly giữa nguồn và tải, nâng cao độ an toàn."
           }
         ]
       },
@@ -808,10 +808,8 @@
           },
           {
             "bold": "Truyền tín hiệu đo lường:",
-            "text": "Truyền tín hiệu xung hoặc tín hiệu AC tần số cao giữa các khối mạch. Duy trì độ chính xác của tín hiệu và giảm ảnh hưởng của nhiễu điện từ, cho phép đo an toàn do mạch đo không nối trực tiếp với nguồn điện áp cao."
-          },
-          { "text": "Có mặt trong các máy hiện sóng số, máy phân tích phổ, thiết bị đo công suất, bộ thu thập dữ liệu (DAQ) và nhiều thiết bị đo công nghiệp…" },
-          { "text": "Nhờ khả năng cách ly và hoạt động ở tần số cao, biến áp cao tần giúp giảm nhiễu chế độ chung (common-mode noise), cải thiện độ ổn định và độ chính xác của phép đo." }
+            "text": "Truyền tín hiệu xung hoặc tín hiệu AC tần số cao giữa các khối mạch. Duy trì độ chính xác của tín hiệu và giảm ảnh hưởng của nhiễu điện từ, cho phép đo an toàn do mạch đo không nối trực tiếp với nguồn điện áp cao. Nhờ khả năng cách ly và hoạt động ở tần số cao, biến áp cao tần giúp giảm nhiễu chế độ chung (common-mode noise), cải thiện độ ổn định và độ chính xác của phép đo. Nhờ khả năng cách ly và hoạt động ở tần số cao, biến áp cao tần giúp giảm nhiễu chế độ chung (common-mode noise), cải thiện độ ổn định và độ chính xác của phép đo."
+          }
         ]
       },
       "office": {
@@ -833,7 +831,7 @@
         "listLabel": "Một số ứng dụng chính gồm:",
         "bullets": [
           {
-            "bold": "Trạm biến áp điện tử (Solid-state transformer - SST):",
+            "bold": "Trạm biến áp điện tử (Solid-state transformer - SST hay Biến áp điện tử công suất)",
             "text": "Sử dụng biến áp cao tần kết hợp với bộ biến đổi điện tử công suất."
           },
           {
