@@ -692,5 +692,45 @@
         }
       }
     }
+  },
+
+  "applications": {
+    "sectionLabel": "APPLICATION",
+    "showMore": "Show more",
+    "showLess": "Show less",
+    "items": {
+      "automotive": {
+        "name": "Automotive",
+        "overview": "Solutions built for the automotive industry, meeting demanding requirements for durability, precision, and load capacity in continuous-duty operating environments."
+      },
+      "elevating": {
+        "name": "Elevating Machine",
+        "overview": "Applications for lifting equipment, ensuring operational safety and high stability while moving heavy loads."
+      },
+      "energy": {
+        "name": "Energy Related",
+        "overview": "Solutions for the energy sector, optimizing transmission efficiency and saving energy across the system."
+      },
+      "factory": {
+        "name": "Factory Automation",
+        "overview": "Applications in factory automation, supporting precise, continuous production lines while reducing errors."
+      },
+      "home": {
+        "name": "Home Appliance",
+        "overview": "Solutions for home appliances, optimizing size, durability, and production cost for consumer products."
+      },
+      "index": {
+        "name": "Index Appliance",
+        "overview": "Applications in measurement and metering instruments, ensuring high accuracy and long-term stability."
+      },
+      "office": {
+        "name": "Office Automation",
+        "overview": "Solutions for automated office equipment, optimizing performance and reliability in frequent-use environments."
+      },
+      "power": {
+        "name": "Power Distribution",
+        "overview": "Applications in power distribution systems, ensuring safe, stable, and efficient energy transmission."
+      }
+    }
   }
 }

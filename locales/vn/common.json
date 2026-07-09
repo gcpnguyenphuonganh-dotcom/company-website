@@ -695,7 +695,48 @@
         }
       }
     }
+  },
+
+  "applications": {
+    "sectionLabel": "ỨNG DỤNG",
+    "showMore": "Xem thêm",
+    "showLess": "Thu gọn",
+    "items": {
+      "automotive": {
+        "name": "Automotive",
+        "overview": "Giải pháp ứng dụng trong ngành công nghiệp ô tô, đáp ứng các yêu cầu khắt khe về độ bền, độ chính xác và khả năng chịu tải trong môi trường vận hành liên tục."
+      },
+      "elevating": {
+        "name": "Elevating Machine",
+        "overview": "Ứng dụng cho các thiết bị nâng hạ, đảm bảo an toàn vận hành và độ ổn định cao trong quá trình di chuyển tải trọng lớn."
+      },
+      "energy": {
+        "name": "Energy Related",
+        "overview": "Các giải pháp phục vụ ngành năng lượng, tối ưu hiệu suất truyền tải và tiết kiệm năng lượng cho hệ thống."
+      },
+      "factory": {
+        "name": "Factory Automation",
+        "overview": "Ứng dụng trong tự động hóa nhà máy, hỗ trợ vận hành dây chuyền sản xuất chính xác, liên tục và giảm thiểu sai sót."
+      },
+      "home": {
+        "name": "Home Appliance",
+        "overview": "Giải pháp cho thiết bị gia dụng, tối ưu về kích thước, độ bền và chi phí sản xuất cho các sản phẩm tiêu dùng."
+      },
+      "index": {
+        "name": "Index Appliance",
+        "overview": "Ứng dụng trong các thiết bị chỉ số, đo lường, đảm bảo độ chính xác cao và ổn định trong thời gian dài."
+      },
+      "office": {
+        "name": "Office Automation",
+        "overview": "Giải pháp cho thiết bị văn phòng tự động, tối ưu hiệu suất hoạt động và độ tin cậy trong môi trường sử dụng thường xuyên."
+      },
+      "power": {
+        "name": "Power Distribution",
+        "overview": "Ứng dụng trong hệ thống phân phối điện, đảm bảo an toàn, ổn định và hiệu quả trong truyền tải năng lượng."
+      }
+    }
   }
+
 }
 
 
