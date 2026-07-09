@@ -14,13 +14,20 @@ const APPLICATION_SLUGS = [
   "power",
 ] as const
 
+type Bullet = {
+  bold?: string
+  text: string
+  subBullets?: string[]
+}
+
 function ApplicationCard({ slug, index }: { slug: string; index: number }) {
   const { t } = useTranslation("common")
   const name = t(`applications.items.${slug}.name`)
   const intro = t(`applications.items.${slug}.intro`)
+  const listLabel = t(`applications.items.${slug}.listLabel`)
   const bullets = t(`applications.items.${slug}.bullets`, {
     returnObjects: true,
-  }) as string[]
+  }) as Bullet[]
 
   return (
     <div className="flex flex-col border border-slate-200 rounded-2xl p-6">
@@ -33,11 +40,30 @@ function ApplicationCard({ slug, index }: { slug: string; index: number }) {
       </h3>
       <p className="text-sm text-slate-500 leading-relaxed mb-4">{intro}</p>
 
+      {listLabel && (
+        <p className="text-sm font-bold text-[#020c1a] mb-2">{listLabel}</p>
+      )}
+
       <ul className="space-y-2">
         {bullets.map((item, i) => (
           <li key={i} className="flex gap-2 text-sm text-slate-600 leading-relaxed">
-            <span className="text-slate-400 flex-shrink-0">—</span>
-            <span>{item}</span>
+            <span className="text-slate-400 mt-1 flex-shrink-0">—</span>
+            <span>
+              {item.bold && (
+                <span className="font-bold text-[#020c1a]">{item.bold} </span>
+              )}
+              {item.text}
+              {item.subBullets && item.subBullets.length > 0 && (
+                <ul className="mt-2 space-y-1.5 pl-1">
+                  {item.subBullets.map((sub, j) => (
+                    <li key={j} className="flex gap-2">
+                      <span className="text-slate-400 mt-1 flex-shrink-0">·</span>
+                      <span>{sub}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </span>
           </li>
         ))}
       </ul>
