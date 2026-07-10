@@ -4,15 +4,27 @@ import React, { useRef, useState, useEffect } from 'react';
 import Image from 'next/image';
 import { X } from 'lucide-react';
 
-// Thứ tự 1 -> 7: trái sang phải, trên xuống dưới
 const PHOTOS = [
-  '/AboutUs/CompanyOverview/1.jpg', // 1 - top-left
-  '/AboutUs/CompanyOverview/2.jpg', // 2 - top-right
-  '/AboutUs/CompanyOverview/3.jpg', // 3 - middle-left
-  '/AboutUs/CompanyOverview/4.jpg', // 4 - middle-center (to nhất)
-  '/AboutUs/CompanyOverview/5.jpg', // 5 - middle-right (cao, xuyên 2 hàng)
-  '/AboutUs/CompanyOverview/7.jpg', // 6 - bottom-left
-  '/AboutUs/CompanyOverview/8.jpg', // 7 - bottom-right
+  '/AboutUs/CompanyOverview/5.png', 
+  '/AboutUs/CompanyOverview/1.png', 
+  '/AboutUs/CompanyOverview/2.png', 
+  '/AboutUs/CompanyOverview/3.JPG', 
+  '/AboutUs/CompanyOverview/4.png', 
+  '/AboutUs/CompanyOverview/7.png', 
+  '/AboutUs/CompanyOverview/8.png', 
+];
+
+const CANVAS_W = 1850;
+const CANVAS_H = 1040;
+
+const LAYOUT = [
+  { key: 'building', x: 560, y: 300, w: 800, h: 480 }, 
+  { key: 'office', x: 520, y: 40, w: 420, h: 280 },     
+  { key: 'machine-op', x: 980, y: 40, w: 420, h: 280 }, 
+  { key: 'forklift', x: 70, y: 390, w: 450, h: 300 },   
+  { key: 'screen-op', x: 1400, y: 390, w: 450, h: 300 },
+  { key: 'auto-line', x: 520, y: 760, w: 420, h: 280 }, 
+  { key: 'multi-screen', x: 980, y: 760, w: 420, h: 280 }, 
 ];
 
 type LightboxItem = { type: 'image'; src: string };
@@ -56,36 +68,49 @@ function Lightbox({ item, onClose }: { item: LightboxItem; onClose: () => void }
   );
 }
 
-const Img = ({
+function AbsImg({
   index,
-  area,
+  pos,
   onOpen,
 }: {
   index: number;
-  area: string;
+  pos: { x: number; y: number; w: number; h: number };
   onOpen: () => void;
-}) => (
-  <div
-    className="relative overflow-hidden rounded-sm bg-neutral-800 cursor-pointer group w-full h-full"
-    style={{ gridArea: area }}
-    onClick={onOpen}
-  >
-    <Image
-      src={PHOTOS[index]}
-      alt={`photo-${index + 1}`}
-      fill
-      className="object-cover transition-transform duration-300 group-hover:scale-105"
-    />
-    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/25 transition-colors duration-300 flex items-center justify-center">
-      <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white/90 rounded-full p-2">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#111" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-          <circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" />
-          <line x1="11" y1="8" x2="11" y2="14" /><line x1="8" y1="11" x2="14" y2="11" />
-        </svg>
+}) {
+  const left = (pos.x / CANVAS_W) * 100;
+  const top = (pos.y / CANVAS_H) * 100;
+  const width = (pos.w / CANVAS_W) * 100;
+  const height = (pos.h / CANVAS_H) * 100;
+
+  return (
+    <div
+      className="absolute overflow-hidden rounded-sm bg-neutral-800 cursor-pointer group"
+      style={{
+        left: `${left}%`,
+        top: `${top}%`,
+        width: `${width}%`,
+        height: `${height}%`,
+      }}
+      onClick={onOpen}
+    >
+      <Image
+        src={PHOTOS[index]}
+        alt={`photo-${index + 1}`}
+        fill
+        className="object-cover transition-transform duration-300 group-hover:scale-105"
+        sizes="(min-width: 1024px) 45vw, 90vw"
+      />
+      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/25 transition-colors duration-300 flex items-center justify-center">
+        <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white/90 rounded-full p-2">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#111" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" />
+            <line x1="11" y1="8" x2="11" y2="14" /><line x1="8" y1="11" x2="14" y2="11" />
+          </svg>
+        </div>
       </div>
     </div>
-  </div>
-);
+  );
+}
 
 function MobilePhotoSlider({ onOpen }: { onOpen: (index: number) => void }) {
   const [current, setCurrent] = useState(0)
@@ -146,12 +171,7 @@ function MobilePhotoSlider({ onOpen }: { onOpen: (index: number) => void }) {
               style={{ height: 240 }}
               onClick={() => onOpen(i)}
             >
-              <Image
-                src={src}
-                alt={`photo-${i + 1}`}
-                fill
-                className="object-cover"
-              />
+              <Image src={src} alt={`photo-${i + 1}`} fill className="object-cover" />
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="bg-white/80 rounded-full p-2 opacity-60">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#111" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -173,9 +193,7 @@ function MobilePhotoSlider({ onOpen }: { onOpen: (index: number) => void }) {
               key={i}
               onClick={() => setCurrent(i)}
               aria-label={`Ảnh ${i + 1}`}
-              className={`rounded-full transition-all duration-300 ${i === current
-                  ? 'w-5 h-1.5 bg-black'
-                  : 'w-1.5 h-1.5 bg-black/30'
+              className={`rounded-full transition-all duration-300 ${i === current ? 'w-5 h-1.5 bg-black' : 'w-1.5 h-1.5 bg-black/30'
                 }`}
             />
           ))}
@@ -191,8 +209,7 @@ export default function PhotoCollage() {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    // Dưới 640px (điện thoại): dùng slider vuốt.
-    // Từ 640px trở lên (ipad + desktop): dùng bento grid, tự responsive qua CSS media query.
+
     const check = () => setIsMobile(window.innerWidth < 640);
     check();
     window.addEventListener('resize', check);
@@ -206,78 +223,28 @@ export default function PhotoCollage() {
       {lightbox && <Lightbox item={lightbox} onClose={() => setLightbox(null)} />}
 
       {isMobile ? (
-        // ── ĐIỆN THOẠI: ảnh lớn + slider vuốt ──
+      
         <div className="flex flex-col gap-4 px-4 py-6">
           <div
             className="relative w-full rounded-sm overflow-hidden cursor-pointer"
             style={{ height: 220 }}
             onClick={() => openImg(0)}
           >
-            <Image
-              src={PHOTOS[0]}
-              alt="photo-1"
-              fill
-              className="object-cover"
-            />
+            <Image src={PHOTOS[0]} alt="photo-1" fill className="object-cover" />
           </div>
           <MobilePhotoSlider onOpen={openImg} />
         </div>
       ) : (
-        // ── IPAD + DESKTOP: bento grid ──
-        <div className="collage-grid">
-          <Img index={0} area="a" onOpen={() => openImg(0)} />
-          <Img index={1} area="b" onOpen={() => openImg(1)} />
-          <Img index={2} area="c" onOpen={() => openImg(2)} />
-          <Img index={3} area="d" onOpen={() => openImg(3)} />
-          <Img index={4} area="e" onOpen={() => openImg(4)} />
-          <Img index={5} area="f" onOpen={() => openImg(5)} />
-          <Img index={6} area="g" onOpen={() => openImg(6)} />
-
-          <style jsx>{`
-            .collage-grid {
-              display: grid;
-              gap: 12px;
-              padding: 24px;
-              /* ── iPad / tablet mặc định ── */
-              grid-template-columns: 1fr 1fr;
-              grid-template-rows: 170px 170px 170px 140px;
-              grid-template-areas:
-                'a b'
-                'c e'
-                'd e'
-                'f g';
-            }
-
-            /* ── Desktop: layout giống ảnh mẫu ── */
-            @media (min-width: 1024px) {
-              .collage-grid {
-                gap: 16px;
-                padding: 40px;
-                grid-template-columns: 1fr 1.3fr 1fr;
-                grid-template-rows: 220px 240px 170px;
-                grid-template-areas:
-                  'a b e'
-                  'c d e'
-                  'f g .';
-              }
-            }
-
-            /* ── Tablet nhỏ / màn hẹp hơn ── */
-            @media (max-width: 480px) {
-              .collage-grid {
-                grid-template-columns: 1fr;
-                grid-template-rows: repeat(7, 200px);
-                grid-template-areas:
-                  'a'
-                  'b'
-                  'c'
-                  'd'
-                  'e'
-                  'f'
-                  'g';
-              }
-            }
-          `}</style>
+      
+        <div className="w-full px-4 py-8 md:px-8 lg:px-10">
+          <div
+            className="relative w-full max-w-[1850px] mx-auto"
+            style={{ aspectRatio: `${CANVAS_W} / ${CANVAS_H}` }}
+          >
+            {LAYOUT.map((pos, i) => (
+              <AbsImg key={pos.key} index={i} pos={pos} onOpen={() => openImg(i)} />
+            ))}
+          </div>
         </div>
       )}
     </>
