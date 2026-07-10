@@ -4,12 +4,15 @@ import React, { useRef, useState, useEffect } from 'react';
 import Image from 'next/image';
 import { X } from 'lucide-react';
 
+// Thứ tự 1 -> 7: trái sang phải, trên xuống dưới
 const PHOTOS = [
-  '/AboutUs/CompanyOverview/1.jpg',
-  '/AboutUs/CompanyOverview/2.jpg',
-  '/AboutUs/CompanyOverview/3.jpg',
-  '/AboutUs/CompanyOverview/4.jpg',
-  '/AboutUs/CompanyOverview/5.jpg',
+  '/AboutUs/CompanyOverview/1.jpg', // 1 - top-left
+  '/AboutUs/CompanyOverview/2.jpg', // 2 - top-right
+  '/AboutUs/CompanyOverview/3.jpg', // 3 - middle-left
+  '/AboutUs/CompanyOverview/4.jpg', // 4 - middle-center (to nhất)
+  '/AboutUs/CompanyOverview/5.jpg', // 5 - middle-right (cao, xuyên 2 hàng)
+  '/AboutUs/CompanyOverview/7.jpg', // 6 - bottom-left
+  '/AboutUs/CompanyOverview/8.jpg', // 7 - bottom-right
 ];
 
 type LightboxItem = { type: 'image'; src: string };
@@ -55,18 +58,16 @@ function Lightbox({ item, onClose }: { item: LightboxItem; onClose: () => void }
 
 const Img = ({
   index,
-  className = '',
-  style,
+  area,
   onOpen,
 }: {
   index: number;
-  className?: string;
-  style?: React.CSSProperties;
+  area: string;
   onOpen: () => void;
 }) => (
   <div
-    className={`relative overflow-hidden rounded-sm bg-neutral-800 cursor-pointer group ${className}`}
-    style={style}
+    className="relative overflow-hidden rounded-sm bg-neutral-800 cursor-pointer group w-full h-full"
+    style={{ gridArea: area }}
     onClick={onOpen}
   >
     <Image
@@ -187,14 +188,16 @@ function MobilePhotoSlider({ onOpen }: { onOpen: (index: number) => void }) {
 
 export default function PhotoCollage() {
   const [lightbox, setLightbox] = useState<LightboxItem | null>(null);
-  const [isMobile, setIsMobile] = useState(false)
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth < 900)
-    check()
-    window.addEventListener('resize', check)
-    return () => window.removeEventListener('resize', check)
-  }, [])
+    // Dưới 640px (điện thoại): dùng slider vuốt.
+    // Từ 640px trở lên (ipad + desktop): dùng bento grid, tự responsive qua CSS media query.
+    const check = () => setIsMobile(window.innerWidth < 640);
+    check();
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
+  }, []);
 
   const openImg = (index: number) => setLightbox({ type: 'image', src: PHOTOS[index] });
 
@@ -202,9 +205,9 @@ export default function PhotoCollage() {
     <>
       {lightbox && <Lightbox item={lightbox} onClose={() => setLightbox(null)} />}
 
-      {/* ── MOBILE layout ────── */}
-      {isMobile && (
-        <div className="flex flex-col gap-4 px-4 py-6 ">
+      {isMobile ? (
+        // ── ĐIỆN THOẠI: ảnh lớn + slider vuốt ──
+        <div className="flex flex-col gap-4 px-4 py-6">
           <div
             className="relative w-full rounded-sm overflow-hidden cursor-pointer"
             style={{ height: 220 }}
@@ -214,59 +217,65 @@ export default function PhotoCollage() {
               src={PHOTOS[0]}
               alt="photo-1"
               fill
-              className="object-cover transition-transform duration-300 hover:scale-105"
+              className="object-cover"
             />
-            <div className="absolute inset-0 bg-black/0 hover:bg-black/25 transition-colors duration-300 flex items-center justify-center">
-              <div className="opacity-0 hover:opacity-100 transition-opacity duration-300 bg-white/90 rounded-full p-2">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#111" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" />
-                  <line x1="11" y1="8" x2="11" y2="14" /><line x1="8" y1="11" x2="14" y2="11" />
-                </svg>
-              </div>
-            </div>
           </div>
-
           <MobilePhotoSlider onOpen={openImg} />
         </div>
-      )}
-
-      {/* ── DESKTOP layout ────── */}
-      {!isMobile && (
-        <div className="collage-root">
-
-          <div className="collage-row-1">
-            <Img index={0} style={{ width: 550, height: 350 }} onOpen={() => openImg(0)} />
-          </div>
-
-          <div className="collage-row-2">
-            <Img index={1} style={{ width: 420, height: 220 }} onOpen={() => openImg(1)} />
-            <Img index={2} style={{ width: 420, height: 220 }} onOpen={() => openImg(2)} />
-          </div>
-
-          <div className="collage-row-3">
-            <Img index={3} style={{ width: 420, height: 220 }} onOpen={() => openImg(3)} />
-            <Img index={4} style={{ width: 420, height: 220 }} onOpen={() => openImg(4)} />
-          </div>
+      ) : (
+        // ── IPAD + DESKTOP: bento grid ──
+        <div className="collage-grid">
+          <Img index={0} area="a" onOpen={() => openImg(0)} />
+          <Img index={1} area="b" onOpen={() => openImg(1)} />
+          <Img index={2} area="c" onOpen={() => openImg(2)} />
+          <Img index={3} area="d" onOpen={() => openImg(3)} />
+          <Img index={4} area="e" onOpen={() => openImg(4)} />
+          <Img index={5} area="f" onOpen={() => openImg(5)} />
+          <Img index={6} area="g" onOpen={() => openImg(6)} />
 
           <style jsx>{`
-            .collage-root {
-              display: flex;
-              flex-direction: column;
-              align-items: center;
-              justify-content: center;
-              gap: 16px;
-              padding: 40px;
-              font-family: sans-serif;
+            .collage-grid {
+              display: grid;
+              gap: 12px;
+              padding: 24px;
+              /* ── iPad / tablet mặc định ── */
+              grid-template-columns: 1fr 1fr;
+              grid-template-rows: 170px 170px 170px 140px;
+              grid-template-areas:
+                'a b'
+                'c e'
+                'd e'
+                'f g';
             }
-            .collage-row-1 {
-              display: flex;
-              justify-content: center;
+
+            /* ── Desktop: layout giống ảnh mẫu ── */
+            @media (min-width: 1024px) {
+              .collage-grid {
+                gap: 16px;
+                padding: 40px;
+                grid-template-columns: 1fr 1.3fr 1fr;
+                grid-template-rows: 220px 240px 170px;
+                grid-template-areas:
+                  'a b e'
+                  'c d e'
+                  'f g .';
+              }
             }
-            .collage-row-2,
-            .collage-row-3 {
-              display: flex;
-              justify-content: center;
-              gap: 16px;
+
+            /* ── Tablet nhỏ / màn hẹp hơn ── */
+            @media (max-width: 480px) {
+              .collage-grid {
+                grid-template-columns: 1fr;
+                grid-template-rows: repeat(7, 200px);
+                grid-template-areas:
+                  'a'
+                  'b'
+                  'c'
+                  'd'
+                  'e'
+                  'f'
+                  'g';
+              }
             }
           `}</style>
         </div>

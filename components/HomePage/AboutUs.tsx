@@ -49,7 +49,7 @@ export default function AboutPreview() {
           >
             <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
               <Image
-                src="/Home/AboutUs/HomeAboutUs.jpg"
+                src="/Home/AboutUs/AboutUs.png"
                 alt="Takumi Auto Parts Factory"
                 fill
                 className="object-cover"
