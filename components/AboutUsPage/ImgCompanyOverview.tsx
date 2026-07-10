@@ -5,26 +5,27 @@ import Image from 'next/image';
 import { X } from 'lucide-react';
 
 const PHOTOS = [
-  '/AboutUs/CompanyOverview/5.png', 
-  '/AboutUs/CompanyOverview/1.png', 
-  '/AboutUs/CompanyOverview/2.png', 
-  '/AboutUs/CompanyOverview/3.JPG', 
-  '/AboutUs/CompanyOverview/4.png', 
-  '/AboutUs/CompanyOverview/7.png', 
-  '/AboutUs/CompanyOverview/8.png', 
+  '/AboutUs/CompanyOverview/1.png',
+  '/AboutUs/CompanyOverview/2.png',
+  '/AboutUs/CompanyOverview/3.JPG',
+  '/AboutUs/CompanyOverview/4.png',
+  '/AboutUs/CompanyOverview/5.png',
+  '/AboutUs/CompanyOverview/6.png',
+  '/AboutUs/CompanyOverview/7.png',
+  '/AboutUs/CompanyOverview/8.png',
 ];
 
 const CANVAS_W = 1850;
 const CANVAS_H = 1040;
 
 const LAYOUT = [
-  { key: 'building', x: 560, y: 300, w: 800, h: 480 }, 
-  { key: 'office', x: 520, y: 40, w: 420, h: 280 },     
-  { key: 'machine-op', x: 980, y: 40, w: 420, h: 280 }, 
-  { key: 'forklift', x: 70, y: 390, w: 450, h: 300 },   
-  { key: 'screen-op', x: 1400, y: 390, w: 450, h: 300 },
-  { key: 'auto-line', x: 520, y: 760, w: 420, h: 280 }, 
-  { key: 'multi-screen', x: 980, y: 760, w: 420, h: 280 }, 
+  { key: 'office', photoIndex: 0, x: 590, y: 50, w: 360, h: 220 },
+  { key: 'machine-op', photoIndex: 1, x: 980, y: 50, w: 320, h: 220 },
+  { key: 'forklift', photoIndex: 2, x: 180, y: 330, w: 450, h: 300 },
+  { key: 'building', photoIndex: 3, x: 660, y: 300, w: 550, h: 350 },
+  { key: 'screen-op', photoIndex: 4, x: 1240, y: 330, w: 450, h: 300 },
+  { key: 'auto-line', photoIndex: 5, x: 590, y: 680, w: 350, h: 220 },
+  { key: 'multi-screen', photoIndex: 6, x: 980, y: 680, w: 350, h: 220 },
 ];
 
 type LightboxItem = { type: 'image'; src: string };
@@ -69,11 +70,11 @@ function Lightbox({ item, onClose }: { item: LightboxItem; onClose: () => void }
 }
 
 function AbsImg({
-  index,
+  photoIndex,
   pos,
   onOpen,
 }: {
-  index: number;
+  photoIndex: number;
   pos: { x: number; y: number; w: number; h: number };
   onOpen: () => void;
 }) {
@@ -94,8 +95,8 @@ function AbsImg({
       onClick={onOpen}
     >
       <Image
-        src={PHOTOS[index]}
-        alt={`photo-${index + 1}`}
+        src={PHOTOS[photoIndex]}
+        alt={`photo-${photoIndex + 1}`}
         fill
         className="object-cover transition-transform duration-300 group-hover:scale-105"
         sizes="(min-width: 1024px) 45vw, 90vw"
@@ -223,7 +224,7 @@ export default function PhotoCollage() {
       {lightbox && <Lightbox item={lightbox} onClose={() => setLightbox(null)} />}
 
       {isMobile ? (
-      
+
         <div className="flex flex-col gap-4 px-4 py-6">
           <div
             className="relative w-full rounded-sm overflow-hidden cursor-pointer"
@@ -235,14 +236,14 @@ export default function PhotoCollage() {
           <MobilePhotoSlider onOpen={openImg} />
         </div>
       ) : (
-      
+
         <div className="w-full px-4 py-8 md:px-8 lg:px-10">
           <div
             className="relative w-full max-w-[1850px] mx-auto"
             style={{ aspectRatio: `${CANVAS_W} / ${CANVAS_H}` }}
           >
-            {LAYOUT.map((pos, i) => (
-              <AbsImg key={pos.key} index={i} pos={pos} onOpen={() => openImg(i)} />
+            {LAYOUT.map((pos) => (
+              <AbsImg key={pos.key} photoIndex={pos.photoIndex} pos={pos} onOpen={() => openImg(pos.photoIndex)} />
             ))}
           </div>
         </div>
