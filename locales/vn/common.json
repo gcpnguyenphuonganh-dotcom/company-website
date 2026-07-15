@@ -794,7 +794,7 @@
         ]
       },
       "index": {
-        "name": "Thiết bị đo lường",
+        "name": "Thiết bị hiển thị (trong thiết bị đo)",
         "intro": "Biến áp cao tần được sử dụng rộng rãi trong các thiết bị đo lường hiện đại nhờ khả năng truyền tín hiệu ở tần số cao, cách ly điện và giảm kích thước mạch.",
         "listLabel": "Một số ứng dụng chính gồm:",
         "bullets": [
