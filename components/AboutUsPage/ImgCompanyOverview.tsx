@@ -7,7 +7,7 @@ import { X } from 'lucide-react';
 const PHOTOS = [
   '/AboutUs/CompanyOverview/1.png',
   '/AboutUs/CompanyOverview/2.png',
-  '/AboutUs/CompanyOverview/3.JPG',
+  '/AboutUs/CompanyOverview/3.png',
   '/AboutUs/CompanyOverview/4.png',
   '/AboutUs/CompanyOverview/5.png',
   '/AboutUs/CompanyOverview/6.png',
