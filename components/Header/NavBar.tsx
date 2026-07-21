@@ -282,7 +282,7 @@ export default function Navbar() {
                         }}>
                         {t('menu.viewAll')}
                         <svg width="12" height="12" viewBox="0 0 14 14" fill="none">
-                          <path d="M2 7H12M7 2L12 7L7 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                          <path d="M2 7H12M7 2L12 7L7 12" stroke="#020c1a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
                       </Link>
                     )}
@@ -574,7 +574,7 @@ export default function Navbar() {
                         </span>
                       </div>
                       <svg width="13" height="13" viewBox="0 0 14 14" fill="none">
-                        <path d="M2 7H12M7 2L12 7L7 12" stroke="#013478" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                        <path d="M2 7H12M7 2L12 7L7 12" stroke="#020c1a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                       </svg>
                     </Link>
 
@@ -598,7 +598,7 @@ export default function Navbar() {
                             <span style={{ flex: 1, fontSize: '0.88rem', fontWeight: 500, color: '#1a1a2e' }}>{cat.name}</span>
                             <span style={{ fontSize: '0.82rem', color: '#a0aab8', marginRight: '0.75rem' }}>{cat.products.length}</span>
                             <svg width="13" height="13" viewBox="0 0 16 16" fill="none"
-                              style={{ color: '#b0b8c8', flexShrink: 0, transform: isOpen ? 'rotate(90deg)' : 'rotate(0deg)', transition: 'transform 0.2s' }}>
+                              style={{ color: '#020c1a', flexShrink: 0, transform: isOpen ? 'rotate(90deg)' : 'rotate(0deg)', transition: 'transform 0.2s' }}>
                               <path d="M6 4L10 8L6 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                             </svg>
                           </button>
