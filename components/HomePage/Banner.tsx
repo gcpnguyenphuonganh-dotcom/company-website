@@ -107,26 +107,26 @@ export default function HeroSection() {
           <h1 className="text-white mb-6">
             <div className="rela">
               <span
-                className={`block text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight transition-all duration-1000 delay-200 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+                className={`block text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight transition-all duration-1000 delay-200 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
                   }`}
               >
                 {t("hero.line1")}
               </span>
               <span
-                className={`block text-5xl md:text-7xl lg:text-8xl font-bold text-blue-500 tracking-tight transition-all duration-1000 delay-200 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+                className={`block text-5xl md:text-6xl lg:text-7xl font-bold text-blue-500 tracking-tight transition-all duration-1000 delay-200 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
                   }`}
               >
                 {t("hero.line2")}
               </span>
             </div>
             <span
-              className={`block text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight transition-all duration-1000 delay-400 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+              className={`block text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight transition-all duration-1000 delay-400 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
                 }`}
             >
               {t("hero.line3")}
             </span>
             <span
-              className={`block text-5xl md:text-7xl lg:text-8xl font-light tracking-tight text-white/60 transition-all duration-1000 delay-[600ms] ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+              className={`block text-5xl md:text-6xl lg:text-7xl font-light tracking-tight text-white/60 transition-all duration-1000 delay-[600ms] ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
                 }`}
             >
               {t("hero.line4")}
