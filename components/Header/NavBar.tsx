@@ -321,7 +321,7 @@ export default function Navbar() {
                                 <span style={{ flex: 1, fontSize: '0.92rem', fontWeight: 500, color: '#1a1a2e' }}>{cat.name}</span>
                                 <span style={{ fontSize: '0.88rem', color: '#a0aab8', fontWeight: 400, marginRight: '1rem' }}>{cat.products.length}</span>
                                 <svg width="15" height="15" viewBox="0 0 16 16" fill="none"
-                                  style={{ color: '#b0b8c8', flexShrink: 0, transform: isOpen ? 'rotate(90deg)' : 'rotate(0deg)', transition: 'transform 0.22s ease' }}>
+                                  style={{ color: '#020c1a', flexShrink: 0, transform: isOpen ? 'rotate(90deg)' : 'rotate(0deg)', transition: 'transform 0.22s ease' }}>
                                   <path d="M6 4L10 8L6 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                                 </svg>
                               </button>
