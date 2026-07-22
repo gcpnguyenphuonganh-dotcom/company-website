@@ -49,7 +49,7 @@ export default function Footer() {
     "block mb-[0.9rem] text-[0.9rem] text-[#d6e2f0] no-underline hover:underline underline-offset-4 transition-all";
 
   return (
-    <footer className="bg-[#0b2a4a] text-[#d6e2f0] pt-14 pb-6 px-5 sm:px-8 lg:px-[6vw]">
+    <footer className="bg-[#0b2a4a] text-[#d6e2f0] pt-10 sm:pt-12 lg:pt-14 pb-6 px-5 sm:px-8 lg:px-[6vw]">
       <div className="max-w-[1200px] mx-auto">
 
         {/* Top Grid */}
@@ -61,7 +61,7 @@ export default function Footer() {
               <img
                 src="/Footer/footer_logo.png"
                 alt={t("footer.logo_alt")}
-                className="w-full h-auto object-contain object-left flex-shrink-0"
+                className="w-full max-w-[150px] sm:max-w-[170px] lg:max-w-[190px] h-auto object-contain object-left flex-shrink-0"
               />
             </div>
             <p className="leading-[1.8] text-[0.95rem] text-[#c8d5e3] text-justify max-w-[380px]">
@@ -72,7 +72,7 @@ export default function Footer() {
               <div className="mt-5 w-full overflow-hidden rounded-lg shadow-md border border-white/10">
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.04520690206!2d105.77957677603395!3d21.03087708770443!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab4cacb29edb%3A0x9ba4a20a336f983e!2sTTC%20Tower!5e0!3m2!1svi!2s!4v1775010417078!5m2!1svi!2s"
-                  className="w-full h-[160px]"
+                  className="w-full h-[140px] sm:h-[160px]"
                   style={{ border: 0 }}
                   loading="lazy"
                   title={t("footer.map_title")}
