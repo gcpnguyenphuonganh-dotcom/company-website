@@ -10,7 +10,7 @@ const PHOTOS = [
   '/AboutUs/CompanyOverview/3.png',
   '/AboutUs/CompanyOverview/4.png',
   '/AboutUs/CompanyOverview/5.png',
-  '/AboutUs/CompanyOverview/6.png',
+  '/AboutUs/AboutUs.png',
   '/AboutUs/CompanyOverview/7.png',
   '/AboutUs/CompanyOverview/8.png',
 ];
