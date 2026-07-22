@@ -31,7 +31,7 @@ export default function CertificationsSection() {
   return (
     <section
       ref={sectionRef}
-      className="py-12 sm:py-16 md:py-20 lg:py-24 bg-muted/30 overflow-hidden relative"
+      className="py-24 bg-muted/30 overflow-hidden relative"
     >
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
@@ -68,37 +68,37 @@ export default function CertificationsSection() {
         }
       `}</style>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="container mx-auto px-4 relative z-10">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12 md:mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="flex items-center gap-2 justify-center">
             <div className="w-6 h-px bg-blue-900" />
-            <span className={`inline-block text-xs sm:text-sm font-medium text-[#013478] tracking-widest uppercase transition-all duration-700 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
+            <span className={`inline-block text-sm font-medium text-[#013478] tracking-widest uppercase transition-all duration-700 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
               {t("certificationsSection.badge")}
             </span>
             <div className="w-6 h-px bg-blue-900" />
           </div>
-          <h2 className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#020c1a] mt-4 leading-tight transition-all duration-700 delay-100 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
+          <h2 className={`text-3xl md:text-5xl font-bold text-[#020c1a] mt-4 leading-tight transition-all duration-700 delay-100 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
             {t("certificationsSection.title")}
           </h2>
-          <p className={`text-sm sm:text-base md:text-xl text-[#020c1a]/70 mt-4 leading-tight transition-all duration-700 delay-100 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
+          <p className={`text-xm md:text-xl text-[#020c1a]/70 mt-4 leading-tight transition-all duration-700 delay-100 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
             {t("certificationsSection.description")}
           </p>
         </div>
 
         {/* Certification Images */}
-        <div className="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-6 sm:gap-8">
+        <div className="grid md:grid-cols-3 gap-8">
           {certificationImages.map((src, idx) => (
             <div
               key={`${lang}-${idx}`}
               className={`relative transition-all duration-700 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
               style={{ transitionDelay: `${300 + idx * 200}ms` }}
             >
-              <div className="w-full h-[220px] sm:h-[260px] md:h-[300px] lg:h-[340px] 2xl:h-[380px] flex items-center justify-center">
+              <div className="w-full h-[500px] sm:h-[500px] md:h-[570px] lg:h-[670px] overflow-hidden rounded-lg shadow-lg border border-white/10">
                 <img
                   src={src}
                   alt={`${t("certificationsSection.alt")} ${idx + 1}`}
-                  className="max-w-full max-h-full w-auto h-auto object-contain"
+                  className="w-full h-full object-cover"
                 />
               </div>
             </div>
