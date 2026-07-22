@@ -95,11 +95,11 @@ export default function CertificationsSection() {
               className={`relative transition-all duration-700 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
               style={{ transitionDelay: `${300 + idx * 200}ms` }}
             >
-              <div className="w-full h-[420px] min-[1000px]:h-[520px] min-[1600px]:h-[670px] overflow-hidden rounded-lg shadow-lg border border-white/10">
+              <div className="w-full h-[420px] min-[1000px]:h-[520px] min-[1600px]:h-[670px] flex items-center justify-center bg-white overflow-hidden rounded-lg shadow-lg border border-white/10">
                 <img
                   src={src}
                   alt={`${t("certificationsSection.alt")} ${idx + 1}`}
-                  className="w-full h-full object-cover"
+                  className="max-w-full max-h-full w-auto h-auto object-contain min-[1600px]:w-full min-[1600px]:h-full min-[1600px]:max-w-none min-[1600px]:max-h-none min-[1600px]:object-cover"
                 />
               </div>
             </div>
