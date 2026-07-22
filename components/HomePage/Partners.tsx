@@ -39,7 +39,7 @@ export default function PartnersSection() {
             </span>
             <div className="w-6 h-px bg-blue-900" />
           </div>
-          <h2 className={`text-4xl md:text-5xl font-bold text-foreground mt-4 text-balance transition-all duration-700 delay-200 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
+          <h2 className={`text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mt-4 text-balance transition-all duration-700 delay-200 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
             {t("partnersSection.title")}
           </h2>
         </div>

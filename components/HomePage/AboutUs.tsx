@@ -79,7 +79,7 @@ export default function AboutPreview() {
                   {t("about_preview.label")}
                 </span>
               </div>
-              <h2 className="text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-bold text-[#020c1a] mt-2 leading-tight">
+              <h2 className="text-2xl sm:text-3xl md:text-3xl lg:text-4xl font-bold text-[#020c1a] mt-2 leading-tight">
                 {t("about_preview.heading")}
               </h2>
             </div>
