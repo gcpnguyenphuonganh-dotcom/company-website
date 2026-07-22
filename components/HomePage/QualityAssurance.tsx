@@ -31,7 +31,7 @@ export default function CertificationsSection() {
   return (
     <section
       ref={sectionRef}
-      className="py-24 bg-muted/30 overflow-hidden relative"
+      className="py-12 min-[1000px]:py-16 min-[1600px]:py-24 bg-muted/30 overflow-hidden relative"
     >
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
@@ -70,7 +70,7 @@ export default function CertificationsSection() {
 
       <div className="container mx-auto px-4 relative z-10">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-10 min-[1000px]:mb-12 min-[1600px]:mb-16">
           <div className="flex items-center gap-2 justify-center">
             <div className="w-6 h-px bg-blue-900" />
             <span className={`inline-block text-sm font-medium text-[#013478] tracking-widest uppercase transition-all duration-700 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
@@ -87,14 +87,15 @@ export default function CertificationsSection() {
         </div>
 
         {/* Certification Images */}
-        <div className="grid md:grid-cols-3 gap-8">
+        {/* <1000px: 1 column (each in its own row) | 1000–1599px: 2 columns (2 rows) | >=1600px: original 3-column layout, unchanged */}
+        <div className="grid grid-cols-1 min-[1000px]:grid-cols-2 min-[1600px]:grid-cols-3 gap-8">
           {certificationImages.map((src, idx) => (
             <div
               key={`${lang}-${idx}`}
               className={`relative transition-all duration-700 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
               style={{ transitionDelay: `${300 + idx * 200}ms` }}
             >
-              <div className="w-full h-[500px] sm:h-[500px] md:h-[570px] lg:h-[670px] overflow-hidden rounded-lg shadow-lg border border-white/10">
+              <div className="w-full h-[420px] min-[1000px]:h-[520px] min-[1600px]:h-[670px] overflow-hidden rounded-lg shadow-lg border border-white/10">
                 <img
                   src={src}
                   alt={`${t("certificationsSection.alt")} ${idx + 1}`}
