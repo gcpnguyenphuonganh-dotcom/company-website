@@ -94,7 +94,7 @@ export default function CertificationsSection() {
               className={`relative transition-all duration-700 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
               style={{ transitionDelay: `${300 + idx * 200}ms` }}
             >
-              <div className="w-full h-[220px] sm:h-[260px] md:h-[300px] lg:h-[340px] 2xl:h-[380px] flex items-center justify-center bg-white rounded-lg shadow-lg border border-white/10 overflow-hidden">
+              <div className="w-full h-[220px] sm:h-[260px] md:h-[300px] lg:h-[340px] 2xl:h-[380px] flex items-center justify-center">
                 <img
                   src={src}
                   alt={`${t("certificationsSection.alt")} ${idx + 1}`}
