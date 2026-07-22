@@ -46,14 +46,14 @@ export default function HeroSection() {
 
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative h-[600px] sm:h-[650px] md:h-[750px] lg:h-[850px] xl:h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
           src="/Home/Banner/HomeBanner.png"
           alt="Auto parts manufacturing"
           fill
-          className="object-cover scale-110"
+          className="object-cover object-center sm:object-center md:object-center scale-100 sm:scale-105 md:scale-110"
           priority
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[#020c1a]/90 via-[#020c1a]/70 to-[#020c1a]/50" />

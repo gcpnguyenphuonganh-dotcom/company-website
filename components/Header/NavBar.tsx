@@ -181,7 +181,7 @@ export default function Navbar() {
                   }}>
                     <div style={{ borderRadius: 12, overflow: 'hidden', background: '#f0f4ff', flex: 1 }}>
                       <img src="/Header/4.png" alt="About"
-                        style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', minHeight: 250 }} />
+                        style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block' }} />
                     </div>
                   </div>
 

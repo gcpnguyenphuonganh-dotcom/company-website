@@ -26,7 +26,7 @@ export default function AboutUs() {
       <section className="relative overflow-hidden ">
         {/* IMG - Banner */}
         <div 
-          className="absolute inset-0 bg-cover bg-center" 
+          className="absolute inset-0 bg-contain lg:bg-cover bg-center bg-no-repeat" 
           style={{ backgroundImage: "url('/AboutUs/Banner/4.png')" }} 
         />
         {/*  Overlay gradient  */}
