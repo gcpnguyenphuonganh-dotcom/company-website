@@ -23,7 +23,7 @@ export default function Automotive() {
             <h2 className="text-[clamp(26px,4vw,42px)] font-extrabold text-gray-900 leading-[1.15] tracking-[-0.02em] m-0 mb-[clamp(12px,1.5vw,20px)]">
               {t("automotiveSection.titleLine1")}
               <br />
-              <span className="text-[#013478]">{t("automotiveSection.titleLine2")}</span>
+              <span >{t("automotiveSection.titleLine2")}</span>
             </h2>
 
             <p className="text-[clamp(13px,1vw,18px)] text-justify leading-[1.85] text-gray-500 font-['DM_Sans',sans-serif] font-light mb-[clamp(16px,2vw,28px)]">

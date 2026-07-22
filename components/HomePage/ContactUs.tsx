@@ -83,7 +83,7 @@ export default function ContactPreview() {
               </div>
               <h2 className="text-4xl md:text-5xl font-bold text-[#020c1a] mt-2 leading-tight">
 
-                <span className="text-[#013478]">{t("contactPreview.titleLine2")}</span>
+                <span >{t("contactPreview.titleLine2")}</span>
                 <br />
                 {t("contactPreview.titleLine1")}
               </h2>
