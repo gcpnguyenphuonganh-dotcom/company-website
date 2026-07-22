@@ -87,18 +87,18 @@ export default function CertificationsSection() {
         </div>
 
         {/* Certification Images */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-6 sm:gap-8">
           {certificationImages.map((src, idx) => (
             <div
               key={`${lang}-${idx}`}
               className={`relative transition-all duration-700 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
               style={{ transitionDelay: `${300 + idx * 200}ms` }}
             >
-              <div className="w-full rounded-lg shadow-lg border border-white/10 overflow-hidden">
+              <div className="w-full h-[220px] sm:h-[260px] md:h-[300px] lg:h-[340px] 2xl:h-[380px] flex items-center justify-center bg-white rounded-lg shadow-lg border border-white/10 overflow-hidden">
                 <img
                   src={src}
                   alt={`${t("certificationsSection.alt")} ${idx + 1}`}
-                  className="w-full h-auto block object-contain"
+                  className="max-w-full max-h-full w-auto h-auto object-contain"
                 />
               </div>
             </div>
