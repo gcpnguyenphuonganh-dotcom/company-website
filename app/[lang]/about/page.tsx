@@ -201,7 +201,7 @@ export default function AboutUs() {
               <SectionLabel light={false}>{t("about.hanoi.label")}</SectionLabel>
               <h2 className="text-3xl xl:text-4xl font-black text-[#0d1f3c] leading-[1.12] tracking-tight mb-5 mt-4" >
                 {t("about.hanoi.title_1")}{" "}
-                <em className="not-italic text-[#013478]">{t("about.hanoi.title_highlight")}</em> {t("about.hanoi.title_2")}
+                <em className="not-italic ">{t("about.hanoi.title_highlight")}</em> {t("about.hanoi.title_2")}
               </h2>
               <p className="text-[13.5px] text-slate-500 leading-relaxed text-justify mb-7">
                 {t("about.hanoi.desc")}

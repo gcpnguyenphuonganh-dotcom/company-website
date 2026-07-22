@@ -50,7 +50,7 @@ export default function HeroSection() {
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/Home/Banner/3.jpg"
+          src="/Home/Banner/8.png"
           alt="Auto parts manufacturing"
           fill
           className="object-cover object-center sm:object-center md:object-center scale-100 sm:scale-105 md:scale-110"
