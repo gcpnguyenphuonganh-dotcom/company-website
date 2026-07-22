@@ -27,7 +27,7 @@ export default function AboutUs() {
         {/* IMG - Banner */}
         <div 
           className="absolute inset-0 bg-cover bg-center" 
-          style={{ backgroundImage: "url('/AboutUs/Banner/anhcty.png')" }} 
+          style={{ backgroundImage: "url('/AboutUs/Banner/4.png')" }} 
         />
         {/*  Overlay gradient  */}
         <div 
