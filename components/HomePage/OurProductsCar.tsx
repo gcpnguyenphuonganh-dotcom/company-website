@@ -20,7 +20,7 @@ export default function Automotive() {
         <div className="flex items-center py-[clamp(40px,6vw,96px)] px-[clamp(24px,5vw,80px)]">
           <div className="w-full">
 
-            <h2 className="text-[clamp(26px,4vw,42px)] font-extrabold text-gray-900 leading-[1.15] tracking-[-0.02em] m-0 mb-[clamp(12px,1.5vw,20px)]">
+            <h2 className="text-[clamp(26px,4vw,36px)] font-extrabold text-gray-900 leading-[1.15] tracking-[-0.02em] m-0 mb-[clamp(12px,1.5vw,20px)]">
               {t("automotiveSection.titleLine1")}
               <br />
               <span >{t("automotiveSection.titleLine2")}</span>
