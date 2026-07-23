@@ -89,23 +89,49 @@ function Pagination({ current, total, onChange }: { current: number; total: numb
 }
 
 function ArticleListItem({ article, onClick }: { article: Article; onClick: () => void }) {
-  const [day, month, year] = article.date.split(" ");
   const config = getCategoryConfig(article.category);
+  const formattedDate = article.date.split(" ").join("/"); // vd: 23/Jul/2026
+
   return (
     <div onClick={onClick} className="cursor-pointer flex items-start gap-4 sm:gap-6 py-6 sm:py-8 border-b border-black/10 group">
-      <div className="flex flex-col items-center min-w-[40px] sm:min-w-[48px] text-center flex-shrink-0">
-        <span className="text-xs text-black/40">{year}</span>
-        <span className="text-3xl sm:text-4xl font-bold text-black leading-none">{day}</span>
-        <span className="text-xs text-black/40 uppercase">{month}</span>
+      {/* Ảnh bên trái */}
+      <div className="w-24 h-24 sm:w-32 sm:h-32 flex-shrink-0 overflow-hidden rounded-lg bg-black/5">
+        {article.img ? (
+          <img
+            src={article.img}
+            alt={article.title}
+            className="w-full h-full object-cover"
+          />
+        ) : (
+          <div className="w-full h-full flex items-center justify-center text-black/20 text-xs">
+            No image
+          </div>
+        )}
       </div>
+
+      {/* Nội dung bên phải */}
       <div className="flex-1 flex flex-col gap-1.5 sm:gap-2 min-w-0">
-        <span className={`inline-block self-start text-xs font-semibold tracking-widest px-2 py-0.5 ${config?.badgeClass ?? "border border-black/20 text-black/50"}`}>
-          {config?.label ?? article.category}
-        </span>
-        <h3 className="text-base sm:text-lg font-semibold text-black leading-snug group-hover:underline">{article.title}</h3>
-        <p className="text-sm text-black/50 line-clamp-2 leading-relaxed">{article.excerpt}</p>
+        <div className="flex items-center gap-2 flex-wrap">
+          <span
+            className={`inline-block self-start text-xs font-semibold tracking-widest px-2 py-0.5 ${
+              config?.badgeClass ?? "border border-black/20 text-black/50"
+            }`}
+          >
+            {config?.label ?? article.category}
+          </span>
+          <span className="text-xs text-black/40">{formattedDate}</span>
+        </div>
+        <h3 className="text-base sm:text-lg font-semibold text-black leading-snug group-hover:underline">
+          {article.title}
+        </h3>
+        <p className="text-sm text-black/50 line-clamp-2 leading-relaxed">
+          {article.excerpt}
+        </p>
       </div>
-      <div className="text-black/30 group-hover:text-black/60 transition-colors pt-1 text-xl flex-shrink-0">›</div>
+
+      <div className="text-black/30 group-hover:text-black/60 transition-colors pt-1 text-xl flex-shrink-0">
+        ›
+      </div>
     </div>
   );
 }
