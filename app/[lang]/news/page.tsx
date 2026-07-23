@@ -89,17 +89,14 @@ function Pagination({ current, total, onChange }: { current: number; total: numb
 }
 
 function ArticleListItem({ article, onClick }: { article: Article; onClick: () => void }) {
+  const [day, month, year] = article.date.split(" ");
   const config = getCategoryConfig(article.category);
   return (
     <div onClick={onClick} className="cursor-pointer flex items-start gap-4 sm:gap-6 py-6 sm:py-8 border-b border-black/10 group">
-      <div className="w-40 sm:w-56 aspect-[4/3] flex-shrink-0 overflow-hidden bg-black/5">
-        {article.img && (
-          <img
-            src={article.img}
-            alt={article.title}
-            className="w-full h-full object-cover"
-          />
-        )}
+      <div className="flex flex-col items-center min-w-[40px] sm:min-w-[48px] text-center flex-shrink-0">
+        <span className="text-xs text-black/40">{year}</span>
+        <span className="text-3xl sm:text-4xl font-bold text-black leading-none">{day}</span>
+        <span className="text-xs text-black/40 uppercase">{month}</span>
       </div>
       <div className="flex-1 flex flex-col gap-1.5 sm:gap-2 min-w-0">
         <span className={`inline-block self-start text-xs font-semibold tracking-widest px-2 py-0.5 ${config?.badgeClass ?? "border border-black/20 text-black/50"}`}>
