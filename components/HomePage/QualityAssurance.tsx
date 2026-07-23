@@ -90,14 +90,14 @@ export default function CertificationsSection() {
         {/* Mobile: xếp dọc 1 cột, mỗi ảnh 1 hàng | Từ sm trở lên: 1 hàng ngang, 3 ảnh cùng chiều cao.
             Dùng flex + w-auto để chiều RỘNG mỗi khung tự co theo đúng tỉ lệ ảnh gốc (không ép bằng nhau),
             chỉ ép CHIỀU CAO bằng nhau. Nhờ đó không có khoảng trắng thừa, không cắt, không méo ảnh. */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-5 sm:gap-8">
           {certificationImages.map((src, idx) => (
             <div
               key={`${lang}-${idx}`}
               className={`relative transition-all duration-700 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
               style={{ transitionDelay: `${300 + idx * 200}ms` }}
             >
-              <div className="inline-flex items-center justify-center overflow-hidden rounded-lg shadow-lg border border-black/10 bg-white h-[clamp(240px,72vw,420px)] sm:h-[clamp(200px,24vw,420px)]">
+              <div className="inline-flex items-center justify-center overflow-hidden rounded-lg shadow-lg border border-black/10 bg-white h-[clamp(300px,88vw,560px)] sm:h-[clamp(260px,32vw,600px)]">
                 <img
                   src={src}
                   alt={`${t("certificationsSection.alt")} ${idx + 1}`}
