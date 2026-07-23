@@ -92,7 +92,7 @@ function ArticleListItem({ article, onClick }: { article: Article; onClick: () =
   const config = getCategoryConfig(article.category);
   return (
     <div onClick={onClick} className="cursor-pointer flex items-start gap-4 sm:gap-6 py-6 sm:py-8 border-b border-black/10 group">
-      <div className="w-32 h-32 sm:w-44 sm:h-44 flex-shrink-0 overflow-hidden bg-black/5">
+      <div className="w-40 sm:w-56 aspect-[4/3] flex-shrink-0 overflow-hidden bg-black/5">
         {article.img && (
           <img
             src={article.img}
@@ -101,12 +101,12 @@ function ArticleListItem({ article, onClick }: { article: Article; onClick: () =
           />
         )}
       </div>
-      <div className="flex-1 flex flex-col gap-1 sm:gap-1.5 min-w-0 max-w-md">
+      <div className="flex-1 flex flex-col gap-1.5 sm:gap-2 min-w-0">
         <span className={`inline-block self-start text-xs font-semibold tracking-widest px-2 py-0.5 ${config?.badgeClass ?? "border border-black/20 text-black/50"}`}>
           {config?.label ?? article.category}
         </span>
-        <h3 className="text-sm sm:text-base font-semibold text-black leading-snug group-hover:underline">{article.title}</h3>
-        <p className="text-xs text-black/50 line-clamp-2 leading-relaxed">{article.excerpt}</p>
+        <h3 className="text-base sm:text-lg font-semibold text-black leading-snug group-hover:underline">{article.title}</h3>
+        <p className="text-sm text-black/50 line-clamp-2 leading-relaxed">{article.excerpt}</p>
       </div>
       <div className="text-black/30 group-hover:text-black/60 transition-colors pt-1 text-xl flex-shrink-0">›</div>
     </div>
