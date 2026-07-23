@@ -87,19 +87,22 @@ export default function CertificationsSection() {
         </div>
 
         {/* Certification Images */}
-        {/* <1000px: 1 column (each in its own row) | 1000–1599px: 2 columns (2 rows) | >=1600px: original 3-column layout, unchanged */}
-        <div className="grid grid-cols-1 min-[1000px]:grid-cols-2 min-[1600px]:grid-cols-3 gap-8">
+        {/* Mobile: 1 cột (3 hình xếp chồng) | Từ sm trở lên: luôn 3 cột, chiều cao co theo vw */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-5 md:gap-6">
           {certificationImages.map((src, idx) => (
             <div
               key={`${lang}-${idx}`}
               className={`relative transition-all duration-700 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
               style={{ transitionDelay: `${300 + idx * 200}ms` }}
             >
-              <div className="w-full h-[420px] min-[1000px]:h-[520px] min-[1600px]:h-[670px] flex items-center justify-center overflow-hidden min-[1600px]:rounded-lg min-[1600px]:shadow-lg min-[1600px]:border min-[1600px]:border-white/10">
+              <div
+                className="w-full flex items-center justify-center overflow-hidden rounded-lg shadow-lg border border-white/10"
+                style={{ height: "min(60vw, 480px)" }}
+              >
                 <img
                   src={src}
                   alt={`${t("certificationsSection.alt")} ${idx + 1}`}
-                  className="max-w-full max-h-full w-auto h-auto object-contain min-[1600px]:w-full min-[1600px]:h-full min-[1600px]:max-w-none min-[1600px]:max-h-none min-[1600px]:object-cover"
+                  className="w-full h-full object-cover"
                 />
               </div>
             </div>
