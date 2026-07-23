@@ -81,7 +81,7 @@ export default function ContactPreview() {
                   {t("contactPreview.badge")}
                 </span>
               </div>
-              <h2 className="text-4xl md:text-5xl font-bold text-[#020c1a] mt-2 leading-tight">
+              <h2 className="text-2xl md:text-4xl font-bold text-[#020c1a] mt-2 leading-tight">
 
                 <span >{t("contactPreview.titleLine2")}</span>
                 <br />
