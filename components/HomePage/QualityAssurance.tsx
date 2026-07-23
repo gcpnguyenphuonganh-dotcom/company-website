@@ -87,22 +87,21 @@ export default function CertificationsSection() {
         </div>
 
         {/* Certification Images */}
-        {/* Mobile: 1 cột (3 hình xếp chồng) | Từ sm trở lên: luôn 3 cột, chiều cao co theo vw */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-5 md:gap-6">
+        {/* Mobile: xếp dọc 1 cột, mỗi ảnh 1 hàng | Từ sm trở lên: 1 hàng ngang, 3 ảnh cùng chiều cao.
+            Dùng flex + w-auto để chiều RỘNG mỗi khung tự co theo đúng tỉ lệ ảnh gốc (không ép bằng nhau),
+            chỉ ép CHIỀU CAO bằng nhau. Nhờ đó không có khoảng trắng thừa, không cắt, không méo ảnh. */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
           {certificationImages.map((src, idx) => (
             <div
               key={`${lang}-${idx}`}
               className={`relative transition-all duration-700 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
               style={{ transitionDelay: `${300 + idx * 200}ms` }}
             >
-              <div
-                className="w-full flex items-center justify-center overflow-hidden rounded-lg shadow-lg border border-white/10"
-                style={{ height: "min(60vw, 480px)" }}
-              >
+              <div className="inline-flex items-center justify-center overflow-hidden rounded-lg shadow-lg border border-black/10 bg-white h-[clamp(240px,72vw,420px)] sm:h-[clamp(200px,24vw,420px)]">
                 <img
                   src={src}
                   alt={`${t("certificationsSection.alt")} ${idx + 1}`}
-                  className="w-full h-full object-cover"
+                  className="h-full w-auto max-w-full object-contain"
                 />
               </div>
             </div>
