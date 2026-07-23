@@ -264,15 +264,15 @@ export default function Navbar() {
                   display: 'flex', width: '100%', maxWidth: 900,
                   margin: '0 auto', gap: 0, padding: '0.75rem 0',
                 }}>
-                  {/* ── Cột ảnh sản phẩm: thu nhỏ còn 2/3 (200px), dùng object-fit contain để không méo ── */}
+                  {/* ── Cột ảnh sản phẩm: thu nhỏ còn 140px, object-fit contain để không méo ── */}
                   <div style={{
-                    flex: '0 0 200px', display: 'flex', flexDirection: 'column',
-                    marginRight: '2.5rem', gap: '0.6rem',
+                    flex: '0 0 140px', display: 'flex', flexDirection: 'column',
+                    marginRight: '1.5rem', gap: '0.5rem',
                   }}>
                     <div style={{
                       borderRadius: 12, overflow: 'hidden', flex: 1,
                       display: 'flex', alignItems: 'center', justifyContent: 'center',
-                      background: '#f8f9fc', minHeight: 150,
+                      background: '#f8f9fc', minHeight: 120,
                     }}>
                       <img src={DROPDOWN_IMAGE} alt="Products"
                         style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block' }} />
