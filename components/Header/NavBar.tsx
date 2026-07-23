@@ -264,13 +264,18 @@ export default function Navbar() {
                   display: 'flex', width: '100%', maxWidth: 900,
                   margin: '0 auto', gap: 0, padding: '0.75rem 0',
                 }}>
+                  {/* ── Cột ảnh sản phẩm: thu nhỏ còn 2/3 (200px), dùng object-fit contain để không méo ── */}
                   <div style={{
-                    flex: '0 0 300px', display: 'flex', flexDirection: 'column',
+                    flex: '0 0 200px', display: 'flex', flexDirection: 'column',
                     marginRight: '2.5rem', gap: '0.6rem',
                   }}>
-                    <div style={{ borderRadius: 12, overflow: 'hidden', flex: 1 }}>
+                    <div style={{
+                      borderRadius: 12, overflow: 'hidden', flex: 1,
+                      display: 'flex', alignItems: 'center', justifyContent: 'center',
+                      background: '#f8f9fc', minHeight: 150,
+                    }}>
                       <img src={DROPDOWN_IMAGE} alt="Products"
-                        style={{ width: '80%', height: '80%', objectFit: 'cover', display: 'block', minHeight: 150 }} />
+                        style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block' }} />
                     </div>
                     {categoryGroups.length > 0 && (
                       <Link href={`/${lang}/products`} onClick={() => setProdOpen(false)}
