@@ -95,7 +95,7 @@ function ArticleListItem({ article, onClick }: { article: Article; onClick: () =
   return (
     <div onClick={onClick} className="cursor-pointer flex items-start gap-4 sm:gap-6 py-6 sm:py-8 border-b border-black/10 group">
       {/* Ảnh bên trái */}
-      <div className="w-48 h-24 sm:w-64 sm:h-32 flex-shrink-0 overflow-hidden rounded-lg bg-black/5">
+      <div className="w-36 h-24 sm:w-48 sm:h-32 flex-shrink-0 overflow-hidden rounded-lg bg-black/5">
         {article.img ? (
           <img
             src={article.img}
