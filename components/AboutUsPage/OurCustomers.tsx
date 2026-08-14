@@ -2,8 +2,24 @@
 
 import { useTranslation } from "react-i18next";
 
-const beforeMazda = ["Canon", "Brother", "FUJIFILM", "Panasonic", "DAIKIN", "FUJITSU", "MITSUBISHI", "TOYOTA"];
-const afterMazda = ["Yamaha", "Nichicon", "SHARP", "HITACHI", "MITSUMI", "TDK-Lambda"];
+const partners: string[][] = [
+  ["Canon Inc."],
+  ["Brother", "Industries, Ltd."],
+  ["FUJIFILM", "Holdings", "Corporation"],
+  ["Panasonic", "Holdings", "Corporation"],
+  ["Daikin", "Industries, Ltd."],
+  ["General Inc."],
+  ["Mitsubishi", "Corporation"],
+  ["Carrier Japan", "Corporation"],
+  ["Toyota Motor", "Corporation"],
+  ["Mazda Motor", "Corporation"],
+  ["Yamaha Motor", "Co., Ltd."],
+  ["Nichicon", "Corporation"],
+  ["Sharp", "Corporation"],
+  ["Hitachi, Ltd."],
+  ["Mitsumi Electric", "Co., Ltd."],
+  ["TDK-Lambda", "Corporation"],
+];
 
 export default function OurCustomers() {
   const { t } = useTranslation("common");
@@ -11,7 +27,6 @@ export default function OurCustomers() {
   return (
     <section className="bg-white py-24">
       <div className="grid md:grid-cols-2 gap-16 items-start">
-
         {/* LEFT: DESCRIPTION */}
         <div className="max-w-[520px]">
           <SectionLabel>{t("customers.label")}</SectionLabel>
@@ -24,49 +39,23 @@ export default function OurCustomers() {
         </div>
 
         {/* RIGHT: PARTNERS GRID */}
-        {/* RIGHT: PARTNERS GRID */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-          {["Canon", "Brother", "FUJIFILM", "Panasonic", "DAIKIN", "FUJITSU", "MITSUBISHI"].map((partner) => (
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+          {partners.map((lines) => (
             <div
-              key={partner}
-              className="flex items-center justify-center h-[72px] px-4 border border-gray-200 rounded-xl bg-gray-50 hover:bg-[#013478]/5 hover:border-[#013478]/30 hover:scale-[1.05] transition-all duration-300"
+              key={lines.join(" ")}
+              className="flex flex-col items-center justify-center text-center h-14 sm:h-16 px-2 border border-gray-200 rounded-lg bg-gray-50 hover:bg-[#013478]/5 hover:border-[#013478]/30 hover:scale-[1.05] transition-all duration-300"
             >
-              <span className="text-[13px] font-semibold text-gray-500 hover:text-[#013478] transition-colors">
-                {partner}
-              </span>
-            </div>
-          ))}
-
-          {/* TOSHIBA Carrier — 2 dòng, căn giữa */}
-          <div className="flex flex-col items-center justify-center h-[72px] px-4 border border-gray-200 rounded-xl bg-gray-50 hover:bg-[#013478]/5 hover:border-[#013478]/30 hover:scale-[1.05] transition-all duration-300">
-            <span className="text-[13px] font-semibold text-gray-500 hover:text-[#013478] transition-colors leading-tight">TOSHIBA</span>
-            <span className="text-[13px] font-semibold text-gray-500 hover:text-[#013478] transition-colors leading-tight">Carrier</span>
-          </div>
-
-          {/* TOYOTA */}
-          <div className="flex items-center justify-center h-[72px] px-4 border border-gray-200 rounded-xl bg-gray-50 hover:bg-[#013478]/5 hover:border-[#013478]/30 hover:scale-[1.05] transition-all duration-300">
-            <span className="text-[13px] font-semibold text-gray-500 hover:text-[#013478] transition-colors">TOYOTA</span>
-          </div>
-
-          {/* mazDa */}
-          <div className="flex items-center justify-center h-[72px] px-4 border border-gray-200 rounded-xl bg-gray-50 hover:bg-[#013478]/5 hover:border-[#013478]/30 hover:scale-[1.05] transition-all duration-300">
-            <span className="text-[13px] font-semibold text-gray-500 hover:text-[#013478] transition-colors">
-              maz<span style={{ fontSize: '10px' }}>D</span>a
-            </span>
-          </div>
-
-          {afterMazda.map((partner) => (
-            <div
-              key={partner}
-              className="flex items-center justify-center h-[72px] px-4 border border-gray-200 rounded-xl bg-gray-50 hover:bg-[#013478]/5 hover:border-[#013478]/30 hover:scale-[1.05] transition-all duration-300"
-            >
-              <span className="text-[13px] font-semibold text-gray-500 hover:text-[#013478] transition-colors">
-                {partner}
-              </span>
+              {lines.map((line, i) => (
+                <span
+                  key={i}
+                  className="block text-[9px] sm:text-[10px] font-semibold text-gray-500 hover:text-[#013478] transition-colors leading-tight whitespace-nowrap"
+                >
+                  {line}
+                </span>
+              ))}
             </div>
           ))}
         </div>
-
       </div>
     </section>
   );

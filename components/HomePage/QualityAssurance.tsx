@@ -10,6 +10,9 @@ const certificationImagesByLang: Record<string, string[]> = {
   ja: ["/Home/QualityAssurance/IATF.jpg", "/Home/QualityAssurance/iso9001.jpg", "/Home/QualityAssurance/ISO14001.jpg"],
 }
 
+// Tên chứng nhận hiển thị phía trên mỗi ảnh — thứ tự khớp với mảng ảnh ở trên
+const certificationTitles = ["IATF 16949", "ISO 9001", "ISO 14001"]
+
 export default function CertificationsSection() {
   const { t } = useTranslation("common")
   const params = useParams()
@@ -94,13 +97,18 @@ export default function CertificationsSection() {
           {certificationImages.map((src, idx) => (
             <div
               key={`${lang}-${idx}`}
-              className={`relative transition-all duration-700 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+              className={`flex flex-col items-center transition-all duration-700 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
               style={{ transitionDelay: `${300 + idx * 200}ms` }}
             >
+              {/* Certificate title */}
+              <h3 className="text-base sm:text-lg md:text-xl font-bold text-[#020c1a] mb-3 text-center">
+                {certificationTitles[idx]}
+              </h3>
+
               <div className="inline-flex items-center justify-center overflow-hidden rounded-lg shadow-lg border border-black/10 bg-white h-[clamp(300px,88vw,560px)] sm:h-[clamp(260px,32vw,600px)]">
                 <img
                   src={src}
-                  alt={`${t("certificationsSection.alt")} ${idx + 1}`}
+                  alt={`${certificationTitles[idx]} - ${t("certificationsSection.alt")} ${idx + 1}`}
                   className="h-full w-auto max-w-full object-contain"
                 />
               </div>

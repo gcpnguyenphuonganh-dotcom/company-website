@@ -22,62 +22,66 @@ export default function PartnersSection() {
     return () => observer.disconnect()
   }, [])
 
-  const partnerClass = "flex items-center justify-center h-18 px-6 py-4 border border-border rounded-xl bg-muted/30 hover:bg-primary/5 hover:border-primary/30 hover:scale-105 transition-all duration-300"
-  const spanClass = "text-xl font-bold text-muted-foreground hover:text-foreground transition-colors duration-300"
+  const partnerClass =
+    "flex items-center justify-center text-center h-20 sm:h-24 w-full px-4 py-3 border border-border rounded-xl bg-background hover:bg-primary/5 hover:border-primary/30 hover:scale-105 transition-all duration-300"
+  const spanClass =
+    "text-sm sm:text-base font-semibold text-foreground leading-snug"
 
-  const before = ["Canon", "Brother", "FUJIFILM", "Panasonic", "DAIKIN", "FUJITSU", "MITSUBISHI", "TOYOTA"]
-  const after = ["Yamaha", "Nichicon", "SHARP", "HITACHI", "MITSUMI", "TDK-Lambda"]
+  const partners: string[][] = [
+    ["Canon Inc."],
+    ["Brother", "Industries, Ltd."],
+    ["FUJIFILM", "Holdings", "Corporation"],
+    ["Panasonic", "Holdings", "Corporation"],
+    ["Daikin", "Industries, Ltd."],
+    ["General Inc."],
+    ["Mitsubishi", "Corporation"],
+    ["Carrier Japan", "Corporation"],
+    ["Toyota Motor", "Corporation"],
+    ["Mazda Motor", "Corporation"],
+    ["Yamaha Motor", "Co., Ltd."],
+    ["Nichicon", "Corporation"],
+    ["Sharp", "Corporation"],
+    ["Hitachi, Ltd."],
+    ["Mitsumi Electric", "Co., Ltd."],
+    ["TDK-Lambda", "Corporation"],
+  ]
+
   return (
-    <section id="partners" ref={ref} className="py-24 bg-background overflow-hidden">
-      <div className="container mx-auto px-6">
+    <section id="partners" ref={ref} className="py-16 bg-background overflow-hidden">
+      <div className="container mx-auto px-6 max-w-5xl">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-10">
           <div className="flex items-center gap-2 justify-center">
             <div className="w-6 h-px bg-blue-900" />
-            <span className={`inline-block text-sm font-medium text-[#013478] tracking-widest uppercase transition-all duration-700 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
+            <span
+              className={`inline-block text-sm font-medium text-[#013478] tracking-widest uppercase transition-all duration-700 ${
+                inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+              }`}
+            >
               {t("partnersSection.badge")}
             </span>
             <div className="w-6 h-px bg-blue-900" />
           </div>
-          <h2 className={`text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mt-4 text-balance transition-all duration-700 delay-200 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
+          <h2
+            className={`text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mt-4 text-balance transition-all duration-700 delay-200 ${
+              inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+            }`}
+          >
             {t("partnersSection.title")}
           </h2>
         </div>
 
         {/* Partners Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3">
-          {["Canon", "Brother", "FUJIFILM", "Panasonic", "DAIKIN", "FUJITSU"].map((partner) => (
-            <div key={partner} className={partnerClass}>
-              <span className={spanClass}>{partner}</span>
-            </div>
-          ))}
-
-          {/* MITSUBISHI */}
-          <div className={partnerClass}>
-            <span className={spanClass}>MITSUBISHI</span>
-          </div>
-
-          {/* TOSHIBA Carrier — 2 dòng, căn giữa */}
-          <div className={`${partnerClass} flex-col gap-0.5`}>
-            <span className={`${spanClass} leading-tight`}>TOSHIBA</span>
-            <span className={`${spanClass} leading-tight`}>Carrier</span>
-          </div>
-
-          {/* TOYOTA */}
-          <div className={partnerClass}>
-            <span className={spanClass}>TOYOTA</span>
-          </div>
-
-          {/* mazDa */}
-          <div className={partnerClass}>
-            <span className={spanClass}>
-              maz<span style={{ fontSize: "15px" }}>D</span>a
-            </span>
-          </div>
-
-          {after.map((partner) => (
-            <div key={partner} className={partnerClass}>
-              <span className={spanClass}>{partner}</span>
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-3">
+          {partners.map((lines) => (
+            <div key={lines.join(" ")} className={partnerClass}>
+              <span className={spanClass}>
+                {lines.map((line, i) => (
+                  <span key={i} className="block whitespace-nowrap">
+                    {line}
+                  </span>
+                ))}
+              </span>
             </div>
           ))}
         </div>
