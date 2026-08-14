@@ -72,7 +72,7 @@ export default function PartnersSection() {
         </div>
 
         {/* Partners Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-3">
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4">
           {partners.map((lines) => (
             <div key={lines.join(" ")} className={partnerClass}>
               <span className={spanClass}>
