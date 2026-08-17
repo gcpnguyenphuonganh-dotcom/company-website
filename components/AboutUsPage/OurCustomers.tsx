@@ -43,12 +43,12 @@ export default function OurCustomers() {
           {partners.map((lines) => (
             <div
               key={lines.join(" ")}
-              className="flex flex-col items-center justify-center text-center h-14 sm:h-16 px-2 border border-gray-200 rounded-lg bg-gray-50 hover:bg-[#013478]/5 hover:border-[#013478]/30 hover:scale-[1.05] transition-all duration-300"
+              className="flex flex-col items-center justify-center text-center h-16 sm:h-20 px-2 border border-gray-200 rounded-lg bg-gray-50 hover:bg-[#013478]/5 hover:border-[#013478]/30 hover:scale-[1.05] transition-all duration-300"
             >
               {lines.map((line, i) => (
                 <span
                   key={i}
-                  className="block text-[9px] sm:text-[10px] font-semibold text-gray-500 hover:text-[#013478] transition-colors leading-tight whitespace-nowrap"
+                  className="block text-[14px] font-semibold text-gray-500 hover:text-[#013478] transition-colors leading-relaxed whitespace-nowrap"
                 >
                   {line}
                 </span>
