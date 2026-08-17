@@ -48,7 +48,7 @@ export default function OurCustomers() {
               {lines.map((line, i) => (
                 <span
                   key={i}
-                  className="block text-[14px] font-semibold text-gray-500 hover:text-[#013478] transition-colors leading-relaxed whitespace-nowrap"
+                  className="block text-[13.5px] font-semibold text-gray-500 hover:text-[#013478] transition-colors leading-relaxed whitespace-nowrap"
                 >
                   {line}
                 </span>
