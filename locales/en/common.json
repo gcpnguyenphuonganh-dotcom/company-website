@@ -39,7 +39,7 @@
     "logo_alt": "Company Logo",
     "map_title": "TTC Tower Location",
     "company_name": "Vietnam Diamond & Zebra Electric Company Limited",
-    "hq_address": "Lot I-3, Dai Dong-Hoan Son Industrial Park, Dai Dong Commune, Bac Ninh Province, Vietnam",
+    "hq_address": "Lot I-3, Dai Dong-Hoan Son Industrial Park, Dai Dong Commune, Bac Ninh City, Vietnam",
     "hq_phone": "0222 3847 437",
     "hq_email": "zve_sales_4@dia-zbr.com.vn",
     "hanoi_address": "M Floor, TTC Tower, No. 19 Duy Tan Street, Cau Giay Ward, Hanoi City, Vietnam",
@@ -101,7 +101,7 @@
     "items": {
       "visit": {
         "label": "Visit Us",
-        "value": "Lot I-3, Dai Dong-Hoan Son Industrial Park, Dai Dong Commune, Bac Ninh Province, Vietnam"
+        "value": "Lot I-3, Dai Dong-Hoan Son Industrial Park, Dai Dong Commune, Bac Ninh City, Vietnam"
       },
       "call": {
         "label": "Call Us",
@@ -134,7 +134,7 @@
     "subheading": "Whether you need a custom transformer design, a quotation for volume production, or technical consultation — our engineering team is ready to support you.",
     "loc1_tag": "Factory",
     "loc1_name": "Vietnam Diamond & Zebra Company Limited",
-    "loc1_address": "Lot I-3, Dai Dong-Hoan Son Industrial Park, Dai Dong Commune, Bac Ninh Province, Vietnam",
+    "loc1_address": "Lot I-3, Dai Dong-Hoan Son Industrial Park, Dai Dong Commune, Bac Ninh City, Vietnam",
     "loc2_tag": "Branch",
     "loc2_name": "Branch of Diamond & Zebra Electric Vietnam Company Limited in Hanoi City",
     "loc2_address": "M Floor, TTC Tower, No. 19 Duy Tan Street, Cau Giay Ward, Hanoi City, Vietnam",
@@ -197,7 +197,7 @@
         },
         {
           "year": "2007",
-          "title": "Vietnam Tabuchi Electric Company Limited established in Bac Ninh Province, Vietnam",
+          "title": "Vietnam Tabuchi Electric Company Limited established in Bac Ninh City, Vietnam",
           "desc": "Production Focus\n The plant focused on high-efficiency, customized high-frequency electrical transformers and electronic components destined for worldwide export."
         },
         {
