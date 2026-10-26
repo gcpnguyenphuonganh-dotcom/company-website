@@ -272,7 +272,7 @@
     "group": {
       "label": "Corporate Group",
       "title": "Part of Diamond Electric Holdings",
-      "desc": "Vietnam Diamond & Zebra Electric Company Limited is a wholly-owned subsidiary of Diamond Electric Holdings Co., Ltd. (DEHD) with 80+ years of heritage and operations in 15+ countries.",
+      "desc": "Vietnam Diamond & Zebra Electric Company Limited is a wholly-owned subsidiary of Diamond Electric Holdings Co., Ltd. (DEHD) with 90+ years of heritage and operations in 10 countries.",
       "parent": "Parent Company",
       "headquarters": "Headquarters",
       "headquarters_val": "Osaka, Japan",
@@ -840,5 +840,14 @@
         ]
       }
     }
+  },
+ "cookie": {
+  "message": "To improve the usability of our site, we use cookies to collect information about your browsing activities.",
+  "detailsBefore": "For details, please see ",
+  "linkText": "our group privacy policy.",
+  "detailsAfter": "",
+  "ok": "OK",
+  "privacyUrl": "https://www.diaelec-hd.co.jp/en/privacy/",
+  "ariaLabel": "Cookie notice"
   }
 }

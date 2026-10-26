@@ -1,6 +1,7 @@
 import Navbar from "@/components/Header/NavBar";
 import Footer from "@/components/Footer/Footer";
 import { I18nProvider } from "@/lib/I18nProvider";
+import CookieBanner from "@/components/CookieBanner";
 
 export async function generateStaticParams() {
   return [
@@ -24,6 +25,7 @@ export default async function LangLayout({
       <Navbar />
       <main className="flex-grow">{children}</main>
       <Footer />
+      <CookieBanner/>
     </I18nProvider>
   )
 }

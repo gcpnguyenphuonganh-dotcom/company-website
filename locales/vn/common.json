@@ -272,7 +272,7 @@
     "group": {
       "label": "Tập đoàn",
       "title": "Thành viên của Diamond Electric Holdings",
-      "desc": "Công ty TNHH Việt Nam Diamond & Zebra Electric là công ty con thuộc sở hữu hoàn toàn của Diamond Electric Holdings Co., Ltd. (DEHD), tập đoàn toàn cầu với hơn 80 năm lịch sử và hoạt động tại hơn 15 quốc gia.",
+      "desc": "Công ty TNHH Việt Nam Diamond & Zebra Electric là công ty con thuộc sở hữu hoàn toàn của Diamond Electric Holdings Co., Ltd. (DEHD), tập đoàn toàn cầu với hơn 90 năm lịch sử và hoạt động tại hơn 10 quốc gia.",
       "parent": "Công ty mẹ",
       "headquarters": "Trụ sở chính",
       "headquarters_val": "Osaka, Nhật Bản",
@@ -841,8 +841,16 @@
         ]
       }
     }
+  },
+  "cookie": {
+  "message": "Để cải thiện trải nghiệm sử dụng trang web, chúng tôi sử dụng cookie để thu thập thông tin về hoạt động duyệt web của bạn.",
+  "detailsBefore": "Để biết thêm chi tiết, vui lòng xem ",
+  "linkText": "chính sách bảo mật của tập đoàn chúng tôi.",
+  "detailsAfter": "",
+  "ok": "OK",
+  "privacyUrl": "https://www.diaelec-hd.co.jp/en/privacy/",
+  "ariaLabel": "Thông báo cookie"
   }
-
 }
 
 
