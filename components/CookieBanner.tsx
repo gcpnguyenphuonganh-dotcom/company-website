@@ -35,7 +35,7 @@ const DEFAULT_LOCALE: Locale = 'en';
 
 const CLASSES = {
   banner:
-    'fixed inset-x-0 bottom-0 z-[9999] bg-[#4d4d4d] px-4 py-[13px] text-[12px] leading-[2] tracking-[0.08em] text-white transition duration-[400ms] ease-out motion-reduce:transition-none',
+    'fixed inset-x-0 bottom-0 z-[9999] bg-[#4d4d4d]/80 px-4 py-[13px] text-[12px] leading-[2] tracking-[0.08em] text-white transition duration-[400ms] ease-out motion-reduce:transition-none',
   bannerShown: 'translate-y-0 opacity-100',
   bannerHiding: 'translate-y-full opacity-0',
   inner:
