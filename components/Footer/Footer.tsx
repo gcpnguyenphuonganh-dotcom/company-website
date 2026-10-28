@@ -26,7 +26,7 @@ export default function Footer() {
     const fetchProducts = async () => {
       try {
         const res = await fetch(
-          `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/products?populate=*&pagination[pageSize]=5&sort[0]=createdAt:desc&locale=${lang}` 
+          `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/products?populate=*&pagination[pageSize]=5&sort[0]=createdAt:desc&locale=${lang}`
         );
         if (!res.ok) return;
         const json = await res.json();
@@ -41,7 +41,7 @@ export default function Footer() {
       }
     };
     fetchProducts();
-  }, [lang]); 
+  }, [lang]);
 
   if (!mounted) return null;
 
@@ -57,13 +57,30 @@ export default function Footer() {
 
           {/* Brand */}
           <div className="sm:col-span-2 lg:col-span-1">
-            <div className="flex items-center gap-3 mb-4">
+            {/* Logos: Diamond Electric Holdings (top) + company logo (bottom) */}
+            <div className="flex flex-col items-start gap-4 sm:gap-5 mb-5 lg:mb-6">
+              <a
+                href="https://www.diaelec-hd.co.jp/en/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block w-full max-w-[220px] sm:max-w-[260px] lg:max-w-[300px] transition-opacity hover:opacity-80"
+              >
+                <img
+                  src="/Footer/DEHD_logo.png"
+                  alt="Diamond Electric Holdings"
+                  className="w-full h-auto object-contain object-left"
+                />
+              </a>
+
+              <div className="h-px w-full max-w-[220px] sm:max-w-[260px] lg:max-w-[300px] bg-white/15" />
+
               <img
                 src="/Footer/footer_logo.png"
                 alt={t("footer.logo_alt")}
-                className="w-full max-w-[150px] sm:max-w-[170px] lg:max-w-[190px] h-auto object-contain object-left flex-shrink-0"
+                className="w-full max-w-[200px] sm:max-w-[230px] lg:max-w-[260px] h-auto object-contain object-left"
               />
             </div>
+
             <p className="leading-[1.8] text-[0.95rem] text-[#c8d5e3] text-justify max-w-[380px]">
               {t("footer.description")}
             </p>
