@@ -294,7 +294,31 @@
       "title_1": "Hãy liên hệ ngay hôm nay!",
       "desc": "Gửi cho chúng tôi yêu cầu kỹ thuật của bạn và nhận phản hồi trong vòng 24 giờ.",
       "button": "Liên hệ với chúng tôi"
-    }
+    },
+
+    "global": {
+  "label": "Sự hiện diện toàn cầu",
+  "title": "Mạng lưới toàn cầu",
+  "desc": "Diamond Electric Holdings có các cơ sở tại Nhật Bản, châu Á, châu Âu và Bắc Mỹ, cùng các công ty liên kết hỗ trợ hoạt động sản xuất trên toàn thế giới.",
+  "filter_all": "Tất cả",
+  "filter_japan": "Nhật Bản",
+  "filter_global": "Cơ sở quốc tế",
+  "filter_affiliate": "Công ty liên kết",
+  "map": "Xem trên Google Maps",
+  "prev": "Trước",
+  "next": "Tiếp",
+  "countries": {
+    "japan": "Nhật Bản",
+    "usa": "Hoa Kỳ",
+    "hungary": "Hungary",
+    "thailand": "Thái Lan",
+    "china": "Trung Quốc",
+    "india": "Ấn Độ",
+    "vietnam": "Việt Nam",
+    "korea": "Hàn Quốc",
+    "indonesia": "Indonesia"
+  }
+}
   },
   "careers": {
     "hero": {

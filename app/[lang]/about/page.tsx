@@ -10,6 +10,7 @@ import PhotoCollage from "@/components/AboutUsPage/ImgCompanyOverview";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import GroupMessage from "@/components/AboutUsPage/GroupMessage";
+import GlobalPresence from "@/components/AboutUsPage/GlobalPresence";
 
  
 export default function AboutUs() {
@@ -296,6 +297,9 @@ export default function AboutUs() {
 
        {/* ── 9. GROUP MESSAGE ── */}
       <GroupMessage />
+
+       {/* ── 10. GLOBAL PRESENCE ── */}
+      <GlobalPresence />
 
       {/* ── CTA ── */}
       <section className="bg-white py-16">
