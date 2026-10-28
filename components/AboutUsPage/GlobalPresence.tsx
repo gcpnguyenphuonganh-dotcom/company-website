@@ -117,7 +117,7 @@ export default function GlobalPresence() {
       <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 clamp(1rem, 6vw, 6rem)" }}>
         {/* ── Header ── */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-10">
-         
+          <div className="max-w-2xl">
             <h2 className="text-3xl lg:text-4xl font-black text-[#020C1a] leading-tight mb-3">
               {t("about.global.title")}
             </h2>
