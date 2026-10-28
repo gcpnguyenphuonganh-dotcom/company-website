@@ -35,16 +35,16 @@ const DEFAULT_LOCALE: Locale = 'en';
 
 const CLASSES = {
   banner:
-    'fixed inset-x-0 bottom-0 z-[9999] bg-[#4d4d4d]/80 px-4 py-[13px] text-[12px] leading-[2] tracking-[0.08em] text-white transition duration-[400ms] ease-out motion-reduce:transition-none',
+    'fixed inset-x-0 bottom-0 z-[9999] bg-[#4d4d4d]/85 px-4 sm:px-6 py-4 text-[14px] md:text-[15px] leading-[1.7] tracking-[0.02em] text-white transition duration-[400ms] ease-out motion-reduce:transition-none',
   bannerShown: 'translate-y-0 opacity-100',
   bannerHiding: 'translate-y-full opacity-0',
   inner:
-    'mx-auto flex max-w-[1200px] flex-col items-center justify-center gap-2.5 md:flex-row md:gap-6',
+    'mx-auto flex max-w-[1200px] flex-col items-center justify-center gap-3 text-center md:flex-row md:gap-8 md:text-left',
   text: 'm-0',
   lineBreak: 'hidden md:inline',
   link: 'text-white underline underline-offset-2 hover:opacity-70',
   button:
-    'h-8 w-[100px] shrink-0 cursor-pointer border-0 bg-[#4f7df3] p-0 text-[12px] tracking-[0.1em] text-white transition-opacity hover:opacity-80 md:h-[26px] md:w-[55px]',
+    'h-10 w-[120px] shrink-0 cursor-pointer rounded-md border-0 bg-[#4f7df3] p-0 text-[14px] font-semibold tracking-[0.05em] text-white transition-opacity hover:opacity-80 md:h-9 md:w-[90px]',
 } as const satisfies Record<string, string>;
 
 function isLocale(value: unknown): value is Locale {
@@ -52,13 +52,10 @@ function isLocale(value: unknown): value is Locale {
 }
 
 function hasAccepted(): boolean {
-
-
-  
   try {
     if (window.localStorage.getItem(STORAGE_KEY) === '1') return true;
   } catch {
-  
+    // localStorage không khả dụng → dùng cookie
   }
   return document.cookie.split('; ').includes(`${STORAGE_KEY}=1`);
 }
@@ -67,7 +64,7 @@ function saveConsent(): void {
   try {
     window.localStorage.setItem(STORAGE_KEY, '1');
   } catch {
-   
+    // bỏ qua, vẫn lưu cookie bên dưới
   }
   const maxAge: number = 60 * 60 * 24 * MAX_AGE_DAYS;
   document.cookie = `${STORAGE_KEY}=1; max-age=${maxAge}; path=/; SameSite=Lax`;
@@ -101,7 +98,7 @@ export default function CookieBanner(): ReactElement | null {
 
   const visible: boolean = !closed && (!accepted || closing);
 
- 
+
   useEffect((): (() => void) | undefined => {
     const el: HTMLDivElement | null = ref.current;
     if (!visible || closing || !el) return undefined;
