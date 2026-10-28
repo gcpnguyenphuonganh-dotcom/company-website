@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useId, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { GLOBAL_LOCATIONS, getMapUrl, toTelHref, type CountryKey } from "./globalLocations";
@@ -118,6 +118,12 @@ export default function GlobalPresence() {
         {/* ── Header ── */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-10">
           <div className="max-w-2xl">
+            <div className="flex items-center gap-2 mb-3">
+              <div className="h-px w-8 bg-[#013478]" />
+              <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-[#013478]">
+                {t("about.global.label")}
+              </span>
+            </div>
             <h2 className="text-3xl lg:text-4xl font-black text-[#020C1a] leading-tight mb-3">
               {t("about.global.title")}
             </h2>
@@ -206,7 +212,7 @@ function LocationItem({
         title={t("about.global.map")}
         className="shrink-0 transition-transform hover:-translate-y-0.5"
       >
-        <MapPinIcon code={FLAG_CODE[e.country]} />
+        <FlagIcon code={FLAG_CODE[e.country]} />
       </a>
 
       <div className="min-w-0">
@@ -252,35 +258,16 @@ function LocationItem({
   );
 }
 
-/* Navy map pin with white ring + round country flag (flags from flagcdn.com) */
-function MapPinIcon({ code }: { code: string }) {
-  const clipId = `pin-flag-${useId().replace(/:/g, "")}`;
+/* Rectangular country flag (flags from flagcdn.com) */
+function FlagIcon({ code }: { code: string }) {
   return (
-    <svg width="34" height="46" viewBox="0 0 36 48" aria-hidden="true" className="drop-shadow-sm">
-      <defs>
-        <clipPath id={clipId}>
-          <circle cx="18" cy="17" r="10" />
-        </clipPath>
-      </defs>
-      <path
-        d="M18 0C8.06 0 0 8.06 0 18c0 13.5 18 30 18 30s18-16.5 18-30C36 8.06 27.94 0 18 0z"
-        fill="#2b3f7e"
-      />
-      {/* white ring */}
-      <circle cx="18" cy="17" r="12.5" fill="#ffffff" />
-      {/* flag, cropped to a circle */}
-      <image
-        href={`https://flagcdn.com/w80/${code}.png`}
-        x="3"
-        y="7"
-        width="30"
-        height="20"
-        preserveAspectRatio="xMidYMid slice"
-        clipPath={`url(#${clipId})`}
-      />
-      {/* thin border so white-ish flags (JP, KR) stay visible */}
-      <circle cx="18" cy="17" r="10" fill="none" stroke="#cbd5e1" strokeWidth="0.75" />
-    </svg>
+    <img
+      src={`https://flagcdn.com/w80/${code}.png`}
+      alt=""
+      aria-hidden="true"
+      loading="lazy"
+      className="block w-10 h-[30px] object-cover border border-slate-200 shadow-sm mt-0.5"
+    />
   );
 }
 
