@@ -57,24 +57,24 @@ export default function Footer() {
 
           {/* Brand */}
           <div className="sm:col-span-2 lg:col-span-1">
-            {/* Logos: Diamond Electric Holdings (top) + company logo (bottom) */}
-            <div className="flex flex-col items-start gap-4 sm:gap-5 mb-5 lg:mb-6">
+            {/* Logos: same width on every screen size */}
+            <div className="flex flex-col gap-4 sm:gap-5 mb-5 lg:mb-6 w-full max-w-[220px] sm:max-w-[260px] lg:max-w-[300px]">
               <a
                 href="https://www.diaelec-hd.co.jp/en/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block w-full max-w-[220px] sm:max-w-[260px] lg:max-w-[300px] transition-opacity hover:opacity-80"
+                className="block w-full transition-opacity hover:opacity-80"
               >
                 <img
                   src="/Footer/DEHD_logo.png"
                   alt="Diamond Electric Holdings"
-                  className="w-full h-auto object-contain object-left"
+                  className="block w-full h-auto"
                 />
               </a>
               <img
                 src="/Footer/footer_logo.png"
                 alt={t("footer.logo_alt")}
-                className="w-full max-w-[200px] sm:max-w-[230px] lg:max-w-[260px] h-auto object-contain object-left"
+                className="block w-full h-auto"
               />
             </div>
 
