@@ -9,6 +9,7 @@ import OurCustomers from "@/components/AboutUsPage/OurCustomers";
 import PhotoCollage from "@/components/AboutUsPage/ImgCompanyOverview";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import GroupMessage from "@/components/AboutUsPage/GroupMessage";
 
  
 export default function AboutUs() {
@@ -290,6 +291,8 @@ export default function AboutUs() {
               ))}
             </div>
           </div>
+
+          <GroupMessage />
         </div>
       </section>
       {/* ── CTA ── */}

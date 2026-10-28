@@ -849,5 +849,20 @@
   "ok": "OK",
   "privacyUrl": "https://www.diaelec-hd.co.jp/en/privacy/",
   "ariaLabel": "Cookie notice"
-  }
+  },
+
+  "message": {
+  "label": "Message from the Group",
+  "title": "Scrum of Fire",
+  "badge": "Mid-term Management Plan · Oct 2023",
+  "intro": "Diamond Electric Holdings Co., Ltd. is a \"MONOZUKURI/manufacturing company\" listed on the Tokyo Stock Exchange.",
+  "p1": "On October 4th, 2023, our Company released the mid-term management plan \"Scrum of Fire\". To embody our new vision \"Contribute to the Improvement of Global Environment by Connecting Cars and Homes with Manufacturing\" we have been working to design and develop inverter and electricity storage systems which will play a central role in the expansion of renewable energy. Our power conversion technology products will play a critical role as the world moves toward a new normal and decarbonized society.",
+  "p2": "In addition, we have been working hard to further strengthen our profit structure and ESG management. As a public instrument for the greater good, we are dedicated to contributing to the development of our customers and the prosperity of society. This commitment is driven by the continuous improvement of our current business, spearheaded by ignition coils, and founded on President's Three Major Policies led by the tenet: \"1. Meet Customer Quality Standards.\"",
+  "p3": "All of our \"Comrades,\"* shining and racing forward together across our 26 sites and 14 factories in 10 countries, will fully embody our President's Manufacturing Policy:",
+  "quote": "\"GENBA, GENBA, GENBA. Do stand in their shoes—Really do.\"",
+  "p4": "With heart and soul, we will advance through a relentless barrage of effort and continuous challenges.",
+  "note": "*Comrades: I intentionally call employees Comrades as they are far more than colleagues or teammates: we have overcome fierce struggles against all odds in the past and now fight for a bright future, powered by our \"Scrum of Fire,\" a symbol of burning passion binding us as one.",
+  "image_alt": "Scrum of Fire – Diamond Electric Holdings"
+}
+
 }

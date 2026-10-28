@@ -52,6 +52,9 @@ function isLocale(value: unknown): value is Locale {
 }
 
 function hasAccepted(): boolean {
+
+
+  
   try {
     if (window.localStorage.getItem(STORAGE_KEY) === '1') return true;
   } catch {
