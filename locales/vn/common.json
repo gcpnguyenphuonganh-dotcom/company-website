@@ -852,16 +852,11 @@
   "ariaLabel": "Thông báo cookie"
   },
 
-  "message": {
-  "label": "Thông điệp từ Tập đoàn",
-  "title": "Scrum of Fire",
-  "badge": "Kế hoạch quản trị trung hạn · 10/2023",
-  "intro": "Diamond Electric Holdings Co., Ltd. là một “công ty MONOZUKURI/sản xuất” niêm yết trên Sở Giao dịch Chứng khoán Tokyo.",
-  "p1": "Ngày 4 tháng 10 năm 2023, Công ty đã công bố kế hoạch quản trị trung hạn “Scrum of Fire”. Để hiện thực hóa tầm nhìn mới “Góp phần cải thiện môi trường toàn cầu bằng cách kết nối Ô tô và Ngôi nhà thông qua sản xuất”, chúng tôi đã và đang thiết kế, phát triển các hệ thống biến tần (inverter) và lưu trữ điện – những thành phần giữ vai trò trung tâm trong việc mở rộng năng lượng tái tạo. Các sản phẩm công nghệ chuyển đổi điện năng của chúng tôi sẽ đóng vai trò then chốt khi thế giới hướng tới trạng thái bình thường mới và một xã hội khử carbon.",
-  "p2": "Bên cạnh đó, chúng tôi không ngừng nỗ lực củng cố hơn nữa cơ cấu lợi nhuận và quản trị ESG. Với tư cách là một công cụ phục vụ lợi ích chung của xã hội, chúng tôi cam kết đóng góp vào sự phát triển của khách hàng và sự thịnh vượng của xã hội. Cam kết này được thúc đẩy bởi việc liên tục cải tiến hoạt động kinh doanh hiện tại, dẫn đầu là cuộn đánh lửa (ignition coil), và được xây dựng trên Ba Chính sách Lớn của Chủ tịch với tôn chỉ hàng đầu: “1. Đáp ứng tiêu chuẩn chất lượng của khách hàng.”",
-  "p3": "Tất cả “Đồng chí”* của chúng tôi – cùng tỏa sáng và tiến lên phía trước tại 26 cơ sở và 14 nhà máy ở 10 quốc gia – sẽ thấm nhuần trọn vẹn Chính sách Sản xuất của Chủ tịch:",
-  "quote": "“GENBA, GENBA, GENBA. Hãy đặt mình vào vị trí của họ — thực sự làm như vậy.”",
-  "p4": "Bằng cả trái tim và tâm huyết, chúng tôi sẽ tiến lên thông qua những nỗ lực không ngừng nghỉ và những thử thách liên tục.",
+ "message": {
+  "p1": "Diamond Electric Holdings Co., Ltd. là một “công ty MONOZUKURI/sản xuất” niêm yết trên Sở Giao dịch Chứng khoán Tokyo.",
+  "p2": "Ngày 4 tháng 10 năm 2023, Công ty đã công bố kế hoạch quản trị trung hạn “Scrum of Fire”. Để hiện thực hóa tầm nhìn mới “Góp phần cải thiện môi trường toàn cầu bằng cách kết nối Ô tô và Ngôi nhà thông qua sản xuất”, chúng tôi đã và đang thiết kế, phát triển các hệ thống biến tần (inverter) và lưu trữ điện – những thành phần giữ vai trò trung tâm trong việc mở rộng năng lượng tái tạo. Các sản phẩm công nghệ chuyển đổi điện năng của chúng tôi sẽ đóng vai trò then chốt khi thế giới hướng tới trạng thái bình thường mới và một xã hội khử carbon.",
+  "p3": "Bên cạnh đó, chúng tôi không ngừng nỗ lực củng cố hơn nữa cơ cấu lợi nhuận và quản trị ESG. Với tư cách là một công cụ phục vụ lợi ích chung của xã hội, chúng tôi cam kết đóng góp vào sự phát triển của khách hàng và sự thịnh vượng của xã hội. Cam kết này được thúc đẩy bởi việc liên tục cải tiến hoạt động kinh doanh hiện tại, dẫn đầu là cuộn đánh lửa (ignition coil), và được xây dựng trên Ba Chính sách Lớn của Chủ tịch với tôn chỉ hàng đầu: “1. Đáp ứng tiêu chuẩn chất lượng của khách hàng.”",
+  "p4": "Tất cả “Đồng chí”* của chúng tôi – cùng tỏa sáng và tiến lên phía trước tại 26 cơ sở và 14 nhà máy ở 10 quốc gia – sẽ thấm nhuần trọn vẹn Chính sách Sản xuất của Chủ tịch: “GENBA, GENBA, GENBA. Hãy đặt mình vào vị trí của họ — thực sự làm như vậy.” Bằng cả trái tim và tâm huyết, chúng tôi sẽ tiến lên thông qua những nỗ lực không ngừng nghỉ và những thử thách liên tục.",
   "note": "*Đồng chí: Tôi cố ý gọi nhân viên là “Đồng chí” vì họ còn hơn cả đồng nghiệp hay đồng đội: chúng tôi đã cùng nhau vượt qua những cuộc đấu tranh khốc liệt bất chấp mọi khó khăn trong quá khứ, và giờ đây cùng chiến đấu vì một tương lai tươi sáng, được tiếp sức bởi “Scrum of Fire” – biểu tượng của nhiệt huyết cháy bỏng gắn kết chúng tôi làm một.",
   "image_alt": "Scrum of Fire – Diamond Electric Holdings"
 }
