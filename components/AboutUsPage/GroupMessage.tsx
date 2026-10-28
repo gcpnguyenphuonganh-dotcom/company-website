@@ -31,12 +31,12 @@ export default function GroupMessage() {
 
           {/* Signature */}
           <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 sm:justify-end">
-            <div className="text-sm text-slate-500 leading-relaxed">
+            <div className="text-sm text-slate-500 leading-relaxed text-left">
               <p>{t("about.group.message.signed_by")}</p>
               <p>{t("about.group.message.position")}</p>
             </div>
             <Image
-              src="/AboutUs/Group/signature.png"
+              src="/AboutUs/Vision/chuthuphap.png"
               alt={t("about.group.message.signature_alt")}
               width={300}
               height={90}
