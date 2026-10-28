@@ -291,10 +291,12 @@ export default function AboutUs() {
               ))}
             </div>
           </div>
-
-          <GroupMessage />
         </div>
       </section>
+
+       {/* ── 9. GROUP MESSAGE ── */}
+      <GroupMessage />
+
       {/* ── CTA ── */}
       <section className="bg-white py-16">
         <div
