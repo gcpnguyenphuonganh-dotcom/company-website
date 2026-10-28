@@ -1,90 +1,107 @@
 "use client";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-import {
-  ChevronLeft,
-  ChevronRight,
-  ExternalLink,
-  Globe,
-  MapPin,
-  Phone,
-  Printer,
-} from "lucide-react";
-import {
-  GLOBAL_LOCATIONS,
-  getMapUrl,
-  toTelHref,
-  type Region,
-} from "@/components/AboutUsPage/globalLocations";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { GLOBAL_LOCATIONS, getMapUrl, toTelHref } from "./globalLocations";
 
 /**
  * GlobalPresence – section 10, placed after GroupMessage (section 9).
- * Slider built on native scroll-snap (no extra library):
- *  - Desktop: 3 cards / view, tablet: 2, mobile: ~1.15 (peek of next card, swipeable)
- *  - Filter chips: All / Japan / Global / Affiliates
- *  - Every address links to Google Maps
+ * List-style entries (map pin + company/office + address + TEL/FAX),
+ * grouped into pages that auto-slide.
+ *  - Desktop (lg+): 2 columns × 4 rows = 8 entries / slide
+ *  - Mobile / tablet: 1 column × 4 rows = 4 entries / slide
+ *  - Auto-slides every 5s, pauses on hover / touch / focus, swipeable on mobile
+ *  - Click the pin or the address to open Google Maps
  *
  * i18n keys: about.global.*
  */
-type Filter = "all" | Region;
-const FILTERS: Filter[] = ["all", "japan", "global", "affiliate"];
+const AUTOPLAY_MS = 5000;
+
+type Entry = {
+  key: string;
+  title: string;
+  address: string;
+  tel?: string;
+  fax?: string;
+  map: string;
+  affiliate: boolean;
+};
 
 export default function GlobalPresence() {
   const { t } = useTranslation("common");
-  const trackRef = useRef<HTMLDivElement>(null);
 
-  const [filter, setFilter] = useState<Filter>("all");
-  const [canPrev, setCanPrev] = useState(false);
-  const [canNext, setCanNext] = useState(true);
-  const [progress, setProgress] = useState(0);
-
-  const items = useMemo(
-    () => (filter === "all" ? GLOBAL_LOCATIONS : GLOBAL_LOCATIONS.filter((c) => c.region === filter)),
-    [filter]
+  /* Flatten companies → one entry per office */
+  const entries = useMemo<Entry[]>(
+    () =>
+      GLOBAL_LOCATIONS.flatMap((c) =>
+        c.offices.map((o, i) => ({
+          key: `${c.id}-${i}`,
+          title: o.name ? `${c.company} - ${o.name}` : c.company,
+          address: o.address,
+          tel: o.tel,
+          fax: o.fax,
+          map: getMapUrl(o),
+          affiliate: c.region === "affiliate",
+        }))
+      ),
+    []
   );
 
-  const countByFilter = (f: Filter) =>
-    f === "all" ? GLOBAL_LOCATIONS.length : GLOBAL_LOCATIONS.filter((c) => c.region === f).length;
-
-  /* ── Slider state ── */
-  const updateState = useCallback(() => {
-    const el = trackRef.current;
-    if (!el) return;
-    const max = el.scrollWidth - el.clientWidth;
-    setCanPrev(el.scrollLeft > 4);
-    setCanNext(el.scrollLeft < max - 4);
-    // progress = visible part of the track
-    const visible = el.clientWidth / el.scrollWidth;
-    setProgress(max <= 0 ? 1 : visible + (el.scrollLeft / max) * (1 - visible));
+  /* Entries per slide depends on screen size */
+  const [perPage, setPerPage] = useState(8);
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 1024px)");
+    const update = () => setPerPage(mq.matches ? 8 : 4);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
   }, []);
 
-  useEffect(() => {
-    const el = trackRef.current;
-    if (!el) return;
-    el.scrollTo({ left: 0 });
-    updateState();
-    el.addEventListener("scroll", updateState, { passive: true });
-    window.addEventListener("resize", updateState);
-    return () => {
-      el.removeEventListener("scroll", updateState);
-      window.removeEventListener("resize", updateState);
-    };
-  }, [items, updateState]);
+  const pages = useMemo(() => {
+    const out: Entry[][] = [];
+    for (let i = 0; i < entries.length; i += perPage) out.push(entries.slice(i, i + perPage));
+    return out;
+  }, [entries, perPage]);
 
-  const scrollByCard = (dir: 1 | -1) => {
-    const el = trackRef.current;
-    if (!el) return;
-    const card = el.firstElementChild as HTMLElement | null;
-    const gap = parseFloat(getComputedStyle(el).columnGap || "0");
-    const step = card ? card.offsetWidth + gap : el.clientWidth;
-    el.scrollBy({ left: dir * step, behavior: "smooth" });
+  /* Slider state */
+  const [page, setPage] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const total = pages.length;
+
+  useEffect(() => {
+    if (page > total - 1) setPage(0);
+  }, [total, page]);
+
+  const go = (dir: 1 | -1) => setPage((p) => (p + dir + total) % total);
+
+  /* Autoplay */
+  useEffect(() => {
+    if (paused || total < 2) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const id = setInterval(() => setPage((p) => (p + 1) % total), AUTOPLAY_MS);
+    return () => clearInterval(id);
+  }, [paused, total, page]); // `page` resets the timer after manual navigation
+
+  /* Swipe (mobile) */
+  const startX = useRef<number | null>(null);
+  const onTouchStart = (e: React.TouchEvent) => {
+    startX.current = e.touches[0].clientX;
+    setPaused(true);
+  };
+  const onTouchEnd = (e: React.TouchEvent) => {
+    if (startX.current !== null) {
+      const dx = e.changedTouches[0].clientX - startX.current;
+      if (Math.abs(dx) > 50) go(dx < 0 ? 1 : -1);
+    }
+    startX.current = null;
+    setPaused(false);
   };
 
   return (
-    <section id="global-presence" className="bg-slate-50 py-16 lg:py-24 scroll-mt-20">
+    <section id="global-presence" className="bg-white py-16 lg:py-24 scroll-mt-20">
       <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 clamp(1rem, 6vw, 6rem)" }}>
         {/* ── Header ── */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-8">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-10">
           <div className="max-w-2xl">
             <div className="flex items-center gap-2 mb-3">
               <div className="h-px w-8 bg-[#013478]" />
@@ -98,156 +115,156 @@ export default function GlobalPresence() {
             <p className="text-sm text-slate-500 leading-relaxed">{t("about.global.desc")}</p>
           </div>
 
-          {/* Prev / Next (desktop & tablet) */}
-          <div className="hidden sm:flex gap-2 shrink-0">
-            <NavButton dir="prev" disabled={!canPrev} onClick={() => scrollByCard(-1)} label={t("about.global.prev")} />
-            <NavButton dir="next" disabled={!canNext} onClick={() => scrollByCard(1)} label={t("about.global.next")} />
-          </div>
+          {total > 1 && (
+            <div className="flex items-center gap-3 shrink-0">
+              <span className="text-xs font-semibold text-slate-400 tabular-nums">
+                {String(page + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
+              </span>
+              <NavButton dir="prev" onClick={() => go(-1)} label={t("about.global.prev")} />
+              <NavButton dir="next" onClick={() => go(1)} label={t("about.global.next")} />
+            </div>
+          )}
         </div>
 
-        {/* ── Filter chips ── */}
-        <div className="flex gap-2 overflow-x-auto pb-2 mb-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-          {FILTERS.map((f) => {
-            const active = filter === f;
-            return (
-              <button
-                key={f}
-                type="button"
-                onClick={() => setFilter(f)}
-                className={`shrink-0 inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs font-bold transition-colors border ${
-                  active
-                    ? "bg-[#013478] text-white border-[#013478]"
-                    : "bg-white text-slate-500 border-slate-200 hover:border-[#013478]/40 hover:text-[#013478]"
-                }`}
-              >
-                {t(`about.global.filter_${f}`)}
-                <span
-                  className={`text-[10px] rounded-full px-1.5 py-0.5 ${
-                    active ? "bg-white/20" : "bg-slate-100"
-                  }`}
-                >
-                  {countByFilter(f)}
-                </span>
-              </button>
-            );
-          })}
-        </div>
-
-        {/* ── Slider track ── */}
+        {/* ── Slider ── */}
         <div
-          ref={trackRef}
-          className="flex gap-4 sm:gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-2 -mx-1 px-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          className="overflow-hidden"
+          onMouseEnter={() => setPaused(true)}
+          onMouseLeave={() => setPaused(false)}
+          onFocusCapture={() => setPaused(true)}
+          onBlurCapture={() => setPaused(false)}
+          onTouchStart={onTouchStart}
+          onTouchEnd={onTouchEnd}
         >
-          {items.map((c) => (
-            <article
-              key={c.id}
-              className="snap-start shrink-0 w-[87%] sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)] bg-white border border-slate-100 rounded-2xl p-6 flex flex-col hover:border-[#013478]/20 hover:shadow-lg transition-all"
-            >
-              {/* Card header */}
-              <div className="flex items-center justify-between gap-3 mb-3">
-                <span className="text-[10px] font-bold uppercase tracking-widest text-[#013478] bg-[#013478]/10 px-2.5 py-1 rounded-full">
-                  {t(`about.global.countries.${c.country}`)}
-                </span>
-                {c.region === "affiliate" && (
-                  <span className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider">
-                    {t("about.global.filter_affiliate")}
-                  </span>
-                )}
-              </div>
-              <h3 className="text-base font-bold text-[#020C1a] leading-snug mb-4">{c.company}</h3>
-
-              {/* Offices */}
-              <div className="flex-1 flex flex-col divide-y divide-slate-100">
-                {c.offices.map((o, i) => (
-                  <div key={i} className="py-3 first:pt-0 last:pb-0 text-[13px] text-slate-500 leading-relaxed">
-                    {o.name && <p className="font-semibold text-[#020C1a] mb-1">{o.name}</p>}
-
-                    <a
-                      href={getMapUrl(o)}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="group/map flex items-start gap-2 hover:text-[#013478] transition-colors"
-                      title={t("about.global.map")}
-                    >
-                      <MapPin className="w-3.5 h-3.5 mt-1 shrink-0 text-[#013478]" />
-                      <span className="underline decoration-slate-300 underline-offset-2 group-hover/map:decoration-[#013478]">
-                        {o.address}
-                      </span>
-                    </a>
-
-                    {(o.tel || o.fax) && (
-                      <div className="flex flex-wrap gap-x-4 gap-y-1 mt-1.5 pl-[22px] text-[12px]">
-                        {o.tel && (
-                          <a href={toTelHref(o.tel)} className="inline-flex items-center gap-1.5 hover:text-[#013478]">
-                            <Phone className="w-3 h-3" />
-                            {o.tel}
-                          </a>
-                        )}
-                        {o.fax && (
-                          <span className="inline-flex items-center gap-1.5">
-                            <Printer className="w-3 h-3" />
-                            {o.fax}
-                          </span>
-                        )}
-                      </div>
-                    )}
-                  </div>
+          <div
+            className="flex transition-transform duration-700 ease-in-out"
+            style={{ transform: `translateX(-${page * 100}%)` }}
+          >
+            {pages.map((items, pi) => (
+              <div
+                key={pi}
+                aria-hidden={pi !== page}
+                className="w-full shrink-0 grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-8 content-start"
+              >
+                {items.map((e) => (
+                  <LocationItem key={e.key} entry={e} t={t} tabbable={pi === page} />
                 ))}
               </div>
-
-              {c.website && (
-                <a
-                  href={c.website}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-4 pt-4 border-t border-slate-100 inline-flex items-center gap-1.5 text-xs font-semibold text-[#013478] hover:underline underline-offset-2"
-                >
-                  <Globe className="w-3.5 h-3.5" />
-                  {c.website.replace(/^https?:\/\//, "").replace(/\/$/, "")}
-                  <ExternalLink className="w-3 h-3 opacity-60" />
-                </a>
-              )}
-            </article>
-          ))}
-        </div>
-
-        {/* ── Progress bar + mobile nav ── */}
-        <div className="flex items-center gap-4 mt-6">
-          <div className="flex-1 h-1 bg-slate-200 rounded-full overflow-hidden">
-            <div
-              className="h-full bg-[#013478] rounded-full transition-[width] duration-300"
-              style={{ width: `${Math.max(progress, 0.05) * 100}%` }}
-            />
-          </div>
-          <div className="flex sm:hidden gap-2">
-            <NavButton dir="prev" disabled={!canPrev} onClick={() => scrollByCard(-1)} label={t("about.global.prev")} />
-            <NavButton dir="next" disabled={!canNext} onClick={() => scrollByCard(1)} label={t("about.global.next")} />
+            ))}
           </div>
         </div>
+
+        {/* ── Dots ── */}
+        {total > 1 && (
+          <div className="flex justify-center gap-2 mt-10">
+            {pages.map((_, i) => (
+              <button
+                key={i}
+                type="button"
+                onClick={() => setPage(i)}
+                aria-label={`${i + 1} / ${total}`}
+                className={`h-2 rounded-full transition-all duration-300 ${
+                  i === page ? "w-8 bg-[#013478]" : "w-2 bg-slate-300 hover:bg-slate-400"
+                }`}
+              />
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );
 }
 
-function NavButton({
-  dir,
-  disabled,
-  onClick,
-  label,
+/* ── One location row ── */
+function LocationItem({
+  entry: e,
+  t,
+  tabbable,
 }: {
-  dir: "prev" | "next";
-  disabled: boolean;
-  onClick: () => void;
-  label: string;
+  entry: Entry;
+  t: (k: string) => string;
+  tabbable: boolean;
 }) {
+  const tab = tabbable ? 0 : -1;
+  return (
+    <div className="flex gap-4 min-w-0">
+      <a
+        href={e.map}
+        target="_blank"
+        rel="noopener noreferrer"
+        tabIndex={tab}
+        aria-label={t("about.global.map")}
+        title={t("about.global.map")}
+        className="shrink-0 transition-transform hover:-translate-y-0.5"
+      >
+        <MapPinIcon />
+      </a>
+
+      <div className="min-w-0">
+        <h3 className="text-[15px] font-bold text-[#1f2d5c] leading-snug">
+          {e.title}
+          {e.affiliate && (
+            <span className="ml-2 align-middle text-[10px] font-semibold uppercase tracking-wider text-slate-400">
+              ({t("about.global.filter_affiliate")})
+            </span>
+          )}
+        </h3>
+
+        <a
+          href={e.map}
+          target="_blank"
+          rel="noopener noreferrer"
+          tabIndex={tab}
+          className="block text-[13px] text-slate-600 leading-relaxed mt-0.5 hover:text-[#013478] hover:underline underline-offset-2"
+        >
+          {e.address}
+        </a>
+
+        {(e.tel || e.fax) && (
+          <p className="text-[12px] text-slate-600 mt-1 flex flex-wrap gap-x-5 gap-y-0.5">
+            {e.tel && (
+              <span>
+                <strong className="font-bold text-[#1f2d5c]">{t("about.global.tel")}:</strong>{" "}
+                <a href={toTelHref(e.tel)} tabIndex={tab} className="italic hover:text-[#013478]">
+                  {e.tel}
+                </a>
+              </span>
+            )}
+            {e.fax && (
+              <span>
+                <strong className="font-bold text-[#1f2d5c]">{t("about.global.fax")}:</strong>{" "}
+                <span className="italic">{e.fax}</span>
+              </span>
+            )}
+          </p>
+        )}
+      </div>
+    </div>
+  );
+}
+
+/* Navy map pin with white ring + red dot */
+function MapPinIcon() {
+  return (
+    <svg width="34" height="46" viewBox="0 0 36 48" aria-hidden="true">
+      <path
+        d="M18 0C8.06 0 0 8.06 0 18c0 13.5 18 30 18 30s18-16.5 18-30C36 8.06 27.94 0 18 0z"
+        fill="#2b3f7e"
+      />
+      <circle cx="18" cy="17" r="10" fill="#ffffff" />
+      <circle cx="18" cy="17" r="5" fill="#e11d2a" />
+    </svg>
+  );
+}
+
+function NavButton({ dir, onClick, label }: { dir: "prev" | "next"; onClick: () => void; label: string }) {
   const Icon = dir === "prev" ? ChevronLeft : ChevronRight;
   return (
     <button
       type="button"
       onClick={onClick}
-      disabled={disabled}
       aria-label={label}
-      className="w-10 h-10 sm:w-11 sm:h-11 rounded-full border border-slate-200 bg-white flex items-center justify-center text-[#020C1a] transition-all hover:bg-[#020c1a] hover:text-white hover:border-[#020c1a] disabled:opacity-30 disabled:pointer-events-none"
+      className="w-10 h-10 rounded-full border border-slate-200 bg-white flex items-center justify-center text-[#020C1a] transition-all hover:bg-[#020c1a] hover:text-white hover:border-[#020c1a]"
     >
       <Icon className="w-5 h-5" />
     </button>

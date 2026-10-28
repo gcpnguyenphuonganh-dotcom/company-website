@@ -297,28 +297,16 @@
     },
 
     "global": {
-  "label": "Global Presence",
-  "title": "Our Global Network",
-  "desc": "Diamond Electric Holdings operates bases across Japan, Asia, Europe and North America, along with affiliated companies supporting our manufacturing worldwide.",
-  "filter_all": "All",
-  "filter_japan": "Japan",
-  "filter_global": "Global Bases",
-  "filter_affiliate": "Affiliated Companies",
-  "map": "View on Google Maps",
-  "prev": "Previous",
-  "next": "Next",
-  "countries": {
-    "japan": "Japan",
-    "usa": "U.S.A.",
-    "hungary": "Hungary",
-    "thailand": "Thailand",
-    "china": "China",
-    "india": "India",
-    "vietnam": "Vietnam",
-    "korea": "Korea",
-    "indonesia": "Indonesia"
-  }
-}
+      "label": "Global Presence",
+      "title": "Our Global Network",
+      "desc": "Diamond Electric Holdings operates bases across Japan, Asia, Europe and North America, along with affiliated companies supporting our manufacturing worldwide.",
+      "filter_affiliate": "Affiliated Company",
+      "map": "View on Google Maps",
+      "tel": "TEL",
+      "fax": "FAX",
+      "prev": "Previous",
+      "next": "Next"
+    }
   },
   "careers": {
     "hero": {
