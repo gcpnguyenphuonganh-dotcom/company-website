@@ -118,12 +118,6 @@ export default function GlobalPresence() {
         {/* ── Header ── */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-10">
           <div className="max-w-2xl">
-            <div className="flex items-center gap-2 mb-3">
-              <div className="h-px w-8 bg-[#013478]" />
-              <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-[#013478]">
-                {t("about.global.label")}
-              </span>
-            </div>
             <h2 className="text-3xl lg:text-4xl font-black text-[#020C1a] leading-tight mb-3">
               {t("about.global.title")}
             </h2>
