@@ -71,9 +71,6 @@ export default function Footer() {
                   className="w-full h-auto object-contain object-left"
                 />
               </a>
-
-              <div className="h-px w-full max-w-[220px] sm:max-w-[260px] lg:max-w-[300px] bg-white/15" />
-
               <img
                 src="/Footer/footer_logo.png"
                 alt={t("footer.logo_alt")}
