@@ -175,56 +175,41 @@ export default function TitleTabsSection() {
                 </div>
 
               ) : item.type === "ordered" ? (
-                <div
-                  className="flex justify-center"
-                >
+                /* Ordered list – number & text share one font-size so they scale together */
+                <div className="flex justify-center">
                   <ol
-                    className="space-y-5 sm:space-y-6"
+                    className="flex flex-col space-y-5 sm:space-y-6"
                     style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      alignItems: "baseline",
-                      alignSelf: "center",
                       fontFamily: fontMincho,
                       color: "#020c1a",
-                    }}>
+                      fontSize: "clamp(1.2rem, 3.5vw, 2.625rem)",
+                    }}
+                  >
                     {(item.content as string)
                       .split("\n")
                       .filter(Boolean)
                       .map((line, j) => (
                         <li
                           key={j}
-                          className="flex items-start gap-2 sm:gap-3"
+                          className="flex items-baseline"
                           style={{
+                            gap: "0.4em",
                             paddingLeft: item.indent ? "clamp(0.5rem,2vw,2rem)" : "0",
+                            lineHeight: "1.7",
+                            letterSpacing: "0.04em",
                           }}
                         >
                           <span
-                            className="text-[#013478] font-normal shrink-0 pt-5"
-                            style={{
-                              fontVariantNumeric: "oldstyle-nums",
-                              fontSize: "clamp(1.2rem, 3vw, 1.5rem)",
-                              fontFamily: fontMincho,
-                            }}
+                            className="text-[#013478] font-normal shrink-0 tabular-nums"
+                            style={{ fontSize: "0.6em" }}
                           >
                             {j + 1}.
                           </span>
-                          <span
-                            style={{
-                              fontSize: "clamp(1.2rem, 3.5vw, 2.625rem)",
-                              lineHeight: "1.7",
-                              letterSpacing: "0.04em",
-                              fontFamily: fontMincho,
-                              color: "#020c1a",
-                            }}
-                          >
-                            {line.replace(/^\d+\.\s*/, "")}
-                          </span>
+                          <span>{line.replace(/^\d+\.\s*/, "")}</span>
                         </li>
                       ))}
                   </ol>
                 </div>
-                /* Ordered list */
               ) : (
                 /* Regular text */
                 <div
