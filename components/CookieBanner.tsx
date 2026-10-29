@@ -35,16 +35,16 @@ const DEFAULT_LOCALE: Locale = 'en';
 
 const CLASSES = {
   banner:
-    'fixed inset-x-0 bottom-0 z-[9999] bg-[#4d4d4d]/85 px-4 sm:px-6 py-4 text-[14px] md:text-[15px] leading-[1.7] tracking-[0.02em] text-white transition duration-[400ms] ease-out motion-reduce:transition-none',
+    'fixed inset-x-0 bottom-0 z-[9999] bg-[#4d4d4d]/85 px-4 sm:px-6 py-3 md:py-4 text-[12px] sm:text-[13px] md:text-[15px] leading-[1.6] md:leading-[1.7] tracking-[0.02em] text-white transition duration-[400ms] ease-out motion-reduce:transition-none',
   bannerShown: 'translate-y-0 opacity-100',
   bannerHiding: 'translate-y-full opacity-0',
   inner:
-    'mx-auto flex max-w-[1200px] flex-col items-center justify-center gap-3 text-center md:flex-row md:gap-8 md:text-left',
+    'mx-auto flex max-w-[1200px] flex-col items-center justify-center gap-2 text-center md:flex-row md:gap-8 md:text-left',
   text: 'm-0',
   lineBreak: 'hidden md:inline',
   link: 'text-white underline underline-offset-2 hover:opacity-70',
   button:
-    'h-10 w-[120px] shrink-0 cursor-pointer rounded-md border-0 bg-[#4f7df3] p-0 text-[14px] font-semibold tracking-[0.05em] text-white transition-opacity hover:opacity-80 md:h-9 md:w-[90px]',
+    'h-8 w-[96px] shrink-0 cursor-pointer rounded-md border-0 bg-[#4f7df3] p-0 text-[12px] sm:text-[13px] md:text-[14px] font-semibold tracking-[0.05em] text-white transition-opacity hover:opacity-80 md:h-9 md:w-[90px]',
 } as const satisfies Record<string, string>;
 
 function isLocale(value: unknown): value is Locale {
