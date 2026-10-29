@@ -241,7 +241,7 @@ export default function TitleTabsSection() {
                       color: "#020c1a",
                       whiteSpace: "pre-line",
                       fontWeight: item.id === "mission" ? 500 : undefined,
-                      fontSize: item.id === "mission" ? "2.25rem" : "clamp(1.2rem, 3.5vw, 2.625rem)",
+                      fontSize: item.id === "mission" ? "clamp(1.25rem, 3.2vw, 2.25rem)" : "clamp(1.2rem, 3.5vw, 2.625rem)",
                     }}
                   >
                     {item.content}
