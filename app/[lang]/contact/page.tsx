@@ -35,7 +35,7 @@ export default function ContactUs() {
       address: t("contact.loc2_address"),
       mapLink: "https://maps.app.goo.gl/7c7cReozNUrKsXuW8",
       phone: "0243 2123 407",
-      email: ["seita_yamasaki@dia-zbr.co.jp"],
+      email: ["hanoi@dia-zbr.com.vn"],
       tagColor: "bg-sky-100 text-sky-700",
     },
     {
