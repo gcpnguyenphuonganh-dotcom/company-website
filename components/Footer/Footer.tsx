@@ -71,11 +71,16 @@ export default function Footer() {
                   className="block w-full h-auto"
                 />
               </a>
-              <img
-                src="/Footer/footer_logo.png"
-                alt={t("footer.logo_alt")}
-                className="block w-full h-auto"
-              />
+              <Link
+                href={`/${lang}`}
+                className="block w-full transition-opacity hover:opacity-80"
+              >
+                <img
+                  src="/Footer/footer_logo.png"
+                  alt={t("footer.logo_alt")}
+                  className="block w-full h-auto"
+                />
+              </Link>
             </div>
 
             <p className="leading-[1.8] text-[0.95rem] text-[#c8d5e3] text-justify max-w-[380px]">
