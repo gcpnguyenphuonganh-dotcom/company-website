@@ -53,7 +53,7 @@ export const GLOBAL_LOCATIONS: CompanyLocation[] = [
   },
   {
     id: "dze-mfg",
-    company: "Diamond & Zebra Electric Mfg. Co., Ltd.",
+    company: "Diamond Electric Holdings Co., Ltd.",
     region: "japan",
     country: "japan",
     offices: [
@@ -164,7 +164,7 @@ export const GLOBAL_LOCATIONS: CompanyLocation[] = [
   /* ───────────── Global bases ───────────── */
   {
     id: "demc-usa",
-    company: "Diamond Electric Mfg. Corporation",
+    company: "Diamond Electric Mfg. Co. - USA",
     region: "global",
     country: "usa",
     website: "https://diamond-us.com/",
@@ -285,7 +285,7 @@ export const GLOBAL_LOCATIONS: CompanyLocation[] = [
   },
   {
     id: "de-india",
-    company: "DE Diamond Electric India Pvt. Ltd.",
+    company: "Diamond Electric India Pvt. Ltd.",
     region: "global",
     country: "india",
     offices: [
