@@ -1,7 +1,6 @@
 /**
- * Global Presence data – source: https://www.diaelec-hd.co.jp/en/about/base/
- * Company names & addresses are kept in their official English form (same for every language).
- * Country names / UI labels are translated via i18n: about.global.*
+ * Global Presence data – text matches the provided reference list exactly.
+ * Company names & addresses are the same for every language.
  * If `map` is omitted, a Google Maps search link is generated from the address.
  */
 
@@ -72,7 +71,7 @@ export const GLOBAL_LOCATIONS: CompanyLocation[] = [
         map: "https://maps.app.goo.gl/EQ4ZoF5ebyoe5WLv8",
       },
       {
-        name: "DZ-Lab.",
+        name: "DZ Lab.",
         address: "2-8-7 Tagawa, Yodogawa-ku, Osaka, 532-0027, Japan",
         tel: "+81-6-6195-5230",
         fax: "+81-6-6195-5260",
@@ -116,14 +115,14 @@ export const GLOBAL_LOCATIONS: CompanyLocation[] = [
     country: "japan",
     offices: [
       {
-        name: "Factory No.1 & No.2",
+        name: "Factory No. 1 & No. 2",
         address: "18 Nanei-cho, Tottori 689-1192, Japan",
         tel: "+81-857-53-1121",
         fax: "+81-857-53-1104",
         map: "https://maps.app.goo.gl/CYpEfk8KD1ShLX4w6",
       },
       {
-        name: "Factory No.3",
+        name: "Factory No. 3",
         address: "15 Nanei-cho, Tottori 689-1192, Japan",
         tel: "+81-857-51-7350",
         fax: "+81-857-51-7351",
@@ -155,7 +154,7 @@ export const GLOBAL_LOCATIONS: CompanyLocation[] = [
       {
         address: "75-1 Omonogawamachi Nankata Ezozuka, Yokote-City, Akita 013-0213, Japan",
         tel: "+81-182-22-5633",
-        fax: "+81-182-56-2056",
+        fax: "+81-182-22-2056",
         map: "https://goo.gl/maps/YABF6aLfQZMCEb9h8",
       },
     ],
@@ -170,7 +169,7 @@ export const GLOBAL_LOCATIONS: CompanyLocation[] = [
     website: "https://diamond-us.com/",
     offices: [
       {
-        name: "West Virginia Head Office",
+        name: "West Virgina Head Office",
         address: "Eleanor Industrial Parkway, State Route 62, Eleanor, WV, 25070, U.S.A.",
         tel: "+1-304-586-0070",
         fax: "+1-304-586-0075",
@@ -178,7 +177,7 @@ export const GLOBAL_LOCATIONS: CompanyLocation[] = [
       },
       {
         name: "Michigan Sales Office",
-        address: "23065 Commerce Drive, Farmington Hills, MI 48335, U.S.A.",
+        address: "23065 Commerce Drive, Farmington Hills, MI 48335, U.S.A",
         tel: "+1-734-887-6607",
         fax: "+1-734-887-6628",
         map: "https://goo.gl/maps/Xnf4c1VpH29zbVCv7",
@@ -195,7 +194,6 @@ export const GLOBAL_LOCATIONS: CompanyLocation[] = [
       {
         address: "2500 Esztergom Rubik Erno Utca 1. Hungary",
         tel: "+36-33-542-200",
-        fax: "+36-33-542-201",
         map: "https://goo.gl/maps/AAP6S3epKLZemZw56",
       },
     ],
@@ -222,9 +220,8 @@ export const GLOBAL_LOCATIONS: CompanyLocation[] = [
     country: "thailand",
     offices: [
       {
-        name: "Factory",
         address:
-          "780 Moo 9, Gateway City Industrial Estate Soi 6, Huasamrong, Plaengyao, Chachoengsao 24190 Thailand",
+          "780 Moo9,Gateway City Industrial Estate Soi6, Huasamrong, Plaengyao, Chachoengsao 24190 Thailand",
         tel: "+66-38-086-716",
       },
     ],
@@ -238,7 +235,7 @@ export const GLOBAL_LOCATIONS: CompanyLocation[] = [
       {
         address: "122/20 Moo 6, Tambon Bang Phriang, Amphoe Bang Bo, Samut Prakarn, 10560 Thailand",
         tel: "+66(0)2-170-8282",
-        fax: "+66(0)2-170-9868",
+        fax: "+66(0)2 - 170-9868",
       },
     ],
   },
@@ -249,7 +246,7 @@ export const GLOBAL_LOCATIONS: CompanyLocation[] = [
     country: "china",
     offices: [
       {
-        address: "Room 202 Building B, No.898 Jiujing Town, Songjiang District, Shanghai, China",
+        address: "Room 202 Building B, No.898 Jiujing Town Songjiang District Shanghai, China",
         tel: "+86-21-576-36475",
         fax: "+86-21-576-36852",
         map: "https://goo.gl/maps/RXp93b7nX9p4KxfA7",
@@ -263,7 +260,7 @@ export const GLOBAL_LOCATIONS: CompanyLocation[] = [
     country: "china",
     offices: [
       {
-        address: "No.145 YangPu Road, Suzhou Industrial Park 215126 Jiangsu, P.R. China",
+        address: "No.145 YangPu Road, Suzhou Industrial Park 215126 Jiangsu P.R.China",
         tel: "+86-512-6283-6908",
         fax: "+86-512-6283-6447",
         map: "https://goo.gl/maps/iNTbhc6Pbhhs1dKk6",
@@ -277,7 +274,7 @@ export const GLOBAL_LOCATIONS: CompanyLocation[] = [
     country: "china",
     offices: [
       {
-        address: "No.145 YangPu Road, Suzhou Industrial Park 215126 Jiangsu, P.R. China",
+        address: "No.145 YangPu Road, Suzhou Industrial Park 215126 Jiangsu P.R.China",
         tel: "+86-512-6818-5150",
         map: "https://goo.gl/maps/d7Lk8nSPiGzjXNZq8",
       },
@@ -291,7 +288,7 @@ export const GLOBAL_LOCATIONS: CompanyLocation[] = [
     offices: [
       {
         address:
-          "Plot No.38, Sector-5, HSIIDC Growth Centre, Phase-II Bawal, Distt. Rewari, Haryana, India",
+          "Plot No.38, Sector-5, HSIIDC Growth Centre, Phase-IIBawal Dist. Rewari, Haryana India",
         tel: "+91-9053-029816",
         map: "https://goo.gl/maps/CcXMCByMb97rhYVt9",
       },
@@ -306,7 +303,8 @@ export const GLOBAL_LOCATIONS: CompanyLocation[] = [
       {
         address:
           "Plot No.116A, 2nd Main Road, Sidco Industrial Estate, Thirumazhisai, Chennai-600124, Tamil Nadu, India",
-        tel: "+91-44-2999-3712",
+        tel: "+91-44-42852001,02,03",
+        fax: "+91-44-42852004",
       },
     ],
   },
@@ -319,14 +317,14 @@ export const GLOBAL_LOCATIONS: CompanyLocation[] = [
       {
         name: "Head Office",
         address:
-          "Lot I.3, Dai Dong-Hoan Son Industrial Park, Dai Dong Commune, Bac Ninh City, Vietnam",
+          "Lot I.3, Dai Dong-Hoan Son industrial park, Dai Dong commune, Bac Ninh province, Vietnam",
         tel: "+84-2223-847-435",
         fax: "+84-2223-847-437",
         map: "https://goo.gl/maps/PkxXBLDjwqJM3RsP8",
       },
       {
-        name: "Hanoi Mini Lab.",
-        address: "M Floor, TTC Tower, 19 Duy Tan, Cau Giay Ward, Hanoi City, Vietnam",
+        name: "Hanoi Mini Lab",
+        address: "M floor, TTC Tower building, 19 Duy Tan, Cau Giay ward, Hanoi city, Vietnam",
         tel: "+84-2432-123-407",
         map: "https://goo.gl/maps/fYYzLJogmFp7F9mU8",
       },
@@ -340,7 +338,7 @@ export const GLOBAL_LOCATIONS: CompanyLocation[] = [
     offices: [
       {
         address:
-          "Hanshin Intervalley West 1212, Yeoksam-Dong, 322 Teheran-Ro, Gangnam-Gu, Seoul, 06211 Korea",
+          "Hanshin Intervalley West 1212 Yeoksam-Dong , 322, Teheran-Ro, Gangnam-Gu, Seoul, 06211 Korea",
         tel: "+82-2-2183-1831",
         map: "https://goo.gl/maps/arG1atXYa6k1q1kf8",
       },
@@ -354,7 +352,7 @@ export const GLOBAL_LOCATIONS: CompanyLocation[] = [
     offices: [
       {
         address:
-          "BM Rental Factory, Unit A-2, Jalan Madura Blok L-9, Kawasan Industri MM2100, Ds. Cikedokan, Kec. Cikarang Barat, Kab. Bekasi 17530",
+          "BM Rental Factory, Unit A-2. Jalan Madural Blok L-9. Kawasan Industri MM2100 Ds. Cikedokan, Kec. Cikarang Barat, Kab Bekasi 17530",
         tel: "+62-21-2214-3052",
         fax: "+62-21-2214-3772",
         map: "https://maps.app.goo.gl/J7Jxm7FMgLkZvcw48",
@@ -370,7 +368,7 @@ export const GLOBAL_LOCATIONS: CompanyLocation[] = [
     country: "korea",
     offices: [
       {
-        address: "8th Floor, DDS Building, 415 Siheung-daero, Geumcheon-gu, Seoul, Republic of Korea",
+        address: "8th floor, DDS building 415, Siheung-daero, Geumcheon-gu, Seoul, Republic of Korea",
         tel: "+82-2-856-8951",
         fax: "+82-2-864-2456",
         map: "https://goo.gl/maps/4avB5C2gVUnRSF2P8",
@@ -398,7 +396,7 @@ export const GLOBAL_LOCATIONS: CompanyLocation[] = [
     country: "china",
     offices: [
       {
-        address: "Spring Water Road, Kaipu District, Yichun City, Jiangxi Province, China",
+        address: "Spring Water Road, Kaipu District, Yichun City, Jiangxi Province",
         tel: "+86-795-2170998",
         fax: "+86-795-2170996",
         map: "https://goo.gl/maps/ukR71biRzDAtr79d7",
@@ -412,5 +410,10 @@ export const getMapUrl = (office: Office) =>
   office.map ??
   `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(office.address)}`;
 
-/** "+66(0)2-170-8282" -> "+6621708282" */
-export const toTelHref = (phone: string) => `tel:${phone.replace("(0)", "").replace(/[^\d+]/g, "")}`;
+/**
+ * Phone → tel: link
+ * "+66(0)2-170-8282"          -> "tel:+6621708282"
+ * "+91-44-42852001,02,03"     -> "tel:+914442852001" (first number only)
+ */
+export const toTelHref = (phone: string) =>
+  `tel:${phone.split(",")[0].replace("(0)", "").replace(/[^\d+]/g, "")}`;
