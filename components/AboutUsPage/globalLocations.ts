@@ -319,7 +319,7 @@ export const GLOBAL_LOCATIONS: CompanyLocation[] = [
       {
         name: "Head Office",
         address:
-          "Lot I.3, Dai Dong-Hoan Son Industrial Park, Dai Dong Commune, Bac Ninh Province, Vietnam",
+          "Lot I.3, Dai Dong-Hoan Son Industrial Park, Dai Dong Commune, Bac Ninh City, Vietnam",
         tel: "+84-2223-847-435",
         fax: "+84-2223-847-437",
         map: "https://goo.gl/maps/PkxXBLDjwqJM3RsP8",
